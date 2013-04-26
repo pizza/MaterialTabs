@@ -45,7 +45,7 @@ Developed By
 Credits
 -------
 
- * [Kirill Grouchnikov][1] - Author of [an explanation post][2], on Google+
+ * [Kirill Grouchnikov][1] - Author of [an explanation post on Google+][2]
 
 
 License
