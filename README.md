@@ -2,7 +2,7 @@ Android ViewPagerIndicator
 ==========================
 
 Interactive paging indicator widget, compatible with the `ViewPager` from the 
-Android Support Library. Based on Google Play Store 4.0.25
+Android Support Library. 
 
 
 Usage
