@@ -16,9 +16,6 @@
 
 package com.astuetz.viewpager.extensions.sample;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
@@ -75,9 +72,7 @@ public class MainActivity extends FragmentActivity {
 
 		tabs.setIndicatorColor(newColor);
 
-		Bitmap bmp = Bitmap.createBitmap(1, 1, Config.ARGB_8888);
-		bmp.setPixel(0, 0, newColor);
-		Drawable colorDrawable = new BitmapDrawable(getResources(), bmp);
+		Drawable colorDrawable = new ColorDrawable(newColor);
 		Drawable bottomDrawable = getResources().getDrawable(R.drawable.actionbar_bottom);
 		LayerDrawable ld = new LayerDrawable(new Drawable[] { colorDrawable, bottomDrawable });
 
