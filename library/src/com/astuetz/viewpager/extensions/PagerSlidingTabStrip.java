@@ -211,6 +211,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		tab.setText(title);
 		tab.setFocusable(true);
 		tab.setGravity(Gravity.CENTER);
+		tab.setSingleLine();
 
 		tab.setOnClickListener(new OnClickListener() {
 			@Override
@@ -231,7 +232,11 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 			tab.setLayoutParams(defaultTabLayoutParams);
 			tab.setBackgroundResource(tabBackgroundResId);
-			tab.setPadding(tabPadding, 0, tabPadding, 0);
+			if (shouldExpand) {
+				tab.setPadding(0, 0, 0, 0);
+			} else {
+				tab.setPadding(tabPadding, 0, tabPadding, 0);
+			}
 			tab.setTextSize(TypedValue.COMPLEX_UNIT_PX, tabTextSize);
 			tab.setTypeface(tabTypeface, tabTypefaceStyle);
 			tab.setTextColor(tabTextColor);

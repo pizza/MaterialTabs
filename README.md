@@ -4,6 +4,9 @@ Android PagerSlidingTabStrip
 Interactive paging indicator widget, compatible with the `ViewPager` from the 
 Android Support Library. 
 
+Try out the sample application [on the Play Store][3].
+
+![PagerSlidingTabStrip Sample Screenshot 1][4] ![PagerSlidingTabStrip Sample Screenshot 2][5]
 
 Usage
 =====
@@ -71,3 +74,6 @@ License
 
  [1]: https://plus.google.com/108761828584265913206/posts
  [2]: https://plus.google.com/108761828584265913206/posts/Cwk7joBV3AC
+ [3]: https://play.google.com/store/apps/details?id=com.astuetz.viewpager.extensions.sample
+ [4]: https://lh3.ggpht.com/PXS7EmHhQZdT1Oa379iy91HX3ByWAQnFZAthMAFa_QHAOHNClEaXU5nxDEAj1F2eqbk
+ [5]: https://lh3.ggpht.com/oaksDoUcQlGB4j7VEkBCOjrvSzjtzVHHcKq8pAnGVfm6oxkcJg_w1QS4tyP3fLcqrwcX
