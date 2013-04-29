@@ -91,7 +91,6 @@ public class MainActivity extends FragmentActivity {
 		} else {
 
 			TransitionDrawable td = new TransitionDrawable(new Drawable[] { oldBackground, ld });
-			td.setCrossFadeEnabled(true);
 
 			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
 				td.setCallback(drawableCallback);
