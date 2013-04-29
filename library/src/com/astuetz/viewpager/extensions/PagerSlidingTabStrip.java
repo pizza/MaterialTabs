@@ -293,6 +293,9 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		if (isInEditMode()) {
 			return;
 		}
+		if (tabsContainer == null || tabsContainer.getChildCount() == 0) {
+			return;
+		}
 
 		final int height = getHeight();
 
