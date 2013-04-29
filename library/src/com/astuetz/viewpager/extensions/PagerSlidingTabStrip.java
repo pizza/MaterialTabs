@@ -290,10 +290,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 
-		if (isInEditMode()) {
-			return;
-		}
-		if (tabsContainer == null || tabsContainer.getChildCount() == 0) {
+		if (isInEditMode() || tabCount == 0) {
 			return;
 		}
 
