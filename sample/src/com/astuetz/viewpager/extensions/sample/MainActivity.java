@@ -109,7 +109,7 @@ public class MainActivity extends FragmentActivity {
 		// http://stackoverflow.com/questions/11002691/actionbar-setbackgrounddrawable-nulling-background-from-thread-handler
 		getActionBar().setDisplayShowTitleEnabled(false);
 		getActionBar().setDisplayShowTitleEnabled(true);
-		
+
 	}
 
 	public void onColorClicked(View v) {
