@@ -20,7 +20,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.TransitionDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -33,6 +35,8 @@ import android.view.View;
 import com.astuetz.viewpager.extensions.PagerSlidingTabStrip;
 
 public class MainActivity extends FragmentActivity {
+
+	private final Handler handler = new Handler();
 
 	private PagerSlidingTabStrip tabs;
 	private ViewPager pager;
@@ -78,12 +82,23 @@ public class MainActivity extends FragmentActivity {
 
 		if (oldBackground == null) {
 
-			getActionBar().setBackgroundDrawable(ld);
+			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+				ld.setCallback(drawableCallback);
+			} else {
+				getActionBar().setBackgroundDrawable(ld);
+			}
 
 		} else {
 
 			TransitionDrawable td = new TransitionDrawable(new Drawable[] { oldBackground, ld });
-			getActionBar().setBackgroundDrawable(td);
+			td.setCrossFadeEnabled(true);
+
+			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+				td.setCallback(drawableCallback);
+			} else {
+				getActionBar().setBackgroundDrawable(td);
+			}
+
 			td.startTransition(200);
 
 		}
@@ -95,7 +110,7 @@ public class MainActivity extends FragmentActivity {
 		// http://stackoverflow.com/questions/11002691/actionbar-setbackgrounddrawable-nulling-background-from-thread-handler
 		getActionBar().setDisplayShowTitleEnabled(false);
 		getActionBar().setDisplayShowTitleEnabled(true);
-
+		
 	}
 
 	public void onColorClicked(View v) {
@@ -117,6 +132,23 @@ public class MainActivity extends FragmentActivity {
 		currentColor = savedInstanceState.getInt("currentColor");
 		changeColor(currentColor);
 	}
+
+	private Drawable.Callback drawableCallback = new Drawable.Callback() {
+		@Override
+		public void invalidateDrawable(Drawable who) {
+			getActionBar().setBackgroundDrawable(who);
+		}
+
+		@Override
+		public void scheduleDrawable(Drawable who, Runnable what, long when) {
+			handler.postAtTime(what, when);
+		}
+
+		@Override
+		public void unscheduleDrawable(Drawable who, Runnable what) {
+			handler.removeCallbacks(what);
+		}
+	};
 
 	public class MyPagerAdapter extends FragmentPagerAdapter {
 
