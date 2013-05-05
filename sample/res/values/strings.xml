@@ -2,6 +2,6 @@
 <resources>
 
     <string name="app_name">PagerSlidingTabStrip</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_contact">Contact</string>
 
 </resources>
