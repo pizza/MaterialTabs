@@ -96,6 +96,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 	private int tabBackgroundResId = R.drawable.background_tab;
 
+    private Locale mLocale;
+
 	public PagerSlidingTabStrip(Context context) {
 		this(context, null);
 	}
@@ -290,9 +292,12 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
      * Performs a transformation of the textView content to upper case based on context location
      */
     private void makeAllCapsTransformation(TextView tv){
-        Locale locale = getContext().getResources().getConfiguration().locale;
+        if (mLocale == null){
+            mLocale = getContext().getResources().getConfiguration().locale;
+        }
+
         String currentText = (String) tv.getText(); tv.setAllCaps(true);
-        tv.setText(currentText.toUpperCase(locale));
+        tv.setText(currentText.toUpperCase(mLocale));
     }
 
 	@Override
