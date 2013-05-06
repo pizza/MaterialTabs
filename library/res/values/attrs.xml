@@ -12,6 +12,7 @@
         <attr name="scrollOffset" format="dimension" />
         <attr name="tabBackground" format="reference" />
         <attr name="shouldExpand" format="boolean" />
+        <attr name="textAllCaps" format="boolean" />
     </declare-styleable>
 
 </resources>

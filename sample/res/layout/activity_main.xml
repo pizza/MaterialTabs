@@ -8,7 +8,8 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="48dip"
-        android:background="@drawable/background_tabs" />
+        android:background="@drawable/background_tabs"
+        app:textAllCaps="true"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"

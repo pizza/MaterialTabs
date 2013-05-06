@@ -39,6 +39,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 	public interface IconTabProvider {
@@ -76,6 +78,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	private int dividerColor = 0x1A000000;
 
 	private boolean shouldExpand = false;
+    private boolean textAllCaps = false;
 
 	private int scrollOffset = 52;
 	private int indicatorHeight = 8;
@@ -145,6 +148,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		tabBackgroundResId = a.getResourceId(R.styleable.PagerSlidingTabStrip_tabBackground, tabBackgroundResId);
 		shouldExpand = a.getBoolean(R.styleable.PagerSlidingTabStrip_shouldExpand, shouldExpand);
 		scrollOffset = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_scrollOffset, scrollOffset);
+        textAllCaps = a.getBoolean(R.styleable.PagerSlidingTabStrip_textAllCaps, textAllCaps);
 
 		a.recycle();
 
@@ -273,11 +277,23 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 				tab.setTypeface(tabTypeface, tabTypefaceStyle);
 				tab.setTextColor(tabTextColor);
 
+                // setAllCaps() is only available form API 14, so the upper case is made manually.
+                if (textAllCaps){
+                    makeAllCapsTransformation(tab);
+                }
 			}
-
 		}
 
 	}
+
+    /**
+     * Performs a transformation of the textView content to upper case based on context location
+     */
+    private void makeAllCapsTransformation(TextView tv){
+        Locale locale = getContext().getResources().getConfiguration().locale;
+        String currentText = (String) tv.getText(); tv.setAllCaps(true);
+        tv.setText(currentText.toUpperCase(locale));
+    }
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -490,11 +506,19 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		requestLayout();
 	}
 
-	public boolean getShuldExpand() {
+	public boolean getShouldExpand() {
 		return shouldExpand;
 	}
 
-	public void setTextSize(int textSizePx) {
+    public boolean isTextAllCaps() {
+        return textAllCaps;
+    }
+
+    public void setAllCaps(boolean textAllCaps) {
+        this.textAllCaps = textAllCaps;
+    }
+
+    public void setTextSize(int textSizePx) {
 		this.tabTextSize = textSizePx;
 		updateTabStyles();
 	}
