@@ -16,6 +16,8 @@
 
 package com.astuetz.viewpager.extensions;
 
+import java.util.Locale;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -38,8 +40,6 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.util.Locale;
 
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 
@@ -78,7 +78,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	private int dividerColor = 0x1A000000;
 
 	private boolean shouldExpand = false;
-    private boolean textAllCaps = false;
+	private boolean textAllCaps = true;
 
 	private int scrollOffset = 52;
 	private int indicatorHeight = 8;
@@ -96,7 +96,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 	private int tabBackgroundResId = R.drawable.background_tab;
 
-    private Locale mLocale;
+	private Locale locale;
 
 	public PagerSlidingTabStrip(Context context) {
 		this(context, null);
@@ -150,7 +150,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		tabBackgroundResId = a.getResourceId(R.styleable.PagerSlidingTabStrip_tabBackground, tabBackgroundResId);
 		shouldExpand = a.getBoolean(R.styleable.PagerSlidingTabStrip_shouldExpand, shouldExpand);
 		scrollOffset = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_scrollOffset, scrollOffset);
-        textAllCaps = a.getBoolean(R.styleable.PagerSlidingTabStrip_textAllCaps, textAllCaps);
+		textAllCaps = a.getBoolean(R.styleable.PagerSlidingTabStrip_textAllCaps, textAllCaps);
 
 		a.recycle();
 
@@ -164,6 +164,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 		defaultTabLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
 		expandedTabLayoutParams = new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f);
+
+		if (locale == null) {
+			locale = getResources().getConfiguration().locale;
+		}
 	}
 
 	public void setViewPager(ViewPager pager) {
@@ -279,26 +283,19 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 				tab.setTypeface(tabTypeface, tabTypefaceStyle);
 				tab.setTextColor(tabTextColor);
 
-                // setAllCaps() is only available form API 14, so the upper case is made manually.
-                if (textAllCaps){
-                    makeAllCapsTransformation(tab);
-                }
+				// setAllCaps() is only available from API 14, so the upper case is made manually if we are on a
+				// pre-ICS-build
+				if (textAllCaps) {
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+						tab.setAllCaps(true);
+					} else {
+						tab.setText(tab.getText().toString().toUpperCase(locale));
+					}
+				}
 			}
 		}
 
 	}
-
-    /**
-     * Performs a transformation of the textView content to upper case based on context location
-     */
-    private void makeAllCapsTransformation(TextView tv){
-        if (mLocale == null){
-            mLocale = getContext().getResources().getConfiguration().locale;
-        }
-
-        String currentText = (String) tv.getText(); tv.setAllCaps(true);
-        tv.setText(currentText.toUpperCase(mLocale));
-    }
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -327,7 +324,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	private void scrollToChild(int position, int offset) {
-		
+
 		if (tabCount == 0) {
 			return;
 		}
@@ -515,15 +512,15 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		return shouldExpand;
 	}
 
-    public boolean isTextAllCaps() {
-        return textAllCaps;
-    }
+	public boolean isTextAllCaps() {
+		return textAllCaps;
+	}
 
-    public void setAllCaps(boolean textAllCaps) {
-        this.textAllCaps = textAllCaps;
-    }
+	public void setAllCaps(boolean textAllCaps) {
+		this.textAllCaps = textAllCaps;
+	}
 
-    public void setTextSize(int textSizePx) {
+	public void setTextSize(int textSizePx) {
 		this.tabTextSize = textSizePx;
 		updateTabStyles();
 	}
