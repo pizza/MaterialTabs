@@ -46,7 +46,7 @@
 
 		<dependency>
 			<groupId>com.astuetz.pagerslidingtabstrip</groupId>
-			<artifactId>library</artifactId>
+			<artifactId>pagerslidingtabstrip</artifactId>
 			<version>${project.version}</version>
 			<type>apklib</type>
 		</dependency>
