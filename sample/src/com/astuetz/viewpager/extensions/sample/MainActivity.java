@@ -111,7 +111,8 @@ public class MainActivity extends FragmentActivity {
 
 				TransitionDrawable td = new TransitionDrawable(new Drawable[] { oldBackground, ld });
 
-				// workaround for broken ActionBarContainer drawable handling on pre-API 17 builds
+				// workaround for broken ActionBarContainer drawable handling on
+				// pre-API 17 builds
 				// https://github.com/android/platform_frameworks_base/commit/a7cc06d82e45918c37429a59b14545c6a57db4e4
 				if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
 					td.setCallback(drawableCallback);
