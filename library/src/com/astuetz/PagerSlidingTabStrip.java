@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-package com.astuetz.viewpager.extensions;
-
-import java.util.Locale;
+package com.astuetz;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -40,6 +38,10 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.Locale;
+
+import com.astuetz.pagerslidingtabstrip.R;
 
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 

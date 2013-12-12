@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 
-import com.astuetz.viewpager.extensions.PagerSlidingTabStrip;
-import com.astuetz.viewpager.extensions.PagerSlidingTabStrip.IconTabProvider;
+import com.astuetz.PagerSlidingTabStrip;
+import com.astuetz.PagerSlidingTabStrip.IconTabProvider;
 
 public class QuickContactFragment extends DialogFragment {
 

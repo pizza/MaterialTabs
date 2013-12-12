@@ -24,7 +24,7 @@
         android:textColor="#FFFFFFFF"
         android:textSize="18sp" />
 
-    <com.astuetz.viewpager.extensions.PagerSlidingTabStrip
+    <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="62dip"
