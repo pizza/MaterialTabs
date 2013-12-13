@@ -1,20 +1,19 @@
 #Android generated
 bin
 gen
+gen*
 
 #Eclipse
 .project
 .classpath
 .settings
-.checkstyle
 
 #IntelliJ IDEA
 .idea
 *.iml
 *.ipr
 *.iws
-classes
-gen-external-apklibs
+out
 
 #Maven
 target
@@ -23,17 +22,15 @@ pom.xml.*
 
 #Ant
 build.xml
-ant.properties
 local.properties
 proguard.cfg
-proguard-project.txt
-
-#Other
-.DS_Store
-tmp
-Thumbs.db
 
 #Gradle
 .gradle
 build
-out
+
+#OSX
+.DS_Store
+
+#Personal Files
+signing.properties

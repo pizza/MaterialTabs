@@ -1,9 +1,3 @@
-repositories {
-    maven {
-        url 'https://raw.github.com/ark/ark/master/releases/'
-    }
-}
-
 apply plugin: 'android'
 
 dependencies {
