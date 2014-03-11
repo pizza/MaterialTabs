@@ -19,6 +19,7 @@ package com.astuetz;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.database.DataSetObserver;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
@@ -39,9 +40,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.Locale;
-
 import com.astuetz.pagerslidingtabstrip.R;
+
+import java.util.Locale;
 
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 
@@ -61,6 +62,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 	private final PageListener pageListener = new PageListener();
 	public OnPageChangeListener delegatePageListener;
+
+	private final PagerAdapterObserver adapterObserver = new PagerAdapterObserver();
 
 	private LinearLayout tabsContainer;
 	private ViewPager pager;
@@ -178,6 +181,9 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		}
 
 		pager.setOnPageChangeListener(pageListener);
+
+		pager.getAdapter().registerDataSetObserver(adapterObserver);
+		adapterObserver.setAttached(true);
 
 		notifyDataSetChanged();
 	}
@@ -350,6 +356,28 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		}
 	}
 
+	@Override
+	protected void onAttachedToWindow() {
+		super.onAttachedToWindow();
+		if (pager != null) {
+			if (!adapterObserver.isAttached()) {
+				pager.getAdapter().registerDataSetObserver(adapterObserver);
+				adapterObserver.setAttached(true);
+			}
+		}
+	}
+
+	@Override
+	protected void onDetachedFromWindow() {
+		super.onDetachedFromWindow();
+		if (pager != null) {
+			if (adapterObserver.isAttached()) {
+				pager.getAdapter().unregisterDataSetObserver(adapterObserver);
+				adapterObserver.setAttached(false);
+			}
+		}
+	}
+
 	private class PageListener implements OnPageChangeListener {
 
 		@Override
@@ -385,6 +413,24 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 			}
 		}
 
+	}
+
+	private class PagerAdapterObserver extends DataSetObserver {
+
+		private boolean attached = false;
+
+		@Override
+		public void onChanged() {
+			notifyDataSetChanged();
+		}
+
+		public void setAttached(boolean attached) {
+			this.attached = attached;
+		}
+
+		public boolean isAttached() {
+			return attached;
+		}
 	}
 
 	public void setIndicatorColor(int indicatorColor) {
