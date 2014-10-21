@@ -1,21 +1,17 @@
-# Android PagerSlidingTabStrip
+# Android PagerSlidingTabStrip (default Material Design)
 
-Interactive paging indicator widget, compatible with the `ViewPager` from the 
+Interactive paging indicator widget, compatible with the `ViewPager` from the
 Android Support Library. 
 
 Try out the sample application [on the Play Store](https://play.google.com/store/apps/details?id=com.astuetz.viewpager.extensions.sample).
 
-![PagerSlidingTabStrip Sample Screenshot 1](https://lh3.ggpht.com/PXS7EmHhQZdT1Oa379iy91HX3ByWAQnFZAthMAFa_QHAOHNClEaXU5nxDEAj1F2eqbk)![PagerSlidingTabStrip Sample Screenshot 2](https://lh3.ggpht.com/oaksDoUcQlGB4j7VEkBCOjrvSzjtzVHHcKq8pAnGVfm6oxkcJg_w1QS4tyP3fLcqrwcX)
+![PagerSlidingTabStrip Sample Material](https://raw.githubusercontent.com/jpardogo/PagerSlidingTabStrip/master/art/material_tabs.gif)
 
 # Usage
 
 *For a working implementation of this project see the `sample/` folder.*
 
-  1. Include the library as local library project or add the dependency in your build.gradle.
-        
-        dependencies {
-            compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
-        }
+  1. Include the library as local library project.
 
   2. Include the PagerSlidingTabStrip widget in your layout. This should usually be placed
      above the `ViewPager` it represents.
@@ -36,11 +32,19 @@ Try out the sample application [on the Play Store](https://play.google.com/store
          PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
          tabs.setViewPager(pager);
 
+  5. If your adapter implements the interface `CustomTabProvider` you can past you custom tab view/s.
+     In case the the view returned contains the id `R.id.tab_title`, this view should be a `Textview`  and
+     will be used to placed the title.
+
+     Otherwise the default tab will be use (That's a TextView with id `R.id.tab_title`)
+
   4. *(Optional)* If you use an `OnPageChangeListener` with your view pager
      you should set it in the widget rather than on the pager directly.
 
          // continued from above
          tabs.setOnPageChangeListener(mPageChangeListener);
+
+
 
 # Customization
 

@@ -1,7 +1,18 @@
-apply plugin: 'android'
+apply plugin: 'com.android.application'
+
+repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    mavenCentral()
+}
+
 
 dependencies {
     compile project(':library')
+    compile "com.android.support:appcompat-v7:21.0.0"
+    compile 'com.jakewharton:butterknife:5.1.2'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'com.balysv:material-ripple:0.9.0-SNAPSHOT@aar'
+    compile 'com.nineoldandroids:library:2.4.0'
 }
 
 android {
@@ -9,7 +20,7 @@ android {
     buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion 8
+        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
         targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
 
         versionName project.SAMPLE_VERSION_NAME
@@ -31,7 +42,6 @@ android {
             res.srcDirs = ['res']
         }
     }
-
 }
 
 File propFile = file('signing.properties');

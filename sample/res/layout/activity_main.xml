@@ -1,28 +1,30 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/toolbar"/>
 
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="48dip"
-        android:background="@drawable/background_tabs" />
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="?attr/colorPrimary"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/colors"
-        android:layout_below="@+id/tabs"
-        tools:context=".MainActivity" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:context=".MainActivity"/>
 
     <LinearLayout
         android:id="@+id/colors"
         android:layout_width="match_parent"
-        android:layout_height="48dip"
-        android:layout_alignParentBottom="true"
+        android:layout_height="?attr/actionBarSize"
         android:layout_marginBottom="8dip"
         android:layout_marginLeft="4dip"
         android:layout_marginRight="4dip"
@@ -33,18 +35,9 @@
             android:layout_height="match_parent"
             android:layout_margin="4dip"
             android:layout_weight="1"
-            android:background="#FF666666"
+            android:background="?attr/colorPrimary"
             android:onClick="onColorClicked"
-            android:tag="#FF666666" />
-
-        <ImageView
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_margin="4dip"
-            android:layout_weight="1"
-            android:background="#FF96AA39"
-            android:onClick="onColorClicked"
-            android:tag="#FF96AA39" />
+            android:tag="@color/green" />
 
         <ImageView
             android:layout_width="0dip"
@@ -83,4 +76,4 @@
             android:tag="#FF5161BC" />
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
