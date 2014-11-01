@@ -38,6 +38,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.animation.AlphaAnimation;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -128,8 +129,15 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         //So the final offset will be:
         //  * scrollOffset-(Half width of the indicator in each moment of the scroll (indicator change width during scroll))
         if (scrollOffset == 0) {
-            Configuration conf = context.getResources().getConfiguration();
-            scrollOffset = conf.screenWidthDp / 2;
+            if (Build.VERSION.SDK_INT > 12){
+                Configuration conf = context.getResources().getConfiguration();
+                scrollOffset = conf.screenWidthDp / 2;
+            } else {
+                DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+
+                float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+                scrollOffset = Math.round(dpWidth) / 2;
+            }
         }
 
         //Default color will be 'textColorPrimary'
@@ -244,7 +252,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         if (textView != null) {
             if (title != null) textView.setText(title);
             float alpha = pager.getCurrentItem() == position ? OPAQUE : HALF_TRANSP;
-            textView.setAlpha(alpha);
+            setAlphaForView(textView, alpha);
         }
 
         tabView.setFocusable(true);
@@ -264,15 +272,23 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private void notSelected(View tab) {
         View title = tab.findViewById(R.id.tab_title);
         if (title != null) {
-            title.setAlpha(HALF_TRANSP);
+            setAlphaForView(title, HALF_TRANSP);
         }
     }
 
     private void selected(View tab) {
         View title = tab.findViewById(R.id.tab_title);
         if (title != null) {
-            title.setAlpha(OPAQUE);
+            setAlphaForView(title, OPAQUE);
         }
+    }
+
+    // Workaround for setAlpha, since that method is only available in API >= 13
+    private void setAlphaForView(View view, float alpha){
+        AlphaAnimation animation = new AlphaAnimation(alpha, alpha);
+        animation.setDuration(0);
+        animation.setFillAfter(true);
+        view.startAnimation(animation);
     }
 
     private void updateTabStyles() {

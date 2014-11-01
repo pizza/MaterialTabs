@@ -52,6 +52,7 @@ public class SuperAwesomeCardFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        params.gravity = Gravity.CENTER;
 
 		FrameLayout fl = new FrameLayout(getActivity());
 		fl.setLayoutParams(params);
@@ -61,7 +62,6 @@ public class SuperAwesomeCardFragment extends Fragment {
 
 		TextView v = new TextView(getActivity());
 		params.setMargins(margin, margin, margin, margin);
-		v.setLayoutParams(params);
 		v.setLayoutParams(params);
 		v.setGravity(Gravity.CENTER);
 		v.setBackgroundResource(R.drawable.background_card);
