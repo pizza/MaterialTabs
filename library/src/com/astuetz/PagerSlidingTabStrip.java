@@ -16,7 +16,6 @@
 
 package com.astuetz;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -27,7 +26,6 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.LayoutRes;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -36,12 +34,11 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.support.v4.view.ViewCompat;
 
 import java.util.Locale;
 
@@ -128,8 +125,14 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         //So the final offset will be:
         //  * scrollOffset-(Half width of the indicator in each moment of the scroll (indicator change width during scroll))
         if (scrollOffset == 0) {
-            Configuration conf = context.getResources().getConfiguration();
-            scrollOffset = conf.screenWidthDp / 2;
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2){
+                Configuration conf = context.getResources().getConfiguration();
+                scrollOffset = conf.screenWidthDp / 2;
+            } else {
+                DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+                float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+                scrollOffset = Math.round(dpWidth) / 2;
+            }
         }
 
         //Default color will be 'textColorPrimary'
@@ -244,7 +247,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         if (textView != null) {
             if (title != null) textView.setText(title);
             float alpha = pager.getCurrentItem() == position ? OPAQUE : HALF_TRANSP;
-            textView.setAlpha(alpha);
+            ViewCompat.setAlpha(textView, alpha);
         }
 
         tabView.setFocusable(true);
@@ -264,14 +267,14 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private void notSelected(View tab) {
         View title = tab.findViewById(R.id.tab_title);
         if (title != null) {
-            title.setAlpha(HALF_TRANSP);
+            ViewCompat.setAlpha(title, HALF_TRANSP);
         }
     }
 
     private void selected(View tab) {
         View title = tab.findViewById(R.id.tab_title);
         if (title != null) {
-            title.setAlpha(OPAQUE);
+            ViewCompat.setAlpha(title, OPAQUE);
         }
     }
 
