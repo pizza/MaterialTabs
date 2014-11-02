@@ -11,7 +11,7 @@ Try out the sample application [on the Play Store](https://play.google.com/store
 
 *For a working implementation of this project see the `sample/` folder.*
 
-  1. Include the library as local library project.
+  1. So far you need to include the library as local library project. (I am trying to contact the original library author to update the already exisitng maven artifact. If he doesn't merge this PR and push to maven soon, I will push this verison of the library to maven myself, so you can use it from your maven dependencies asap.)
 
   2. Include the PagerSlidingTabStrip widget in your layout. This should usually be placed
      above the `ViewPager` it represents.
