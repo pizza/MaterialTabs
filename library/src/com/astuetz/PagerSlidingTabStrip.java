@@ -27,7 +27,6 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.LayoutRes;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -36,16 +35,14 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.Locale;
-
 import com.astuetz.pagerslidingtabstrip.R;
+
+import java.util.Locale;
 
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 
@@ -59,9 +56,17 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     // @formatter:off
     private static final int[] ATTRS = new int[]{
             android.R.attr.textSize,
-            android.R.attr.textColor
+            android.R.attr.textColor,
+            android.R.attr.paddingLeft,
+            android.R.attr.paddingRight,
     };
     // @formatter:on
+
+    //These indexes must be related with the ATTR array abouve
+    private static final int TEXT_SIZE_INDEX = 0;
+    private static final int TEXT_COLOR_INDEX = 1;
+    private static final int PADDING_LEFT_INDEX = 2;
+    private static final int PADDING_RIGHT_INDEX = 3;
 
     private LinearLayout.LayoutParams defaultTabLayoutParams;
     private LinearLayout.LayoutParams expandedTabLayoutParams;
@@ -93,6 +98,9 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private int tabPadding = 12;
     private int tabTextSize = 14;
     private int tabTextColor;
+
+    private int paddingLeft = 0;
+    private int paddingRight = 0;
 
     private boolean shouldExpand = false;
     private boolean textAllCaps = true;
@@ -150,9 +158,13 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
         // get system attrs (android:textSize and android:textColor)
         TypedArray a = context.obtainStyledAttributes(attrs, ATTRS);
-        tabTextSize = a.getDimensionPixelSize(0, tabTextSize);
-        tabTextColor = a.getColor(1, tabTextColor);
+        tabTextSize = a.getDimensionPixelSize(TEXT_SIZE_INDEX, tabTextSize);
+        tabTextColor = a.getColor(TEXT_COLOR_INDEX, tabTextColor);
+        paddingLeft = a.getDimensionPixelSize(PADDING_LEFT_INDEX, paddingLeft);
+        paddingRight = a.getDimensionPixelSize(PADDING_RIGHT_INDEX, paddingRight);
         a.recycle();
+        //Reduce thepadding to the offset to keep in the tab in the middle
+        scrollOffset = scrollOffset - paddingLeft;
 
         // get custom attrs
         a = context.obtainStyledAttributes(attrs, R.styleable.PagerSlidingTabStrip);
@@ -348,10 +360,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         // draw indicator line
         rectPaint.setColor(indicatorColor);
         Pair<Float, Float> lines = getIndicatorCoordinates();
-        canvas.drawRect(lines.first, height - indicatorHeight, lines.second, height, rectPaint);
+        canvas.drawRect(lines.first + paddingRight, height - indicatorHeight, lines.second + paddingRight, height, rectPaint);
         // draw underline
         rectPaint.setColor(underlineColor);
-        canvas.drawRect(0, height - underlineHeight, tabsContainer.getWidth(), height, rectPaint);
+        canvas.drawRect(paddingLeft, height - underlineHeight, tabsContainer.getWidth() + paddingRight, height, rectPaint);
         // draw divider
         if (dividerWidth != 0) {
             dividerPaint.setStrokeWidth(dividerWidth);

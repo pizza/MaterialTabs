@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,7 +11,10 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="?attr/colorPrimary"/>
+        android:background="?attr/colorPrimary"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        android:clipToPadding="false" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
