@@ -159,12 +159,12 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         a.recycle();
 
         //In case the we have padding they must be equal so we take the biggest
-        if(paddingRight<paddingLeft){
-            paddingRight=paddingLeft;
+        if (paddingRight < paddingLeft) {
+            paddingRight = paddingLeft;
         }
 
-        if(paddingLeft<paddingRight){
-            paddingLeft=paddingRight;
+        if (paddingLeft < paddingRight) {
+            paddingLeft = paddingRight;
         }
 
         // get custom attrs
@@ -321,10 +321,11 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         int newScrollX = tabsContainer.getChildAt(position).getLeft() + offset;
         if (position > 0 || offset > 0) {
 
-            //Half screen offset either when tabs start at the middle and then start
-            //scrolling straight away or the tabs start at the begging (no padding)
-            //and start scrolling when indicator get to the half way of the view width
-            newScrollX -= scrollOffset;//
+            //Half screen offset.
+            //- Either tabs start at the middle of the view scrolling straight away
+            //- Or tabs start at the begging (no padding) scrolling when indicator gets
+            //  to the middle of the view width
+            newScrollX -= scrollOffset;
             if (!isPaddingMiddle) {
                 Pair<Float, Float> lines = getIndicatorCoordinates();
                 newScrollX += ((lines.second - lines.first) / 2);
@@ -387,12 +388,12 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         if (isPaddingMiddle) {
-            //The user choose the tabs to start in the middle of the view width
+            //The user choose the tabs to start in the middle of the view width (padding)
             paddingLeft = paddingRight = getWidth() / 2 - (tabsContainer.getChildAt(0).getWidth() / 2);
             //Clipping padding to false to see the tabs while we pass them swiping
             setClipToPadding(false);
         } else {
-            //The default offset will be the middle of the view width.
+            //The default offset will be the middle of the view width (no padding)
             scrollOffset = getWidth() / 2;
         }
         setPadding(paddingLeft, getPaddingTop(), paddingRight, getPaddingBottom());
