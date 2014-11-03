@@ -105,6 +105,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     private boolean shouldExpand = false;
     private boolean textAllCaps = true;
+    private boolean isPaddingMiddle = false;
 
     private Typeface tabTypeface = null;
     private int tabTypefaceStyle = Typeface.BOLD;
@@ -132,20 +133,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         tabsContainer.setOrientation(LinearLayout.HORIZONTAL);
         tabsContainer.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         addView(tabsContainer);
-        //The default offset will me the middle of the screen. The reference point for
-        //the offset will be the middle of the current tab (depending the length of it).
-        //So the final offset will be:
-        //  * scrollOffset-(Half width of the indicator in each moment of the scroll (indicator change width during scroll))
-        if (scrollOffset == 0) {
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2){
-                Configuration conf = context.getResources().getConfiguration();
-                scrollOffset = conf.screenWidthDp / 2;
-            } else {
-                DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-                float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-                scrollOffset = Math.round(dpWidth) / 2;
-            }
-        }
 
         //Default color will be 'textColorPrimary'
         tabTextColor = context.getResources().getColor(android.R.color.primary_text_dark);
@@ -170,8 +157,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         paddingLeft = a.getDimensionPixelSize(PADDING_LEFT_INDEX, paddingLeft);
         paddingRight = a.getDimensionPixelSize(PADDING_RIGHT_INDEX, paddingRight);
         a.recycle();
-        //Reduce thepadding to the offset to keep in the tab in the middle
-        scrollOffset = scrollOffset - paddingLeft;
+
 
         // get custom attrs
         a = context.obtainStyledAttributes(attrs, R.styleable.PagerSlidingTabStrip);
@@ -187,6 +173,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         shouldExpand = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsShouldExpand, shouldExpand);
         scrollOffset = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsScrollOffset, scrollOffset);
         textAllCaps = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsTextAllCaps, textAllCaps);
+        isPaddingMiddle = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsPaddingMiddle, isPaddingMiddle);
         a.recycle();
 
         rectPaint = new Paint();
@@ -327,8 +314,13 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         if (position > 0 || offset > 0) {
 
             Pair<Float, Float> lines = getIndicatorCoordinates();
-            //Half screen offset (need to subtract the half of the width of the indicator that interpolate during scroll)
-            newScrollX -= scrollOffset - ((lines.second - lines.first) / 2);
+            //Half screen offset either when tabs start at the middle and then start
+            //scrolling straight away or the tabs start at the begging (no padding)
+            //and start scrolling when indicator get to the half way of the view width
+            newScrollX -= scrollOffset;//
+            if(!isPaddingMiddle){
+                newScrollX += ((lines.second - lines.first) / 2);
+            }
         }
 
         if (newScrollX != lastScrollX) {
@@ -379,6 +371,22 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
                 View tab = tabsContainer.getChildAt(i);
                 canvas.drawLine(tab.getRight(), dividerPadding, tab.getRight(), height - dividerPadding, dividerPaint);
             }
+        }
+    }
+
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+        if (isPaddingMiddle) {
+            //The user choose the tabs to start in the middle of the view width
+            paddingLeft = paddingRight = getWidth() / 2 - (tabsContainer.getChildAt(0).getWidth() / 2);
+            setPadding(paddingLeft, getPaddingTop(), paddingRight, getPaddingBottom());
+            //Clipping padding to false to see the tabs while we pass them swiping
+            setClipToPadding(false);
+        }else{
+            //The default offset will be the middle of the view width.
+            scrollOffset = getWidth()/2;
         }
     }
 
