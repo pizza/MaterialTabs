@@ -1,9 +1,7 @@
 # Android PagerSlidingTabStrip (default Material Design)
 
 Interactive paging indicator widget, compatible with the `ViewPager` from the
-Android Support Library. 
-
-Try out the sample application [on the Play Store](https://play.google.com/store/apps/details?id=com.astuetz.viewpager.extensions.sample).
+Android Support Library.
 
 ![PagerSlidingTabStrip Sample Material](https://raw.githubusercontent.com/jpardogo/PagerSlidingTabStrip/master/art/material_tabs.gif)
 ![PagerSlidingTabStrip Sample Material](https://raw.githubusercontent.com/jpardogo/PagerSlidingTabStrip/master/art/material_tabs_middle.gif)
