@@ -6,6 +6,7 @@ Android Support Library.
 Try out the sample application [on the Play Store](https://play.google.com/store/apps/details?id=com.astuetz.viewpager.extensions.sample).
 
 ![PagerSlidingTabStrip Sample Material](https://raw.githubusercontent.com/jpardogo/PagerSlidingTabStrip/master/art/material_tabs.gif)
+![PagerSlidingTabStrip Sample Material](https://raw.githubusercontent.com/jpardogo/PagerSlidingTabStrip/master/art/material_tabs_middle.gif)
 
 # Usage
 
@@ -19,7 +20,8 @@ Try out the sample application [on the Play Store](https://play.google.com/store
         <com.astuetz.PagerSlidingTabStrip
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="48dip" />
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" />
 
   3. In your `onCreate` method (or `onCreateView` for a fragment), bind the
      widget to the `ViewPager`.
@@ -27,7 +29,7 @@ Try out the sample application [on the Play Store](https://play.google.com/store
          // Initialize the ViewPager and set an adapter
          ViewPager pager = (ViewPager) findViewById(R.id.pager);
          pager.setAdapter(new TestAdapter(getSupportFragmentManager()));
-         
+
          // Bind the tabs to the ViewPager
          PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
          tabs.setViewPager(pager);
@@ -43,8 +45,6 @@ Try out the sample application [on the Play Store](https://play.google.com/store
 
          // continued from above
          tabs.setOnPageChangeListener(mPageChangeListener);
-
-
 
 # Customization
 
@@ -62,24 +62,15 @@ your brand:
  * `pstsTabBackground` Background drawable of each tab, should be a StateListDrawable
  * `pstsShouldExpand` If set to true, each tab is given the same weight, default false
  * `pstsTextAllCaps` If true, all tab titles will be upper case, default true
+ * `pstsPaddingMiddle` If true, the tabs start at the middle of the view (Like Newsstand google app)
 
-*All attributes have their respective getters and setters to change them at runtime*
+If you set any padding left/right to the `com.astuetz.PagerSlidingTabStrip`, the biggest will be apply to both sides.
 
-# Changelog
-
-### Current Version: 1.0.1
-
-### [1.0.1](https://github.com/astuetz/PagerSlidingTabStrip/tree/v1.0.1)
-
- * Upgraded gradle build files
- * Changed package name to `com.astuetz.PagerSlidingTabStrip`
- * [#37](https://github.com/astuetz/PagerSlidingTabStrip/pull/37), [#41](https://github.com/astuetz/PagerSlidingTabStrip/pull/41) Added `psts` prefix to all attributes in `attrs.xml`
- * [#46](https://github.com/astuetz/PagerSlidingTabStrip/pull/46) Changed the shouldExpand behavior to set the layout at the time the tab is added
+*Almost all attributes but have their respective getters and setters to change them at runtime*
 
 # Developed By
 
  * Andreas Stuetz - <andreas.stuetz@gmail.com>
-
 
 ### Credits
 
