@@ -278,7 +278,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
                 if (position == currentPosition && mListener != null) {
                     mListener.onTabReselected(v, position);
                 } else {
+                    View tab = tabsContainer.getChildAt(pager.getCurrentItem());
+                    notSelected(tab);
                     pager.setCurrentItem(position);
+                    selected(tabView);
                 }
             }
         });
