@@ -67,7 +67,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     };
     // @formatter:on
 
-    //These indexes must be related with the ATTR array abouve
+    //These indexes must be related with the ATTR array above
     private static final int TEXT_SIZE_INDEX = 0;
     private static final int TEXT_COLOR_INDEX = 1;
     private static final int PADDING_LEFT_INDEX = 2;
@@ -163,7 +163,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         paddingRight = a.getDimensionPixelSize(PADDING_RIGHT_INDEX, paddingRight);
         a.recycle();
 
-        //In case the we have padding they must be equal so we take the biggest
+        //In case we have the padding they must be equal so we take the biggest
         if (paddingRight < paddingLeft) {
             paddingRight = paddingLeft;
         }
