@@ -53,6 +53,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     public interface CustomTabProvider {
         public View getCustomTabView(int position);
     }
+    
+    public interface TabListener {
+        public void onTabReselected(View tab, int position);
+    }
 
     // @formatter:off
     private static final int[] ATTRS = new int[]{
@@ -77,6 +81,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     private LinearLayout tabsContainer;
     private ViewPager pager;
+    private TabListener mListener;
 
     private int tabCount;
 
@@ -214,6 +219,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     public void setOnPageChangeListener(OnPageChangeListener listener) {
         this.delegatePageListener = listener;
     }
+    
+    public void setOnTabListener(TabListener listener) {
+        mListener = listener;
+    }
 
     public void notifyDataSetChanged() {
         tabsContainer.removeAllViews();
@@ -266,9 +275,11 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         tabView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                View tab = tabsContainer.getChildAt(pager.getCurrentItem());
-                notSelected(tab);
-                pager.setCurrentItem(position);
+                if (position == currentPosition && mListener != null) {
+                    mListener.onTabReselected(v, position);
+                } else {
+                    pager.setCurrentItem(position);
+                }
             }
         });
 
