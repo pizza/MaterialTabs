@@ -57,9 +57,17 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     // @formatter:off
     private static final int[] ATTRS = new int[]{
             android.R.attr.textSize,
-            android.R.attr.textColor
+            android.R.attr.textColor,
+            android.R.attr.paddingLeft,
+            android.R.attr.paddingRight,
     };
     // @formatter:on
+
+    //These indexes must be related with the ATTR array abouve
+    private static final int TEXT_SIZE_INDEX = 0;
+    private static final int TEXT_COLOR_INDEX = 1;
+    private static final int PADDING_LEFT_INDEX = 2;
+    private static final int PADDING_RIGHT_INDEX = 3;
 
     private LinearLayout.LayoutParams defaultTabLayoutParams;
     private LinearLayout.LayoutParams expandedTabLayoutParams;
@@ -92,8 +100,12 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private int tabTextSize = 14;
     private int tabTextColor;
 
+    private int paddingLeft = 0;
+    private int paddingRight = 0;
+
     private boolean shouldExpand = false;
     private boolean textAllCaps = true;
+    private boolean isPaddingMiddle = false;
 
     private Typeface tabTypeface = null;
     private int tabTypefaceStyle = Typeface.BOLD;
@@ -121,20 +133,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         tabsContainer.setOrientation(LinearLayout.HORIZONTAL);
         tabsContainer.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         addView(tabsContainer);
-        //The default offset will me the middle of the screen. The reference point for
-        //the offset will be the middle of the current tab (depending the length of it).
-        //So the final offset will be:
-        //  * scrollOffset-(Half width of the indicator in each moment of the scroll (indicator change width during scroll))
-        if (scrollOffset == 0) {
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2){
-                Configuration conf = context.getResources().getConfiguration();
-                scrollOffset = conf.screenWidthDp / 2;
-            } else {
-                DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-                float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-                scrollOffset = Math.round(dpWidth) / 2;
-            }
-        }
 
         //Default color will be 'textColorPrimary'
         tabTextColor = context.getResources().getColor(android.R.color.primary_text_dark);
@@ -154,9 +152,20 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
         // get system attrs (android:textSize and android:textColor)
         TypedArray a = context.obtainStyledAttributes(attrs, ATTRS);
-        tabTextSize = a.getDimensionPixelSize(0, tabTextSize);
-        tabTextColor = a.getColor(1, tabTextColor);
+        tabTextSize = a.getDimensionPixelSize(TEXT_SIZE_INDEX, tabTextSize);
+        tabTextColor = a.getColor(TEXT_COLOR_INDEX, tabTextColor);
+        paddingLeft = a.getDimensionPixelSize(PADDING_LEFT_INDEX, paddingLeft);
+        paddingRight = a.getDimensionPixelSize(PADDING_RIGHT_INDEX, paddingRight);
         a.recycle();
+
+        //In case the we have padding they must be equal so we take the biggest
+        if (paddingRight < paddingLeft) {
+            paddingRight = paddingLeft;
+        }
+
+        if (paddingLeft < paddingRight) {
+            paddingLeft = paddingRight;
+        }
 
         // get custom attrs
         a = context.obtainStyledAttributes(attrs, R.styleable.PagerSlidingTabStrip);
@@ -172,6 +181,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         shouldExpand = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsShouldExpand, shouldExpand);
         scrollOffset = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsScrollOffset, scrollOffset);
         textAllCaps = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsTextAllCaps, textAllCaps);
+        isPaddingMiddle = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsPaddingMiddle, isPaddingMiddle);
         a.recycle();
 
         rectPaint = new Paint();
@@ -311,9 +321,15 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         int newScrollX = tabsContainer.getChildAt(position).getLeft() + offset;
         if (position > 0 || offset > 0) {
 
-            Pair<Float, Float> lines = getIndicatorCoordinates();
-            //Half screen offset (need to subtract the half of the width of the indicator that interpolate during scroll)
-            newScrollX -= scrollOffset - ((lines.second - lines.first) / 2);
+            //Half screen offset.
+            //- Either tabs start at the middle of the view scrolling straight away
+            //- Or tabs start at the begging (no padding) scrolling when indicator gets
+            //  to the middle of the view width
+            newScrollX -= scrollOffset;
+            if (!isPaddingMiddle) {
+                Pair<Float, Float> lines = getIndicatorCoordinates();
+                newScrollX += ((lines.second - lines.first) / 2);
+            }
         }
 
         if (newScrollX != lastScrollX) {
@@ -352,10 +368,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         // draw indicator line
         rectPaint.setColor(indicatorColor);
         Pair<Float, Float> lines = getIndicatorCoordinates();
-        canvas.drawRect(lines.first, height - indicatorHeight, lines.second, height, rectPaint);
+        canvas.drawRect(lines.first + paddingLeft, height - indicatorHeight, lines.second + paddingRight, height, rectPaint);
         // draw underline
         rectPaint.setColor(underlineColor);
-        canvas.drawRect(0, height - underlineHeight, tabsContainer.getWidth(), height, rectPaint);
+        canvas.drawRect(paddingLeft, height - underlineHeight, tabsContainer.getWidth() + paddingRight, height, rectPaint);
         // draw divider
         if (dividerWidth != 0) {
             dividerPaint.setStrokeWidth(dividerWidth);
@@ -365,6 +381,22 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
                 canvas.drawLine(tab.getRight(), dividerPadding, tab.getRight(), height - dividerPadding, dividerPaint);
             }
         }
+    }
+
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+        if (isPaddingMiddle) {
+            //The user choose the tabs to start in the middle of the view width (padding)
+            paddingLeft = paddingRight = getWidth() / 2 - (tabsContainer.getChildAt(0).getWidth() / 2);
+            //Clipping padding to false to see the tabs while we pass them swiping
+            setClipToPadding(false);
+        } else {
+            //The default offset will be the middle of the view width (no padding)
+            scrollOffset = getWidth() / 2;
+        }
+        setPadding(paddingLeft, getPaddingTop(), paddingRight, getPaddingBottom());
     }
 
     private class PageListener implements OnPageChangeListener {
