@@ -53,10 +53,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     public interface CustomTabProvider {
         public View getCustomTabView(int position);
     }
-    
-    public interface TabListener {
-        public void onTabReselected(View tab, int position);
-    }
 
     // @formatter:off
     private static final int[] ATTRS = new int[]{
@@ -81,7 +77,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     private LinearLayout tabsContainer;
     private ViewPager pager;
-    private TabListener mListener;
 
     private int tabCount;
 
@@ -219,10 +214,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     public void setOnPageChangeListener(OnPageChangeListener listener) {
         this.delegatePageListener = listener;
     }
-    
-    public void setOnTabListener(TabListener listener) {
-        mListener = listener;
-    }
 
     public void notifyDataSetChanged() {
         tabsContainer.removeAllViews();
@@ -275,13 +266,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         tabView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (position == currentPosition && mListener != null) {
-                    mListener.onTabReselected(v, position);
-                } else {
+                if(pager.getCurrentItem() != position){
                     View tab = tabsContainer.getChildAt(pager.getCurrentItem());
                     notSelected(tab);
                     pager.setCurrentItem(position);
-                    selected(tabView);
                 }
             }
         });
@@ -420,7 +408,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             currentPosition = position;
             currentPositionOffset = positionOffset;
-            scrollToChild(position, tabCount > 0 ? (int) (positionOffset * tabsContainer.getChildAt(position).getWidth()) : 0);
+            int offset = tabCount > 0 ? (int) (positionOffset * tabsContainer.getChildAt(position).getWidth()) : 0;
+            scrollToChild(position, offset);
             invalidate();
             if (delegatePageListener != null) {
                 delegatePageListener.onPageScrolled(position, positionOffset, positionOffsetPixels);
