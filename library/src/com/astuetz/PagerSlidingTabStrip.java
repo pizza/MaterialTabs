@@ -247,6 +247,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
                 }
 
                 currentPosition = pager.getCurrentItem();
+                currentPositionOffset = 0f;
                 scrollToChild(currentPosition, 0);
             }
         });
