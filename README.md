@@ -10,7 +10,14 @@ Android Support Library.
 
 *For a working implementation of this project see the `sample/` folder.*
 
-  1. So far you need to include the library as local library project. (I am trying to contact the original library author to update the already exisitng maven artifact. If he doesn't merge this PR and push to maven soon, I will push this verison of the library to maven myself, so you can use it from your maven dependencies asap.)
+  1. Include the following dependency to your gradle file.
+
+        '''groovy
+            compile 'com.jpardogo.materialtabstrip:library:1.0.0'
+        '''
+
+     Or add the library as a project. I tried to send a pull request, but looks like the original
+     developer doesn't maintain it anymore.
 
   2. Include the PagerSlidingTabStrip widget in your layout. This should usually be placed
      above the `ViewPager` it represents.
