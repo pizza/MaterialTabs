@@ -63,7 +63,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     };
     // @formatter:on
 
-    //These indexes must be related with the ATTR array abouve
+    //These indexes must be related with the ATTR array above
     private static final int TEXT_SIZE_INDEX = 0;
     private static final int TEXT_COLOR_INDEX = 1;
     private static final int PADDING_LEFT_INDEX = 2;
@@ -158,7 +158,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         paddingRight = a.getDimensionPixelSize(PADDING_RIGHT_INDEX, paddingRight);
         a.recycle();
 
-        //In case the we have padding they must be equal so we take the biggest
+        //In case we have the padding they must be equal so we take the biggest
         if (paddingRight < paddingLeft) {
             paddingRight = paddingLeft;
         }
@@ -247,6 +247,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
                 }
 
                 currentPosition = pager.getCurrentItem();
+                currentPositionOffset = 0f;
                 scrollToChild(currentPosition, 0);
             }
         });
@@ -265,9 +266,11 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         tabView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                View tab = tabsContainer.getChildAt(pager.getCurrentItem());
-                notSelected(tab);
-                pager.setCurrentItem(position);
+                if(pager.getCurrentItem() != position){
+                    View tab = tabsContainer.getChildAt(pager.getCurrentItem());
+                    notSelected(tab);
+                    pager.setCurrentItem(position);
+                }
             }
         });
 
@@ -405,7 +408,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             currentPosition = position;
             currentPositionOffset = positionOffset;
-            scrollToChild(position, (int) (positionOffset * tabsContainer.getChildAt(position).getWidth()));
+            int offset = tabCount > 0 ? (int) (positionOffset * tabsContainer.getChildAt(position).getWidth()) : 0;
+            scrollToChild(position, offset);
             invalidate();
             if (delegatePageListener != null) {
                 delegatePageListener.onPageScrolled(position, positionOffset, positionOffsetPixels);
@@ -535,7 +539,9 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     public void setShouldExpand(boolean shouldExpand) {
         this.shouldExpand = shouldExpand;
-        requestLayout();
+        if(pager != null){
+            requestLayout();
+        }
     }
 
     public boolean getShouldExpand() {
