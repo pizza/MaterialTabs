@@ -42,6 +42,12 @@ android {
             res.srcDirs = ['res']
         }
     }
+
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
 }
 
 File propFile = file('signing.properties');
