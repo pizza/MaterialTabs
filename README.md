@@ -67,6 +67,10 @@ your brand:
  * `pstsShouldExpand` If set to true, each tab is given the same weight, default false
  * `pstsTextAllCaps` If true, all tab titles will be upper case, default true
  * `pstsPaddingMiddle` If true, the tabs start at the middle of the view (Like Newsstand google app)
+ * `pstsTextStyle` Set the text style, default bold
+ * `pstsTextSelectedStyle` Set the text style of the selected tab, default bold
+ * `pstsTextAlpha` Set the text alpha transparency, default 0.5
+ * `pstsTextSelectedAlpha` Set the text alpha transparency of the selected tab, default 1
 
 If you set any padding left/right to the `com.astuetz.PagerSlidingTabStrip`, the biggest will be apply to both sides.
 
