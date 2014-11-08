@@ -139,7 +139,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
         //Default color will be 'textColorPrimary'
         int colorPrimary = context.getResources().getColor(android.R.color.primary_text_dark);
-        tabTextColor = new ColorStateList(new int[][]{new int[]{}}, new int[]{colorPrimary});
+        setTextColor(colorPrimary);
         underlineColor = colorPrimary;
         dividerColor = colorPrimary;
         indicatorColor = colorPrimary;
@@ -589,14 +589,21 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         return tabTextSize;
     }
 
-    public void setTextColor(ColorStateList textColor) {
-        this.tabTextColor = textColor;
+    public void setTextColor(int textColor) {
+        setTextColor(new ColorStateList(new int[][]{new int[]{}}, new int[]{textColor}));
+    }
+
+    public void setTextColor(ColorStateList colorStateList) {
+        this.tabTextColor = colorStateList;
         updateTabStyles();
     }
 
     public void setTextColorResource(int resId) {
-        this.tabTextColor = getResources().getColorStateList(resId);
-        updateTabStyles();
+        setTextColor(getResources().getColor(resId));
+    }
+
+    public void setTextColorStateListResource(int resId) {
+        setTextColor(getResources().getColorStateList(resId));
     }
 
     public ColorStateList getTextColor() {
