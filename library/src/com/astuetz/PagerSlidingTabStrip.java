@@ -36,6 +36,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
@@ -51,7 +52,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private static final float HALF_TRANSP = 0.5f;
 
     public interface CustomTabProvider {
-        public View getCustomTabView(int position);
+        public View getCustomTabView(ViewGroup parent, int position);
     }
 
     // @formatter:off
@@ -233,7 +234,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         for (int i = 0; i < tabCount; i++) {
 
             if (pager.getAdapter() instanceof CustomTabProvider) {
-                tabView = ((CustomTabProvider) pager.getAdapter()).getCustomTabView(i);
+                tabView = ((CustomTabProvider) pager.getAdapter()).getCustomTabView(this, i);
             } else {
                 tabView = LayoutInflater.from(getContext()).inflate(R.layout.tab, this, false);
             }

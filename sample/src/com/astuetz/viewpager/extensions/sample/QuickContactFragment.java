@@ -1,7 +1,6 @@
 package com.astuetz.viewpager.extensions.sample;
 
 import android.graphics.Point;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -20,7 +19,7 @@ import android.widget.TextView;
 import com.astuetz.PagerSlidingTabStrip;
 import com.balysv.materialripple.MaterialRippleLayout;
 
-import static com.astuetz.PagerSlidingTabStrip.*;
+import static com.astuetz.PagerSlidingTabStrip.CustomTabProvider;
 
 public class QuickContactFragment extends DialogFragment {
 
@@ -128,8 +127,8 @@ public class QuickContactFragment extends DialogFragment {
         }
 
         @Override
-        public View getCustomTabView(int position) {
-            MaterialRippleLayout materialRippleLayout= (MaterialRippleLayout) LayoutInflater.from(getActivity()).inflate(R.layout.custom_tab, tabs, false);
+        public View getCustomTabView(ViewGroup parent, int position) {
+            MaterialRippleLayout materialRippleLayout = (MaterialRippleLayout) LayoutInflater.from(getActivity()).inflate(R.layout.custom_tab, parent, false);
             ((ImageView)materialRippleLayout.findViewById(R.id.image)).setImageResource(ICONS[position]);
             return materialRippleLayout;
         }
