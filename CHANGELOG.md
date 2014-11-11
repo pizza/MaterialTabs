@@ -1,7 +1,14 @@
 Change Log
 ==========
+Version 1.0.3 *(11-11-2014)*
+----------------------------
 
-Version 1.0.0 *(05-11-2014)*
+* Fix issues #7
+* Add support for colour state lists.
+* Add support for  custom text style.
+* Add support for  custom alpha values.
+
+Version 1.0.2 *(05-11-2014)*
 ----------------------------
 * MinSDK 10
 
