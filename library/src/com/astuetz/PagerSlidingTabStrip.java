@@ -20,6 +20,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.database.DataSetObserver;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
@@ -63,6 +64,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             android.R.attr.paddingRight,
     };
     // @formatter:on
+
+    private final PagerAdapterObserver adapterObserver = new PagerAdapterObserver();
 
     //These indexes must be related with the ATTR array above
     private static final int TEXT_SIZE_INDEX = 0;
@@ -220,6 +223,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         }
 
         pager.setOnPageChangeListener(pageListener);
+        pager.getAdapter().registerDataSetObserver(adapterObserver);
+        adapterObserver.setAttached(true);
         notifyDataSetChanged();
     }
 
@@ -264,7 +269,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
                 updateSelection(currentPosition);
             }
         });
-
     }
 
     private void addTab(final int position, CharSequence title, View tabView) {
@@ -474,6 +478,24 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     }
 
+    private class PagerAdapterObserver extends DataSetObserver {
+
+        private boolean attached = false;
+
+        @Override
+        public void onChanged() {
+            notifyDataSetChanged();
+        }
+
+        public void setAttached(boolean attached) {
+            this.attached = attached;
+        }
+
+        public boolean isAttached() {
+            return attached;
+        }
+    }
+
     public void setIndicatorColor(int indicatorColor) {
         this.indicatorColor = indicatorColor;
         invalidate();
@@ -647,6 +669,28 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     }
 
     @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        if (pager != null) {
+            if (!adapterObserver.isAttached()) {
+                pager.getAdapter().registerDataSetObserver(adapterObserver);
+                adapterObserver.setAttached(true);
+            }
+        }
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (pager != null) {
+            if (adapterObserver.isAttached()) {
+                pager.getAdapter().unregisterDataSetObserver(adapterObserver);
+                adapterObserver.setAttached(false);
+            }
+        }
+    }
+
+    @Override
     public Parcelable onSaveInstanceState() {
         Parcelable superState = super.onSaveInstanceState();
         SavedState savedState = new SavedState(superState);
@@ -684,5 +728,4 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             }
         };
     }
-
 }
