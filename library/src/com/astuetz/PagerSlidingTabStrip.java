@@ -646,7 +646,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         SavedState savedState = (SavedState) state;
         super.onRestoreInstanceState(savedState.getSuperState());
         currentPosition = savedState.currentPosition;
-        if (currentPosition != 0) {
+        if (currentPosition != 0 && tabsContainer.getChildCount()>0) {
             notSelected(tabsContainer.getChildAt(0));
             selected(tabsContainer.getChildAt(currentPosition));
         }
