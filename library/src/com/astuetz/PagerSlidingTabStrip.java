@@ -414,9 +414,16 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
+
         if (isPaddingMiddle) {
+            //This solve the issue. We make sure tabContainer is bigger than the HorizontalScrollView to be able to scroll
+            tabsContainer.setMinimumWidth(getWidth()+1);
+            int halfFirstTab = 0;
+            if(tabsContainer.getChildCount()>0){
+                halfFirstTab = (tabsContainer.getChildAt(0).getWidth() / 2);
+            }
             //The user choose the tabs to start in the middle of the view width (padding)
-            paddingLeft = paddingRight = getWidth() / 2 - (tabsContainer.getChildAt(0).getWidth() / 2);
+            paddingLeft = paddingRight = getWidth() / 2 - halfFirstTab;
             //Clipping padding to false to see the tabs while we pass them swiping
             setClipToPadding(false);
         } else {
