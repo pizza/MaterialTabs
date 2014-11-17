@@ -287,7 +287,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             }
         });
 
-        tabView.setPadding(tabPadding, 0, tabPadding, 0);
+        tabView.setPaddingLeft(tabPadding);
+        tabView.setPaddingRight(tabPadding);
         tabsContainer.addView(tabView, position, shouldExpand ? expandedTabLayoutParams : defaultTabLayoutParams);
     }
 
