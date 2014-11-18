@@ -44,8 +44,6 @@ import butterknife.InjectView;
 
 public class MainActivity extends ActionBarActivity {
 
-    private final Handler handler = new Handler();
-
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
     @InjectView(R.id.tabs)
@@ -54,7 +52,6 @@ public class MainActivity extends ActionBarActivity {
     ViewPager pager;
 
     private MyPagerAdapter adapter;
-
     private Drawable oldBackground = null;
     private int currentColor;
     private SystemBarTintManager mTintManager;
@@ -89,16 +86,11 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
-
             case R.id.action_contact:
-                QuickContactFragment dialog = new QuickContactFragment();
-                dialog.show(getSupportFragmentManager(), "QuickContactFragment");
+                QuickContactFragment.newInstance().show(getSupportFragmentManager(), "QuickContactFragment");
                 return true;
-
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -107,7 +99,6 @@ public class MainActivity extends ActionBarActivity {
         tabs.setBackgroundColor(newColor);
         mTintManager.setTintColor(newColor);
         // change ActionBar color just if an ActionBar is available
-
         Drawable colorDrawable = new ColorDrawable(newColor);
         Drawable bottomDrawable = new ColorDrawable(getResources().getColor(android.R.color.transparent));
         LayerDrawable ld = new LayerDrawable(new Drawable[]{colorDrawable, bottomDrawable});
@@ -126,10 +117,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onColorClicked(View v) {
-
         int color = Color.parseColor(v.getTag().toString());
         changeColor(color);
-
     }
 
     @Override

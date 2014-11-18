@@ -51,7 +51,6 @@ public class SuperAwesomeCardFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		position = getArguments().getInt(ARG_POSITION);
 	}
 
@@ -63,5 +62,4 @@ public class SuperAwesomeCardFragment extends Fragment {
         textView.setText("CARD "+position);
 		return rootView;
 	}
-
 }

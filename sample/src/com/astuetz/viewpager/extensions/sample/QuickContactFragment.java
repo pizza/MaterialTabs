@@ -1,5 +1,6 @@
 package com.astuetz.viewpager.extensions.sample;
 
+import android.content.Context;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,8 +29,8 @@ public class QuickContactFragment extends DialogFragment {
     private ContactPagerAdapter adapter;
 
     public static QuickContactFragment newInstance() {
-        QuickContactFragment f = new QuickContactFragment();
-        return f;
+        QuickContactFragment quickContactFragment = new QuickContactFragment();
+        return quickContactFragment;
     }
 
     @Override
@@ -44,7 +45,7 @@ public class QuickContactFragment extends DialogFragment {
 
         tabs = (PagerSlidingTabStrip) root.findViewById(R.id.tabs);
         pager = (ViewPager) root.findViewById(R.id.pager);
-        adapter = new ContactPagerAdapter();
+        adapter = new ContactPagerAdapter(getActivity());
 
         pager.setAdapter(adapter);
 
@@ -83,13 +84,15 @@ public class QuickContactFragment extends DialogFragment {
         }
     }
 
-    public class ContactPagerAdapter extends PagerAdapter implements CustomTabProvider {
+    public static class ContactPagerAdapter extends PagerAdapter implements CustomTabProvider {
 
         private final int[] ICONS = {R.drawable.ic_launcher_gplus, R.drawable.ic_launcher_gmail,
                 R.drawable.ic_launcher_gmaps, R.drawable.ic_launcher_chrome};
+        private final Context mContext;
 
-        public ContactPagerAdapter() {
+        public ContactPagerAdapter(Context context) {
             super();
+            mContext = context;
         }
 
         @Override
@@ -104,16 +107,10 @@ public class QuickContactFragment extends DialogFragment {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            // looks a little bit messy here
-            TextView v = new TextView(getActivity());
-            v.setBackgroundResource(R.color.background_window);
-            v.setText("PAGE " + (position + 1));
-            final int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, getResources()
-                    .getDisplayMetrics());
-            v.setPadding(padding, padding, padding, padding);
-            v.setGravity(Gravity.CENTER);
-            container.addView(v, 0);
-            return v;
+            TextView textview= (TextView) LayoutInflater.from(mContext).inflate(R.layout.fragment_quickcontact,container,false);
+            textview.setText("PAGE "+position);
+            container.addView(textview);
+            return textview;
         }
 
         @Override
@@ -123,15 +120,14 @@ public class QuickContactFragment extends DialogFragment {
 
         @Override
         public boolean isViewFromObject(View v, Object o) {
-            return v == ((View) o);
+            return v == o;
         }
 
         @Override
         public View getCustomTabView(ViewGroup parent, int position) {
-            MaterialRippleLayout materialRippleLayout = (MaterialRippleLayout) LayoutInflater.from(getActivity()).inflate(R.layout.custom_tab, parent, false);
+            MaterialRippleLayout materialRippleLayout = (MaterialRippleLayout) LayoutInflater.from(mContext).inflate(R.layout.custom_tab, parent, false);
             ((ImageView)materialRippleLayout.findViewById(R.id.image)).setImageResource(ICONS[position]);
             return materialRippleLayout;
         }
     }
-
 }
