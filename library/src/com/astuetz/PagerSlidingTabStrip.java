@@ -357,10 +357,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             //- Or tabs start at the begging (no padding) scrolling when indicator gets
             //  to the middle of the view width
             newScrollX -= scrollOffset;
-            if (!isPaddingMiddle) {
-                Pair<Float, Float> lines = getIndicatorCoordinates();
-                newScrollX += ((lines.second - lines.first) / 2);
-            }
+            Pair<Float, Float> lines = getIndicatorCoordinates();
+            newScrollX += ((lines.second - lines.first) / 2);
         }
 
         if (newScrollX != lastScrollX) {
@@ -427,10 +425,9 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             paddingLeft = paddingRight = getWidth() / 2 - halfFirstTab;
             //Clipping padding to false to see the tabs while we pass them swiping
             setClipToPadding(false);
-        } else {
-            //The default offset will be the middle of the view width (no padding)
-            scrollOffset = getWidth() / 2;
         }
+
+        if(scrollOffset==0) scrollOffset = getWidth() / 2 - paddingLeft;
         setPadding(paddingLeft, getPaddingTop(), paddingRight, getPaddingBottom());
         super.onLayout(changed, l, t, r, b);
     }
