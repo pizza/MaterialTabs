@@ -414,14 +414,11 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         }
     }
 
-
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        super.onLayout(changed, l, t, r, b);
-
         if (isPaddingMiddle) {
-            //This solve the issue. We make sure tabContainer is bigger than the HorizontalScrollView to be able to scroll
-            tabsContainer.setMinimumWidth(getWidth()+1);
+            //Make sure tabContainer is bigger than the HorizontalScrollView to be able to scroll
+            tabsContainer.setMinimumWidth(getWidth());
             int halfFirstTab = 0;
             if(tabsContainer.getChildCount()>0){
                 halfFirstTab = (tabsContainer.getChildAt(0).getWidth() / 2);
@@ -435,6 +432,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             scrollOffset = getWidth() / 2;
         }
         setPadding(paddingLeft, getPaddingTop(), paddingRight, getPaddingBottom());
+        super.onLayout(changed, l, t, r, b);
     }
 
     private class PageListener implements OnPageChangeListener {
