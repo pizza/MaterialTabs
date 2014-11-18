@@ -18,6 +18,7 @@ package com.astuetz.viewpager.extensions.sample;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -27,9 +28,15 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 public class SuperAwesomeCardFragment extends Fragment {
 
 	private static final String ARG_POSITION = "position";
+
+    @InjectView(R.id.textView)
+    TextView textView;
 
 	private int position;
 
@@ -50,25 +57,11 @@ public class SuperAwesomeCardFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-        params.gravity = Gravity.CENTER;
-
-		FrameLayout fl = new FrameLayout(getActivity());
-		fl.setLayoutParams(params);
-
-		final int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources()
-				.getDisplayMetrics());
-
-		TextView v = new TextView(getActivity());
-		params.setMargins(margin, margin, margin, margin);
-		v.setLayoutParams(params);
-		v.setGravity(Gravity.CENTER);
-		v.setBackgroundResource(R.drawable.background_card);
-		v.setText("CARD " + (position + 1));
-
-		fl.addView(v);
-		return fl;
+        View rootView = inflater.inflate(R.layout.fragment_card,container,false);
+        ButterKnife.inject(this, rootView);
+        ViewCompat.setElevation(rootView,50);
+        textView.setText("CARD "+position);
+		return rootView;
 	}
 
 }
