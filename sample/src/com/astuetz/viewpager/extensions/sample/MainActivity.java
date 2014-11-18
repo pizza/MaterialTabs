@@ -66,15 +66,12 @@ public class MainActivity extends ActionBarActivity {
         mTintManager = new SystemBarTintManager(this);
         // enable status bar tint
         mTintManager.setStatusBarTintEnabled(true);
-
         adapter = new MyPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);
-
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
                 .getDisplayMetrics());
         pager.setPageMargin(pageMargin);
-
         changeColor(getResources().getColor(R.color.green));
     }
 
@@ -102,7 +99,6 @@ public class MainActivity extends ActionBarActivity {
         Drawable colorDrawable = new ColorDrawable(newColor);
         Drawable bottomDrawable = new ColorDrawable(getResources().getColor(android.R.color.transparent));
         LayerDrawable ld = new LayerDrawable(new Drawable[]{colorDrawable, bottomDrawable});
-
         if (oldBackground == null) {
             getSupportActionBar().setBackgroundDrawable(ld);
         } else {
@@ -113,7 +109,6 @@ public class MainActivity extends ActionBarActivity {
 
         oldBackground = ld;
         currentColor = newColor;
-
     }
 
     public void onColorClicked(View v) {
@@ -157,7 +152,5 @@ public class MainActivity extends ActionBarActivity {
         public Fragment getItem(int position) {
             return SuperAwesomeCardFragment.newInstance(position);
         }
-
     }
-
 }
