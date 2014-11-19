@@ -52,8 +52,18 @@ Android Support Library.
 
 # Customization
 
-To not just look like another Play Store styled app, go and adjust these values to match
-your brand:
+From theme:
+
+* `android:textColorPrimary` value (from your theme) will be applied automatically  to tab's text color , underlineColor, dividerColor and indicatorColor, if any of these values are define in the xml layout.
+
+Notes about some of the native attr:
+
+* `android:textSize` Tab text size
+* `android:textColor` Tab text color
+* `android:paddingLeft` or `android:paddingRight` Layout padding. Only the biggest of both will be applied to each side.
+
+
+Custom attr:
 
  * `pstsIndicatorColor` Color of the sliding indicator
  * `pstsUnderlineColor` Color of the full-width line on the bottom of the view
@@ -72,13 +82,12 @@ your brand:
  * `pstsTextAlpha` Set the text alpha transparency, default 0.5
  * `pstsTextSelectedAlpha` Set the text alpha transparency of the selected tab, default 1
 
-If you set any padding left/right to the `com.astuetz.PagerSlidingTabStrip`, the biggest will be apply to both sides.
-
-*Almost all attributes but have their respective getters and setters to change them at runtime*
+*Almost all attributes have their respective getters and setters to change them at runtime* , open an issue if you miss any.
 
 # Developed By
 
  * Andreas Stuetz - <andreas.stuetz@gmail.com>
+ * Check contributors list.
 
 ### Credits
 
