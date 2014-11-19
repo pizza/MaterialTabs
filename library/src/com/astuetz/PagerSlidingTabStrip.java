@@ -171,13 +171,16 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         paddingRight = a.getDimensionPixelSize(PADDING_RIGHT_INDEX, paddingRight);
         a.recycle();
 
-        //In case we have the padding they must be equal so we take the biggest
-        if (paddingRight < paddingLeft) {
-            paddingRight = paddingLeft;
-        }
+        if(paddingLeft>0 || paddingRight>0) {
+            setClipToPadding(false);
+            //In case we have the padding they must be equal so we take the biggest
+            if (paddingRight < paddingLeft) {
+                paddingRight = paddingLeft;
+            }
 
-        if (paddingLeft < paddingRight) {
-            paddingLeft = paddingRight;
+            if (paddingLeft < paddingRight) {
+                paddingLeft = paddingRight;
+            }
         }
 
         // get custom attrs
