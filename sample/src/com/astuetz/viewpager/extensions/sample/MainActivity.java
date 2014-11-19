@@ -92,7 +92,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void changeColor(int newColor) {
-
         tabs.setBackgroundColor(newColor);
         mTintManager.setTintColor(newColor);
         // change ActionBar color just if an ActionBar is available

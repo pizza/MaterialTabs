@@ -17,6 +17,7 @@
 package com.astuetz;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
@@ -123,6 +124,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private int tabBackgroundResId = R.drawable.background_tab;
 
     private Locale locale;
+
+    private int mHalfWidthFirstTab = 0;
 
     public PagerSlidingTabStrip(Context context) {
         this(context, null);
@@ -367,6 +370,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         }
 
         final int height = getHeight();
+        setPadding(paddingLeft, getPaddingTop(), paddingRight, getPaddingBottom());
         // draw indicator line
         rectPaint.setColor(indicatorColor);
         Pair<Float, Float> lines = getIndicatorCoordinates();
@@ -390,20 +394,39 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         if (isPaddingMiddle) {
             //Make sure tabContainer is bigger than the HorizontalScrollView to be able to scroll
             tabsContainer.setMinimumWidth(getWidth());
-            int halfFirstTab = 0;
-            if (tabsContainer.getChildCount() > 0) {
-                halfFirstTab = (tabsContainer.getChildAt(0).getWidth() / 2);
-            }
-            //The user choose the tabs to start in the middle of the view width (padding)
-            paddingLeft = paddingRight = getWidth() / 2 - halfFirstTab;
             //Clipping padding to false to see the tabs while we pass them swiping
             setClipToPadding(false);
         }
 
-        if (scrollOffset == 0) scrollOffset = getWidth() / 2 - paddingLeft;
-        setPadding(paddingLeft, getPaddingTop(), paddingRight, getPaddingBottom());
+        if (tabsContainer.getChildCount() > 0) {
+            tabsContainer
+                    .getChildAt(0)
+                    .getViewTreeObserver()
+                    .addOnGlobalLayoutListener(firstTabGlobalLayoutListener);
+        }
         super.onLayout(changed, l, t, r, b);
     }
+
+    private OnGlobalLayoutListener firstTabGlobalLayoutListener = new OnGlobalLayoutListener() {
+
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+        @Override
+        public void onGlobalLayout() {
+            View view = tabsContainer.getChildAt(0);
+            if (isPaddingMiddle) {
+                mHalfWidthFirstTab = view.getWidth() / 2;
+                paddingLeft = paddingRight = getWidth() / 2 - mHalfWidthFirstTab;
+            }
+
+            if (scrollOffset == 0) scrollOffset = getWidth() / 2 - paddingLeft;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            } else {
+                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        }
+
+    };
 
     public void setOnPageChangeListener(OnPageChangeListener listener) {
         this.delegatePageListener = listener;
