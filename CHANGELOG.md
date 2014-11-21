@@ -1,5 +1,10 @@
 Change Log
 ==========
+Version 1.0.6 *(21-11-2014)*
+----------------------------
+* Update support-v4 library to v21.0.2
+* Bug fixes
+
 Version 1.0.5 *(19-11-2014)*
 ----------------------------
 * android:textColorPrimary value (from your theme) will be applied automatically to tab's text color , underlineColor, dividerColor and indicatorColor, if any of these values are define in the xml layout.
