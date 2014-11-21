@@ -156,10 +156,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         TypedArray a = context.obtainStyledAttributes(attrs, ATTRS);
         tabTextSize = a.getDimensionPixelSize(TEXT_SIZE_INDEX, tabTextSize);
         ColorStateList colorStateList = a.getColorStateList(TEXT_COLOR_INDEX);
-        int textPrimaryColor = a.getColor(TEXT_COLOR_PRIMARY,android.R.color.white);
+        int textPrimaryColor = a.getColor(TEXT_COLOR_PRIMARY, android.R.color.white);
         if (colorStateList != null) {
             tabTextColor = colorStateList;
-        }else{
+        } else {
             tabTextColor = getColorStateList(textPrimaryColor);
         }
 
@@ -170,16 +170,13 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         paddingRight = a.getDimensionPixelSize(PADDING_RIGHT_INDEX, paddingRight);
         a.recycle();
 
-        if(paddingLeft>0 || paddingRight>0) {
-            setClipToPadding(false);
-            //In case we have the padding they must be equal so we take the biggest
-            if (paddingRight < paddingLeft) {
-                paddingRight = paddingLeft;
-            }
+        //In case we have the padding they must be equal so we take the biggest
+        if (paddingRight < paddingLeft) {
+            paddingRight = paddingLeft;
+        }
 
-            if (paddingLeft < paddingRight) {
-                paddingLeft = paddingRight;
-            }
+        if (paddingLeft < paddingRight) {
+            paddingLeft = paddingRight;
         }
 
         // get custom attrs
@@ -364,13 +361,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        if (isPaddingMiddle) {
-            //Make sure tabContainer is bigger than the HorizontalScrollView to be able to scroll
-            tabsContainer.setMinimumWidth(getWidth());
-            //Clipping padding to false to see the tabs while we pass them swiping
-            setClipToPadding(false);
-        }
-
+        //Make sure tabContainer is bigger than the HorizontalScrollView to be able to scroll
+        tabsContainer.setMinimumWidth(getWidth());
+        //Clipping padding to false to see the tabs while we pass them swiping
+        setClipToPadding(false);
         if (tabsContainer.getChildCount() > 0) {
             tabsContainer
                     .getChildAt(0)
