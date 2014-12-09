@@ -67,10 +67,11 @@ Custom attr:
 
  * `pstsIndicatorColor` Color of the sliding indicator
  * `pstsUnderlineColor` Color of the full-width line on the bottom of the view
- * `pstsDividerColor` Color of the dividers between tabs
- * `pstsIndicatorHeight`Height of the sliding indicator
  * `pstsUnderlineHeight` Height of the full-width line on the bottom of the view
+ * `pstsDividerColor` Color of the dividers between tabs
  * `pstsDividerPadding` Top and bottom padding of the dividers
+ * `pstsDividerWidth` Stroke width of divider line, defaults to 0
+ * `pstsIndicatorHeight`Height of the sliding indicator
  * `pstsTabPaddingLeftRight` Left and right padding of each tab
  * `pstsScrollOffset` Scroll offset of the selected tab
  * `pstsTabBackground` Background drawable of each tab, should be a StateListDrawable
