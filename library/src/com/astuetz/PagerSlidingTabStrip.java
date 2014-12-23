@@ -295,7 +295,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             }
         });
 
-        tabView.setPadding(tabPadding, tabView.getPaddingTop(), tabPadding, tabView.getPaddingBottom());
         tabsContainer.addView(tabView, position, shouldExpand ? expandedTabLayoutParams : defaultTabLayoutParams);
     }
 
@@ -303,6 +302,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         for (int i = 0; i < tabCount; i++) {
             View v = tabsContainer.getChildAt(i);
             v.setBackgroundResource(tabBackgroundResId);
+            v.setPadding(tabPadding, v.getPaddingTop(), tabPadding, v.getPaddingBottom());
             TextView tab_title = (TextView) v.findViewById(R.id.tab_title);
 
             if (tab_title != null) {
