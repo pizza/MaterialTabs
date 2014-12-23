@@ -205,6 +205,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         tabTextSelectedAlpha = a.getFloat(R.styleable.PagerSlidingTabStrip_pstsTextSelectedAlpha, OPAQUE);
         a.recycle();
 
+        setMarginBottomTabContainer();
+
         rectPaint = new Paint();
         rectPaint.setAntiAlias(true);
         rectPaint.setStyle(Style.FILL);
@@ -220,6 +222,13 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         if (locale == null) {
             locale = getResources().getConfiguration().locale;
         }
+    }
+
+    private void setMarginBottomTabContainer() {
+        ViewGroup.MarginLayoutParams mlp = (MarginLayoutParams) tabsContainer.getLayoutParams();
+        int bottomMargin = indicatorHeight >= underlineHeight ? indicatorHeight : underlineHeight;
+        mlp.setMargins(mlp.leftMargin, mlp.topMargin, mlp.rightMargin, bottomMargin);
+        tabsContainer.setLayoutParams(mlp);
     }
 
     public void setViewPager(ViewPager pager) {
