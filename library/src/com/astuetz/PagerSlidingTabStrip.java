@@ -62,22 +62,22 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     // @formatter:off
     private static final int[] ATTRS = new int[]{
+            android.R.attr.textColorPrimary,
             android.R.attr.textSize,
             android.R.attr.textColor,
             android.R.attr.paddingLeft,
             android.R.attr.paddingRight,
-            android.R.attr.textColorPrimary,
     };
     // @formatter:on
 
     private final PagerAdapterObserver adapterObserver = new PagerAdapterObserver();
 
     //These indexes must be related with the ATTR array above
-    private static final int TEXT_SIZE_INDEX = 0;
-    private static final int TEXT_COLOR_INDEX = 1;
-    private static final int PADDING_LEFT_INDEX = 2;
-    private static final int PADDING_RIGHT_INDEX = 3;
-    private static final int TEXT_COLOR_PRIMARY = 4;
+    private static final int TEXT_COLOR_PRIMARY = 0;
+    private static final int TEXT_SIZE_INDEX = 1;
+    private static final int TEXT_COLOR_INDEX = 2;
+    private static final int PADDING_LEFT_INDEX = 3;
+    private static final int PADDING_RIGHT_INDEX = 4;
 
     private LinearLayout.LayoutParams defaultTabLayoutParams;
     private LinearLayout.LayoutParams expandedTabLayoutParams;
