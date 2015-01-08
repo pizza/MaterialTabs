@@ -1,5 +1,10 @@
 Change Log
 ==========
+Version 1.0.7 *(08-01-2015)*
+----------------------------
+* Bug fixes
+* OnTabReselectedListener
+
 Version 1.0.6 *(21-11-2014)*
 ----------------------------
 * Update support-v4 library to v21.0.2
