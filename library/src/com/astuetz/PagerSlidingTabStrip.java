@@ -498,7 +498,13 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private void updateSelection(int position) {
         for (int i = 0; i < tabCount; ++i) {
             View tv = tabsContainer.getChildAt(i);
-            tv.setSelected(i == position);
+            final boolean selected = i == position;
+            tv.setSelected(selected);
+            if (selected) {
+                selected(tv);
+            } else {
+                notSelected(tv);
+            }
         }
     }
 
