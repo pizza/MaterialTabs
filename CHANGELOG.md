@@ -1,5 +1,10 @@
 Change Log
 ==========
+Version 1.0.8 *(14-01-2015)*
+----------------------------
+* Bug fixes
+* Ability to build the library using maven
+
 Version 1.0.7 *(08-01-2015)*
 ----------------------------
 * Bug fixes
