@@ -503,18 +503,22 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     }
 
     private void notSelected(View tab) {
-        TextView title = (TextView) tab.findViewById(R.id.tab_title);
-        if (title != null) {
-            title.setTypeface(tabTypeface, tabTypefaceStyle);
-            ViewCompat.setAlpha(title, tabTextAlpha);
+        if (tab != null) {
+            TextView title = (TextView) tab.findViewById(R.id.tab_title);
+            if (title != null) {
+                title.setTypeface(tabTypeface, tabTypefaceStyle);
+                ViewCompat.setAlpha(title, tabTextAlpha);
+            }
         }
     }
 
     private void selected(View tab) {
-        TextView title = (TextView) tab.findViewById(R.id.tab_title);
-        if (title != null) {
-            title.setTypeface(tabTypeface, tabTypefaceSelectedStyle);
-            ViewCompat.setAlpha(title, tabTextSelectedAlpha);
+        if (tab != null) {
+            TextView title = (TextView) tab.findViewById(R.id.tab_title);
+            if (title != null) {
+                title.setTypeface(tabTypeface, tabTypefaceSelectedStyle);
+                ViewCompat.setAlpha(title, tabTextSelectedAlpha);
+            }
         }
     }
 
