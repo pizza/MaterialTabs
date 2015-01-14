@@ -4,6 +4,7 @@ Version 1.0.8 *(14-01-2015)*
 ----------------------------
 * Bug fixes
 * Ability to build the library using maven
+* Update support-v4 library to v21.0.3
 
 Version 1.0.7 *(08-01-2015)*
 ----------------------------
