@@ -175,13 +175,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         a.recycle();
 
         //In case we have the padding they must be equal so we take the biggest
-        if (paddingRight < paddingLeft) {
-            padding = paddingLeft;
-        }
-
-        if (paddingLeft < paddingRight) {
-            padding = paddingRight;
-        }
+        padding = Math.max(paddingLeft, paddingRight);
 
         // get custom attrs
         a = context.obtainStyledAttributes(attrs, R.styleable.PagerSlidingTabStrip);
