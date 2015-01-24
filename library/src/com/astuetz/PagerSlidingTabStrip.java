@@ -49,9 +49,6 @@ import java.util.Locale;
 
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 
-    private static final float OPAQUE = 1.0f;
-    private static final float HALF_TRANSP = 0.5f;
-
     public interface CustomTabProvider {
         public View getCustomTabView(ViewGroup parent, int position);
     }
@@ -110,8 +107,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private int tabPadding = 12;
     private int tabTextSize = 14;
     private ColorStateList tabTextColor = null;
-    private float tabTextAlpha = HALF_TRANSP;
-    private float tabTextSelectedAlpha = OPAQUE;
+    private int tabTextColorInactive;
 
     private int padding = 0;
 
@@ -167,6 +163,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             tabTextColor = getColorStateList(textPrimaryColor);
         }
 
+        tabTextColorInactive = textPrimaryColor;
         underlineColor = textPrimaryColor;
         dividerColor = textPrimaryColor;
         indicatorColor = textPrimaryColor;
@@ -182,6 +179,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         indicatorColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsIndicatorColor, indicatorColor);
         underlineColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsUnderlineColor, underlineColor);
         dividerColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsDividerColor, dividerColor);
+        tabTextColorInactive = a.getColor(R.styleable.PagerSlidingTabStrip_pstsTextColorInactive, tabTextColorInactive);
         dividerWidth = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsDividerWidth, dividerWidth);
         indicatorHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsIndicatorHeight, indicatorHeight);
         underlineHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsUnderlineHeight, underlineHeight);
@@ -194,8 +192,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         isPaddingMiddle = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsPaddingMiddle, isPaddingMiddle);
         tabTypefaceStyle = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTextStyle, Typeface.BOLD);
         tabTypefaceSelectedStyle = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTextSelectedStyle, Typeface.BOLD);
-        tabTextAlpha = a.getFloat(R.styleable.PagerSlidingTabStrip_pstsTextAlpha, HALF_TRANSP);
-        tabTextSelectedAlpha = a.getFloat(R.styleable.PagerSlidingTabStrip_pstsTextSelectedAlpha, OPAQUE);
         a.recycle();
 
         setMarginBottomTabContainer();
@@ -279,8 +275,11 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         TextView textView = (TextView) tabView.findViewById(R.id.tab_title);
         if (textView != null) {
             if (title != null) textView.setText(title);
-            float alpha = pager.getCurrentItem() == position ? tabTextSelectedAlpha : tabTextAlpha;
-            ViewCompat.setAlpha(textView, alpha);
+            if (pager.getCurrentItem() == position) {
+                textView.setTextColor(tabTextColor);
+            } else {
+                textView.setTextColor(tabTextColorInactive);
+            }
         }
 
         tabView.setFocusable(true);
@@ -507,7 +506,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             TextView title = (TextView) tab.findViewById(R.id.tab_title);
             if (title != null) {
                 title.setTypeface(tabTypeface, tabTypefaceStyle);
-                ViewCompat.setAlpha(title, tabTextAlpha);
+                title.setTextColor(tabTextColorInactive);
             }
         }
     }
@@ -517,7 +516,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             TextView title = (TextView) tab.findViewById(R.id.tab_title);
             if (title != null) {
                 title.setTypeface(tabTypeface, tabTypefaceSelectedStyle);
-                ViewCompat.setAlpha(title, tabTextSelectedAlpha);
+                title.setTextColor(tabTextColor);
             }
         }
     }
