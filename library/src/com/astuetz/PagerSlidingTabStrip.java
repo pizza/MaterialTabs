@@ -266,11 +266,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
                 } else {
                     getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
-
-                currentPosition = pager.getCurrentItem();
-                currentPositionOffset = 0f;
-                scrollToChild(currentPosition, 0);
-                updateSelection(currentPosition);
             }
         });
     }
@@ -404,6 +399,11 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             }
             setPadding(padding, getPaddingTop(), padding, getPaddingBottom());
             if (scrollOffset == 0) scrollOffset = getWidth() / 2 - padding;
+
+            currentPosition = pager.getCurrentItem();
+            currentPositionOffset = 0f;
+            scrollToChild(currentPosition, 0);
+            updateSelection(currentPosition);
         }
     };
 
