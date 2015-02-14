@@ -164,6 +164,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         }
 
         tabTextColorInactive = textPrimaryColor;
+
         underlineColor = textPrimaryColor;
         dividerColor = textPrimaryColor;
         indicatorColor = textPrimaryColor;

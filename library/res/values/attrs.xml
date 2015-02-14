@@ -4,7 +4,6 @@
     <declare-styleable name="PagerSlidingTabStrip">
         <attr name="pstsIndicatorColor" format="color" />
         <attr name="pstsUnderlineColor" format="color" />
-        <attr name="pstsTextColorInactive" format="color" />
         <attr name="pstsDividerColor" format="color" />
         <attr name="pstsDividerWidth" format="dimension" />
         <attr name="pstsIndicatorHeight" format="dimension" />
@@ -26,6 +25,7 @@
             <flag name="bold" value="0x1" />
             <flag name="italic" value="0x2" />
         </attr>
+        <attr name="pstsTextColorInactive" format="color" />
     </declare-styleable>
 
 </resources>
