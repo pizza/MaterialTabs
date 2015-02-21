@@ -34,6 +34,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,7 +108,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private int tabPadding = 12;
     private int tabTextSize = 14;
     private ColorStateList tabTextColor = null;
-    private int tabTextColorInactive;
+    private ColorStateList tabTextColorSelected = null;
 
     private int padding = 0;
 
@@ -163,8 +164,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             tabTextColor = getColorStateList(textPrimaryColor);
         }
 
-        tabTextColorInactive = textPrimaryColor;
-
         underlineColor = textPrimaryColor;
         dividerColor = textPrimaryColor;
         indicatorColor = textPrimaryColor;
@@ -180,7 +179,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         indicatorColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsIndicatorColor, indicatorColor);
         underlineColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsUnderlineColor, underlineColor);
         dividerColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsDividerColor, dividerColor);
-        tabTextColorInactive = a.getColor(R.styleable.PagerSlidingTabStrip_pstsTextColorInactive, tabTextColorInactive);
         dividerWidth = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsDividerWidth, dividerWidth);
         indicatorHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsIndicatorHeight, indicatorHeight);
         underlineHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsUnderlineHeight, underlineHeight);
@@ -193,6 +191,12 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         isPaddingMiddle = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsPaddingMiddle, isPaddingMiddle);
         tabTypefaceStyle = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTextStyle, Typeface.BOLD);
         tabTypefaceSelectedStyle = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTextSelectedStyle, Typeface.BOLD);
+        tabTextColorSelected = a.getColorStateList(R.styleable.PagerSlidingTabStrip_pstsTextColorSelected);
+        Log.v("yolapop", "get tabTextColorSelected " + tabTextColorSelected);
+        if (tabTextColorSelected == null) {
+            tabTextColorSelected = tabTextColor;
+        }
+
         a.recycle();
 
         setMarginBottomTabContainer();
@@ -276,11 +280,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         TextView textView = (TextView) tabView.findViewById(R.id.tab_title);
         if (textView != null) {
             if (title != null) textView.setText(title);
-            if (pager.getCurrentItem() == position) {
-                textView.setTextColor(tabTextColor);
-            } else {
-                textView.setTextColor(tabTextColorInactive);
-            }
+            ColorStateList color = pager.getCurrentItem() == position ? tabTextColorSelected : tabTextColor;
+            textView.setTextColor(color);
         }
 
         tabView.setFocusable(true);
@@ -507,7 +508,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             TextView title = (TextView) tab.findViewById(R.id.tab_title);
             if (title != null) {
                 title.setTypeface(tabTypeface, tabTypefaceStyle);
-                title.setTextColor(tabTextColorInactive);
+                title.setTextColor(tabTextColor);
             }
         }
     }
@@ -517,7 +518,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             TextView title = (TextView) tab.findViewById(R.id.tab_title);
             if (title != null) {
                 title.setTypeface(tabTypeface, tabTypefaceSelectedStyle);
-                title.setTextColor(tabTextColor);
+                title.setTextColor(tabTextColorSelected);
             }
         }
     }
