@@ -192,7 +192,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         tabTypefaceStyle = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTextStyle, Typeface.BOLD);
         tabTypefaceSelectedStyle = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTextSelectedStyle, Typeface.BOLD);
         tabTextColorSelected = a.getColorStateList(R.styleable.PagerSlidingTabStrip_pstsTextColorSelected);
-        Log.v("yolapop", "get tabTextColorSelected " + tabTextColorSelected);
         if (tabTextColorSelected == null) {
             tabTextColorSelected = tabTextColor;
         }
