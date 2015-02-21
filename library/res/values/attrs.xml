@@ -25,8 +25,7 @@
             <flag name="bold" value="0x1" />
             <flag name="italic" value="0x2" />
         </attr>
-        <attr name="pstsTextAlpha" format="float" />
-        <attr name="pstsTextSelectedAlpha" format="float" />
+        <attr name="pstsTextColorSelected" format="color" />
     </declare-styleable>
 
 </resources>

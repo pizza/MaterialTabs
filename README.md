@@ -80,8 +80,7 @@ Custom attr:
  * `pstsPaddingMiddle` If true, the tabs start at the middle of the view (Like Newsstand google app)
  * `pstsTextStyle` Set the text style, default bold
  * `pstsTextSelectedStyle` Set the text style of the selected tab, default bold
- * `pstsTextAlpha` Set the text alpha transparency, default 0.5
- * `pstsTextSelectedAlpha` Set the text alpha transparency of the selected tab, default 1
+ * `pstsTextColorSelected` Set text color of selected text
 
 *Almost all attributes have their respective getters and setters to change them at runtime* , open an issue if you miss any.
 
