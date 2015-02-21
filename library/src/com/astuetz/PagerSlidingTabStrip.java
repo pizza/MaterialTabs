@@ -126,7 +126,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private int scrollOffset;
     private int lastScrollX = 0;
 
-    private int tabBackgroundResId = R.drawable.background_tab;
+    private int tabBackgroundResId = R.drawable.psts_background_tab;
 
     private Locale locale;
 
@@ -244,7 +244,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             if (pager.getAdapter() instanceof CustomTabProvider) {
                 tabView = ((CustomTabProvider) pager.getAdapter()).getCustomTabView(this, i);
             } else {
-                tabView = LayoutInflater.from(getContext()).inflate(R.layout.tab, this, false);
+                tabView = LayoutInflater.from(getContext()).inflate(R.layout.psts_tab, this, false);
             }
 
             CharSequence title = pager.getAdapter().getPageTitle(i);
@@ -270,7 +270,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     }
 
     private void addTab(final int position, CharSequence title, View tabView) {
-        TextView textView = (TextView) tabView.findViewById(R.id.tab_title);
+        TextView textView = (TextView) tabView.findViewById(R.id.psts_tab_title);
         if (textView != null) {
             if (title != null) textView.setText(title);
             ColorStateList color = pager.getCurrentItem() == position ? tabTextColorSelected : tabTextColor;
@@ -299,7 +299,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             View v = tabsContainer.getChildAt(i);
             v.setBackgroundResource(tabBackgroundResId);
             v.setPadding(tabPadding, v.getPaddingTop(), tabPadding, v.getPaddingBottom());
-            TextView tab_title = (TextView) v.findViewById(R.id.tab_title);
+            TextView tab_title = (TextView) v.findViewById(R.id.psts_tab_title);
 
             if (tab_title != null) {
                 tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, tabTextSize);
@@ -503,7 +503,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     private void notSelected(View tab) {
         if (tab != null) {
-            TextView title = (TextView) tab.findViewById(R.id.tab_title);
+            TextView title = (TextView) tab.findViewById(R.id.psts_tab_title);
             if (title != null) {
                 title.setTypeface(tabTypeface, tabTypefaceStyle);
                 title.setTextColor(tabTextColor);
@@ -513,7 +513,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     private void selected(View tab) {
         if (tab != null) {
-            TextView title = (TextView) tab.findViewById(R.id.tab_title);
+            TextView title = (TextView) tab.findViewById(R.id.psts_tab_title);
             if (title != null) {
                 title.setTypeface(tabTypeface, tabTypefaceSelectedStyle);
                 title.setTextColor(tabTextColorSelected);
