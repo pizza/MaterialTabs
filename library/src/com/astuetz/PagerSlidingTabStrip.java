@@ -65,6 +65,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             android.R.attr.textColorPrimary,
             android.R.attr.textSize,
             android.R.attr.textColor,
+            android.R.attr.padding,
             android.R.attr.paddingLeft,
             android.R.attr.paddingRight,
     };
@@ -76,8 +77,9 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private static final int TEXT_COLOR_PRIMARY = 0;
     private static final int TEXT_SIZE_INDEX = 1;
     private static final int TEXT_COLOR_INDEX = 2;
-    private static final int PADDING_LEFT_INDEX = 3;
-    private static final int PADDING_RIGHT_INDEX = 4;
+    private static final int PADDING_INDEX = 3;
+    private static final int PADDING_LEFT_INDEX = 4;
+    private static final int PADDING_RIGHT_INDEX = 5;
 
     private LinearLayout.LayoutParams defaultTabLayoutParams;
     private LinearLayout.LayoutParams expandedTabLayoutParams;
@@ -113,7 +115,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private float tabTextAlpha = HALF_TRANSP;
     private float tabTextSelectedAlpha = OPAQUE;
 
-    private int padding = 0;
+    private int paddingLeft = 0;
+    private int paddingRight = 0;
 
     private boolean shouldExpand = false;
     private boolean textAllCaps = true;
@@ -170,12 +173,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         underlineColor = textPrimaryColor;
         dividerColor = textPrimaryColor;
         indicatorColor = textPrimaryColor;
-        int paddingLeft = a.getDimensionPixelSize(PADDING_LEFT_INDEX, padding);
-        int paddingRight = a.getDimensionPixelSize(PADDING_RIGHT_INDEX, padding);
+        int padding = a.getDimensionPixelSize(PADDING_INDEX, 0);
+        paddingLeft = padding > 0 ? padding : a.getDimensionPixelSize(PADDING_LEFT_INDEX, 0);
+        paddingRight = padding > 0 ? padding : a.getDimensionPixelSize(PADDING_RIGHT_INDEX, 0);
         a.recycle();
-
-        //In case we have the padding they must be equal so we take the biggest
-        padding = Math.max(paddingLeft, paddingRight);
 
         // get custom attrs
         a = context.obtainStyledAttributes(attrs, R.styleable.PagerSlidingTabStrip);
@@ -370,7 +371,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        if (isPaddingMiddle || padding > 0) {
+        if (isPaddingMiddle || paddingLeft > 0 || paddingRight > 0) {
             //Make sure tabContainer is bigger than the HorizontalScrollView to be able to scroll
             tabsContainer.setMinimumWidth(getWidth());
             //Clipping padding to false to see the tabs while we pass them swiping
@@ -400,10 +401,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
             if (isPaddingMiddle) {
                 int mHalfWidthFirstTab = view.getWidth() / 2;
-                padding = getWidth() / 2 - mHalfWidthFirstTab;
+                paddingLeft = paddingRight = getWidth() / 2 - mHalfWidthFirstTab;
             }
-            setPadding(padding, getPaddingTop(), padding, getPaddingBottom());
-            if (scrollOffset == 0) scrollOffset = getWidth() / 2 - padding;
+            setPadding(paddingLeft, getPaddingTop(), paddingRight, getPaddingBottom());
+            if (scrollOffset == 0) scrollOffset = getWidth() / 2 - paddingLeft;
         }
     };
 
@@ -418,10 +419,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         // draw indicator line
         rectPaint.setColor(indicatorColor);
         Pair<Float, Float> lines = getIndicatorCoordinates();
-        canvas.drawRect(lines.first + padding, height - indicatorHeight, lines.second + padding, height, rectPaint);
+        canvas.drawRect(lines.first + paddingLeft, height - indicatorHeight, lines.second + paddingLeft, height, rectPaint);
         // draw underline
         rectPaint.setColor(underlineColor);
-        canvas.drawRect(padding, height - underlineHeight, tabsContainer.getWidth() + padding, height, rectPaint);
+        canvas.drawRect(paddingLeft, height - underlineHeight, tabsContainer.getWidth() + paddingRight, height, rectPaint);
         // draw divider
         if (dividerWidth != 0) {
             dividerPaint.setStrokeWidth(dividerWidth);

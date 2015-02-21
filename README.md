@@ -60,7 +60,7 @@ Notes about some of the native attr:
 
 * `android:textSize` Tab text size
 * `android:textColor` Tab text color
-* `android:paddingLeft` or `android:paddingRight` Layout padding. Only the biggest of both will be applied to each side.
+* `android:paddingLeft` or `android:paddingRight` layout padding. If you apply both, they should be balanced. PR #69 have a good explanation of this behaviour.
 
 
 Custom attr:
