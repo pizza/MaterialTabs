@@ -59,7 +59,7 @@ From theme:
 Notes about some of the native attr:
 
 * `android:textSize` Tab text size
-* `android:textColor` Tab text color
+* `android:textColor` Tab text color. Default textPrimaryColor with 150 alpha value.
 * `android:paddingLeft` or `android:paddingRight` layout padding. If you apply both, they should be balanced. PR #69 have a good explanation of this behaviour.
 
 
@@ -80,7 +80,8 @@ Custom attr:
  * `pstsPaddingMiddle` If true, the tabs start at the middle of the view (Like Newsstand google app)
  * `pstsTextStyle` Set the text style, default bold
  * `pstsTextSelectedStyle` Set the text style of the selected tab, default bold
- * `pstsTextColorSelected` Set text color of selected text
+ * `pstsTextAlpha`Set the text alpha transparency, default 150. Range 0..255.
+ * `pstsTextColorSelected` Set selected tab text color. Default textPrimaryColor with 255 alpha value.
 
 *Almost all attributes have their respective getters and setters to change them at runtime* , open an issue if you miss any.
 

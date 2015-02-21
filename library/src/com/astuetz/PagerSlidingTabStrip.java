@@ -22,6 +22,7 @@ import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Typeface;
@@ -109,6 +110,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private int tabTextSize = 14;
     private ColorStateList tabTextColor = null;
     private ColorStateList tabTextColorSelected = null;
+    private int textAlpha = 150;
 
     private int paddingLeft = 0;
     private int paddingRight = 0;
@@ -159,11 +161,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         tabTextSize = a.getDimensionPixelSize(TEXT_SIZE_INDEX, tabTextSize);
         ColorStateList colorStateList = a.getColorStateList(TEXT_COLOR_INDEX);
         int textPrimaryColor = a.getColor(TEXT_COLOR_PRIMARY, android.R.color.white);
-        if (colorStateList != null) {
-            tabTextColor = colorStateList;
-        } else {
-            tabTextColor = getColorStateList(textPrimaryColor);
-        }
 
         underlineColor = textPrimaryColor;
         dividerColor = textPrimaryColor;
@@ -191,18 +188,21 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         tabTypefaceStyle = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTextStyle, Typeface.BOLD);
         tabTypefaceSelectedStyle = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTextSelectedStyle, Typeface.BOLD);
         tabTextColorSelected = a.getColorStateList(R.styleable.PagerSlidingTabStrip_pstsTextColorSelected);
-        if (tabTextColorSelected == null) {
-            tabTextColorSelected = tabTextColor;
-        }
-
+        textAlpha = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTextAlpha, textAlpha);
         a.recycle();
+
+        tabTextColor = colorStateList == null ? getColorStateList(Color.argb(textAlpha,
+                Color.red(textPrimaryColor),
+                Color.green(textPrimaryColor),
+                Color.blue(textPrimaryColor))) : colorStateList;
+
+        tabTextColorSelected = tabTextColorSelected == null ? getColorStateList(textPrimaryColor) : tabTextColorSelected;
 
         setMarginBottomTabContainer();
 
         rectPaint = new Paint();
         rectPaint.setAntiAlias(true);
         rectPaint.setStyle(Style.FILL);
-
 
         dividerPaint = new Paint();
         dividerPaint.setAntiAlias(true);
@@ -459,7 +459,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             if (state == ViewPager.SCROLL_STATE_IDLE) {
                 scrollToChild(pager.getCurrentItem(), 0);
             }
-            //Full alpha for current item
+            //Full textAlpha for current item
             View currentTab = tabsContainer.getChildAt(pager.getCurrentItem());
             selected(currentTab);
             //Half transparent for prev item
