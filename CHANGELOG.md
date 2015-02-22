@@ -1,6 +1,6 @@
 Change Log
 ==========
-Version 1.0.9 *(-- - -- - ----)*
+Version 1.0.9 *(22-02-2015)*
 ---------------------------------
 * Bug fixes
 * Add parsing of independent padding attributes (#69)
