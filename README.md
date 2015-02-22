@@ -13,7 +13,7 @@ Android Support Library.
   1. Include the following dependency to your gradle file.
 
 ```groovy
-    compile 'com.jpardogo.materialtabstrip:library:1.0.8'
+    compile 'com.jpardogo.materialtabstrip:library:1.0.9'
 ```
   Or add the library as a project. I tried to send a pull request, but looks like the original
   developer doesn't maintain it anymore.
@@ -40,9 +40,10 @@ Android Support Library.
 
   5. If your adapter implements the interface `CustomTabProvider` you can past you custom tab view/s.
      In case the the view returned contains the id `R.id.psts_tab_title`, this view should be a `Textview`  and
-     will be used to placed the title.
+     will be used to placed the title. If you don't want the library manage your TextView title for the tab,
+     use a different id than `R.id.psts_tab_title` in your tab layout.
 
-     Otherwise the default tab will be use (That's a TextView with id `R.id.psts_tab_title`)
+     If your adapter don't implements the interface `CustomTabProvider` the default tab will be use (That's a TextView with id `R.id.psts_tab_title`)
 
   4. *(Optional)* If you use an `OnPageChangeListener` with your view pager
      you should set it in the widget rather than on the pager directly.

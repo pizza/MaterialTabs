@@ -1,7 +1,8 @@
 Change Log
 ==========
-Version 1.0.9 *(-- - -- - ----)*
+Version 1.0.9 *(22-02-2015)*
 ---------------------------------
+* Bug fixes
 * Add parsing of independent padding attributes (#69)
 * pstsTextAlpha value range change from 0..1 to 0..255.
 * New attr pstsTextColorSelected
