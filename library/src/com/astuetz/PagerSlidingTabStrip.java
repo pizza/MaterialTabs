@@ -273,8 +273,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         TextView textView = (TextView) tabView.findViewById(R.id.psts_tab_title);
         if (textView != null) {
             if (title != null) textView.setText(title);
-            ColorStateList color = pager.getCurrentItem() == position ? tabTextColorSelected : tabTextColor;
-            textView.setTextColor(color);
         }
 
         tabView.setFocusable(true);
@@ -303,10 +301,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
             if (tab_title != null) {
                 tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, tabTextSize);
-                tab_title.setTypeface(tabTypeface, pager.getCurrentItem() == i ? tabTypefaceSelectedStyle : tabTypefaceStyle);
-                if (tabTextColor != null) {
-                    tab_title.setTextColor(tabTextColor);
-                }
                 // setAllCaps() is only available from API 14, so the upper case is made manually if we are on a
                 // pre-ICS-build
                 if (textAllCaps) {
