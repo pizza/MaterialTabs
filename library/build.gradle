@@ -1,16 +1,11 @@
 apply plugin: 'com.android.library'
 
-dependencies {
-    compile 'com.android.support:support-v4:22.0.0'
-    compile 'com.nineoldandroids:library:2.4.0'
-}
-
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        minSdkVersion 10
+        minSdkVersion 9
         targetSdkVersion 22
     }
 
@@ -27,4 +22,9 @@ android {
             res.srcDirs = ['res']
         }
     }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:22.0.0'
+    compile 'com.nineoldandroids:library:2.4.0'
 }

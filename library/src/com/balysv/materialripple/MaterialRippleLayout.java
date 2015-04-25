@@ -16,7 +16,6 @@
 
 package com.balysv.materialripple;
 
-import com.astuetz.pagerslidingtabstrip.R;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.AnimatorSet;
@@ -38,7 +37,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -51,6 +49,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
+
+import io.karim.materialtabs.R;
 
 import static android.view.GestureDetector.SimpleOnGestureListener;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
@@ -100,8 +100,8 @@ public class MaterialRippleLayout extends FrameLayout {
     private AnimatorSet rippleAnimator;
     private ObjectAnimator hoverAnimator;
 
-    private Point currentCoords = new Point();
-    private Point previousCoords = new Point();
+    private Point currentCoordinates = new Point();
+    private Point previousCoordinates = new Point();
 
     private int layerType;
 
@@ -179,7 +179,6 @@ public class MaterialRippleLayout extends FrameLayout {
         if (getChildCount() > 0) {
             throw new IllegalStateException("MaterialRippleLayout can host only one child");
         }
-        //noinspection unchecked
         childView = child;
         super.addView(child, index, params);
     }
@@ -208,8 +207,8 @@ public class MaterialRippleLayout extends FrameLayout {
         boolean isEventInBounds = bounds.contains((int) event.getX(), (int) event.getY());
 
         if (isEventInBounds) {
-            previousCoords.set(currentCoords.x, currentCoords.y);
-            currentCoords.set((int) event.getX(), (int) event.getY());
+            previousCoordinates.set(currentCoordinates.x, currentCoordinates.y);
+            currentCoordinates.set((int) event.getX(), (int) event.getY());
         }
 
         boolean gestureResult = gestureDetector.onTouchEvent(event);
@@ -219,8 +218,6 @@ public class MaterialRippleLayout extends FrameLayout {
             int action = event.getActionMasked();
             switch (action) {
                 case MotionEvent.ACTION_UP:
-                    Log.i(TAG, "ACTION_UP");
-
                     if (prepressed) {
                         childView.setPressed(true);
                         postDelayed(new Runnable() {
@@ -244,8 +241,6 @@ public class MaterialRippleLayout extends FrameLayout {
                     cancelPressedEvent();
                     break;
                 case MotionEvent.ACTION_DOWN:
-                    Log.i(TAG, "ACTION_DOWN");
-
                     setBackgroundColor(rippleHighlightColor);
 
                     setPositionInAdapter();
@@ -260,26 +255,20 @@ public class MaterialRippleLayout extends FrameLayout {
                     }
                     break;
                 case MotionEvent.ACTION_CANCEL:
-                    Log.i(TAG, "ACTION_CANCEL");
-
                     if (rippleInAdapter) {
-                        // dont use current coords in adapter since they tend to jump drastically on scroll
-                        currentCoords.set(previousCoords.x, previousCoords.y);
-                        previousCoords = new Point();
+                        // Do not use current coordinates in adapter since they tend to jump drastically on scroll.
+                        currentCoordinates.set(previousCoordinates.x, previousCoordinates.y);
+                        previousCoordinates = new Point();
                     }
                     childView.onTouchEvent(event);
                     if (rippleHover) {
-                        if (!prepressed) {
-                            startRipple(null);
-                        }
+                        startRipple(null);
                     } else {
                         childView.setPressed(false);
                     }
                     cancelPressedEvent();
                     break;
                 case MotionEvent.ACTION_MOVE:
-                    Log.i(TAG, "ACTION_MOVE");
-
                     if (rippleHover) {
                         if (isEventInBounds && !eventCancelled) {
                             invalidate();
@@ -388,8 +377,8 @@ public class MaterialRippleLayout extends FrameLayout {
         final int halfWidth = width / 2;
         final int halfHeight = height / 2;
 
-        final float radiusX = halfWidth > currentCoords.x ? width - currentCoords.x : currentCoords.x;
-        final float radiusY = halfHeight > currentCoords.y ? height - currentCoords.y : currentCoords.y;
+        final float radiusX = halfWidth > currentCoordinates.x ? width - currentCoordinates.x : currentCoordinates.x;
+        final float radiusY = halfHeight > currentCoordinates.y ? height - currentCoordinates.y : currentCoordinates.y;
 
         return (float) Math.sqrt(Math.pow(radiusX, 2) + Math.pow(radiusY, 2)) * 1.2f;
     }
@@ -499,12 +488,12 @@ public class MaterialRippleLayout extends FrameLayout {
                     clipPath.addRoundRect(rect, rippleRoundedCorners, rippleRoundedCorners, Path.Direction.CW);
                     canvas.clipPath(clipPath);
                 }
-                canvas.drawCircle(currentCoords.x, currentCoords.y, radius, paint);
+                canvas.drawCircle(currentCoordinates.x, currentCoordinates.y, radius, paint);
             }
         } else {
             if (!positionChanged) {
                 rippleBackground.draw(canvas);
-                canvas.drawCircle(currentCoords.x, currentCoords.y, radius, paint);
+                canvas.drawCircle(currentCoordinates.x, currentCoordinates.y, radius, paint);
             }
             super.draw(canvas);
         }
@@ -616,12 +605,12 @@ public class MaterialRippleLayout extends FrameLayout {
     }
 
     public void performRipple() {
-        currentCoords = new Point(getWidth() / 2, getHeight() / 2);
+        currentCoordinates = new Point(getWidth() / 2, getHeight() / 2);
         startRipple(null);
     }
 
     public void performRipple(Point anchor) {
-        currentCoords = new Point(anchor.x, anchor.y);
+        currentCoordinates = new Point(anchor.x, anchor.y);
         startRipple(null);
     }
 
@@ -631,7 +620,7 @@ public class MaterialRippleLayout extends FrameLayout {
      * https://developer.android.com/guide/topics/graphics/hardware-accel.html#unsupported
      */
     private void enableClipPathSupportIfNecessary() {
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR1 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             if (rippleRoundedCorners != 0) {
                 layerType = getLayerType();
                 setLayerType(LAYER_TYPE_SOFTWARE, null);
@@ -652,14 +641,14 @@ public class MaterialRippleLayout extends FrameLayout {
                 return;
             }
 
-            // if parent is an AdapterView, try to call its ItemClickListener
+            // If parent is an AdapterView, try to call its ItemClickListener.
             if (getParent() instanceof AdapterView) {
                 clickAdapterView((AdapterView) getParent());
             } else if (rippleInAdapter) {
-                // find adapter view
+                // Find adapter view.
                 clickAdapterView(findParentAdapterView());
             } else {
-                // otherwise, just perform click on child
+                // Otherwise, just perform click on child.
                 childView.performClick();
             }
         }
@@ -684,7 +673,9 @@ public class MaterialRippleLayout extends FrameLayout {
         @Override
         public void run() {
             prepressed = false;
-            childView.setLongClickable(false);//prevent the child's long click,let's the ripple layout call it's performLongClick
+
+            // Prevent the child's long click, let the ripple layout call its performLongClick
+            childView.setLongClickable(false);
             childView.onTouchEvent(event);
             childView.setPressed(true);
             if (rippleHover) {
