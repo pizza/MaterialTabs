@@ -16,11 +16,8 @@
 
 package com.astuetz.viewpager.extensions.sample;
 
-import io.karim.PagerSlidingTabStrip;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -29,64 +26,64 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
-import android.view.Menu;
 import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import io.karim.MaterialTabs;
 
 public class MainActivity extends ActionBarActivity {
 
     @InjectView(R.id.toolbar)
-    Toolbar toolbar;
-    @InjectView(R.id.tabs)
-    PagerSlidingTabStrip tabs;
-    @InjectView(R.id.pager)
-    ViewPager pager;
+    Toolbar mToolbar;
 
-    private MyPagerAdapter adapter;
-    private SystemBarTintManager mTintManager;
+    @InjectView(R.id.material_tabs)
+    MaterialTabs mMaterialTabs;
+
+    @InjectView(R.id.view_pager)
+    ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
 
-        Drawable colorDrawable = new ColorDrawable(getResources().getColor(R.color.green));
-        getSupportActionBar().setBackgroundDrawable(colorDrawable);
+        // Apply background tinting to the Android system UI when using KitKat translucent modes.
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        tintManager.setStatusBarTintEnabled(true);
 
-        // create our manager instance after the content view is set
-        mTintManager = new SystemBarTintManager(this);
-        // enable status bar tint
-        mTintManager.setStatusBarTintEnabled(true);
-        adapter = new MyPagerAdapter(getSupportFragmentManager());
-        pager.setAdapter(adapter);
-        tabs.setViewPager(pager);
+        SamplePagerAdapter adapter = new SamplePagerAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(adapter);
+        mMaterialTabs.setViewPager(mViewPager);
+
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics());
-        pager.setPageMargin(pageMargin);
-        pager.setCurrentItem(1);
+        mViewPager.setPageMargin(pageMargin);
+        mViewPager.setCurrentItem(0);
 
-        tabs.setOnTabReselectedListener(new PagerSlidingTabStrip.OnTabReselectedListener() {
+        mMaterialTabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onTabReselected(int position) {
-                Toast.makeText(MainActivity.this, "Tab reselected: " + position, Toast.LENGTH_SHORT).show();
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Toast.makeText(MainActivity.this, "Selected tab #" + position, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+    public class SamplePagerAdapter extends FragmentPagerAdapter {
 
-    public class MyPagerAdapter extends FragmentPagerAdapter {
+        private final String[] TITLES = {"Categories", "Home", "Top Paid"};
+        //, "Top Free", "Top Grossing", "Top New Paid", "Top New Free", "Trending"};
 
-        private final String[] TITLES = {"Categories", "Home"};// "Top Paid", "Top Free", "Top Grossing", "Top New Paid", "Top New Free", "Trending"};
-
-        public MyPagerAdapter(FragmentManager fm) {
+        public SamplePagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -102,7 +99,7 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return SuperAwesomeCardFragment.newInstance(position);
+            return SampleFragment.newInstance(position);
         }
     }
 }

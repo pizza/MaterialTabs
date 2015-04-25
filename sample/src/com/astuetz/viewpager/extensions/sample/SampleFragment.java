@@ -27,17 +27,17 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class SuperAwesomeCardFragment extends Fragment {
+public class SampleFragment extends Fragment {
 
     private static final String ARG_POSITION = "position";
 
     @InjectView(R.id.textView)
-    TextView textView;
+    TextView mTextView;
 
     private int position;
 
-    public static SuperAwesomeCardFragment newInstance(int position) {
-        SuperAwesomeCardFragment f = new SuperAwesomeCardFragment();
+    public static SampleFragment newInstance(int position) {
+        SampleFragment f = new SampleFragment();
         Bundle b = new Bundle();
         b.putInt(ARG_POSITION, position);
         f.setArguments(b);
@@ -55,7 +55,7 @@ public class SuperAwesomeCardFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_card, container, false);
         ButterKnife.inject(this, rootView);
         ViewCompat.setElevation(rootView, 50);
-        textView.setText("CARD " + position);
+        mTextView.setText("CARD " + position);
         return rootView;
     }
 }

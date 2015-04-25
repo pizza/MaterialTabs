@@ -6,21 +6,21 @@
     android:orientation="vertical"
     android:fitsSystemWindows="true">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
-    <io.karim.PagerSlidingTabStrip
-        android:id="@+id/tabs"
+    <io.karim.MaterialTabs
+        android:id="@+id/material_tabs"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="48dp"
         android:background="?attr/colorPrimary"
         app:pstsShouldExpand="true"
         app:pstsPaddingMiddle="false" />
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        tools:context=".MainActivity"/>
+        tools:context=".MainActivity" />
 
 </LinearLayout>

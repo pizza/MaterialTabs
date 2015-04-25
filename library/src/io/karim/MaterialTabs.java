@@ -48,9 +48,9 @@ import java.util.Locale;
 
 import io.karim.materialtabs.R;
 
-public class PagerSlidingTabStrip extends HorizontalScrollView {
+public class MaterialTabs extends HorizontalScrollView {
 
-    private static final String TAG = PagerSlidingTabStrip.class.getSimpleName();
+    private static final String TAG = MaterialTabs.class.getSimpleName();
 
     public interface CustomTabProvider {
         View getCustomTabView(ViewGroup parent, int position);
@@ -125,15 +125,15 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     private Locale locale;
 
-    public PagerSlidingTabStrip(Context context) {
+    public MaterialTabs(Context context) {
         this(context, null);
     }
 
-    public PagerSlidingTabStrip(Context context, AttributeSet attrs) {
+    public MaterialTabs(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PagerSlidingTabStrip(Context context, AttributeSet attrs, int defStyle) {
+    public MaterialTabs(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setFillViewport(true);
         setWillNotDraw(false);
@@ -166,24 +166,24 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         a.recycle();
 
         // Get custom attrs.
-        a = context.obtainStyledAttributes(attrs, R.styleable.PagerSlidingTabStrip);
-        indicatorColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsIndicatorColor, indicatorColor);
-        underlineColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsUnderlineColor, underlineColor);
-        dividerColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsDividerColor, dividerColor);
-        dividerWidth = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsDividerWidth, dividerWidth);
-        indicatorHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsIndicatorHeight, indicatorHeight);
-        underlineHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsUnderlineHeight, underlineHeight);
-        dividerPadding = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsDividerPadding, dividerPadding);
-        tabPadding = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsTabPaddingLeftRight, tabPadding);
-        tabBackgroundResId = a.getResourceId(R.styleable.PagerSlidingTabStrip_pstsTabBackground, tabBackgroundResId);
-        shouldExpand = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsShouldExpand, shouldExpand);
-        scrollOffset = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsScrollOffset, scrollOffset);
-        textAllCaps = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsTextAllCaps, textAllCaps);
-        isPaddingMiddle = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsPaddingMiddle, isPaddingMiddle);
-        tabTypefaceStyle = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTextStyle, Typeface.BOLD);
-        tabTypefaceSelectedStyle = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTextSelectedStyle, Typeface.BOLD);
-        tabTextColorSelected = a.getColorStateList(R.styleable.PagerSlidingTabStrip_pstsTextColorSelected);
-        textAlpha = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTextAlpha, textAlpha);
+        a = context.obtainStyledAttributes(attrs, R.styleable.MaterialTabs);
+        indicatorColor = a.getColor(R.styleable.MaterialTabs_pstsIndicatorColor, indicatorColor);
+        underlineColor = a.getColor(R.styleable.MaterialTabs_pstsUnderlineColor, underlineColor);
+        dividerColor = a.getColor(R.styleable.MaterialTabs_pstsDividerColor, dividerColor);
+        dividerWidth = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsDividerWidth, dividerWidth);
+        indicatorHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsIndicatorHeight, indicatorHeight);
+        underlineHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsUnderlineHeight, underlineHeight);
+        dividerPadding = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsDividerPadding, dividerPadding);
+        tabPadding = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsTabPaddingLeftRight, tabPadding);
+        tabBackgroundResId = a.getResourceId(R.styleable.MaterialTabs_pstsTabBackground, tabBackgroundResId);
+        shouldExpand = a.getBoolean(R.styleable.MaterialTabs_pstsShouldExpand, shouldExpand);
+        scrollOffset = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsScrollOffset, scrollOffset);
+        textAllCaps = a.getBoolean(R.styleable.MaterialTabs_pstsTextAllCaps, textAllCaps);
+        isPaddingMiddle = a.getBoolean(R.styleable.MaterialTabs_pstsPaddingMiddle, isPaddingMiddle);
+        tabTypefaceStyle = a.getInt(R.styleable.MaterialTabs_pstsTextStyle, Typeface.BOLD);
+        tabTypefaceSelectedStyle = a.getInt(R.styleable.MaterialTabs_pstsTextSelectedStyle, Typeface.BOLD);
+        tabTextColorSelected = a.getColorStateList(R.styleable.MaterialTabs_pstsTextColorSelected);
+        textAlpha = a.getInt(R.styleable.MaterialTabs_pstsTextAlpha, textAlpha);
         a.recycle();
 
         tabTextColor = colorStateList == null ? getColorStateList(
