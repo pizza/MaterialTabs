@@ -60,7 +60,7 @@ public class MaterialRippleLayout extends FrameLayout {
     private static final String TAG = MaterialRippleLayout.class.getSimpleName();
 
     private static final int DEFAULT_DURATION = 250;
-    private static final int DEFAULT_FADE_DURATION = 75;
+    private static final int DEFAULT_FADE_DURATION = 125;
     private static final float DEFAULT_DIAMETER_DP = 35;
     private static final float DEFAULT_ALPHA = 0.2f;
     private static final int DEFAULT_COLOR = Color.WHITE;
@@ -79,6 +79,7 @@ public class MaterialRippleLayout extends FrameLayout {
     private final Rect bounds = new Rect();
 
     private int rippleColor;
+    private int rippleHighlightColor;
     private boolean rippleOverlay;
     private boolean rippleHover;
     private int rippleDiameter;
@@ -147,6 +148,11 @@ public class MaterialRippleLayout extends FrameLayout {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MaterialRippleLayout);
         rippleColor = a.getColor(R.styleable.MaterialRippleLayout_mrl_rippleColor, DEFAULT_COLOR);
+
+        // Making default ripple highlight color the same as rippleColor but with 1/4 the alpha.
+        rippleHighlightColor = Color.argb((int) (Color.alpha(rippleColor) * 0.25), Color.red(rippleColor), Color.green(rippleColor),
+                Color.blue(rippleColor));
+        rippleHighlightColor = a.getColor(R.styleable.MaterialRippleLayout_mrl_rippleHighlightColor, rippleHighlightColor);
         rippleDiameter = a.getDimensionPixelSize(R.styleable.MaterialRippleLayout_mrl_rippleDimension,
                 (int) dpToPx(getResources(), DEFAULT_DIAMETER_DP));
         rippleOverlay = a.getBoolean(R.styleable.MaterialRippleLayout_mrl_rippleOverlay, DEFAULT_RIPPLE_OVERLAY);
@@ -214,6 +220,7 @@ public class MaterialRippleLayout extends FrameLayout {
             switch (action) {
                 case MotionEvent.ACTION_UP:
                     Log.i(TAG, "ACTION_UP");
+
                     if (prepressed) {
                         childView.setPressed(true);
                         postDelayed(new Runnable() {
@@ -238,6 +245,8 @@ public class MaterialRippleLayout extends FrameLayout {
                     break;
                 case MotionEvent.ACTION_DOWN:
                     Log.i(TAG, "ACTION_DOWN");
+
+                    setBackgroundColor(rippleHighlightColor);
 
                     setPositionInAdapter();
                     eventCancelled = false;
@@ -337,6 +346,8 @@ public class MaterialRippleLayout extends FrameLayout {
                     animationEndRunnable.run();
                 }
                 childView.setPressed(false);
+
+                setBackgroundColor(Color.TRANSPARENT);
             }
         });
 

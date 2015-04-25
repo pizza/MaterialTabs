@@ -31,6 +31,7 @@
 
     <declare-styleable name="MaterialRippleLayout">
         <attr name="mrl_rippleColor" format="color" localization="suggested" />
+        <attr name="mrl_rippleHighlightColor" format="color" localization="suggested" />
         <attr name="mrl_rippleDimension" format="dimension" localization="suggested" />
         <attr name="mrl_rippleOverlay" format="boolean" localization="suggested" />
         <attr name="mrl_rippleAlpha" format="float" localization="suggested" />
