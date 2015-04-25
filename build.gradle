@@ -18,3 +18,7 @@ allprojects {
         mavenCentral()
     }
 }
+
+subprojects {
+    apply plugin: 'maven'
+}
