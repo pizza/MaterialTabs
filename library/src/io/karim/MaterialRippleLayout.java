@@ -59,7 +59,7 @@ public class MaterialRippleLayout extends FrameLayout {
 
     public static final int DEFAULT_DURATION = 250;
     public static final int DEFAULT_FADE_DURATION = 125;
-    public static final float DEFAULT_DIAMETER_DP = 35;
+    public static final float DEFAULT_DIAMETER_DP = 20;
     public static final float DEFAULT_ALPHA = 0.2f;
     public static final int DEFAULT_COLOR = Color.WHITE;
     public static final int DEFAULT_BACKGROUND = Color.TRANSPARENT;
@@ -81,7 +81,7 @@ public class MaterialRippleLayout extends FrameLayout {
     private boolean rippleHover;
     private int rippleDiameter;
     private int rippleDuration;
-    private int rippleAlpha;
+    private int rippleAlphaInt;
     private boolean rippleDelayClick;
     private int rippleFadeDuration;
     private boolean ripplePersistent;
@@ -155,7 +155,7 @@ public class MaterialRippleLayout extends FrameLayout {
         rippleOverlay = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleOverlay, DEFAULT_RIPPLE_OVERLAY);
         rippleHover = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleHover, DEFAULT_HOVER);
         rippleDuration = a.getInt(R.styleable.MaterialRippleLayout_mrlRippleDuration, DEFAULT_DURATION);
-        rippleAlpha = (int) (255 * a.getFloat(R.styleable.MaterialRippleLayout_mrlRippleAlpha, DEFAULT_ALPHA));
+        rippleAlphaInt = (int) (255 * a.getFloat(R.styleable.MaterialRippleLayout_mrlRippleAlpha, DEFAULT_ALPHA));
         rippleDelayClick = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleDelayClick, DEFAULT_DELAY_CLICK);
         rippleFadeDuration = a.getInteger(R.styleable.MaterialRippleLayout_mrlRippleFadeDuration, DEFAULT_FADE_DURATION);
         rippleBackground = new ColorDrawable(a.getColor(R.styleable.MaterialRippleLayout_mrlRippleBackground, DEFAULT_BACKGROUND));
@@ -166,7 +166,7 @@ public class MaterialRippleLayout extends FrameLayout {
         a.recycle();
 
         paint.setColor(rippleColor);
-        paint.setAlpha(rippleAlpha);
+        paint.setAlpha(rippleAlphaInt);
 
         enableClipPathSupportIfNecessary();
     }
@@ -266,6 +266,8 @@ public class MaterialRippleLayout extends FrameLayout {
                     cancelPressedEvent();
                     break;
                 case MotionEvent.ACTION_MOVE:
+                    setBackgroundColor(rippleHighlightColor);
+
                     if (rippleHover) {
                         if (isEventInBounds && !eventCancelled) {
                             invalidate();
@@ -326,7 +328,7 @@ public class MaterialRippleLayout extends FrameLayout {
             public void onAnimationEnd(Animator animation) {
                 if (!ripplePersistent) {
                     setRadius(0);
-                    setRippleAlpha(rippleAlpha);
+                    setRippleAlphaInt(rippleAlphaInt);
                 }
                 if (animationEndRunnable != null && rippleDelayClick) {
                     animationEndRunnable.run();
@@ -340,7 +342,7 @@ public class MaterialRippleLayout extends FrameLayout {
         ObjectAnimator ripple = ObjectAnimator.ofFloat(this, radiusProperty, radius, endRadius);
         ripple.setDuration(rippleDuration);
         ripple.setInterpolator(new DecelerateInterpolator());
-        ObjectAnimator fade = ObjectAnimator.ofInt(this, circleAlphaProperty, rippleAlpha, 0);
+        ObjectAnimator fade = ObjectAnimator.ofInt(this, circleAlphaProperty, rippleAlphaInt, 0);
         fade.setDuration(rippleFadeDuration);
         fade.setInterpolator(new AccelerateInterpolator());
         fade.setStartDelay(rippleDuration - rippleFadeDuration - FADE_EXTRA_DELAY);
@@ -521,24 +523,25 @@ public class MaterialRippleLayout extends FrameLayout {
         invalidate();
     }
 
-    private Property<MaterialRippleLayout, Integer> circleAlphaProperty = new Property<MaterialRippleLayout, Integer>(Integer.class, "rippleAlpha") {
+    private Property<MaterialRippleLayout, Integer> circleAlphaProperty = new Property<MaterialRippleLayout, Integer>(Integer.class,
+            "rippleAlphaFloat") {
         @Override
         public Integer get(MaterialRippleLayout object) {
-            return object.getRippleAlpha();
+            return object.getRippleAlphaInt();
         }
 
         @Override
         public void set(MaterialRippleLayout object, Integer value) {
-            object.setRippleAlpha(value);
+            object.setRippleAlphaInt(value);
         }
     };
 
-    public int getRippleAlpha() {
+    public int getRippleAlphaInt() {
         return paint.getAlpha();
     }
 
-    public void setRippleAlpha(Integer rippleAlpha) {
-        paint.setAlpha(rippleAlpha);
+    public void setRippleAlphaInt(Integer alphaInt) {
+        paint.setAlpha(alphaInt);
         invalidate();
     }
 
@@ -550,7 +553,7 @@ public class MaterialRippleLayout extends FrameLayout {
         this.rippleHighlightColor = Color.argb((int) (Color.alpha(rippleColor) * 0.25), Color.red(rippleColor), Color.green(rippleColor),
                 Color.blue(rippleColor));
         paint.setColor(rippleColor);
-        paint.setAlpha(rippleAlpha);
+        paint.setAlpha(rippleAlphaInt);
         invalidate();
     }
 
@@ -602,9 +605,9 @@ public class MaterialRippleLayout extends FrameLayout {
         enableClipPathSupportIfNecessary();
     }
 
-    public void setDefaultRippleAlpha(int alpha) {
-        this.rippleAlpha = alpha;
-        paint.setAlpha(alpha);
+    public void setDefaultRippleAlphaInt(int alphaInt) {
+        this.rippleAlphaInt = alphaInt;
+        paint.setAlpha(alphaInt);
         invalidate();
     }
 
@@ -702,7 +705,7 @@ public class MaterialRippleLayout extends FrameLayout {
         private boolean rippleHover = DEFAULT_HOVER;
         private float rippleDiameter = DEFAULT_DIAMETER_DP;
         private int rippleDuration = DEFAULT_DURATION;
-        private float rippleAlpha = DEFAULT_ALPHA;
+        private float rippleAlphaFloat = DEFAULT_ALPHA;
         private boolean rippleDelayClick = DEFAULT_DELAY_CLICK;
         private int rippleFadeDuration = DEFAULT_FADE_DURATION;
         private boolean ripplePersistent = DEFAULT_PERSISTENT;
@@ -750,8 +753,11 @@ public class MaterialRippleLayout extends FrameLayout {
             return this;
         }
 
+        /**
+         * @param alpha value between 0 and 1
+         */
         public RippleBuilder rippleAlpha(float alpha) {
-            this.rippleAlpha = 255 * alpha;
+            this.rippleAlphaFloat = alpha;
             return this;
         }
 
@@ -788,9 +794,9 @@ public class MaterialRippleLayout extends FrameLayout {
         public MaterialRippleLayout create() {
             MaterialRippleLayout layout = new MaterialRippleLayout(context);
             layout.setRippleColor(rippleColor);
-            layout.setDefaultRippleAlpha((int) rippleAlpha);
+            layout.setDefaultRippleAlphaInt((int) (255 * rippleAlphaFloat));
             layout.setRippleDelayClick(rippleDelayClick);
-            layout.setRippleDiameter((int) Utils.dpToPx(context.getResources(), rippleDiameter));
+            layout.setRippleDiameter(Utils.dpToPx(context.getResources(), rippleDiameter));
             layout.setRippleDuration(rippleDuration);
             layout.setRippleFadeDuration(rippleFadeDuration);
             layout.setRippleHighlightColor(rippleHighlightColor);
@@ -799,7 +805,7 @@ public class MaterialRippleLayout extends FrameLayout {
             layout.setRippleOverlay(rippleOverlay);
             layout.setRippleBackground(rippleBackground);
             layout.setRippleInAdapter(rippleSearchAdapter);
-            layout.setRippleRoundedCorners((int) Utils.dpToPx(context.getResources(), rippleRoundedCorner));
+            layout.setRippleRoundedCorners(Utils.dpToPx(context.getResources(), rippleRoundedCorner));
 
             ViewGroup.LayoutParams params = child.getLayoutParams();
             ViewGroup parent = (ViewGroup) child.getParent();

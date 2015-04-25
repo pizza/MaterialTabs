@@ -130,7 +130,7 @@ public class MaterialTabs extends HorizontalScrollView {
     private boolean rippleHover;
     private int rippleDiameter;
     private int rippleDuration;
-    private int rippleAlpha;
+    private float rippleAlphaFloat;
     private boolean rippleDelayClick;
     private int rippleFadeDuration;
     private boolean ripplePersistent;
@@ -213,7 +213,7 @@ public class MaterialTabs extends HorizontalScrollView {
         rippleOverlay = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleOverlay, MaterialRippleLayout.DEFAULT_RIPPLE_OVERLAY);
         rippleHover = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleHover, MaterialRippleLayout.DEFAULT_HOVER);
         rippleDuration = a.getInt(R.styleable.MaterialTabs_pstsMrlRippleDuration, MaterialRippleLayout.DEFAULT_DURATION);
-        rippleAlpha = (int) (255 * a.getFloat(R.styleable.MaterialTabs_pstsMrlRippleAlpha, MaterialRippleLayout.DEFAULT_ALPHA));
+        rippleAlphaFloat = a.getFloat(R.styleable.MaterialTabs_pstsMrlRippleAlpha, MaterialRippleLayout.DEFAULT_ALPHA);
         rippleDelayClick = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleDelayClick, MaterialRippleLayout.DEFAULT_DELAY_CLICK);
         rippleFadeDuration = a.getInteger(R.styleable.MaterialTabs_pstsMrlRippleFadeDuration, MaterialRippleLayout.DEFAULT_FADE_DURATION);
         rippleBackgroundColor = a.getColor(R.styleable.MaterialTabs_pstsMrlRippleBackground, MaterialRippleLayout.DEFAULT_BACKGROUND);
@@ -278,7 +278,7 @@ public class MaterialTabs extends HorizontalScrollView {
             }
 
             MaterialRippleLayout materialRippleLayout = MaterialRippleLayout.on(tabView)
-                                                                            .rippleAlpha(rippleAlpha)
+                                                                            .rippleAlpha(rippleAlphaFloat)
                                                                             .rippleBackground(rippleBackgroundColor)
                                                                             .rippleColor(rippleColor)
                                                                             .rippleDelayClick(rippleDelayClick)
