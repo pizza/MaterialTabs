@@ -36,7 +36,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -316,8 +315,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             return;
         }
 
-        Log.i(TAG, "scrollToChild pos=" + position + " offset=" + offset);
-
         int newScrollX = tabsContainer.getChildAt(position).getLeft() + offset;
         if (position > 0 || offset > 0) {
 
@@ -337,8 +334,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     }
 
     private Pair<Float, Float> getIndicatorCoordinates() {
-        Log.i(TAG, "getIndicatorCoordinates");
-
         // default: line below current tab
         View currentTab = tabsContainer.getChildAt(currentPosition);
         float lineLeft = currentTab.getLeft();

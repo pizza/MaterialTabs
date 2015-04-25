@@ -36,7 +36,9 @@ import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -54,6 +56,8 @@ import static android.view.GestureDetector.SimpleOnGestureListener;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 public class MaterialRippleLayout extends FrameLayout {
+
+    private static final String TAG = MaterialRippleLayout.class.getSimpleName();
 
     private static final int DEFAULT_DURATION = 250;
     private static final int DEFAULT_FADE_DURATION = 75;
@@ -105,7 +109,6 @@ public class MaterialRippleLayout extends FrameLayout {
     private int positionInAdapter;
 
     private GestureDetector gestureDetector;
-    private PerformClickEvent pendingClickEvent;
     private PressedEvent pendingPressEvent;
 
     public static RippleBuilder on(View view) {
@@ -124,7 +127,23 @@ public class MaterialRippleLayout extends FrameLayout {
         super(context, attrs, defStyle);
 
         setWillNotDraw(false);
-        gestureDetector = new GestureDetector(context, longClickListener);
+        gestureDetector = new GestureDetector(context, new SimpleOnGestureListener() {
+            public void onLongPress(MotionEvent e) {
+                mHasPerformedLongPress = childView.performLongClick();
+                if (mHasPerformedLongPress) {
+                    if (rippleHover) {
+                        startRipple(null);
+                    }
+                    cancelPressedEvent();
+                }
+            }
+
+            @Override
+            public boolean onDown(MotionEvent e) {
+                mHasPerformedLongPress = false;
+                return super.onDown(e);
+            }
+        });
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MaterialRippleLayout);
         rippleColor = a.getColor(R.styleable.MaterialRippleLayout_mrl_rippleColor, DEFAULT_COLOR);
@@ -149,14 +168,8 @@ public class MaterialRippleLayout extends FrameLayout {
         enableClipPathSupportIfNecessary();
     }
 
-
-    @SuppressWarnings("unchecked")
-    public <T extends View> T getChildView() {
-        return (T) childView;
-    }
-
     @Override
-    public final void addView(View child, int index, ViewGroup.LayoutParams params) {
+    public final void addView(@NonNull View child, int index, ViewGroup.LayoutParams params) {
         if (getChildCount() > 0) {
             throw new IllegalStateException("MaterialRippleLayout can host only one child");
         }
@@ -179,7 +192,7 @@ public class MaterialRippleLayout extends FrameLayout {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(@NonNull MotionEvent event) {
         boolean superOnTouchEvent = super.onTouchEvent(event);
 
         if (!isEnabled() || !childView.isEnabled()) {
@@ -200,8 +213,7 @@ public class MaterialRippleLayout extends FrameLayout {
             int action = event.getActionMasked();
             switch (action) {
                 case MotionEvent.ACTION_UP:
-                    pendingClickEvent = new PerformClickEvent();
-
+                    Log.i(TAG, "ACTION_UP");
                     if (prepressed) {
                         childView.setPressed(true);
                         postDelayed(new Runnable() {
@@ -213,16 +225,20 @@ public class MaterialRippleLayout extends FrameLayout {
                     }
 
                     if (isEventInBounds) {
+                        PerformClickEvent pendingClickEvent = new PerformClickEvent();
                         startRipple(pendingClickEvent);
+                        if (!rippleDelayClick) {
+                            pendingClickEvent.run();
+                        }
                     } else if (!rippleHover) {
                         setRadius(0);
                     }
-                    if (!rippleDelayClick && isEventInBounds) {
-                        pendingClickEvent.run();
-                    }
+
                     cancelPressedEvent();
                     break;
                 case MotionEvent.ACTION_DOWN:
+                    Log.i(TAG, "ACTION_DOWN");
+
                     setPositionInAdapter();
                     eventCancelled = false;
                     pendingPressEvent = new PressedEvent(event);
@@ -235,6 +251,8 @@ public class MaterialRippleLayout extends FrameLayout {
                     }
                     break;
                 case MotionEvent.ACTION_CANCEL:
+                    Log.i(TAG, "ACTION_CANCEL");
+
                     if (rippleInAdapter) {
                         // dont use current coords in adapter since they tend to jump drastically on scroll
                         currentCoords.set(previousCoords.x, previousCoords.y);
@@ -251,6 +269,8 @@ public class MaterialRippleLayout extends FrameLayout {
                     cancelPressedEvent();
                     break;
                 case MotionEvent.ACTION_MOVE:
+                    Log.i(TAG, "ACTION_MOVE");
+
                     if (rippleHover) {
                         if (isEventInBounds && !eventCancelled) {
                             invalidate();
@@ -281,23 +301,6 @@ public class MaterialRippleLayout extends FrameLayout {
     }
 
     private boolean mHasPerformedLongPress;
-    private SimpleOnGestureListener longClickListener = new SimpleOnGestureListener() {
-        public void onLongPress(MotionEvent e) {
-            mHasPerformedLongPress = childView.performLongClick();
-            if (mHasPerformedLongPress) {
-                if (rippleHover) {
-                    startRipple(null);
-                }
-                cancelPressedEvent();
-            }
-        }
-
-        @Override
-        public boolean onDown(MotionEvent e) {
-            mHasPerformedLongPress = false;
-            return super.onDown(e);
-        }
-    };
 
     private void startHover() {
         if (eventCancelled) {
@@ -467,11 +470,11 @@ public class MaterialRippleLayout extends FrameLayout {
         return true;
     }
 
-    /*
+    /**
      * Drawing
      */
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(@NonNull Canvas canvas) {
         final boolean positionChanged = adapterPositionChanged();
         if (rippleOverlay) {
             if (!positionChanged) {
@@ -496,7 +499,7 @@ public class MaterialRippleLayout extends FrameLayout {
         }
     }
 
-    /*
+    /**
      * Animations
      */
     private Property<MaterialRippleLayout, Float> radiusProperty = new Property<MaterialRippleLayout, Float>(Float.class, "radius") {
@@ -542,8 +545,8 @@ public class MaterialRippleLayout extends FrameLayout {
         invalidate();
     }
 
-    /*
-    * Accessor
+    /**
+     * Accessor
      */
     public void setRippleColor(int rippleColor) {
         this.rippleColor = rippleColor;
@@ -627,7 +630,7 @@ public class MaterialRippleLayout extends FrameLayout {
         }
     }
 
-    /*
+    /**
      * Helper
      */
     private class PerformClickEvent implements Runnable {
@@ -683,10 +686,9 @@ public class MaterialRippleLayout extends FrameLayout {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.getDisplayMetrics());
     }
 
-    /*
+    /**
      * Builder
      */
-
     public static class RippleBuilder {
 
         private final Context context;
