@@ -16,6 +16,8 @@
 
 package com.astuetz;
 
+import com.astuetz.pagerslidingtabstrip.R;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -43,18 +45,16 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.astuetz.pagerslidingtabstrip.R;
-
 import java.util.Locale;
 
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     public interface CustomTabProvider {
-        public View getCustomTabView(ViewGroup parent, int position);
+        View getCustomTabView(ViewGroup parent, int position);
     }
 
     public interface OnTabReselectedListener {
-        public void onTabReselected(int position);
+        void onTabReselected(int position);
     }
 
     // @formatter:off
