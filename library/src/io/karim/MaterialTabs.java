@@ -814,4 +814,71 @@ public class MaterialTabs extends HorizontalScrollView {
         this.tabPadding = paddingPx;
         updateTabStyles();
     }
+
+
+    public void setRippleColor(int rippleColor) {
+        this.rippleColor = rippleColor;
+        notifyDataSetChanged();
+    }
+
+    public void setRippleHighlightColor(int rippleHighlightColor) {
+        this.rippleHighlightColor = rippleHighlightColor;
+        notifyDataSetChanged();
+    }
+
+    public void setRippleOverlay(boolean rippleOverlay) {
+        this.rippleOverlay = rippleOverlay;
+        notifyDataSetChanged();
+    }
+
+    public void setRippleHover(boolean rippleHover) {
+        this.rippleHover = rippleHover;
+        notifyDataSetChanged();
+    }
+
+    public void setRippleDiameter(int rippleDiameter) {
+        this.rippleDiameter = rippleDiameter;
+        notifyDataSetChanged();
+    }
+
+    public void setRippleDuration(int rippleDuration) {
+        this.rippleDuration = rippleDuration;
+        notifyDataSetChanged();
+    }
+
+    public void setRippleAlphaFloat(float rippleAlphaFloat) {
+        this.rippleAlphaFloat = rippleAlphaFloat;
+        notifyDataSetChanged();
+    }
+
+    public void setRippleDelayClick(boolean rippleDelayClick) {
+        this.rippleDelayClick = rippleDelayClick;
+        notifyDataSetChanged();
+    }
+
+    public void setRippleFadeDuration(int rippleFadeDuration) {
+        this.rippleFadeDuration = rippleFadeDuration;
+        notifyDataSetChanged();
+    }
+
+    public void setRipplePersistent(boolean ripplePersistent) {
+        this.ripplePersistent = ripplePersistent;
+        notifyDataSetChanged();
+    }
+
+    public void setRippleBackgroundColor(int rippleBackgroundColor) {
+        this.rippleBackgroundColor = rippleBackgroundColor;
+        notifyDataSetChanged();
+    }
+
+    public void setRippleInAdapter(boolean rippleInAdapter) {
+        this.rippleInAdapter = rippleInAdapter;
+        notifyDataSetChanged();
+    }
+
+    public void setRippleRoundedCorners(float rippleRoundedCorners) {
+        this.rippleRoundedCorners = rippleRoundedCorners;
+        notifyDataSetChanged();
+    }
+
 }
