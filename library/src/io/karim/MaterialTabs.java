@@ -123,6 +123,22 @@ public class MaterialTabs extends HorizontalScrollView {
 
     private int tabBackgroundResId = R.drawable.psts_background_tab;
 
+    // Fields from MaterialRippleLayout
+    private int rippleColor;
+    private int rippleHighlightColor;
+    private boolean rippleOverlay;
+    private boolean rippleHover;
+    private int rippleDiameter;
+    private int rippleDuration;
+    private int rippleAlpha;
+    private boolean rippleDelayClick;
+    private int rippleFadeDuration;
+    private boolean ripplePersistent;
+    private int rippleBackgroundColor;
+    private boolean rippleInAdapter;
+    private float rippleRoundedCorners;
+    //~ Fields from MaterialRippleLayout
+
     private Locale locale;
 
     public MaterialTabs(Context context) {
@@ -165,8 +181,9 @@ public class MaterialTabs extends HorizontalScrollView {
         paddingRight = padding > 0 ? padding : a.getDimensionPixelSize(PADDING_RIGHT_INDEX, 0);
         a.recycle();
 
-        // Get custom attrs.
         a = context.obtainStyledAttributes(attrs, R.styleable.MaterialTabs);
+
+        // Get custom attrs of MaterialTabs.
         indicatorColor = a.getColor(R.styleable.MaterialTabs_pstsIndicatorColor, indicatorColor);
         underlineColor = a.getColor(R.styleable.MaterialTabs_pstsUnderlineColor, underlineColor);
         dividerColor = a.getColor(R.styleable.MaterialTabs_pstsDividerColor, dividerColor);
@@ -184,6 +201,27 @@ public class MaterialTabs extends HorizontalScrollView {
         tabTypefaceSelectedStyle = a.getInt(R.styleable.MaterialTabs_pstsTextSelectedStyle, Typeface.BOLD);
         tabTextColorSelected = a.getColorStateList(R.styleable.MaterialTabs_pstsTextColorSelected);
         textAlpha = a.getInt(R.styleable.MaterialTabs_pstsTextAlpha, textAlpha);
+
+        // Get custom attrs of MaterialRippleLayout.
+        rippleColor = a.getColor(R.styleable.MaterialTabs_pstsMrlRippleColor, MaterialRippleLayout.DEFAULT_COLOR);
+        // Making default ripple highlight color the same as rippleColor but with 1/4 the alpha.
+        rippleHighlightColor = Color.argb((int) (Color.alpha(rippleColor) * 0.25), Color.red(rippleColor), Color.green(rippleColor),
+                Color.blue(rippleColor));
+        rippleHighlightColor = a.getColor(R.styleable.MaterialTabs_pstsMrlRippleHighlightColor, rippleHighlightColor);
+        rippleDiameter = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsMrlRippleDimension,
+                (int) Utils.dpToPx(getResources(), MaterialRippleLayout.DEFAULT_DIAMETER_DP));
+        rippleOverlay = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleOverlay, MaterialRippleLayout.DEFAULT_RIPPLE_OVERLAY);
+        rippleHover = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleHover, MaterialRippleLayout.DEFAULT_HOVER);
+        rippleDuration = a.getInt(R.styleable.MaterialTabs_pstsMrlRippleDuration, MaterialRippleLayout.DEFAULT_DURATION);
+        rippleAlpha = (int) (255 * a.getFloat(R.styleable.MaterialTabs_pstsMrlRippleAlpha, MaterialRippleLayout.DEFAULT_ALPHA));
+        rippleDelayClick = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleDelayClick, MaterialRippleLayout.DEFAULT_DELAY_CLICK);
+        rippleFadeDuration = a.getInteger(R.styleable.MaterialTabs_pstsMrlRippleFadeDuration, MaterialRippleLayout.DEFAULT_FADE_DURATION);
+        rippleBackgroundColor = a.getColor(R.styleable.MaterialTabs_pstsMrlRippleBackground, MaterialRippleLayout.DEFAULT_BACKGROUND);
+        ripplePersistent = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRipplePersistent, MaterialRippleLayout.DEFAULT_PERSISTENT);
+        rippleInAdapter = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleInAdapter, MaterialRippleLayout.DEFAULT_SEARCH_ADAPTER);
+        rippleRoundedCorners = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsMrlRippleRoundedCorners,
+                MaterialRippleLayout.DEFAULT_ROUNDED_CORNERS);
+
         a.recycle();
 
         tabTextColor = colorStateList == null ? getColorStateList(
@@ -233,16 +271,31 @@ public class MaterialTabs extends HorizontalScrollView {
         tabCount = pager.getAdapter().getCount();
         View tabView;
         for (int i = 0; i < tabCount; i++) {
-
             if (pager.getAdapter() instanceof CustomTabProvider) {
                 tabView = ((CustomTabProvider) pager.getAdapter()).getCustomTabView(this, i);
             } else {
                 tabView = LayoutInflater.from(getContext()).inflate(R.layout.psts_tab, this, false);
             }
 
+            MaterialRippleLayout materialRippleLayout = MaterialRippleLayout.on(tabView)
+                                                                            .rippleAlpha(rippleAlpha)
+                                                                            .rippleBackground(rippleBackgroundColor)
+                                                                            .rippleColor(rippleColor)
+                                                                            .rippleDelayClick(rippleDelayClick)
+                                                                            .rippleDiameterDp(rippleDiameter)
+                                                                            .rippleDuration(rippleDuration)
+                                                                            .rippleFadeDuration(rippleFadeDuration)
+                                                                            .rippleHover(rippleHover)
+                                                                            .rippleHighlightColor(rippleHighlightColor)
+                                                                            .rippleInAdapter(rippleInAdapter)
+                                                                            .rippleOverlay(rippleOverlay)
+                                                                            .ripplePersistent(ripplePersistent)
+                                                                            .rippleRoundedCorners(Utils.dpToPx(getResources(), rippleRoundedCorners))
+                                                                            .create();
+
             CharSequence title = pager.getAdapter().getPageTitle(i);
 
-            addTab(i, title, tabView);
+            addTab(i, title, materialRippleLayout);
         }
 
         updateTabStyles();

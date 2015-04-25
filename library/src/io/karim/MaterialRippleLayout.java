@@ -23,7 +23,6 @@ import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.util.Property;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -37,7 +36,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -59,21 +57,20 @@ public class MaterialRippleLayout extends FrameLayout {
 
     private static final String TAG = MaterialRippleLayout.class.getSimpleName();
 
-    private static final int DEFAULT_DURATION = 250;
-    private static final int DEFAULT_FADE_DURATION = 125;
-    private static final float DEFAULT_DIAMETER_DP = 35;
-    private static final float DEFAULT_ALPHA = 0.2f;
-    private static final int DEFAULT_COLOR = Color.WHITE;
-    private static final int DEFAULT_BACKGROUND = Color.TRANSPARENT;
-    private static final boolean DEFAULT_HOVER = true;
-    private static final boolean DEFAULT_DELAY_CLICK = false;
-    private static final boolean DEFAULT_PERSISTENT = false;
-    private static final boolean DEFAULT_SEARCH_ADAPTER = false;
-    private static final boolean DEFAULT_RIPPLE_OVERLAY = false;
-    private static final int DEFAULT_ROUNDED_CORNERS = 0;
-
-    private static final int FADE_EXTRA_DELAY = 50;
-    private static final long HOVER_DURATION = 2500;
+    public static final int DEFAULT_DURATION = 250;
+    public static final int DEFAULT_FADE_DURATION = 125;
+    public static final float DEFAULT_DIAMETER_DP = 35;
+    public static final float DEFAULT_ALPHA = 0.2f;
+    public static final int DEFAULT_COLOR = Color.WHITE;
+    public static final int DEFAULT_BACKGROUND = Color.TRANSPARENT;
+    public static final boolean DEFAULT_HOVER = true;
+    public static final boolean DEFAULT_DELAY_CLICK = false;
+    public static final boolean DEFAULT_PERSISTENT = false;
+    public static final boolean DEFAULT_SEARCH_ADAPTER = false;
+    public static final boolean DEFAULT_RIPPLE_OVERLAY = false;
+    public static final int DEFAULT_ROUNDED_CORNERS = 0;
+    public static final int FADE_EXTRA_DELAY = 50;
+    public static final long HOVER_DURATION = 2500;
 
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Rect bounds = new Rect();
@@ -147,24 +144,24 @@ public class MaterialRippleLayout extends FrameLayout {
         });
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MaterialRippleLayout);
-        rippleColor = a.getColor(R.styleable.MaterialRippleLayout_mrl_rippleColor, DEFAULT_COLOR);
+        rippleColor = a.getColor(R.styleable.MaterialRippleLayout_mrlRippleColor, DEFAULT_COLOR);
 
         // Making default ripple highlight color the same as rippleColor but with 1/4 the alpha.
         rippleHighlightColor = Color.argb((int) (Color.alpha(rippleColor) * 0.25), Color.red(rippleColor), Color.green(rippleColor),
                 Color.blue(rippleColor));
-        rippleHighlightColor = a.getColor(R.styleable.MaterialRippleLayout_mrl_rippleHighlightColor, rippleHighlightColor);
-        rippleDiameter = a.getDimensionPixelSize(R.styleable.MaterialRippleLayout_mrl_rippleDimension,
-                (int) dpToPx(getResources(), DEFAULT_DIAMETER_DP));
-        rippleOverlay = a.getBoolean(R.styleable.MaterialRippleLayout_mrl_rippleOverlay, DEFAULT_RIPPLE_OVERLAY);
-        rippleHover = a.getBoolean(R.styleable.MaterialRippleLayout_mrl_rippleHover, DEFAULT_HOVER);
-        rippleDuration = a.getInt(R.styleable.MaterialRippleLayout_mrl_rippleDuration, DEFAULT_DURATION);
-        rippleAlpha = (int) (255 * a.getFloat(R.styleable.MaterialRippleLayout_mrl_rippleAlpha, DEFAULT_ALPHA));
-        rippleDelayClick = a.getBoolean(R.styleable.MaterialRippleLayout_mrl_rippleDelayClick, DEFAULT_DELAY_CLICK);
-        rippleFadeDuration = a.getInteger(R.styleable.MaterialRippleLayout_mrl_rippleFadeDuration, DEFAULT_FADE_DURATION);
-        rippleBackground = new ColorDrawable(a.getColor(R.styleable.MaterialRippleLayout_mrl_rippleBackground, DEFAULT_BACKGROUND));
-        ripplePersistent = a.getBoolean(R.styleable.MaterialRippleLayout_mrl_ripplePersistent, DEFAULT_PERSISTENT);
-        rippleInAdapter = a.getBoolean(R.styleable.MaterialRippleLayout_mrl_rippleInAdapter, DEFAULT_SEARCH_ADAPTER);
-        rippleRoundedCorners = a.getDimensionPixelSize(R.styleable.MaterialRippleLayout_mrl_rippleRoundedCorners, DEFAULT_ROUNDED_CORNERS);
+        rippleHighlightColor = a.getColor(R.styleable.MaterialRippleLayout_mrlRippleHighlightColor, rippleHighlightColor);
+        rippleDiameter = a.getDimensionPixelSize(R.styleable.MaterialRippleLayout_mrlRippleDimension,
+                (int) Utils.dpToPx(getResources(), DEFAULT_DIAMETER_DP));
+        rippleOverlay = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleOverlay, DEFAULT_RIPPLE_OVERLAY);
+        rippleHover = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleHover, DEFAULT_HOVER);
+        rippleDuration = a.getInt(R.styleable.MaterialRippleLayout_mrlRippleDuration, DEFAULT_DURATION);
+        rippleAlpha = (int) (255 * a.getFloat(R.styleable.MaterialRippleLayout_mrlRippleAlpha, DEFAULT_ALPHA));
+        rippleDelayClick = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleDelayClick, DEFAULT_DELAY_CLICK);
+        rippleFadeDuration = a.getInteger(R.styleable.MaterialRippleLayout_mrlRippleFadeDuration, DEFAULT_FADE_DURATION);
+        rippleBackground = new ColorDrawable(a.getColor(R.styleable.MaterialRippleLayout_mrlRippleBackground, DEFAULT_BACKGROUND));
+        ripplePersistent = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRipplePersistent, DEFAULT_PERSISTENT);
+        rippleInAdapter = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleInAdapter, DEFAULT_SEARCH_ADAPTER);
+        rippleRoundedCorners = a.getDimensionPixelSize(R.styleable.MaterialRippleLayout_mrlRippleRoundedCorners, DEFAULT_ROUNDED_CORNERS);
 
         a.recycle();
 
@@ -550,8 +547,15 @@ public class MaterialRippleLayout extends FrameLayout {
      */
     public void setRippleColor(int rippleColor) {
         this.rippleColor = rippleColor;
+        this.rippleHighlightColor = Color.argb((int) (Color.alpha(rippleColor) * 0.25), Color.red(rippleColor), Color.green(rippleColor),
+                Color.blue(rippleColor));
         paint.setColor(rippleColor);
         paint.setAlpha(rippleAlpha);
+        invalidate();
+    }
+
+    public void setRippleHighlightColor(int rippleHighlightColor) {
+        this.rippleHighlightColor = rippleHighlightColor;
         invalidate();
     }
 
@@ -684,10 +688,6 @@ public class MaterialRippleLayout extends FrameLayout {
         }
     }
 
-    static float dpToPx(Resources resources, float dp) {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.getDisplayMetrics());
-    }
-
     /**
      * Builder
      */
@@ -697,6 +697,7 @@ public class MaterialRippleLayout extends FrameLayout {
         private final View child;
 
         private int rippleColor = DEFAULT_COLOR;
+        private int rippleHighlightColor;
         private boolean rippleOverlay = DEFAULT_RIPPLE_OVERLAY;
         private boolean rippleHover = DEFAULT_HOVER;
         private float rippleDiameter = DEFAULT_DIAMETER_DP;
@@ -716,6 +717,16 @@ public class MaterialRippleLayout extends FrameLayout {
 
         public RippleBuilder rippleColor(int color) {
             this.rippleColor = color;
+            this.rippleHighlightColor = Color.argb((int) (Color.alpha(rippleColor) * 0.25), Color.red(rippleColor), Color.green(rippleColor),
+                    Color.blue(rippleColor));
+            return this;
+        }
+
+        /**
+         * Make sure to call this after rippleColor() in the Builder.
+         */
+        public RippleBuilder rippleHighlightColor(int highlightColor) {
+            this.rippleHighlightColor = highlightColor;
             return this;
         }
 
@@ -779,15 +790,16 @@ public class MaterialRippleLayout extends FrameLayout {
             layout.setRippleColor(rippleColor);
             layout.setDefaultRippleAlpha((int) rippleAlpha);
             layout.setRippleDelayClick(rippleDelayClick);
-            layout.setRippleDiameter((int) dpToPx(context.getResources(), rippleDiameter));
+            layout.setRippleDiameter((int) Utils.dpToPx(context.getResources(), rippleDiameter));
             layout.setRippleDuration(rippleDuration);
             layout.setRippleFadeDuration(rippleFadeDuration);
+            layout.setRippleHighlightColor(rippleHighlightColor);
             layout.setRippleHover(rippleHover);
             layout.setRipplePersistent(ripplePersistent);
             layout.setRippleOverlay(rippleOverlay);
             layout.setRippleBackground(rippleBackground);
             layout.setRippleInAdapter(rippleSearchAdapter);
-            layout.setRippleRoundedCorners((int) dpToPx(context.getResources(), rippleRoundedCorner));
+            layout.setRippleRoundedCorners((int) Utils.dpToPx(context.getResources(), rippleRoundedCorner));
 
             ViewGroup.LayoutParams params = child.getLayoutParams();
             ViewGroup parent = (ViewGroup) child.getParent();
