@@ -17,7 +17,6 @@
 package com.balysv.materialripple;
 
 import com.astuetz.pagerslidingtabstrip.R;
-
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.AnimatorSet;
@@ -56,14 +55,14 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 public class MaterialRippleLayout extends FrameLayout {
 
-    private static final int DEFAULT_DURATION = 350;
+    private static final int DEFAULT_DURATION = 250;
     private static final int DEFAULT_FADE_DURATION = 75;
     private static final float DEFAULT_DIAMETER_DP = 35;
     private static final float DEFAULT_ALPHA = 0.2f;
-    private static final int DEFAULT_COLOR = Color.BLACK;
+    private static final int DEFAULT_COLOR = Color.WHITE;
     private static final int DEFAULT_BACKGROUND = Color.TRANSPARENT;
     private static final boolean DEFAULT_HOVER = true;
-    private static final boolean DEFAULT_DELAY_CLICK = true;
+    private static final boolean DEFAULT_DELAY_CLICK = false;
     private static final boolean DEFAULT_PERSISTENT = false;
     private static final boolean DEFAULT_SEARCH_ADAPTER = false;
     private static final boolean DEFAULT_RIPPLE_OVERLAY = false;
@@ -206,11 +205,11 @@ public class MaterialRippleLayout extends FrameLayout {
                     if (prepressed) {
                         childView.setPressed(true);
                         postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        childView.setPressed(false);
-                                    }
-                                }, ViewConfiguration.getPressedStateDuration());
+                            @Override
+                            public void run() {
+                                childView.setPressed(false);
+                            }
+                        }, ViewConfiguration.getPressedStateDuration());
                     }
 
                     if (isEventInBounds) {
