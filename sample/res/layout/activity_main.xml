@@ -8,7 +8,7 @@
 
     <include layout="@layout/toolbar"/>
 
-    <com.astuetz.PagerSlidingTabStrip
+    <io.karim.PagerSlidingTabStrip
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"

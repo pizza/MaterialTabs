@@ -16,7 +16,7 @@
 
 package com.astuetz.viewpager.extensions.sample;
 
-import com.astuetz.PagerSlidingTabStrip;
+import io.karim.PagerSlidingTabStrip;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import android.graphics.drawable.ColorDrawable;

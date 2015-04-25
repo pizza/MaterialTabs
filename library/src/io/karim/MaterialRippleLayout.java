@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.balysv.materialripple;
+package io.karim;
 
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;

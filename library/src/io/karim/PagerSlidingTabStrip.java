@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.astuetz;
+package io.karim;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
