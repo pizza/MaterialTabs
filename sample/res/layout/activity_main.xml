@@ -256,4 +256,55 @@
         </RadioGroup>
     </LinearLayout>
     <!--~ Divider Color -->
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/dividerWidthTextView"
+            android:text="Divider Width" />
+
+        <SeekBar android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dividerWidthSeekBar"
+            android:max="40" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/indicatorHeightTextView"
+            android:text="Indicator Height" />
+
+        <SeekBar android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/indicatorHeightSeekBar"
+            android:max="40" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/underlineHeightTextView"
+            android:text="Underline Height" />
+
+        <SeekBar android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/underlineHeightSeekBar"
+            android:max="40" />
+    </LinearLayout>
 </LinearLayout>

@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -21,6 +23,13 @@ public class MainActivity extends ActionBarActivity {
     public static final String INDICATOR_COLOR = "INDICATOR_COLOR";
     public static final String UNDERLINE_COLOR = "UNDERLINE_COLOR";
     public static final String DIVIDER_COLOR = "DIVIDER_COLOR";
+    public static final String DIVIDER_WIDTH = "DIVIDER_WIDTH";
+    public static final String INDICATOR_HEIGHT = "INDICATOR_HEIGHT";
+    public static final String UNDERLINE_HEIGHT = "UNDERLINE_HEIGHT";
+
+    private static final int DIVIDER_WIDTH_MINIMUM_DP = 20;
+    private static final int UNDERLINE_HEIGHT_MINIMUM_DP = 20;
+    private static final int INDICATOR_HEIGHT_MINIMUM_DP = 20;
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
@@ -43,6 +52,27 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.dividerColorButtonMantis)
     RadioButtonCenter dividerColorButtonMantis;
 
+    // Divider Width
+    @InjectView(R.id.dividerWidthSeekBar)
+    SeekBar dividerWidthSeekBar;
+    @InjectView(R.id.dividerWidthTextView)
+    TextView dividerWidthTextView;
+
+    // Indicator Height
+    @InjectView(R.id.indicatorHeightSeekBar)
+    SeekBar indicatorHeightSeekBar;
+    @InjectView(R.id.indicatorHeightTextView)
+    TextView indicatorHeightTextView;
+
+    // Underline Height
+    @InjectView(R.id.underlineHeightSeekBar)
+    SeekBar underlineHeightSeekBar;
+    @InjectView(R.id.underlineHeightTextView)
+    TextView underlineHeightTextView;
+
+    private int underlineHeightDp;
+    private int dividerWidthDp;
+    private int indicatorHeightDp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +88,55 @@ public class MainActivity extends ActionBarActivity {
         indicatorColorButtonMantis.setChecked(true);
         underlineColorButtonMantis.setChecked(true);
         dividerColorButtonMantis.setChecked(true);
+
+        dividerWidthSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                dividerWidthDp = progress + DIVIDER_WIDTH_MINIMUM_DP;
+                dividerWidthTextView.setText(getString(R.string.divider_width) + ": " + dividerWidthDp + "dp");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        underlineHeightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                underlineHeightDp = progress + UNDERLINE_HEIGHT_MINIMUM_DP;
+                underlineHeightTextView.setText(getString(R.string.underline_height) + ": " + underlineHeightDp + "dp");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        indicatorHeightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                indicatorHeightDp = progress + INDICATOR_HEIGHT_MINIMUM_DP;
+                indicatorHeightTextView.setText(getString(R.string.indicator_height) + ": " + indicatorHeightDp + "dp");
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
     }
 
     @Override
@@ -87,64 +166,89 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, TabsActivity.class);
 
         // Indicator Color
+        String key = INDICATOR_COLOR;
         switch (indicatorColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.indicatorColorButtonFireEngineRed:
-                intent.putExtra(INDICATOR_COLOR, R.color.fire_engine_red);
+                intent.putExtra(key, R.color.fire_engine_red);
                 break;
             case R.id.indicatorColorButtonGorse:
-                intent.putExtra(INDICATOR_COLOR, R.color.gorse);
+                intent.putExtra(key, R.color.gorse);
                 break;
             case R.id.indicatorColorButtonIrisBlue:
-                intent.putExtra(INDICATOR_COLOR, R.color.iris_blue);
+                intent.putExtra(key, R.color.iris_blue);
                 break;
             case R.id.indicatorColorButtonSafetyOrange:
-                intent.putExtra(INDICATOR_COLOR, R.color.safety_orange);
+                intent.putExtra(key, R.color.safety_orange);
+                break;
+            case R.id.indicatorColorButtonWhite:
+                intent.putExtra(key, R.color.white);
+                break;
+            case R.id.indicatorColorButtonBlack:
+                intent.putExtra(key, R.color.black);
                 break;
             case R.id.indicatorColorButtonMantis:
             default:
-                intent.putExtra(INDICATOR_COLOR, R.color.mantis);
+                intent.putExtra(key, R.color.mantis);
                 break;
         }
 
         // Underline Color
+        key = UNDERLINE_COLOR;
         switch (underlineColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.underlineColorButtonFireEngineRed:
-                intent.putExtra(UNDERLINE_COLOR, R.color.fire_engine_red);
+                intent.putExtra(key, R.color.fire_engine_red);
                 break;
             case R.id.underlineColorButtonGorse:
-                intent.putExtra(UNDERLINE_COLOR, R.color.gorse);
+                intent.putExtra(key, R.color.gorse);
                 break;
             case R.id.underlineColorButtonIrisBlue:
-                intent.putExtra(UNDERLINE_COLOR, R.color.iris_blue);
+                intent.putExtra(key, R.color.iris_blue);
                 break;
             case R.id.underlineColorButtonSafetyOrange:
-                intent.putExtra(UNDERLINE_COLOR, R.color.safety_orange);
+                intent.putExtra(key, R.color.safety_orange);
+                break;
+            case R.id.underlineColorButtonWhite:
+                intent.putExtra(key, R.color.white);
+                break;
+            case R.id.underlineColorButtonBlack:
+                intent.putExtra(key, R.color.black);
                 break;
             case R.id.underlineColorButtonMantis:
             default:
-                intent.putExtra(UNDERLINE_COLOR, R.color.mantis);
+                intent.putExtra(key, R.color.mantis);
                 break;
         }
 
         // Divider Color
+        key = DIVIDER_COLOR;
         switch (dividerColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.dividerColorButtonFireEngineRed:
-                intent.putExtra(DIVIDER_COLOR, R.color.fire_engine_red);
+                intent.putExtra(key, R.color.fire_engine_red);
                 break;
             case R.id.dividerColorButtonGorse:
-                intent.putExtra(DIVIDER_COLOR, R.color.gorse);
+                intent.putExtra(key, R.color.gorse);
                 break;
             case R.id.dividerColorButtonIrisBlue:
-                intent.putExtra(DIVIDER_COLOR, R.color.iris_blue);
+                intent.putExtra(key, R.color.iris_blue);
                 break;
             case R.id.dividerColorButtonSafetyOrange:
-                intent.putExtra(DIVIDER_COLOR, R.color.safety_orange);
+                intent.putExtra(key, R.color.safety_orange);
+                break;
+            case R.id.dividerColorButtonWhite:
+                intent.putExtra(key, R.color.white);
+                break;
+            case R.id.dividerColorButtonBlack:
+                intent.putExtra(key, R.color.black);
                 break;
             case R.id.dividerColorButtonMantis:
             default:
-                intent.putExtra(DIVIDER_COLOR, R.color.mantis);
+                intent.putExtra(key, R.color.mantis);
                 break;
         }
+
+        intent.putExtra(DIVIDER_WIDTH, dividerWidthDp);
+        intent.putExtra(INDICATOR_HEIGHT, indicatorHeightDp);
+        intent.putExtra(UNDERLINE_HEIGHT, underlineHeightDp);
 
         startActivity(intent);
     }

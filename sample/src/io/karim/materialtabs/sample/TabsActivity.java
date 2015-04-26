@@ -32,6 +32,7 @@ import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import io.karim.MaterialTabs;
+import io.karim.Utils;
 
 public class TabsActivity extends ActionBarActivity {
 
@@ -95,6 +96,15 @@ public class TabsActivity extends ActionBarActivity {
 
                 int dividerColor = extras.getInt(MainActivity.DIVIDER_COLOR);
                 mMaterialTabs.setDividerColor(getResources().getColor(dividerColor));
+
+                int dividerWidthDp = extras.getInt(MainActivity.DIVIDER_WIDTH);
+                mMaterialTabs.setDividerWidth(Utils.dpToPx(getResources(), dividerWidthDp));
+
+                int indicatorHeightDp = extras.getInt(MainActivity.INDICATOR_HEIGHT);
+                mMaterialTabs.setIndicatorHeight(Utils.dpToPx(getResources(), indicatorHeightDp));
+
+                int underlineHeightDp = extras.getInt(MainActivity.UNDERLINE_HEIGHT);
+                mMaterialTabs.setUnderlineHeight(Utils.dpToPx(getResources(), underlineHeightDp));
             }
         }
 
