@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -29,6 +30,9 @@ public class MainActivity extends ActionBarActivity {
     public static final String TAB_PADDING = "TAB_PADDING";
     public static final String DIVIDER_PADDING = "DIVIDER_PADDING";
     public static final String SCROLL_OFFSET = "SCROLL_OFFSET";
+    public static final String PADDING_MIDDLE = "PADDING_MIDDLE";
+    public static final String SHOULD_EXPAND = "SHOULD_EXPAND";
+    public static final String TEXT_ALL_CAPS = "TEXT_ALL_CAPS";
 
     private static final int DIVIDER_WIDTH_MINIMUM_DP = 20;
     private static final int UNDERLINE_HEIGHT_MINIMUM_DP = 20;
@@ -93,6 +97,18 @@ public class MainActivity extends ActionBarActivity {
     SeekBar scrollOffsetSeekBar;
     @InjectView(R.id.scrollOffsetTextView)
     TextView scrollOffsetTextView;
+
+    // Padding Middle
+    @InjectView(R.id.paddingMiddleCheckBox)
+    CheckBox paddingMiddleCheckBox;
+
+    // Should Expand
+    @InjectView(R.id.shouldExpandCheckBox)
+    CheckBox shouldExpandCheckBox;
+
+    // Text All Caps
+    @InjectView(R.id.textAllCapsCheckBox)
+    CheckBox textAllCapsCheckBox;
 
     private int underlineHeightDp;
     private int dividerWidthDp;
@@ -331,6 +347,12 @@ public class MainActivity extends ActionBarActivity {
         intent.putExtra(TAB_PADDING, tabPaddingDp);
         intent.putExtra(DIVIDER_PADDING, dividerPaddingDp);
         intent.putExtra(SCROLL_OFFSET, scrollOffsetDp);
+
+        // TODO:         <attr name="pstsTabBackground" format="reference" />
+
+        intent.putExtra(SHOULD_EXPAND, shouldExpandCheckBox.isChecked());
+        intent.putExtra(TEXT_ALL_CAPS, textAllCapsCheckBox.isChecked());
+        intent.putExtra(PADDING_MIDDLE, paddingMiddleCheckBox.isChecked());
 
         startActivity(intent);
     }

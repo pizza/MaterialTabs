@@ -11,4 +11,10 @@
     <string name="divider_padding">Divider Padding</string>
     <string name="tab_padding">Tab Padding Left Right</string>
     <string name="scroll_offset">Scroll Offset</string>
+    <string name="shouldExpand">Should Expand</string>
+    <string name="divider_color">Divider Color</string>
+    <string name="underline_color">Underline Color</string>
+    <string name="indicator_color">Indicator Color</string>
+    <string name="textAllCaps">Text All Caps</string>
+    <string name="paddingMiddle">Padding Middle</string>
 </resources>

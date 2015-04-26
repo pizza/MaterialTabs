@@ -770,6 +770,13 @@ public class MaterialTabs extends HorizontalScrollView {
         }
     }
 
+    public void setPaddingMiddle(boolean isPaddingMiddle) {
+        this.isPaddingMiddle = isPaddingMiddle;
+        if (pager != null) {
+            requestLayout();
+        }
+    }
+
     public void setAllCaps(boolean textAllCaps) {
         this.textAllCaps = textAllCaps;
     }

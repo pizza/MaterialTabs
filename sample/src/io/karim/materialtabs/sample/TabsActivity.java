@@ -99,6 +99,10 @@ public class TabsActivity extends ActionBarActivity {
                 mMaterialTabs.setDividerPadding(Utils.dpToPx(getResources(), extras.getInt(MainActivity.DIVIDER_PADDING)));
                 mMaterialTabs.setTabPaddingLeftRight(Utils.dpToPx(getResources(), extras.getInt(MainActivity.TAB_PADDING)));
                 mMaterialTabs.setScrollOffset(Utils.dpToPx(getResources(), extras.getInt(MainActivity.SCROLL_OFFSET)));
+
+                mMaterialTabs.setPaddingMiddle(extras.getBoolean(MainActivity.PADDING_MIDDLE));
+                mMaterialTabs.setShouldExpand(extras.getBoolean(MainActivity.SHOULD_EXPAND));
+                mMaterialTabs.setAllCaps(extras.getBoolean(MainActivity.TEXT_ALL_CAPS));
             }
         }
 
