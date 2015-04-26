@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+
     <color name="background_window">#FFE5E5E5</color>
-    <color name="green">#689F38</color>
     <color name="greenDark">#3E5F22</color>
-    <color name="banana">#FFCC00</color>
+
+    <!-- Material colors -->
+    <color name="fuchsia_blue">#7E57C2</color>
+    <color name="ultramarine_blue">#5677FC</color>
+    <color name="violet_blue">#3F51B5</color>
+    <color name="gossamer">#009788</color>
+    <color name="dull_lime">#42BD41</color>
+    <color name="purple_heart">#673BB7</color>
+    <color name="iris_blue">#00BCD5</color>
+    <color name="deep_sky_blue">#02A9F7</color>
+    <color name="las_palmas">#CDDC39</color>
+    <color name="mantis">#8BC24A</color>
+    <color name="hoki">#607D8B</color>
+    <color name="roman_coffee">#795547</color>
+    <color name="carmine_pink">#E74E40</color>
+    <color name="safety_orange">#FF9700</color>
+    <color name="gorse">#FFEB3C</color>
+    <color name="star_dust">#9E9E9E</color>
+    <color name="espresso">#4D342F</color>
+    <color name="fire_engine_red">#D01715</color>
+    <color name="flamingo">#FE5722</color>
+    <color name="turbo">#FEC928</color>
+    <!--~ Material colors -->
+
 </resources>

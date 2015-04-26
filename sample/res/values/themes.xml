@@ -3,14 +3,23 @@
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/background_window</item>
         <!-- ...and here we setting appcompat’s color theming attrs -->
-        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimary">@color/mantis</item>
         <item name="colorPrimaryDark">@color/greenDark</item>
-        <item name="colorAccent">@color/banana</item>
+        <item name="colorAccent">@color/gorse</item>
         <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:radioButtonStyle">@style/RadioButtonWhiteCheck</item>
     </style>
 
     <style name="AppTheme" parent="AppBaseTheme">
 
+    </style>
+
+    <style name="RadioButtonWhiteCheck" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/radio_button_light</item>
+    </style>
+
+    <style name="RadioButtonBlackCheck" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/radio_button_dark</item>
     </style>
 
 </resources>

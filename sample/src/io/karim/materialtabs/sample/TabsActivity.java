@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.astuetz.viewpager.extensions.sample;
+package io.karim.materialtabs.sample;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -60,10 +60,7 @@ public class TabsActivity extends ActionBarActivity {
 
         mMaterialTabs.setViewPager(mViewPager);
 
-        // TODO: complete these and add all setters.
-        // TODO: pass these setters parameters that the user can set manually in MainActivity, for an awesome sample :-D
-        mMaterialTabs.setRippleDuration(1000);
-        mMaterialTabs.setIndicatorColor(Color.YELLOW);
+        applyParametersFromIntentExtras();
 
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics());
         mViewPager.setPageMargin(pageMargin);
@@ -83,6 +80,27 @@ public class TabsActivity extends ActionBarActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
+    }
+
+    private void applyParametersFromIntentExtras() {
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle extras = intent.getExtras();
+            if (extras != null) {
+                int indicatorColor = extras.getInt(MainActivity.INDICATOR_COLOR);
+                mMaterialTabs.setIndicatorColor(getResources().getColor(indicatorColor));
+
+                int underlineColor = extras.getInt(MainActivity.UNDERLINE_COLOR);
+                mMaterialTabs.setUnderlineColor(getResources().getColor(underlineColor));
+
+                int dividerColor = extras.getInt(MainActivity.DIVIDER_COLOR);
+                mMaterialTabs.setDividerColor(getResources().getColor(dividerColor));
+            }
+        }
+
+        // TODO: complete these and add all setters.
+        // TODO: pass these setters parameters that the user can set manually in MainActivity, for an awesome sample :-D
+        mMaterialTabs.setRippleDuration(1000);
     }
 
     public class SamplePagerAdapter extends FragmentPagerAdapter {
