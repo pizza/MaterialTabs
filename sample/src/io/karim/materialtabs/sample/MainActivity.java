@@ -26,10 +26,16 @@ public class MainActivity extends ActionBarActivity {
     public static final String DIVIDER_WIDTH = "DIVIDER_WIDTH";
     public static final String INDICATOR_HEIGHT = "INDICATOR_HEIGHT";
     public static final String UNDERLINE_HEIGHT = "UNDERLINE_HEIGHT";
+    public static final String TAB_PADDING = "TAB_PADDING";
+    public static final String DIVIDER_PADDING = "DIVIDER_PADDING";
+    public static final String SCROLL_OFFSET = "SCROLL_OFFSET";
 
     private static final int DIVIDER_WIDTH_MINIMUM_DP = 20;
     private static final int UNDERLINE_HEIGHT_MINIMUM_DP = 20;
     private static final int INDICATOR_HEIGHT_MINIMUM_DP = 20;
+    private static final int DIVIDER_PADDING_DP = 20;
+    private static final int TAB_PADDING_MINIMUM_DP = 20;
+    private static final int SCROLL_OFFSET_MINIMUM_DP = 20;
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
@@ -70,9 +76,30 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.underlineHeightTextView)
     TextView underlineHeightTextView;
 
+    // Tab Padding Left Right
+    @InjectView(R.id.tabPaddingSeekBar)
+    SeekBar tabPaddingSeekBar;
+    @InjectView(R.id.tabPaddingTextView)
+    TextView tabPaddingTextView;
+
+    // Divider Padding
+    @InjectView(R.id.dividerPaddingSeekBar)
+    SeekBar dividerPaddingSeekBar;
+    @InjectView(R.id.dividerPaddingTextView)
+    TextView dividerPaddingTextView;
+
+    // Scroll Offset
+    @InjectView(R.id.scrollOffsetSeekBar)
+    SeekBar scrollOffsetSeekBar;
+    @InjectView(R.id.scrollOffsetTextView)
+    TextView scrollOffsetTextView;
+
     private int underlineHeightDp;
     private int dividerWidthDp;
     private int indicatorHeightDp;
+    private int dividerPaddingDp;
+    private int tabPaddingDp;
+    private int scrollOffsetDp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +153,57 @@ public class MainActivity extends ActionBarActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 indicatorHeightDp = progress + INDICATOR_HEIGHT_MINIMUM_DP;
                 indicatorHeightTextView.setText(getString(R.string.indicator_height) + ": " + indicatorHeightDp + "dp");
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        dividerPaddingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                dividerPaddingDp = progress + DIVIDER_PADDING_DP;
+                dividerPaddingTextView.setText(getString(R.string.divider_padding) + ": " + dividerPaddingDp + "dp");
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        tabPaddingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                tabPaddingDp = progress + TAB_PADDING_MINIMUM_DP;
+                tabPaddingTextView.setText(getString(R.string.tab_padding) + ": " + tabPaddingDp + "dp");
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        scrollOffsetSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                scrollOffsetDp = progress + SCROLL_OFFSET_MINIMUM_DP;
+                scrollOffsetTextView.setText(getString(R.string.scroll_offset) + ": " + scrollOffsetDp + "dp");
 
             }
 
@@ -249,6 +327,10 @@ public class MainActivity extends ActionBarActivity {
         intent.putExtra(DIVIDER_WIDTH, dividerWidthDp);
         intent.putExtra(INDICATOR_HEIGHT, indicatorHeightDp);
         intent.putExtra(UNDERLINE_HEIGHT, underlineHeightDp);
+
+        intent.putExtra(TAB_PADDING, tabPaddingDp);
+        intent.putExtra(DIVIDER_PADDING, dividerPaddingDp);
+        intent.putExtra(SCROLL_OFFSET, scrollOffsetDp);
 
         startActivity(intent);
     }

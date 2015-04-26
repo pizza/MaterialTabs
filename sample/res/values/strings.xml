@@ -8,4 +8,7 @@
     <string name="divider_width">Divider Width</string>
     <string name="underline_height">Underline Height</string>
     <string name="indicator_height">Indicator Height</string>
+    <string name="divider_padding">Divider Padding</string>
+    <string name="tab_padding">Tab Padding Left Right</string>
+    <string name="scroll_offset">Scroll Offset</string>
 </resources>

@@ -257,6 +257,7 @@
     </LinearLayout>
     <!--~ Divider Color -->
 
+    <!-- Divider Width -->
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -273,7 +274,9 @@
             android:id="@+id/dividerWidthSeekBar"
             android:max="40" />
     </LinearLayout>
+    <!--~ Divider Width -->
 
+    <!-- Indicator Height -->
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -290,7 +293,9 @@
             android:id="@+id/indicatorHeightSeekBar"
             android:max="40" />
     </LinearLayout>
+    <!--~ Indicator Height -->
 
+    <!-- Underline Height -->
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -307,4 +312,62 @@
             android:id="@+id/underlineHeightSeekBar"
             android:max="40" />
     </LinearLayout>
+    <!--~ Underline Height -->
+
+    <!-- Divider Padding -->
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/dividerPaddingTextView"
+            android:text="Divider Padding" />
+
+        <SeekBar android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dividerPaddingSeekBar"
+            android:max="40" />
+    </LinearLayout>
+    <!--~ Divider Padding -->
+
+    <!-- Tab Padding Left Right -->
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/tabPaddingTextView"
+            android:text="Tab Padding Left Right" />
+
+        <SeekBar android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tabPaddingSeekBar"
+            android:max="40" />
+    </LinearLayout>
+    <!--~ Tab Padding Left Right -->
+
+    <!-- Scroll Offset -->
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/scrollOffsetTextView"
+            android:text="Scroll Offset" />
+
+        <SeekBar android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollOffsetSeekBar"
+            android:max="40" />
+    </LinearLayout>
+    <!--~ Scroll Offset -->
 </LinearLayout>

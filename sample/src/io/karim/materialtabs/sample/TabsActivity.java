@@ -88,23 +88,17 @@ public class TabsActivity extends ActionBarActivity {
         if (intent != null) {
             Bundle extras = intent.getExtras();
             if (extras != null) {
-                int indicatorColor = extras.getInt(MainActivity.INDICATOR_COLOR);
-                mMaterialTabs.setIndicatorColor(getResources().getColor(indicatorColor));
+                mMaterialTabs.setIndicatorColor(getResources().getColor(extras.getInt(MainActivity.INDICATOR_COLOR)));
+                mMaterialTabs.setUnderlineColor(getResources().getColor(extras.getInt(MainActivity.UNDERLINE_COLOR)));
+                mMaterialTabs.setDividerColor(getResources().getColor(extras.getInt(MainActivity.DIVIDER_COLOR)));
 
-                int underlineColor = extras.getInt(MainActivity.UNDERLINE_COLOR);
-                mMaterialTabs.setUnderlineColor(getResources().getColor(underlineColor));
+                mMaterialTabs.setDividerWidth(Utils.dpToPx(getResources(), extras.getInt(MainActivity.DIVIDER_WIDTH)));
+                mMaterialTabs.setIndicatorHeight(Utils.dpToPx(getResources(), extras.getInt(MainActivity.INDICATOR_HEIGHT)));
+                mMaterialTabs.setUnderlineHeight(Utils.dpToPx(getResources(), extras.getInt(MainActivity.UNDERLINE_HEIGHT)));
 
-                int dividerColor = extras.getInt(MainActivity.DIVIDER_COLOR);
-                mMaterialTabs.setDividerColor(getResources().getColor(dividerColor));
-
-                int dividerWidthDp = extras.getInt(MainActivity.DIVIDER_WIDTH);
-                mMaterialTabs.setDividerWidth(Utils.dpToPx(getResources(), dividerWidthDp));
-
-                int indicatorHeightDp = extras.getInt(MainActivity.INDICATOR_HEIGHT);
-                mMaterialTabs.setIndicatorHeight(Utils.dpToPx(getResources(), indicatorHeightDp));
-
-                int underlineHeightDp = extras.getInt(MainActivity.UNDERLINE_HEIGHT);
-                mMaterialTabs.setUnderlineHeight(Utils.dpToPx(getResources(), underlineHeightDp));
+                mMaterialTabs.setDividerPadding(Utils.dpToPx(getResources(), extras.getInt(MainActivity.DIVIDER_PADDING)));
+                mMaterialTabs.setTabPaddingLeftRight(Utils.dpToPx(getResources(), extras.getInt(MainActivity.TAB_PADDING)));
+                mMaterialTabs.setScrollOffset(Utils.dpToPx(getResources(), extras.getInt(MainActivity.SCROLL_OFFSET)));
             }
         }
 
