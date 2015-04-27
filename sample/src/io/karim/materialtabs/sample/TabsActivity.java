@@ -90,13 +90,10 @@ public class TabsActivity extends ActionBarActivity {
             if (extras != null) {
                 mMaterialTabs.setIndicatorColor(getResources().getColor(extras.getInt(MainActivity.INDICATOR_COLOR)));
                 mMaterialTabs.setUnderlineColor(getResources().getColor(extras.getInt(MainActivity.UNDERLINE_COLOR)));
-                mMaterialTabs.setDividerColor(getResources().getColor(extras.getInt(MainActivity.DIVIDER_COLOR)));
 
-                mMaterialTabs.setDividerWidth(Utils.dpToPx(getResources(), extras.getInt(MainActivity.DIVIDER_WIDTH)));
                 mMaterialTabs.setIndicatorHeight(Utils.dpToPx(getResources(), extras.getInt(MainActivity.INDICATOR_HEIGHT)));
                 mMaterialTabs.setUnderlineHeight(Utils.dpToPx(getResources(), extras.getInt(MainActivity.UNDERLINE_HEIGHT)));
 
-                mMaterialTabs.setDividerPadding(Utils.dpToPx(getResources(), extras.getInt(MainActivity.DIVIDER_PADDING)));
                 mMaterialTabs.setTabPaddingLeftRight(Utils.dpToPx(getResources(), extras.getInt(MainActivity.TAB_PADDING)));
                 mMaterialTabs.setScrollOffset(Utils.dpToPx(getResources(), extras.getInt(MainActivity.SCROLL_OFFSET)));
 

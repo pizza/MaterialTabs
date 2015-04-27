@@ -5,14 +5,11 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="divider_width">Divider Width</string>
     <string name="underline_height">Underline Height</string>
     <string name="indicator_height">Indicator Height</string>
-    <string name="divider_padding">Divider Padding</string>
     <string name="tab_padding">Tab Padding Left Right</string>
     <string name="scroll_offset">Scroll Offset</string>
     <string name="shouldExpand">Should Expand</string>
-    <string name="divider_color">Divider Color</string>
     <string name="underline_color">Underline Color</string>
     <string name="indicator_color">Indicator Color</string>
     <string name="textAllCaps">Text All Caps</string>

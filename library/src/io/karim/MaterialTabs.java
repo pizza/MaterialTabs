@@ -92,17 +92,12 @@ public class MaterialTabs extends HorizontalScrollView {
     private float currentPositionOffset = 0f;
 
     private Paint rectPaint;
-    private Paint dividerPaint;
 
     private int indicatorColor;
     private int indicatorHeight = 2;
 
     private int underlineHeight = 0;
     private int underlineColor;
-
-    private int dividerWidth = 0;
-    private int dividerPadding = 0;
-    private int dividerColor;
 
     private int tabPadding = 12;
     private int tabTextSize = 14;
@@ -165,9 +160,7 @@ public class MaterialTabs extends HorizontalScrollView {
         scrollOffset = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, scrollOffset, dm);
         indicatorHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, indicatorHeight, dm);
         underlineHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, underlineHeight, dm);
-        dividerPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dividerPadding, dm);
         tabPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tabPadding, dm);
-        dividerWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dividerWidth, dm);
         tabTextSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, tabTextSize, dm);
 
         // Get system attrs (android:textSize and android:textColor).
@@ -178,7 +171,6 @@ public class MaterialTabs extends HorizontalScrollView {
         tabTextColor = Color.argb(textAlpha, Color.red(tabTextColor), Color.green(tabTextColor), Color.blue(tabTextColor));
 
         underlineColor = textPrimaryColor;
-        dividerColor = textPrimaryColor;
         indicatorColor = textPrimaryColor;
         int padding = a.getDimensionPixelSize(PADDING_INDEX, 0);
         paddingLeft = padding > 0 ? padding : a.getDimensionPixelSize(PADDING_LEFT_INDEX, 0);
@@ -190,11 +182,8 @@ public class MaterialTabs extends HorizontalScrollView {
         // Get custom attrs of MaterialTabs.
         indicatorColor = a.getColor(R.styleable.MaterialTabs_pstsIndicatorColor, indicatorColor);
         underlineColor = a.getColor(R.styleable.MaterialTabs_pstsUnderlineColor, underlineColor);
-        dividerColor = a.getColor(R.styleable.MaterialTabs_pstsDividerColor, dividerColor);
-        dividerWidth = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsDividerWidth, dividerWidth);
         indicatorHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsIndicatorHeight, indicatorHeight);
         underlineHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsUnderlineHeight, underlineHeight);
-        dividerPadding = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsDividerPadding, dividerPadding);
         tabPadding = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsTabPaddingLeftRight, tabPadding);
         tabBackground = getResources().getDrawable(a.getResourceId(R.styleable.MaterialTabs_pstsTabBackground, R.drawable.psts_background_tab));
         shouldExpand = a.getBoolean(R.styleable.MaterialTabs_pstsShouldExpand, shouldExpand);
@@ -232,10 +221,6 @@ public class MaterialTabs extends HorizontalScrollView {
         rectPaint = new Paint();
         rectPaint.setAntiAlias(true);
         rectPaint.setStyle(Style.FILL);
-
-        dividerPaint = new Paint();
-        dividerPaint.setAntiAlias(true);
-        dividerPaint.setStrokeWidth(dividerWidth);
 
         defaultTabLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         expandedTabLayoutParams = new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f);
@@ -457,15 +442,6 @@ public class MaterialTabs extends HorizontalScrollView {
         // Draw underline.
         rectPaint.setColor(underlineColor);
         canvas.drawRect(paddingLeft, height - underlineHeight, tabsContainer.getWidth() + paddingRight, height, rectPaint);
-        // Draw divider.
-        if (dividerWidth != 0) {
-            dividerPaint.setStrokeWidth(dividerWidth);
-            dividerPaint.setColor(dividerColor);
-            for (int i = 0; i < tabCount - 1; i++) {
-                View tab = tabsContainer.getChildAt(i);
-                canvas.drawLine(tab.getRight(), dividerPadding, tab.getRight(), height - dividerPadding, dividerPaint);
-            }
-        }
     }
 
     public void setOnTabReselectedListener(OnTabReselectedListener tabReselectedListener) {
@@ -664,20 +640,8 @@ public class MaterialTabs extends HorizontalScrollView {
         return underlineColor;
     }
 
-    public int getDividerColor() {
-        return dividerColor;
-    }
-
-    public int getDividerWidth() {
-        return dividerWidth;
-    }
-
     public int getUnderlineHeight() {
         return underlineHeight;
-    }
-
-    public int getDividerPadding() {
-        return dividerPadding;
     }
 
     public int getScrollOffset() {
@@ -735,28 +699,8 @@ public class MaterialTabs extends HorizontalScrollView {
         invalidate();
     }
 
-    public void setDividerColor(int dividerColor) {
-        this.dividerColor = dividerColor;
-        invalidate();
-    }
-
-    public void setDividerColorResource(int resId) {
-        this.dividerColor = getResources().getColor(resId);
-        invalidate();
-    }
-
-    public void setDividerWidth(int dividerWidthPx) {
-        this.dividerWidth = dividerWidthPx;
-        invalidate();
-    }
-
     public void setUnderlineHeight(int underlineHeightPx) {
         this.underlineHeight = underlineHeightPx;
-        invalidate();
-    }
-
-    public void setDividerPadding(int dividerPaddingPx) {
-        this.dividerPadding = dividerPaddingPx;
         invalidate();
     }
 

@@ -23,12 +23,9 @@ public class MainActivity extends ActionBarActivity {
 
     public static final String INDICATOR_COLOR = "INDICATOR_COLOR";
     public static final String UNDERLINE_COLOR = "UNDERLINE_COLOR";
-    public static final String DIVIDER_COLOR = "DIVIDER_COLOR";
-    public static final String DIVIDER_WIDTH = "DIVIDER_WIDTH";
     public static final String INDICATOR_HEIGHT = "INDICATOR_HEIGHT";
     public static final String UNDERLINE_HEIGHT = "UNDERLINE_HEIGHT";
     public static final String TAB_PADDING = "TAB_PADDING";
-    public static final String DIVIDER_PADDING = "DIVIDER_PADDING";
     public static final String SCROLL_OFFSET = "SCROLL_OFFSET";
     public static final String PADDING_MIDDLE = "PADDING_MIDDLE";
     public static final String SHOULD_EXPAND = "SHOULD_EXPAND";
@@ -37,10 +34,8 @@ public class MainActivity extends ActionBarActivity {
     public static final String TEXT_COLOR = "TEXT_COLOR";
     public static final String TEXT_COLOR_SELECTED = "TEXT_COLOR_SELECTED";
 
-    private static final int DIVIDER_WIDTH_MINIMUM_DP = 20;
     private static final int UNDERLINE_HEIGHT_MINIMUM_DP = 20;
     private static final int INDICATOR_HEIGHT_MINIMUM_DP = 20;
-    private static final int DIVIDER_PADDING_DP = 20;
     private static final int TAB_PADDING_MINIMUM_DP = 20;
     private static final int SCROLL_OFFSET_MINIMUM_DP = 20;
 
@@ -59,18 +54,6 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.underlineColorButtonMantis)
     RadioButtonCenter underlineColorButtonMantis;
 
-    // Divider Color
-    @InjectView(R.id.dividerColorRadioGroup)
-    RadioGroup dividerColorRadioGroup;
-    @InjectView(R.id.dividerColorButtonMantis)
-    RadioButtonCenter dividerColorButtonMantis;
-
-    // Divider Width
-    @InjectView(R.id.dividerWidthSeekBar)
-    SeekBar dividerWidthSeekBar;
-    @InjectView(R.id.dividerWidthTextView)
-    TextView dividerWidthTextView;
-
     // Indicator Height
     @InjectView(R.id.indicatorHeightSeekBar)
     SeekBar indicatorHeightSeekBar;
@@ -88,12 +71,6 @@ public class MainActivity extends ActionBarActivity {
     SeekBar tabPaddingSeekBar;
     @InjectView(R.id.tabPaddingTextView)
     TextView tabPaddingTextView;
-
-    // Divider Padding
-    @InjectView(R.id.dividerPaddingSeekBar)
-    SeekBar dividerPaddingSeekBar;
-    @InjectView(R.id.dividerPaddingTextView)
-    TextView dividerPaddingTextView;
 
     // Scroll Offset
     @InjectView(R.id.scrollOffsetSeekBar)
@@ -132,9 +109,7 @@ public class MainActivity extends ActionBarActivity {
     RadioButtonCenter tabBackgroundColorButtonMantis;
 
     private int underlineHeightDp;
-    private int dividerWidthDp;
     private int indicatorHeightDp;
-    private int dividerPaddingDp;
     private int tabPaddingDp;
     private int scrollOffsetDp;
 
@@ -151,23 +126,6 @@ public class MainActivity extends ActionBarActivity {
 
         indicatorColorButtonMantis.setChecked(true);
         underlineColorButtonMantis.setChecked(true);
-        dividerColorButtonMantis.setChecked(true);
-
-        dividerWidthSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                dividerWidthDp = progress + DIVIDER_WIDTH_MINIMUM_DP;
-                dividerWidthTextView.setText(getString(R.string.divider_width) + ": " + dividerWidthDp + "dp");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
 
         underlineHeightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -190,23 +148,6 @@ public class MainActivity extends ActionBarActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 indicatorHeightDp = progress + INDICATOR_HEIGHT_MINIMUM_DP;
                 indicatorHeightTextView.setText(getString(R.string.indicator_height) + ": " + indicatorHeightDp + "dp");
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        dividerPaddingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                dividerPaddingDp = progress + DIVIDER_PADDING_DP;
-                dividerPaddingTextView.setText(getString(R.string.divider_padding) + ": " + dividerPaddingDp + "dp");
 
             }
 
@@ -338,39 +279,10 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
-        // Divider Color
-        key = DIVIDER_COLOR;
-        switch (dividerColorRadioGroup.getCheckedRadioButtonId()) {
-            case R.id.dividerColorButtonFireEngineRed:
-                intent.putExtra(key, R.color.fire_engine_red);
-                break;
-            case R.id.dividerColorButtonGorse:
-                intent.putExtra(key, R.color.gorse);
-                break;
-            case R.id.dividerColorButtonIrisBlue:
-                intent.putExtra(key, R.color.iris_blue);
-                break;
-            case R.id.dividerColorButtonSafetyOrange:
-                intent.putExtra(key, R.color.safety_orange);
-                break;
-            case R.id.dividerColorButtonWhite:
-                intent.putExtra(key, R.color.white);
-                break;
-            case R.id.dividerColorButtonBlack:
-                intent.putExtra(key, R.color.black);
-                break;
-            case R.id.dividerColorButtonMantis:
-            default:
-                intent.putExtra(key, R.color.mantis);
-                break;
-        }
-
-        intent.putExtra(DIVIDER_WIDTH, dividerWidthDp);
         intent.putExtra(INDICATOR_HEIGHT, indicatorHeightDp);
         intent.putExtra(UNDERLINE_HEIGHT, underlineHeightDp);
 
         intent.putExtra(TAB_PADDING, tabPaddingDp);
-        intent.putExtra(DIVIDER_PADDING, dividerPaddingDp);
         intent.putExtra(SCROLL_OFFSET, scrollOffsetDp);
 
         intent.putExtra(SHOULD_EXPAND, shouldExpandCheckBox.isChecked());

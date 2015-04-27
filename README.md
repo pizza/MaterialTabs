@@ -73,9 +73,6 @@ Custom attr:
  * `pstsTextStyle` Set the text style, default bold.
  * `pstsTextSelectedStyle` Set the text style of the selected tab, default bold.
  * `pstsTextAllCaps` If true, all tab titles will be upper case, default true.
- * `pstsDividerColor` Color of the dividers between tabs. `textPrimaryColor` will be it's default color value.
- * `pstsDividerPadding` Top and bottom padding of the dividers.
- * `pstsDividerWidth` Stroke width of divider line, defaults to 0.
  * `pstsIndicatorHeight`Height of the sliding indicator.
  * `pstsTabPaddingLeftRight` Left and right padding of each tab.
  * `pstsScrollOffset` Scroll offset of the selected tab.

@@ -179,107 +179,6 @@
         </LinearLayout>
         <!--~ Underline Color -->
 
-        <!-- Divider Color -->
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:text="@string/divider_color" />
-
-            <RadioGroup android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/dividerColorRadioGroup"
-                android:orientation="horizontal">
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/dividerColorButtonFireEngineRed"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:minHeight="30dp"
-                    android:background="@color/fire_engine_red" />
-
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/dividerColorButtonMantis"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:minHeight="30dp"
-                    android:background="@color/mantis" />
-
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/dividerColorButtonGorse"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:minHeight="30dp"
-                    android:background="@color/gorse" />
-
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/dividerColorButtonIrisBlue"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:minHeight="30dp"
-                    android:background="@color/iris_blue" />
-
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/dividerColorButtonSafetyOrange"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:minHeight="30dp"
-                    android:background="@color/safety_orange" />
-
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/dividerColorButtonWhite"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:minHeight="30dp"
-                    style="@style/RadioButtonBlackCheck"
-                    android:background="@color/white" />
-
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/dividerColorButtonBlack"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:minHeight="30dp"
-                    android:background="@color/black" />
-            </RadioGroup>
-        </LinearLayout>
-        <!--~ Divider Color -->
-
-        <!-- Divider Width -->
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/dividerWidthTextView"
-                android:text="@string/divider_width" />
-
-            <SeekBar android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/dividerWidthSeekBar"
-                android:max="40" />
-        </LinearLayout>
-        <!--~ Divider Width -->
-
         <!-- Indicator Height -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -317,25 +216,6 @@
                 android:max="40" />
         </LinearLayout>
         <!--~ Underline Height -->
-
-        <!-- Divider Padding -->
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/dividerPaddingTextView"
-                android:text="@string/divider_padding" />
-
-            <SeekBar android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/dividerPaddingSeekBar"
-                android:max="40" />
-        </LinearLayout>
-        <!--~ Divider Padding -->
 
         <!-- Tab Padding Left Right -->
         <LinearLayout android:layout_width="match_parent"
