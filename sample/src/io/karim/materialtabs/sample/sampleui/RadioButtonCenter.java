@@ -14,7 +14,7 @@ import io.karim.materialtabs.sample.R;
 
 public class RadioButtonCenter extends RadioButton {
 
-    Drawable buttonDrawable;
+    final Drawable buttonDrawable;
 
     public RadioButtonCenter(Context context, AttributeSet attrs) {
         super(context, attrs);

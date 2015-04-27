@@ -16,15 +16,15 @@ dependencies {
 }
 
 android {
-    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
-    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
-        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
-        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+        minSdkVersion 9
+        targetSdkVersion 22
 
-        versionName project.SAMPLE_VERSION_NAME
-        versionCode Integer.parseInt(project.SAMPLE_VERSION_CODE)
+        versionName "1.0.0"
+        versionCode 1
     }
 
     signingConfigs { release }
@@ -48,22 +48,4 @@ android {
             abortOnError false
         }
     }
-}
-
-File propFile = file('signing.properties');
-if (propFile.exists()) {
-    def Properties props = new Properties()
-    props.load(new FileInputStream(propFile))
-
-    if (props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
-            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
-        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
-        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
-        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
-        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
-    } else {
-        android.buildTypes.release.signingConfig = null
-    }
-} else {
-    android.buildTypes.release.signingConfig = null
 }

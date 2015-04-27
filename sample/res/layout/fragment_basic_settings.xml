@@ -601,7 +601,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:minHeight="30dp"
-                    android:text="Normal" />
+                    android:text="@string/normal" />
 
                 <RadioButton
                     android:id="@+id/selectedTextStyleButtonBold"
@@ -610,7 +610,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:minHeight="30dp"
-                    android:text="Bold" />
+                    android:text="@string/bold" />
 
                 <RadioButton
                     android:id="@+id/selectedTextStyleButtonItallic"
@@ -619,7 +619,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:minHeight="30dp"
-                    android:text="Itallic" />
+                    android:text="@string/italic" />
 
             </RadioGroup>
         </LinearLayout>
@@ -647,7 +647,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:minHeight="30dp"
-                    android:text="Normal" />
+                    android:text="@string/normal" />
 
                 <RadioButton
                     android:id="@+id/unselectedTextStyleButtonBold"
@@ -656,7 +656,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:minHeight="30dp"
-                    android:text="Bold" />
+                    android:text="@string/bold" />
 
                 <RadioButton
                     android:id="@+id/unselectedTextStyleButtonItallic"
@@ -665,7 +665,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:minHeight="30dp"
-                    android:text="Itallic" />
+                    android:text="@string/italic" />
 
             </RadioGroup>
         </LinearLayout>

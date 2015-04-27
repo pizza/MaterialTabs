@@ -15,9 +15,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import io.karim.materialtabs.sample.sampleui.RadioButtonCenter;
 
-/**
- * Created by karim on 4/27/15.
- */
 public class BasicSettingsFragment extends Fragment {
 
     public static final String INDICATOR_COLOR = "INDICATOR_COLOR";

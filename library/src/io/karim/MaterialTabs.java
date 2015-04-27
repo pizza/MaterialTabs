@@ -72,14 +72,14 @@ public class MaterialTabs extends HorizontalScrollView {
     private static final int PADDING_LEFT_INDEX = 4;
     private static final int PADDING_RIGHT_INDEX = 5;
 
-    private LinearLayout.LayoutParams defaultTabLayoutParams;
-    private LinearLayout.LayoutParams expandedTabLayoutParams;
+    private final LinearLayout.LayoutParams defaultTabLayoutParams;
+    private final LinearLayout.LayoutParams expandedTabLayoutParams;
 
     private final PageListener pageListener = new PageListener();
     private OnTabReselectedListener tabReselectedListener = null;
     public OnPageChangeListener delegatePageListener;
 
-    private LinearLayout tabsContainer;
+    private final LinearLayout tabsContainer;
     private ViewPager pager;
 
     private int tabCount;
@@ -87,7 +87,7 @@ public class MaterialTabs extends HorizontalScrollView {
     private int currentPosition = 0;
     private float currentPositionOffset = 0f;
 
-    private Paint rectPaint;
+    private final Paint rectPaint;
 
     private int indicatorColor;
     private int indicatorHeight = 2;
@@ -387,7 +387,7 @@ public class MaterialTabs extends HorizontalScrollView {
         super.onLayout(changed, l, t, r, b);
     }
 
-    private OnGlobalLayoutListener firstTabGlobalLayoutListener = new OnGlobalLayoutListener() {
+    private final OnGlobalLayoutListener firstTabGlobalLayoutListener = new OnGlobalLayoutListener() {
 
         @SuppressWarnings("deprecation")
         @Override

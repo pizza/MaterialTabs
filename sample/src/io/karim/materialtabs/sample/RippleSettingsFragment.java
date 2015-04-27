@@ -14,9 +14,6 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-/**
- * Created by karim on 4/27/15.
- */
 public class RippleSettingsFragment extends Fragment {
 
     public static final String RIPPLE_DURATION = "RIPPLE_DURATION";

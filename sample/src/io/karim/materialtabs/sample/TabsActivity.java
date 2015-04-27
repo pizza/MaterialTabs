@@ -105,9 +105,6 @@ public class TabsActivity extends ActionBarActivity {
                 mMaterialTabs.setRippleRoundedCorners(extras.getFloat(RippleSettingsFragment.RIPPLE_ROUNDED_CORNERS_RADIUS));
             }
         }
-
-        // TODO: complete these and add all setters.
-        // TODO: pass these setters parameters that the user can set manually in MainActivity, for an awesome sample :-D
     }
 
     public class SamplePagerAdapter extends FragmentPagerAdapter {

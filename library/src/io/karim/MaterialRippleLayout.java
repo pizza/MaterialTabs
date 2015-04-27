@@ -102,7 +102,7 @@ public class MaterialRippleLayout extends FrameLayout {
     private boolean prepressed;
     private int positionInAdapter;
 
-    private GestureDetector gestureDetector;
+    private final GestureDetector gestureDetector;
     private PressedEvent pendingPressEvent;
 
     public static RippleBuilder on(View view) {
@@ -147,7 +147,7 @@ public class MaterialRippleLayout extends FrameLayout {
                 Color.blue(rippleColor));
         rippleHighlightColor = a.getColor(R.styleable.MaterialRippleLayout_mrlRippleHighlightColor, rippleHighlightColor);
         rippleDiameter = a.getDimensionPixelSize(R.styleable.MaterialRippleLayout_mrlRippleDimension,
-                (int) Utils.dpToPx(getResources(), DEFAULT_DIAMETER_DP));
+                Utils.dpToPx(getResources(), DEFAULT_DIAMETER_DP));
         rippleOverlay = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleOverlay, DEFAULT_RIPPLE_OVERLAY);
         rippleHover = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleHover, DEFAULT_HOVER);
         rippleDuration = a.getInt(R.styleable.MaterialRippleLayout_mrlRippleDuration, DEFAULT_DURATION);
@@ -374,6 +374,7 @@ public class MaterialRippleLayout extends FrameLayout {
         final float radiusX = halfWidth > currentCoordinates.x ? width - currentCoordinates.x : currentCoordinates.x;
         final float radiusY = halfHeight > currentCoordinates.y ? height - currentCoordinates.y : currentCoordinates.y;
 
+        //noinspection SuspiciousNameCombination
         return (float) Math.sqrt(Math.pow(radiusX, 2) + Math.pow(radiusY, 2)) * 1.2f;
     }
 
@@ -491,7 +492,7 @@ public class MaterialRippleLayout extends FrameLayout {
     /**
      * Animations
      */
-    private Property<MaterialRippleLayout, Float> radiusProperty = new Property<MaterialRippleLayout, Float>(Float.class, "radius") {
+    private final Property<MaterialRippleLayout, Float> radiusProperty = new Property<MaterialRippleLayout, Float>(Float.class, "radius") {
         @Override
         public Float get(MaterialRippleLayout object) {
             return object.getRadius();
@@ -513,7 +514,7 @@ public class MaterialRippleLayout extends FrameLayout {
         invalidate();
     }
 
-    private Property<MaterialRippleLayout, Integer> circleAlphaProperty = new Property<MaterialRippleLayout, Integer>(Integer.class,
+    private final Property<MaterialRippleLayout, Integer> circleAlphaProperty = new Property<MaterialRippleLayout, Integer>(Integer.class,
             "rippleAlphaFloat") {
         @Override
         public Integer get(MaterialRippleLayout object) {

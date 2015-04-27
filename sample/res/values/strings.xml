@@ -3,8 +3,6 @@
     <string name="app_name">MaterialTabs</string>
     <string name="title_activity_main">MainActivity</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="underline_height">Underline Height</string>
     <string name="indicator_height">Indicator Height</string>
     <string name="tab_padding">Tab Padding Left Right</string>
@@ -32,4 +30,7 @@
     <string name="ripple_rounded_corners_radius">Ripple Rounded Corners Radius</string>
     <string name="me">Me</string>
     <string name="go">Go</string>
+    <string name="normal">Normal</string>
+    <string name="bold">Bold</string>
+    <string name="italic">Italic</string>
 </resources>

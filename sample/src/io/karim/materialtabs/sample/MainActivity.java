@@ -31,8 +31,8 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.view_pager)
     ViewPager mViewPager;
 
-    private BasicSettingsFragment basicSettingsFragment = new BasicSettingsFragment();
-    private RippleSettingsFragment rippleSettingsFragment = new RippleSettingsFragment();
+    private final BasicSettingsFragment basicSettingsFragment = new BasicSettingsFragment();
+    private final RippleSettingsFragment rippleSettingsFragment = new RippleSettingsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
