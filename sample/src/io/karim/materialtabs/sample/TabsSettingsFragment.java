@@ -32,16 +32,16 @@ public class TabsSettingsFragment extends Fragment {
     public static final String TEXT_STYLE_SELECTED = "TEXT_STYLE_SELECTED";
     public static final String TEXT_STYLE_UNSELECTED = "TEXT_STYLE_UNSELECTED";
 
-    private static final int UNDERLINE_HEIGHT_MINIMUM_DP = 0;
-    private static final int INDICATOR_HEIGHT_MINIMUM_DP = 0;
-    private static final int TAB_PADDING_MINIMUM_DP = 0;
-    private static final int SCROLL_OFFSET_MINIMUM_DP = 0;
+    private static final int UNDERLINE_HEIGHT_DEFAULT_DP = 0;
+    private static final int INDICATOR_HEIGHT_DEFAULT_DP = 2;
+    private static final int TAB_PADDING_DEFAULT_DP = 12;
+    private static final int SCROLL_OFFSET_DEFAULT_DP = 0;
 
     // Indicator Color
     @InjectView(R.id.indicatorColorRadioGroup)
     RadioGroup indicatorColorRadioGroup;
-    @InjectView(R.id.indicatorColorButtonMantis)
-    RadioButtonCenter indicatorColorButtonMantis;
+    @InjectView(R.id.indicatorColorButtonWhite)
+    RadioButtonCenter indicatorColorButtonWhite;
 
     // Indicator Color
     @InjectView(R.id.underlineColorRadioGroup)
@@ -125,20 +125,21 @@ public class TabsSettingsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_tabs_settings, container, false);
         ButterKnife.inject(this, rootView);
 
-        setup();
+        setupAndReset();
         return rootView;
     }
 
-    private void setup() {
-
-        indicatorColorButtonMantis.setChecked(true);
+    void setupAndReset() {
+        indicatorColorButtonWhite.setChecked(true);
         underlineColorButtonMantis.setChecked(true);
 
+        underlineHeightDp = UNDERLINE_HEIGHT_DEFAULT_DP;
+        underlineHeightSeekBar.setProgress(underlineHeightDp);
         underlineHeightTextView.setText(getString(R.string.underline_height) + ": " + underlineHeightDp + "dp");
         underlineHeightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                underlineHeightDp = progress + UNDERLINE_HEIGHT_MINIMUM_DP;
+                underlineHeightDp = progress;
                 underlineHeightTextView.setText(getString(R.string.underline_height) + ": " + underlineHeightDp + "dp");
             }
 
@@ -151,11 +152,13 @@ public class TabsSettingsFragment extends Fragment {
             }
         });
 
+        indicatorHeightDp = INDICATOR_HEIGHT_DEFAULT_DP;
+        indicatorHeightSeekBar.setProgress(indicatorHeightDp);
         indicatorHeightTextView.setText(getString(R.string.indicator_height) + ": " + indicatorHeightDp + "dp");
         indicatorHeightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                indicatorHeightDp = progress + INDICATOR_HEIGHT_MINIMUM_DP;
+                indicatorHeightDp = progress;
                 indicatorHeightTextView.setText(getString(R.string.indicator_height) + ": " + indicatorHeightDp + "dp");
             }
 
@@ -168,11 +171,13 @@ public class TabsSettingsFragment extends Fragment {
             }
         });
 
+        tabPaddingDp = TAB_PADDING_DEFAULT_DP;
+        tabPaddingSeekBar.setProgress(tabPaddingDp);
         tabPaddingTextView.setText(getString(R.string.tab_padding) + ": " + tabPaddingDp + "dp");
         tabPaddingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tabPaddingDp = progress + TAB_PADDING_MINIMUM_DP;
+                tabPaddingDp = progress;
                 tabPaddingTextView.setText(getString(R.string.tab_padding) + ": " + tabPaddingDp + "dp");
             }
 
@@ -185,11 +190,13 @@ public class TabsSettingsFragment extends Fragment {
             }
         });
 
+        scrollOffsetDp = SCROLL_OFFSET_DEFAULT_DP;
+        scrollOffsetSeekBar.setProgress(scrollOffsetDp);
         scrollOffsetTextView.setText(getString(R.string.scroll_offset) + ": " + scrollOffsetDp + "dp");
         scrollOffsetSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                scrollOffsetDp = progress + SCROLL_OFFSET_MINIMUM_DP;
+                scrollOffsetDp = progress;
                 scrollOffsetTextView.setText(getString(R.string.scroll_offset) + ": " + scrollOffsetDp + "dp");
             }
 
@@ -208,5 +215,9 @@ public class TabsSettingsFragment extends Fragment {
 
         selectedTextStyleButtonBold.setChecked(true);
         unselectedTextStyleButtonBold.setChecked(true);
+
+        shouldExpandCheckBox.setChecked(true);
+        paddingMiddleCheckBox.setChecked(false);
+        textAllCapsCheckBox.setChecked(true);
     }
 }

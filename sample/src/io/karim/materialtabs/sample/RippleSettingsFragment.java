@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import io.karim.MaterialRippleLayout;
 
 public class RippleSettingsFragment extends Fragment {
 
@@ -28,13 +29,13 @@ public class RippleSettingsFragment extends Fragment {
     public static final String RIPPLE_PERSISTENT = "RIPPLE_PERSISTENT";
     public static final String RIPPLE_ROUNDED_CORNERS_RADIUS = "RIPPLE_ROUNDED_CORNERS_RADIUS";
 
-    private static final int RIPPLE_DURATION_MULTIPLIER = 100;
+    private static final int RIPPLE_DURATION_MULTIPLIER = 50;
 
     int rippleDurationMs;
     float rippleAlphaFloat;
     int rippleFadeDurationMs;
     int rippleRoundedCornersRadiusDp;
-    int rippleDiameterDp;
+    float rippleDiameterDp;
 
     // Ripple Duration
     @InjectView(R.id.rippleDurationSeekBar)
@@ -99,11 +100,13 @@ public class RippleSettingsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_ripple, container, false);
         ButterKnife.inject(this, rootView);
 
-        setup();
+        setupAndReset();
         return rootView;
     }
 
-    private void setup() {
+    void setupAndReset() {
+        rippleDurationMs = MaterialRippleLayout.DEFAULT_DURATION;
+        rippleDurationSeekBar.setProgress(rippleDurationMs / RIPPLE_DURATION_MULTIPLIER);
         rippleDurationTextView.setText(getString(R.string.ripple_duration) + ": " + rippleDurationMs + "ms");
         rippleDurationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -121,6 +124,8 @@ public class RippleSettingsFragment extends Fragment {
             }
         });
 
+        rippleAlphaFloat = MaterialRippleLayout.DEFAULT_ALPHA;
+        rippleAlphaFloatSeekBar.setProgress((int) (rippleAlphaFloat * rippleAlphaFloatSeekBar.getMax()));
         rippleAlphaFloatTextView.setText(getString(R.string.ripple_alpha_float) + ": " + rippleAlphaFloat);
         rippleAlphaFloatSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -138,6 +143,8 @@ public class RippleSettingsFragment extends Fragment {
             }
         });
 
+        rippleFadeDurationMs = MaterialRippleLayout.DEFAULT_FADE_DURATION;
+        rippleFadeDurationSeekBar.setProgress(rippleFadeDurationMs / RIPPLE_DURATION_MULTIPLIER);
         rippleFadeDurationTextView.setText(getString(R.string.ripple_fade_duration) + ": " + rippleFadeDurationMs + "ms");
         rippleFadeDurationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -155,6 +162,8 @@ public class RippleSettingsFragment extends Fragment {
             }
         });
 
+        rippleRoundedCornersRadiusDp = MaterialRippleLayout.DEFAULT_ROUNDED_CORNERS_DP;
+        rippleRoundedCornersRadiusSeekBar.setProgress(rippleRoundedCornersRadiusDp);
         rippleRoundedCornersRadiusTextView.setText(getString(R.string.ripple_rounded_corners_radius) + ": " + rippleRoundedCornersRadiusDp + "dp");
         rippleRoundedCornersRadiusSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -173,6 +182,8 @@ public class RippleSettingsFragment extends Fragment {
             }
         });
 
+        rippleDiameterDp = MaterialRippleLayout.DEFAULT_DIAMETER_DP;
+        rippleDiameterSeekBar.setProgress((int) rippleDiameterDp);
         rippleDiameterTextView.setText(getString(R.string.ripple_diameter) + ": " + rippleDiameterDp + "dp");
         rippleDiameterSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -192,5 +203,9 @@ public class RippleSettingsFragment extends Fragment {
 
         rippleColorButtonWhite.setChecked(true);
         rippleHighlightColorButtonWhite.setChecked(true);
+
+        rippleDelayClickCheckBox.setChecked(false);
+        rippleHoverCheckBox.setChecked(false);
+        ripplePersistentCheckBox.setChecked(false);
     }
 }

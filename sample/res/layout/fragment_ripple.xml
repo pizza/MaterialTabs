@@ -23,7 +23,7 @@
             <SeekBar android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rippleDurationSeekBar"
-                android:max="20" />
+                android:max="40" />
         </LinearLayout>
         <!--~ Ripple Duration -->
 
@@ -167,7 +167,7 @@
             <SeekBar android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rippleDiameterSeekBar"
-                android:max="20" />
+                android:max="30" />
         </LinearLayout>
         <!--~ Ripple Diameter -->
 
@@ -186,7 +186,7 @@
             <SeekBar android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rippleFadeDurationSeekBar"
-                android:max="20" />
+                android:max="40" />
         </LinearLayout>
         <!--~ Ripple Fade Duration -->
 

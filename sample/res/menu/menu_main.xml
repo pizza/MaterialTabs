@@ -7,9 +7,14 @@
         android:icon="@drawable/ic_action_social_mood"
         android:orderInCategory="1"
         app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_reset"
+        android:title="@string/reset"
+        android:icon="@drawable/ic_action_content_clear"
+        android:orderInCategory="2"
+        app:showAsAction="ifRoom" />
     <item android:id="@+id/action_go"
         android:title="@string/go"
         android:icon="@drawable/ic_action_navigation_arrow_forward"
-        android:orderInCategory="2"
+        android:orderInCategory="3"
         app:showAsAction="ifRoom" />
 </menu>

@@ -2,6 +2,8 @@ package io.karim.materialtabs.sample;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -32,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
     ViewPager mViewPager;
 
     private final TabsSettingsFragment mTabsSettingsFragment = new TabsSettingsFragment();
-    private final RippleSettingsFragment rippleSettingsFragment = new RippleSettingsFragment();
+    private final RippleSettingsFragment mRippleSettingsFragment = new RippleSettingsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,24 +66,46 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // Handle action bar item clicks here. The action bar will automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.action_me:
                 return true;
+            case R.id.action_reset:
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setMessage("Reset everything to default?")
+                                  .setCancelable(false)
+                                  .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                      public void onClick(DialogInterface dialog, int id) {
+                                          resetDefaults();
+                                      }
+                                  })
+                                  .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                      public void onClick(DialogInterface dialog, int id) {
+                                          dialog.cancel();
+                                      }
+                                  });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                // show it
+                alertDialog.show();
+                return true;
             case R.id.action_go:
                 goToTabsActivityButtonClicked();
                 return true;
-
         }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    private void resetDefaults() {
+        mTabsSettingsFragment.setupAndReset();
+        mRippleSettingsFragment.setupAndReset();
     }
 
     public void goToTabsActivityButtonClicked() {
         Intent intent = new Intent(this, TabsActivity.class);
 
-        // Indicator Color`
+        // Indicator Color
         String key = TabsSettingsFragment.INDICATOR_COLOR;
         switch (mTabsSettingsFragment.indicatorColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.indicatorColorButtonFireEngineRed:
@@ -256,12 +280,12 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
-        intent.putExtra(RippleSettingsFragment.RIPPLE_DURATION, rippleSettingsFragment.rippleDurationMs);
-        intent.putExtra(RippleSettingsFragment.RIPPLE_ALPHA_FLOAT, rippleSettingsFragment.rippleAlphaFloat);
+        intent.putExtra(RippleSettingsFragment.RIPPLE_DURATION, mRippleSettingsFragment.rippleDurationMs);
+        intent.putExtra(RippleSettingsFragment.RIPPLE_ALPHA_FLOAT, mRippleSettingsFragment.rippleAlphaFloat);
 
         // Ripple Color
         key = RippleSettingsFragment.RIPPLE_COLOR;
-        switch (rippleSettingsFragment.rippleColorRadioGroup.getCheckedRadioButtonId()) {
+        switch (mRippleSettingsFragment.rippleColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.rippleColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -286,14 +310,14 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
-        intent.putExtra(RippleSettingsFragment.RIPPLE_DELAY_CLICK, rippleSettingsFragment.rippleDelayClickCheckBox.isChecked());
-        intent.putExtra(RippleSettingsFragment.RIPPLE_DIAMETER, rippleSettingsFragment.rippleDiameterDp);
+        intent.putExtra(RippleSettingsFragment.RIPPLE_DELAY_CLICK, mRippleSettingsFragment.rippleDelayClickCheckBox.isChecked());
+        intent.putExtra(RippleSettingsFragment.RIPPLE_DIAMETER, mRippleSettingsFragment.rippleDiameterDp);
 
-        intent.putExtra(RippleSettingsFragment.RIPPLE_FADE_DURATION, rippleSettingsFragment.rippleFadeDurationMs);
+        intent.putExtra(RippleSettingsFragment.RIPPLE_FADE_DURATION, mRippleSettingsFragment.rippleFadeDurationMs);
 
         // Ripple Highlight Color
         key = RippleSettingsFragment.RIPPLE_HIGHLIGHT_COLOR;
-        switch (rippleSettingsFragment.rippleHighlightColorRadioGroup.getCheckedRadioButtonId()) {
+        switch (mRippleSettingsFragment.rippleHighlightColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.rippleHighlightColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red_75);
                 break;
@@ -318,11 +342,11 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
-        intent.putExtra(RippleSettingsFragment.RIPPLE_HOVER, rippleSettingsFragment.rippleHoverCheckBox.isChecked());
-        intent.putExtra(RippleSettingsFragment.RIPPLE_OVERLAY, rippleSettingsFragment.rippleOverlayCheckBox.isChecked());
-        intent.putExtra(RippleSettingsFragment.RIPPLE_PERSISTENT, rippleSettingsFragment.ripplePersistentCheckBox.isChecked());
+        intent.putExtra(RippleSettingsFragment.RIPPLE_HOVER, mRippleSettingsFragment.rippleHoverCheckBox.isChecked());
+        intent.putExtra(RippleSettingsFragment.RIPPLE_OVERLAY, mRippleSettingsFragment.rippleOverlayCheckBox.isChecked());
+        intent.putExtra(RippleSettingsFragment.RIPPLE_PERSISTENT, mRippleSettingsFragment.ripplePersistentCheckBox.isChecked());
 
-        intent.putExtra(RippleSettingsFragment.RIPPLE_ROUNDED_CORNERS_RADIUS, rippleSettingsFragment.rippleRoundedCornersRadiusDp);
+        intent.putExtra(RippleSettingsFragment.RIPPLE_ROUNDED_CORNERS_RADIUS, mRippleSettingsFragment.rippleRoundedCornersRadiusDp);
 
         startActivity(intent);
     }
@@ -353,7 +377,7 @@ public class MainActivity extends ActionBarActivity {
                 default:
                     return mTabsSettingsFragment;
                 case 1:
-                    return rippleSettingsFragment;
+                    return mRippleSettingsFragment;
             }
         }
     }

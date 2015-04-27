@@ -20,7 +20,7 @@
     <string name="ripple_duration">Ripple Duration</string>
     <string name="ripple_alpha_float">Ripple Alpha Float</string>
     <string name="ripple_color">Ripple Color</string>
-    <string name="ripple_delay">Ripple Delay</string>
+    <string name="ripple_delay">Ripple Delay Click</string>
     <string name="ripple_diameter">Ripple Diameter</string>
     <string name="ripple_fade_duration">Ripple Fade Duration</string>
     <string name="ripple_highlight_color">Ripple Highlight Color</string>
@@ -33,4 +33,6 @@
     <string name="normal">Normal</string>
     <string name="bold">Bold</string>
     <string name="italic">Italic</string>
+    <string name="share">Share</string>
+    <string name="reset">Reset</string>
 </resources>
