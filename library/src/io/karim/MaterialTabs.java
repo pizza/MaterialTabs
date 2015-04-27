@@ -260,7 +260,7 @@ public class MaterialTabs extends HorizontalScrollView {
                                                                             .rippleHover(rippleHover)
                                                                             .rippleHighlightColor(rippleHighlightColor)
                                                                             .rippleInAdapter(rippleInAdapter)
-                                                                            .rippleOverlay(false)
+                                                                            .rippleOverlay(rippleOverlay)
                                                                             .ripplePersistent(ripplePersistent)
                                                                             .rippleRoundedCorners(Utils.dpToPx(getResources(), rippleRoundedCorners))
                                                                             .create();
