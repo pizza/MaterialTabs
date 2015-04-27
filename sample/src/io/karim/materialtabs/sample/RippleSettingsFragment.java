@@ -97,7 +97,7 @@ public class RippleSettingsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_ripple, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_ripple_settings, container, false);
         ButterKnife.inject(this, rootView);
 
         setupAndReset();
@@ -204,8 +204,9 @@ public class RippleSettingsFragment extends Fragment {
         rippleColorButtonWhite.setChecked(true);
         rippleHighlightColorButtonWhite.setChecked(true);
 
-        rippleDelayClickCheckBox.setChecked(false);
-        rippleHoverCheckBox.setChecked(false);
-        ripplePersistentCheckBox.setChecked(false);
+        rippleDelayClickCheckBox.setChecked(MaterialRippleLayout.DEFAULT_DELAY_CLICK);
+        rippleHoverCheckBox.setChecked(MaterialRippleLayout.DEFAULT_HOVER);
+        ripplePersistentCheckBox.setChecked(MaterialRippleLayout.DEFAULT_PERSISTENT);
+        rippleOverlayCheckBox.setChecked(MaterialRippleLayout.DEFAULT_RIPPLE_OVERLAY);
     }
 }

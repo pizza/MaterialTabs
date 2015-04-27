@@ -35,4 +35,5 @@
     <string name="italic">Italic</string>
     <string name="share">Share</string>
     <string name="reset">Reset</string>
+    <string name="toolbar_color">Toolbar (ActionBar) Color</string>
 </resources>

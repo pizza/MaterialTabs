@@ -196,6 +196,33 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
+        // Toolbar Background Color
+        key = TabsSettingsFragment.TOOLBAR_BACKGROUND;
+        switch (mTabsSettingsFragment.toolbarColorRadioGroup.getCheckedRadioButtonId()) {
+            case R.id.toolbarColorButtonFireEngineRed:
+                intent.putExtra(key, R.color.fire_engine_red);
+                break;
+            case R.id.toolbarColorButtonGorse:
+                intent.putExtra(key, R.color.gorse);
+                break;
+            case R.id.toolbarColorButtonIrisBlue:
+                intent.putExtra(key, R.color.iris_blue);
+                break;
+            case R.id.toolbarColorButtonSafetyOrange:
+                intent.putExtra(key, R.color.safety_orange);
+                break;
+            case R.id.toolbarColorButtonWhite:
+                intent.putExtra(key, R.color.white);
+                break;
+            case R.id.toolbarColorButtonBlack:
+                intent.putExtra(key, R.color.black);
+                break;
+            case R.id.toolbarColorButtonMantis:
+            default:
+                intent.putExtra(key, R.color.mantis);
+                break;
+        }
+
         // Text Color
         key = TabsSettingsFragment.TEXT_COLOR_UNSELECTED;
         switch (mTabsSettingsFragment.tabTextColorRadioGroup.getCheckedRadioButtonId()) {

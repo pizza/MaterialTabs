@@ -19,6 +19,8 @@ package io.karim.materialtabs.sample;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -29,6 +31,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -112,7 +116,18 @@ public class TabsActivity extends ActionBarActivity {
                 mMaterialTabs.setShouldExpand(extras.getBoolean(TabsSettingsFragment.SHOULD_EXPAND));
                 mMaterialTabs.setAllCaps(extras.getBoolean(TabsSettingsFragment.TEXT_ALL_CAPS));
 
+                int toolbarColor = getResources().getColor(extras.getInt(TabsSettingsFragment.TOOLBAR_BACKGROUND));
+                mToolbar.setBackgroundColor(toolbarColor);
                 mMaterialTabs.setBackgroundColor(getResources().getColor(extras.getInt(TabsSettingsFragment.TAB_BACKGROUND)));
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Window window = getWindow();
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                    window.setStatusBarColor(Color.argb(Color.alpha(toolbarColor), Color.red(toolbarColor) / 2, Color.green(toolbarColor) / 2,
+                            Color.blue(toolbarColor) / 2));
+                }
+
                 mMaterialTabs.setTextColorSelected(getResources().getColor(extras.getInt(TabsSettingsFragment.TEXT_COLOR_SELECTED)));
                 mMaterialTabs.setTextColorUnselected(getResources().getColor(extras.getInt(TabsSettingsFragment.TEXT_COLOR_UNSELECTED)));
 

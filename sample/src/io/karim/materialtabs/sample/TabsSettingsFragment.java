@@ -27,6 +27,7 @@ public class TabsSettingsFragment extends Fragment {
     public static final String SHOULD_EXPAND = "SHOULD_EXPAND";
     public static final String TEXT_ALL_CAPS = "TEXT_ALL_CAPS";
     public static final String TAB_BACKGROUND = "TAB_BACKGROUND";
+    public static final String TOOLBAR_BACKGROUND = "TOOLBAR_BACKGROUND";
     public static final String TEXT_COLOR_UNSELECTED = "TEXT_COLOR_UNSELECTED";
     public static final String TEXT_COLOR_SELECTED = "TEXT_COLOR_SELECTED";
     public static final String TEXT_STYLE_SELECTED = "TEXT_STYLE_SELECTED";
@@ -43,7 +44,7 @@ public class TabsSettingsFragment extends Fragment {
     @InjectView(R.id.indicatorColorButtonWhite)
     RadioButtonCenter indicatorColorButtonWhite;
 
-    // Indicator Color
+    // Underline Color
     @InjectView(R.id.underlineColorRadioGroup)
     RadioGroup underlineColorRadioGroup;
     @InjectView(R.id.underlineColorButtonMantis)
@@ -100,8 +101,14 @@ public class TabsSettingsFragment extends Fragment {
     // Tab Background Color
     @InjectView(R.id.tabBackgroundColorRadioGroup)
     RadioGroup tabBackgroundColorRadioGroup;
-    @InjectView(R.id.tabBackgroundColorButtonMantis)
-    RadioButtonCenter tabBackgroundColorButtonMantis;
+    @InjectView(R.id.tabBackgroundColorButtonFireEngineRed)
+    RadioButtonCenter tabBackgroundColorButtonFireEngineRed;
+
+    // Toolbar Background Color
+    @InjectView(R.id.toolbarColorRadioGroup)
+    RadioGroup toolbarColorRadioGroup;
+    @InjectView(R.id.toolbarColorButtonFireEngineRed)
+    RadioButtonCenter toolbarColorButtonFireEngineRed;
 
     // Selected Text Style
     @InjectView(R.id.selectedTextStyleRadioGroup)
@@ -211,7 +218,9 @@ public class TabsSettingsFragment extends Fragment {
 
         tabTextColorButtonWhite.setChecked(true);
         tabTextSelectedColorButtonWhite.setChecked(true);
-        tabBackgroundColorButtonMantis.setChecked(true);
+
+        tabBackgroundColorButtonFireEngineRed.setChecked(true);
+        toolbarColorButtonFireEngineRed.setChecked(true);
 
         selectedTextStyleButtonBold.setChecked(true);
         unselectedTextStyleButtonBold.setChecked(true);
