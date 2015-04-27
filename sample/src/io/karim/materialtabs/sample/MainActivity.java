@@ -3,12 +3,14 @@ package io.karim.materialtabs.sample;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -31,8 +33,10 @@ public class MainActivity extends ActionBarActivity {
     public static final String SHOULD_EXPAND = "SHOULD_EXPAND";
     public static final String TEXT_ALL_CAPS = "TEXT_ALL_CAPS";
     public static final String TAB_BACKGROUND = "TAB_BACKGROUND";
-    public static final String TEXT_COLOR = "TEXT_COLOR";
+    public static final String TEXT_COLOR_UNSELECTED = "TEXT_COLOR_UNSELECTED";
     public static final String TEXT_COLOR_SELECTED = "TEXT_COLOR_SELECTED";
+    public static final String TEXT_STYLE_SELECTED = "TEXT_STYLE_SELECTED";
+    public static final String TEXT_STYLE_UNSELECTED = "TEXT_STYLE_UNSELECTED";
 
     private static final int UNDERLINE_HEIGHT_MINIMUM_DP = 0;
     private static final int INDICATOR_HEIGHT_MINIMUM_DP = 0;
@@ -107,6 +111,18 @@ public class MainActivity extends ActionBarActivity {
     RadioGroup tabBackgroundColorRadioGroup;
     @InjectView(R.id.tabBackgroundColorButtonMantis)
     RadioButtonCenter tabBackgroundColorButtonMantis;
+
+    // Selected Text Style
+    @InjectView(R.id.selectedTextStyleRadioGroup)
+    RadioGroup selectedTextStyleRadioGroup;
+    @InjectView(R.id.selectedTextStyleButtonBold)
+    RadioButton selectedTextStyleButtonBold;
+
+    // Unselected Text Style
+    @InjectView(R.id.unselectedTextStyleRadioGroup)
+    RadioGroup unselectedTextStyleRadioGroup;
+    @InjectView(R.id.unselectedTextStyleButtonBold)
+    RadioButton unselectedTextStyleButtonBold;
 
     private int underlineHeightDp;
     private int indicatorHeightDp;
@@ -195,6 +211,9 @@ public class MainActivity extends ActionBarActivity {
         tabTextColorButtonWhite.setChecked(true);
         tabTextSelectedColorButtonWhite.setChecked(true);
         tabBackgroundColorButtonMantis.setChecked(true);
+
+        selectedTextStyleButtonBold.setChecked(true);
+        unselectedTextStyleButtonBold.setChecked(true);
     }
 
     @Override
@@ -315,7 +334,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Text Color
-        key = TEXT_COLOR;
+        key = TEXT_COLOR_UNSELECTED;
         switch (tabTextColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.tabTextColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
@@ -368,7 +387,36 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
-//        <attr name="pstsTextAlpha" format="integer" />
+        // Text Style Selected
+        key = TEXT_STYLE_SELECTED;
+        switch (selectedTextStyleRadioGroup.getCheckedRadioButtonId()) {
+            case R.id.selectedTextStyleButtonNormal:
+                intent.putExtra(key, Typeface.NORMAL);
+                break;
+            case R.id.selectedTextStyleButtonItallic:
+                intent.putExtra(key, Typeface.ITALIC);
+                break;
+            case R.id.selectedTextStyleButtonBold:
+            default:
+                intent.putExtra(key, Typeface.BOLD);
+                break;
+        }
+
+        // Text Style Unselected
+        key = TEXT_STYLE_UNSELECTED;
+        switch (unselectedTextStyleRadioGroup.getCheckedRadioButtonId()) {
+            case R.id.unselectedTextStyleButtonNormal:
+                intent.putExtra(key, Typeface.NORMAL);
+                break;
+            case R.id.unselectedTextStyleButtonItallic:
+                intent.putExtra(key, Typeface.ITALIC);
+                break;
+            case R.id.unselectedTextStyleButtonBold:
+            default:
+                intent.putExtra(key, Typeface.BOLD);
+                break;
+        }
+
 //        <attr name="pstsTextStyle">
 //        <flag name="normal" value="0x0" />
 //        <flag name="bold" value="0x1" />

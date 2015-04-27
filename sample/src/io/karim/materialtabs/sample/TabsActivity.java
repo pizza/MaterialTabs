@@ -103,7 +103,10 @@ public class TabsActivity extends ActionBarActivity {
 
                 mMaterialTabs.setBackgroundColor(getResources().getColor(extras.getInt(MainActivity.TAB_BACKGROUND)));
                 mMaterialTabs.setTextColorSelected(getResources().getColor(extras.getInt(MainActivity.TEXT_COLOR_SELECTED)));
-                mMaterialTabs.setTextColor(getResources().getColor(extras.getInt(MainActivity.TEXT_COLOR)));
+                mMaterialTabs.setTextColorUnselected(getResources().getColor(extras.getInt(MainActivity.TEXT_COLOR_UNSELECTED)));
+
+                mMaterialTabs.setTabTypefaceSelectedStyle(extras.getInt(MainActivity.TEXT_STYLE_SELECTED));
+                mMaterialTabs.setTabTypefaceUnselectedStyle(extras.getInt(MainActivity.TEXT_STYLE_UNSELECTED));
             }
         }
 

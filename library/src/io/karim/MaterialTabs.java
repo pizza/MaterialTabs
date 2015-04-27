@@ -97,9 +97,8 @@ public class MaterialTabs extends HorizontalScrollView {
 
     private int tabPadding = 12;
     private int tabTextSize = 14;
-    private int textAlpha = 150;
 
-    private int tabTextColor;
+    private int tabTextColorUnselected;
     private int tabTextColorSelected;
 
     private int paddingLeft = 0;
@@ -110,7 +109,7 @@ public class MaterialTabs extends HorizontalScrollView {
     private boolean isPaddingMiddle = false;
 
     private Typeface tabTypeface = null;
-    private int tabTypefaceStyle = Typeface.BOLD;
+    private int tabTypefaceUnselectedStyle = Typeface.BOLD;
     private int tabTypefaceSelectedStyle = Typeface.BOLD;
 
     private int scrollOffset;
@@ -161,8 +160,7 @@ public class MaterialTabs extends HorizontalScrollView {
         TypedArray a = context.obtainStyledAttributes(attrs, ATTRS);
         tabTextSize = a.getDimensionPixelSize(TEXT_SIZE_INDEX, tabTextSize);
         int textPrimaryColor = a.getColor(TEXT_COLOR_PRIMARY, android.R.color.white);
-        tabTextColor = a.getColor(TEXT_COLOR_INDEX, textPrimaryColor);
-        tabTextColor = Color.argb(textAlpha, Color.red(tabTextColor), Color.green(tabTextColor), Color.blue(tabTextColor));
+        tabTextColorUnselected = a.getColor(TEXT_COLOR_INDEX, textPrimaryColor);
 
         underlineColor = textPrimaryColor;
         indicatorColor = textPrimaryColor;
@@ -183,10 +181,9 @@ public class MaterialTabs extends HorizontalScrollView {
         scrollOffset = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsScrollOffset, scrollOffset);
         textAllCaps = a.getBoolean(R.styleable.MaterialTabs_pstsTextAllCaps, textAllCaps);
         isPaddingMiddle = a.getBoolean(R.styleable.MaterialTabs_pstsPaddingMiddle, isPaddingMiddle);
-        tabTypefaceStyle = a.getInt(R.styleable.MaterialTabs_pstsTextStyle, Typeface.BOLD);
+        tabTypefaceUnselectedStyle = a.getInt(R.styleable.MaterialTabs_pstsTextUnselectedStyle, Typeface.BOLD);
         tabTypefaceSelectedStyle = a.getInt(R.styleable.MaterialTabs_pstsTextSelectedStyle, Typeface.BOLD);
         tabTextColorSelected = a.getColor(R.styleable.MaterialTabs_pstsTextColorSelected, textPrimaryColor);
-        textAlpha = a.getInt(R.styleable.MaterialTabs_pstsTextAlpha, textAlpha);
 
         // Get custom attrs of MaterialRippleLayout.
         rippleColor = a.getColor(R.styleable.MaterialTabs_pstsMrlRippleColor, MaterialRippleLayout.DEFAULT_COLOR);
@@ -323,7 +320,7 @@ public class MaterialTabs extends HorizontalScrollView {
 
             if (tab_title != null) {
                 tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, tabTextSize);
-                tab_title.setTextColor(tabTextColor);
+                tab_title.setTextColor(tabTextColorUnselected);
                 // setAllCaps() is only available from API 14, so the upper case is made manually if we are on a pre-ICS-build.
                 if (textAllCaps) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
@@ -463,7 +460,8 @@ public class MaterialTabs extends HorizontalScrollView {
             if (state == ViewPager.SCROLL_STATE_IDLE) {
                 scrollToChild(pager.getCurrentItem(), 0);
             }
-            // Full textAlpha for current item.
+
+            // No transparency for current item.
             View currentTab = tabsContainer.getChildAt(pager.getCurrentItem());
             selected(currentTab);
 
@@ -511,8 +509,8 @@ public class MaterialTabs extends HorizontalScrollView {
         if (tab != null) {
             TextView title = (TextView) tab.findViewById(R.id.psts_tab_title);
             if (title != null) {
-                title.setTypeface(tabTypeface, tabTypefaceStyle);
-                title.setTextColor(tabTextColor);
+                title.setTypeface(tabTypeface, tabTypefaceUnselectedStyle);
+                title.setTextColor(tabTextColorUnselected);
             }
         }
     }
@@ -653,7 +651,7 @@ public class MaterialTabs extends HorizontalScrollView {
     }
 
     public int getTextColor() {
-        return tabTextColor;
+        return tabTextColorUnselected;
     }
 
     public int getTabPaddingLeftRight() {
@@ -720,13 +718,13 @@ public class MaterialTabs extends HorizontalScrollView {
         updateTabStyles();
     }
 
-    public void setTextColor(int textColor) {
-        this.tabTextColor = textColor;
+    public void setTextColorUnselected(int textColor) {
+        this.tabTextColorUnselected = textColor;
         updateTabStyles();
     }
 
     public void setTextColorResource(int resId) {
-        setTextColor(getResources().getColor(resId));
+        setTextColorUnselected(getResources().getColor(resId));
     }
 
     public void setTextColorSelected(int textColorSelected) {
@@ -738,15 +736,20 @@ public class MaterialTabs extends HorizontalScrollView {
         setTextColorSelected(getResources().getColor(resId));
     }
 
-    public void setTextAlpha(int textAlpha) {
-        this.textAlpha = textAlpha;
-        invalidate();
-    }
-
     public void setTypeface(Typeface typeface, int style) {
         this.tabTypeface = typeface;
         this.tabTypefaceSelectedStyle = style;
         updateTabStyles();
+    }
+
+    public void setTabTypefaceUnselectedStyle(int tabTypefaceUnselectedStyle) {
+        this.tabTypefaceUnselectedStyle = tabTypefaceUnselectedStyle;
+        invalidate();
+    }
+
+    public void setTabTypefaceSelectedStyle(int tabTypefaceSelectedStyle) {
+        this.tabTypefaceSelectedStyle = tabTypefaceSelectedStyle;
+        invalidate();
     }
 
     public void setTabPaddingLeftRight(int paddingPx) {

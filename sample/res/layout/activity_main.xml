@@ -36,6 +36,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/fire_engine_red" />
 
@@ -45,6 +46,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/mantis" />
 
@@ -54,6 +56,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/gorse" />
 
@@ -63,6 +66,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/iris_blue" />
 
@@ -72,6 +76,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/safety_orange" />
 
@@ -91,6 +96,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/black" />
             </RadioGroup>
@@ -118,6 +124,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/fire_engine_red" />
 
@@ -127,6 +134,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/mantis" />
 
@@ -136,6 +144,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/gorse" />
 
@@ -145,6 +154,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/iris_blue" />
 
@@ -154,6 +164,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/safety_orange" />
 
@@ -173,6 +184,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/black" />
             </RadioGroup>
@@ -330,6 +342,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/fire_engine_red" />
 
@@ -339,6 +352,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/mantis" />
 
@@ -348,6 +362,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/gorse" />
 
@@ -357,6 +372,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/iris_blue" />
 
@@ -366,6 +382,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/safety_orange" />
 
@@ -385,6 +402,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/black" />
             </RadioGroup>
@@ -413,6 +431,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/fire_engine_red" />
 
@@ -422,6 +441,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/mantis" />
 
@@ -431,6 +451,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/gorse" />
 
@@ -440,6 +461,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/iris_blue" />
 
@@ -449,6 +471,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/safety_orange" />
 
@@ -468,6 +491,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/black" />
             </RadioGroup>
@@ -495,6 +519,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/fire_engine_red" />
 
@@ -504,6 +529,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/mantis" />
 
@@ -513,6 +539,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/gorse" />
 
@@ -522,6 +549,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/iris_blue" />
 
@@ -531,6 +559,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/safety_orange" />
 
@@ -550,10 +579,103 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
                     android:background="@color/black" />
             </RadioGroup>
         </LinearLayout>
         <!--~ Tab Background Color -->
+
+        <!-- Text Selected Style Color -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/text_selected_style" />
+
+            <RadioGroup android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/selectedTextStyleRadioGroup"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/selectedTextStyleButtonNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:text="Normal" />
+
+                <RadioButton
+                    android:id="@+id/selectedTextStyleButtonBold"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:text="Bold" />
+
+                <RadioButton
+                    android:id="@+id/selectedTextStyleButtonItallic"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:text="Itallic" />
+
+            </RadioGroup>
+        </LinearLayout>
+        <!--~ Text Selected Style Color -->
+
+        <!-- Text Unselected Style Color -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/text_unselected_style" />
+
+            <RadioGroup android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/unselectedTextStyleRadioGroup"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/unselectedTextStyleButtonNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:text="Normal" />
+
+                <RadioButton
+                    android:id="@+id/unselectedTextStyleButtonBold"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:text="Bold" />
+
+                <RadioButton
+                    android:id="@+id/unselectedTextStyleButtonItallic"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:text="Itallic" />
+
+            </RadioGroup>
+        </LinearLayout>
+        <!--~ Text Unselected Style Color -->
     </LinearLayout>
 </ScrollView>

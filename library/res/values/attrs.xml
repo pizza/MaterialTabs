@@ -12,8 +12,7 @@
         <attr name="pstsTextAllCaps" format="boolean" />
         <attr name="pstsPaddingMiddle" format="boolean" />
         <attr name="pstsTextColorSelected" format="color" />
-        <attr name="pstsTextAlpha" format="integer" />
-        <attr name="pstsTextStyle">
+        <attr name="pstsTextUnselectedStyle">
             <flag name="normal" value="0x0" />
             <flag name="bold" value="0x1" />
             <flag name="italic" value="0x2" />

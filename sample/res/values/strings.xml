@@ -17,4 +17,6 @@
     <string name="tab_text_color">Tab Text Color</string>
     <string name="tab_text_selected_color">Tab Text Selected</string>
     <string name="tab_background_color">Tab Background Color</string>
+    <string name="text_selected_style">Selected Text Style</string>
+    <string name="text_unselected_style">Unselected Text Style</string>
 </resources>
