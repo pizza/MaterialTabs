@@ -25,13 +25,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
@@ -120,7 +117,7 @@ public class MaterialTabs extends HorizontalScrollView {
     private int scrollOffset;
     private int lastScrollX = 0;
 
-    private Drawable tabBackground;
+    private int tabBackgroundColorRes;
 
     // Fields from MaterialRippleLayout
     private int rippleColor;
@@ -185,7 +182,7 @@ public class MaterialTabs extends HorizontalScrollView {
         indicatorHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsIndicatorHeight, indicatorHeight);
         underlineHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsUnderlineHeight, underlineHeight);
         tabPadding = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsTabPaddingLeftRight, tabPadding);
-        tabBackground = getResources().getDrawable(a.getResourceId(R.styleable.MaterialTabs_pstsTabBackground, R.drawable.psts_background_tab));
+        tabBackgroundColorRes = a.getInt(R.styleable.MaterialTabs_pstsTabBackground, android.R.color.transparent);
         shouldExpand = a.getBoolean(R.styleable.MaterialTabs_pstsShouldExpand, shouldExpand);
         scrollOffset = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsScrollOffset, scrollOffset);
         textAllCaps = a.getBoolean(R.styleable.MaterialTabs_pstsTextAllCaps, textAllCaps);
@@ -325,7 +322,7 @@ public class MaterialTabs extends HorizontalScrollView {
     private void updateTabStyles() {
         for (int i = 0; i < tabCount; i++) {
             View v = tabsContainer.getChildAt(i);
-            v.setBackground(tabBackground);
+            v.setBackgroundColor(getResources().getColor(tabBackgroundColorRes));
             v.setPadding(tabPadding, v.getPaddingTop(), tabPadding, v.getPaddingBottom());
             TextView tab_title = (TextView) v.findViewById(R.id.psts_tab_title);
 
@@ -664,8 +661,8 @@ public class MaterialTabs extends HorizontalScrollView {
         return tabTextColor;
     }
 
-    public Drawable getTabBackground() {
-        return tabBackground;
+    public int getTabBackgroundColorRes() {
+        return tabBackgroundColorRes;
     }
 
     public int getTabPaddingLeftRight() {
@@ -761,12 +758,8 @@ public class MaterialTabs extends HorizontalScrollView {
         updateTabStyles();
     }
 
-    public void setTabBackgroundDrawableRes(@DrawableRes int resId) {
-        this.tabBackground = getResources().getDrawable(resId);
-    }
-
     public void setTabBackgroundColorRes(@ColorRes int resId) {
-        this.tabBackground = new ColorDrawable(getResources().getColor(resId));
+        this.tabBackgroundColorRes = getResources().getColor(resId);
     }
 
     public void setTabPaddingLeftRight(int paddingPx) {
