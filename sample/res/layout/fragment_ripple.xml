@@ -213,7 +213,7 @@
                     android:layout_margin="5dp"
                     style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
-                    android:background="@color/fire_engine_red" />
+                    android:background="@color/fire_engine_red_75" />
 
                 <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
                     android:id="@+id/rippleHighlightColorButtonMantis"
@@ -223,7 +223,7 @@
                     android:layout_margin="5dp"
                     style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
-                    android:background="@color/mantis" />
+                    android:background="@color/mantis_75" />
 
                 <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
                     android:id="@+id/rippleHighlightColorButtonGorse"
@@ -233,7 +233,7 @@
                     android:layout_margin="5dp"
                     style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
-                    android:background="@color/gorse" />
+                    android:background="@color/gorse_75" />
 
                 <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
                     android:id="@+id/rippleHighlightColorButtonIrisBlue"
@@ -243,7 +243,7 @@
                     android:layout_margin="5dp"
                     style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
-                    android:background="@color/iris_blue" />
+                    android:background="@color/iris_blue_75" />
 
                 <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
                     android:id="@+id/rippleHighlightColorButtonSafetyOrange"
@@ -253,7 +253,7 @@
                     android:layout_margin="5dp"
                     style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
-                    android:background="@color/safety_orange" />
+                    android:background="@color/safety_orange_75" />
 
                 <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
                     android:id="@+id/rippleHighlightColorButtonWhite"
@@ -263,7 +263,7 @@
                     android:layout_margin="5dp"
                     android:minHeight="30dp"
                     style="@style/RadioButtonBlackCheck"
-                    android:background="@color/white" />
+                    android:background="@color/white_75" />
 
                 <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
                     android:id="@+id/rippleHighlightColorButtonBlack"
@@ -273,7 +273,7 @@
                     android:layout_margin="5dp"
                     style="@style/RadioButtonWhiteCheck"
                     android:minHeight="30dp"
-                    android:background="@color/black" />
+                    android:background="@color/black_75" />
             </RadioGroup>
         </LinearLayout>
         <!--~ Ripple Highlight Color -->

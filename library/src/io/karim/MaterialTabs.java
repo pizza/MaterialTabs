@@ -120,14 +120,14 @@ public class MaterialTabs extends HorizontalScrollView {
     private int rippleHighlightColor;
     private boolean rippleOverlay;
     private boolean rippleHover;
-    private int rippleDiameter;
+    private float rippleDiameterDp;
     private int rippleDuration;
     private float rippleAlphaFloat;
     private boolean rippleDelayClick;
     private int rippleFadeDuration;
     private boolean ripplePersistent;
     private boolean rippleInAdapter;
-    private float rippleRoundedCorners;
+    private float rippleRoundedCornersDp;
     //~ Fields from MaterialRippleLayout
 
     private Locale locale;
@@ -191,8 +191,7 @@ public class MaterialTabs extends HorizontalScrollView {
         rippleHighlightColor = Color.argb((int) (Color.alpha(rippleColor) * 0.25), Color.red(rippleColor), Color.green(rippleColor),
                 Color.blue(rippleColor));
         rippleHighlightColor = a.getColor(R.styleable.MaterialTabs_pstsMrlRippleHighlightColor, rippleHighlightColor);
-        rippleDiameter = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsMrlRippleDimension,
-                Utils.dpToPx(getResources(), MaterialRippleLayout.DEFAULT_DIAMETER_DP));
+        rippleDiameterDp = a.getDimension(R.styleable.MaterialTabs_pstsMrlRippleDimension, MaterialRippleLayout.DEFAULT_DIAMETER_DP);
         rippleOverlay = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleOverlay, MaterialRippleLayout.DEFAULT_RIPPLE_OVERLAY);
         rippleHover = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleHover, MaterialRippleLayout.DEFAULT_HOVER);
         rippleDuration = a.getInt(R.styleable.MaterialTabs_pstsMrlRippleDuration, MaterialRippleLayout.DEFAULT_DURATION);
@@ -201,8 +200,8 @@ public class MaterialTabs extends HorizontalScrollView {
         rippleFadeDuration = a.getInteger(R.styleable.MaterialTabs_pstsMrlRippleFadeDuration, MaterialRippleLayout.DEFAULT_FADE_DURATION);
         ripplePersistent = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRipplePersistent, MaterialRippleLayout.DEFAULT_PERSISTENT);
         rippleInAdapter = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleInAdapter, MaterialRippleLayout.DEFAULT_SEARCH_ADAPTER);
-        rippleRoundedCorners = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsMrlRippleRoundedCorners,
-                MaterialRippleLayout.DEFAULT_ROUNDED_CORNERS);
+        rippleRoundedCornersDp = a.getDimension(R.styleable.MaterialTabs_pstsMrlRippleRoundedCorners,
+                MaterialRippleLayout.DEFAULT_ROUNDED_CORNERS_DP);
 
         a.recycle();
 
@@ -254,7 +253,7 @@ public class MaterialTabs extends HorizontalScrollView {
                                                                             .rippleAlpha(rippleAlphaFloat)
                                                                             .rippleColor(rippleColor)
                                                                             .rippleDelayClick(rippleDelayClick)
-                                                                            .rippleDiameterDp(rippleDiameter)
+                                                                            .rippleDiameterDp(rippleDiameterDp)
                                                                             .rippleDuration(rippleDuration)
                                                                             .rippleFadeDuration(rippleFadeDuration)
                                                                             .rippleHover(rippleHover)
@@ -262,7 +261,7 @@ public class MaterialTabs extends HorizontalScrollView {
                                                                             .rippleInAdapter(rippleInAdapter)
                                                                             .rippleOverlay(rippleOverlay)
                                                                             .ripplePersistent(ripplePersistent)
-                                                                            .rippleRoundedCorners(Utils.dpToPx(getResources(), rippleRoundedCorners))
+                                                                            .rippleRoundedCornersDp(rippleRoundedCornersDp)
                                                                             .create();
 
             CharSequence title = pager.getAdapter().getPageTitle(i);
@@ -778,8 +777,8 @@ public class MaterialTabs extends HorizontalScrollView {
         notifyDataSetChanged();
     }
 
-    public void setRippleDiameter(int rippleDiameter) {
-        this.rippleDiameter = rippleDiameter;
+    public void setRippleDiameterDp(float rippleDiameterDp) {
+        this.rippleDiameterDp = rippleDiameterDp;
         notifyDataSetChanged();
     }
 
@@ -813,8 +812,8 @@ public class MaterialTabs extends HorizontalScrollView {
         notifyDataSetChanged();
     }
 
-    public void setRippleRoundedCorners(float rippleRoundedCorners) {
-        this.rippleRoundedCorners = rippleRoundedCorners;
+    public void setRippleRoundedCornersDp(float rippleRoundedCornersDp) {
+        this.rippleRoundedCornersDp = rippleRoundedCornersDp;
         notifyDataSetChanged();
     }
 

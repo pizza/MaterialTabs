@@ -2,6 +2,8 @@
 <resources>
     <color name="white">#FFF</color>
     <color name="black">#000</color>
+    <color name="white_75">#40FFFFFF</color>
+    <color name="black_75">#40000000</color>
 
     <color name="background_window">#FFE5E5E5</color>
     <color name="greenDark">#3E5F22</color>
@@ -13,5 +15,13 @@
     <color name="fire_engine_red">#D01715</color>
     <color name="iris_blue">#00BCD5</color>
     <!--~ Material colors -->
+
+    <!-- Material colors 75% transparent -->
+    <color name="mantis_75">#408BC24A</color>
+    <color name="safety_orange_75">#40FF9700</color>
+    <color name="gorse_75">#40FFEB3C</color>
+    <color name="fire_engine_red_75">#40D01715</color>
+    <color name="iris_blue_75">#4000BCD5</color>
+    <!--~ Material colors 75% transparent -->
 
 </resources>

@@ -71,38 +71,38 @@ public class TabsActivity extends ActionBarActivity {
         if (intent != null) {
             Bundle extras = intent.getExtras();
             if (extras != null) {
-                mMaterialTabs.setIndicatorColor(getResources().getColor(extras.getInt(BasicSettingsFragment.INDICATOR_COLOR)));
-                mMaterialTabs.setUnderlineColor(getResources().getColor(extras.getInt(BasicSettingsFragment.UNDERLINE_COLOR)));
+                mMaterialTabs.setIndicatorColor(getResources().getColor(extras.getInt(TabsSettingsFragment.INDICATOR_COLOR)));
+                mMaterialTabs.setUnderlineColor(getResources().getColor(extras.getInt(TabsSettingsFragment.UNDERLINE_COLOR)));
 
-                mMaterialTabs.setIndicatorHeight(Utils.dpToPx(getResources(), extras.getInt(BasicSettingsFragment.INDICATOR_HEIGHT)));
-                mMaterialTabs.setUnderlineHeight(Utils.dpToPx(getResources(), extras.getInt(BasicSettingsFragment.UNDERLINE_HEIGHT)));
+                mMaterialTabs.setIndicatorHeight(Utils.dpToPx(getResources(), extras.getInt(TabsSettingsFragment.INDICATOR_HEIGHT)));
+                mMaterialTabs.setUnderlineHeight(Utils.dpToPx(getResources(), extras.getInt(TabsSettingsFragment.UNDERLINE_HEIGHT)));
 
-                mMaterialTabs.setTabPaddingLeftRight(Utils.dpToPx(getResources(), extras.getInt(BasicSettingsFragment.TAB_PADDING)));
-                mMaterialTabs.setScrollOffset(Utils.dpToPx(getResources(), extras.getInt(BasicSettingsFragment.SCROLL_OFFSET)));
+                mMaterialTabs.setTabPaddingLeftRight(Utils.dpToPx(getResources(), extras.getInt(TabsSettingsFragment.TAB_PADDING)));
+                mMaterialTabs.setScrollOffset(Utils.dpToPx(getResources(), extras.getInt(TabsSettingsFragment.SCROLL_OFFSET)));
 
-                mMaterialTabs.setPaddingMiddle(extras.getBoolean(BasicSettingsFragment.PADDING_MIDDLE));
-                mMaterialTabs.setShouldExpand(extras.getBoolean(BasicSettingsFragment.SHOULD_EXPAND));
-                mMaterialTabs.setAllCaps(extras.getBoolean(BasicSettingsFragment.TEXT_ALL_CAPS));
+                mMaterialTabs.setPaddingMiddle(extras.getBoolean(TabsSettingsFragment.PADDING_MIDDLE));
+                mMaterialTabs.setShouldExpand(extras.getBoolean(TabsSettingsFragment.SHOULD_EXPAND));
+                mMaterialTabs.setAllCaps(extras.getBoolean(TabsSettingsFragment.TEXT_ALL_CAPS));
 
-                mMaterialTabs.setBackgroundColor(getResources().getColor(extras.getInt(BasicSettingsFragment.TAB_BACKGROUND)));
-                mMaterialTabs.setTextColorSelected(getResources().getColor(extras.getInt(BasicSettingsFragment.TEXT_COLOR_SELECTED)));
-                mMaterialTabs.setTextColorUnselected(getResources().getColor(extras.getInt(BasicSettingsFragment.TEXT_COLOR_UNSELECTED)));
+                mMaterialTabs.setBackgroundColor(getResources().getColor(extras.getInt(TabsSettingsFragment.TAB_BACKGROUND)));
+                mMaterialTabs.setTextColorSelected(getResources().getColor(extras.getInt(TabsSettingsFragment.TEXT_COLOR_SELECTED)));
+                mMaterialTabs.setTextColorUnselected(getResources().getColor(extras.getInt(TabsSettingsFragment.TEXT_COLOR_UNSELECTED)));
 
-                mMaterialTabs.setTabTypefaceSelectedStyle(extras.getInt(BasicSettingsFragment.TEXT_STYLE_SELECTED));
-                mMaterialTabs.setTabTypefaceUnselectedStyle(extras.getInt(BasicSettingsFragment.TEXT_STYLE_UNSELECTED));
+                mMaterialTabs.setTabTypefaceSelectedStyle(extras.getInt(TabsSettingsFragment.TEXT_STYLE_SELECTED));
+                mMaterialTabs.setTabTypefaceUnselectedStyle(extras.getInt(TabsSettingsFragment.TEXT_STYLE_UNSELECTED));
 
                 mMaterialTabs.setRippleDuration(extras.getInt(RippleSettingsFragment.RIPPLE_DURATION));
                 mMaterialTabs.setRippleAlphaFloat(extras.getFloat(RippleSettingsFragment.RIPPLE_ALPHA_FLOAT));
-                mMaterialTabs.setRippleColor(extras.getInt(RippleSettingsFragment.RIPPLE_COLOR));
+                mMaterialTabs.setRippleColor(getResources().getColor(extras.getInt(RippleSettingsFragment.RIPPLE_COLOR)));
                 mMaterialTabs.setRippleDelayClick(extras.getBoolean(RippleSettingsFragment.RIPPLE_DELAY_CLICK));
-                mMaterialTabs.setRippleDiameter(Utils.dpToPx(getResources(), extras.getInt(RippleSettingsFragment.RIPPLE_DIAMETER)));
+                mMaterialTabs.setRippleDiameterDp(extras.getFloat(RippleSettingsFragment.RIPPLE_DIAMETER));
                 mMaterialTabs.setRippleFadeDuration(extras.getInt(RippleSettingsFragment.RIPPLE_FADE_DURATION));
-                mMaterialTabs.setRippleHighlightColor(extras.getInt(RippleSettingsFragment.RIPPLE_HIGHLIGHT_COLOR));
+                mMaterialTabs.setRippleHighlightColor(getResources().getColor(extras.getInt(RippleSettingsFragment.RIPPLE_HIGHLIGHT_COLOR)));
                 mMaterialTabs.setRippleHover(extras.getBoolean(RippleSettingsFragment.RIPPLE_HOVER));
                 mMaterialTabs.setRippleInAdapter(false);
                 mMaterialTabs.setRippleOverlay(extras.getBoolean(RippleSettingsFragment.RIPPLE_OVERLAY));
                 mMaterialTabs.setRipplePersistent(extras.getBoolean(RippleSettingsFragment.RIPPLE_PERSISTENT));
-                mMaterialTabs.setRippleRoundedCorners(extras.getFloat(RippleSettingsFragment.RIPPLE_ROUNDED_CORNERS_RADIUS));
+                mMaterialTabs.setRippleRoundedCornersDp(extras.getFloat(RippleSettingsFragment.RIPPLE_ROUNDED_CORNERS_RADIUS));
             }
         }
     }

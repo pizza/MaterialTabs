@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import io.karim.materialtabs.sample.sampleui.RadioButtonCenter;
 
-public class BasicSettingsFragment extends Fragment {
+public class TabsSettingsFragment extends Fragment {
 
     public static final String INDICATOR_COLOR = "INDICATOR_COLOR";
     public static final String UNDERLINE_COLOR = "UNDERLINE_COLOR";
@@ -122,7 +122,7 @@ public class BasicSettingsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_basic_settings, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_tabs_settings, container, false);
         ButterKnife.inject(this, rootView);
 
         setup();
@@ -134,6 +134,7 @@ public class BasicSettingsFragment extends Fragment {
         indicatorColorButtonMantis.setChecked(true);
         underlineColorButtonMantis.setChecked(true);
 
+        underlineHeightTextView.setText(getString(R.string.underline_height) + ": " + underlineHeightDp + "dp");
         underlineHeightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -150,12 +151,12 @@ public class BasicSettingsFragment extends Fragment {
             }
         });
 
+        indicatorHeightTextView.setText(getString(R.string.indicator_height) + ": " + indicatorHeightDp + "dp");
         indicatorHeightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 indicatorHeightDp = progress + INDICATOR_HEIGHT_MINIMUM_DP;
                 indicatorHeightTextView.setText(getString(R.string.indicator_height) + ": " + indicatorHeightDp + "dp");
-
             }
 
             @Override
@@ -167,6 +168,7 @@ public class BasicSettingsFragment extends Fragment {
             }
         });
 
+        tabPaddingTextView.setText(getString(R.string.tab_padding) + ": " + tabPaddingDp + "dp");
         tabPaddingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -183,6 +185,7 @@ public class BasicSettingsFragment extends Fragment {
             }
         });
 
+        scrollOffsetTextView.setText(getString(R.string.scroll_offset) + ": " + scrollOffsetDp + "dp");
         scrollOffsetSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

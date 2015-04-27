@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.view_pager)
     ViewPager mViewPager;
 
-    private final BasicSettingsFragment basicSettingsFragment = new BasicSettingsFragment();
+    private final TabsSettingsFragment mTabsSettingsFragment = new TabsSettingsFragment();
     private final RippleSettingsFragment rippleSettingsFragment = new RippleSettingsFragment();
 
     @Override
@@ -82,8 +82,8 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, TabsActivity.class);
 
         // Indicator Color`
-        String key = BasicSettingsFragment.INDICATOR_COLOR;
-        switch (basicSettingsFragment.indicatorColorRadioGroup.getCheckedRadioButtonId()) {
+        String key = TabsSettingsFragment.INDICATOR_COLOR;
+        switch (mTabsSettingsFragment.indicatorColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.indicatorColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -109,8 +109,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Underline Color
-        key = BasicSettingsFragment.UNDERLINE_COLOR;
-        switch (basicSettingsFragment.underlineColorRadioGroup.getCheckedRadioButtonId()) {
+        key = TabsSettingsFragment.UNDERLINE_COLOR;
+        switch (mTabsSettingsFragment.underlineColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.underlineColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -135,19 +135,19 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
-        intent.putExtra(BasicSettingsFragment.INDICATOR_HEIGHT, basicSettingsFragment.indicatorHeightDp);
-        intent.putExtra(BasicSettingsFragment.UNDERLINE_HEIGHT, basicSettingsFragment.underlineHeightDp);
+        intent.putExtra(TabsSettingsFragment.INDICATOR_HEIGHT, mTabsSettingsFragment.indicatorHeightDp);
+        intent.putExtra(TabsSettingsFragment.UNDERLINE_HEIGHT, mTabsSettingsFragment.underlineHeightDp);
 
-        intent.putExtra(BasicSettingsFragment.TAB_PADDING, basicSettingsFragment.tabPaddingDp);
-        intent.putExtra(BasicSettingsFragment.SCROLL_OFFSET, basicSettingsFragment.scrollOffsetDp);
+        intent.putExtra(TabsSettingsFragment.TAB_PADDING, mTabsSettingsFragment.tabPaddingDp);
+        intent.putExtra(TabsSettingsFragment.SCROLL_OFFSET, mTabsSettingsFragment.scrollOffsetDp);
 
-        intent.putExtra(BasicSettingsFragment.SHOULD_EXPAND, basicSettingsFragment.shouldExpandCheckBox.isChecked());
-        intent.putExtra(BasicSettingsFragment.TEXT_ALL_CAPS, basicSettingsFragment.textAllCapsCheckBox.isChecked());
-        intent.putExtra(BasicSettingsFragment.PADDING_MIDDLE, basicSettingsFragment.paddingMiddleCheckBox.isChecked());
+        intent.putExtra(TabsSettingsFragment.SHOULD_EXPAND, mTabsSettingsFragment.shouldExpandCheckBox.isChecked());
+        intent.putExtra(TabsSettingsFragment.TEXT_ALL_CAPS, mTabsSettingsFragment.textAllCapsCheckBox.isChecked());
+        intent.putExtra(TabsSettingsFragment.PADDING_MIDDLE, mTabsSettingsFragment.paddingMiddleCheckBox.isChecked());
 
         // Tab Background Color
-        key = BasicSettingsFragment.TAB_BACKGROUND;
-        switch (basicSettingsFragment.tabBackgroundColorRadioGroup.getCheckedRadioButtonId()) {
+        key = TabsSettingsFragment.TAB_BACKGROUND;
+        switch (mTabsSettingsFragment.tabBackgroundColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.tabBackgroundColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -173,8 +173,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Text Color
-        key = BasicSettingsFragment.TEXT_COLOR_UNSELECTED;
-        switch (basicSettingsFragment.tabTextColorRadioGroup.getCheckedRadioButtonId()) {
+        key = TabsSettingsFragment.TEXT_COLOR_UNSELECTED;
+        switch (mTabsSettingsFragment.tabTextColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.tabTextColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -200,8 +200,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Text Color Selected
-        key = BasicSettingsFragment.TEXT_COLOR_SELECTED;
-        switch (basicSettingsFragment.tabTextSelectedColorRadioGroup.getCheckedRadioButtonId()) {
+        key = TabsSettingsFragment.TEXT_COLOR_SELECTED;
+        switch (mTabsSettingsFragment.tabTextSelectedColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.tabTextSelectedColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -227,8 +227,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Text Style Selected
-        key = BasicSettingsFragment.TEXT_STYLE_SELECTED;
-        switch (basicSettingsFragment.selectedTextStyleRadioGroup.getCheckedRadioButtonId()) {
+        key = TabsSettingsFragment.TEXT_STYLE_SELECTED;
+        switch (mTabsSettingsFragment.selectedTextStyleRadioGroup.getCheckedRadioButtonId()) {
             case R.id.selectedTextStyleButtonNormal:
                 intent.putExtra(key, Typeface.NORMAL);
                 break;
@@ -242,8 +242,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Text Style Unselected
-        key = BasicSettingsFragment.TEXT_STYLE_UNSELECTED;
-        switch (basicSettingsFragment.unselectedTextStyleRadioGroup.getCheckedRadioButtonId()) {
+        key = TabsSettingsFragment.TEXT_STYLE_UNSELECTED;
+        switch (mTabsSettingsFragment.unselectedTextStyleRadioGroup.getCheckedRadioButtonId()) {
             case R.id.unselectedTextStyleButtonNormal:
                 intent.putExtra(key, Typeface.NORMAL);
                 break;
@@ -295,26 +295,26 @@ public class MainActivity extends ActionBarActivity {
         key = RippleSettingsFragment.RIPPLE_HIGHLIGHT_COLOR;
         switch (rippleSettingsFragment.rippleHighlightColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.rippleHighlightColorButtonFireEngineRed:
-                intent.putExtra(key, R.color.fire_engine_red);
+                intent.putExtra(key, R.color.fire_engine_red_75);
                 break;
             case R.id.rippleHighlightColorButtonGorse:
-                intent.putExtra(key, R.color.gorse);
+                intent.putExtra(key, R.color.gorse_75);
                 break;
             case R.id.rippleHighlightColorButtonIrisBlue:
-                intent.putExtra(key, R.color.iris_blue);
+                intent.putExtra(key, R.color.iris_blue_75);
                 break;
             case R.id.rippleHighlightColorButtonSafetyOrange:
-                intent.putExtra(key, R.color.safety_orange);
+                intent.putExtra(key, R.color.safety_orange_75);
                 break;
             case R.id.rippleHighlightColorButtonWhite:
-                intent.putExtra(key, R.color.white);
+                intent.putExtra(key, R.color.white_75);
                 break;
             case R.id.rippleHighlightColorButtonBlack:
-                intent.putExtra(key, R.color.black);
+                intent.putExtra(key, R.color.black_75);
                 break;
             case R.id.rippleHighlightColorButtonMantis:
             default:
-                intent.putExtra(key, R.color.mantis);
+                intent.putExtra(key, R.color.mantis_75);
                 break;
         }
 
@@ -351,7 +351,7 @@ public class MainActivity extends ActionBarActivity {
             switch (position) {
                 case 0:
                 default:
-                    return basicSettingsFragment;
+                    return mTabsSettingsFragment;
                 case 1:
                     return rippleSettingsFragment;
             }
