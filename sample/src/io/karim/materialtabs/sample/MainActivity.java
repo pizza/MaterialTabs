@@ -34,10 +34,10 @@ public class MainActivity extends ActionBarActivity {
     public static final String TEXT_COLOR = "TEXT_COLOR";
     public static final String TEXT_COLOR_SELECTED = "TEXT_COLOR_SELECTED";
 
-    private static final int UNDERLINE_HEIGHT_MINIMUM_DP = 20;
-    private static final int INDICATOR_HEIGHT_MINIMUM_DP = 20;
-    private static final int TAB_PADDING_MINIMUM_DP = 20;
-    private static final int SCROLL_OFFSET_MINIMUM_DP = 20;
+    private static final int UNDERLINE_HEIGHT_MINIMUM_DP = 0;
+    private static final int INDICATOR_HEIGHT_MINIMUM_DP = 0;
+    private static final int TAB_PADDING_MINIMUM_DP = 0;
+    private static final int SCROLL_OFFSET_MINIMUM_DP = 0;
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
@@ -165,7 +165,6 @@ public class MainActivity extends ActionBarActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 tabPaddingDp = progress + TAB_PADDING_MINIMUM_DP;
                 tabPaddingTextView.setText(getString(R.string.tab_padding) + ": " + tabPaddingDp + "dp");
-
             }
 
             @Override
@@ -182,7 +181,6 @@ public class MainActivity extends ActionBarActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 scrollOffsetDp = progress + SCROLL_OFFSET_MINIMUM_DP;
                 scrollOffsetTextView.setText(getString(R.string.scroll_offset) + ": " + scrollOffsetDp + "dp");
-
             }
 
             @Override

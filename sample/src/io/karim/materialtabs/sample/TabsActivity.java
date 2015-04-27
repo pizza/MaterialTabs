@@ -101,7 +101,7 @@ public class TabsActivity extends ActionBarActivity {
                 mMaterialTabs.setShouldExpand(extras.getBoolean(MainActivity.SHOULD_EXPAND));
                 mMaterialTabs.setAllCaps(extras.getBoolean(MainActivity.TEXT_ALL_CAPS));
 
-                mMaterialTabs.setTabBackgroundColorRes(extras.getInt(MainActivity.TAB_BACKGROUND));
+                mMaterialTabs.setBackgroundColor(getResources().getColor(extras.getInt(MainActivity.TAB_BACKGROUND)));
                 mMaterialTabs.setTextColorSelected(getResources().getColor(extras.getInt(MainActivity.TEXT_COLOR_SELECTED)));
                 mMaterialTabs.setTextColor(getResources().getColor(extras.getInt(MainActivity.TEXT_COLOR)));
             }
@@ -109,7 +109,6 @@ public class TabsActivity extends ActionBarActivity {
 
         // TODO: complete these and add all setters.
         // TODO: pass these setters parameters that the user can set manually in MainActivity, for an awesome sample :-D
-        mMaterialTabs.setRippleDuration(1000);
     }
 
     public class SamplePagerAdapter extends FragmentPagerAdapter {
