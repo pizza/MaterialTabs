@@ -107,6 +107,19 @@ public class TabsActivity extends ActionBarActivity {
 
                 mMaterialTabs.setTabTypefaceSelectedStyle(extras.getInt(MainActivity.TEXT_STYLE_SELECTED));
                 mMaterialTabs.setTabTypefaceUnselectedStyle(extras.getInt(MainActivity.TEXT_STYLE_UNSELECTED));
+
+                mMaterialTabs.setRippleDuration(extras.getInt(MainActivity.RIPPLE_DURATION));
+                mMaterialTabs.setRippleAlphaFloat(extras.getFloat(MainActivity.RIPPLE_ALPHA_FLOAT));
+                mMaterialTabs.setRippleColor(extras.getInt(MainActivity.RIPPLE_COLOR));
+                mMaterialTabs.setRippleDelayClick(extras.getBoolean(MainActivity.RIPPLE_DELAY_CLICK));
+                mMaterialTabs.setRippleDiameter(Utils.dpToPx(getResources(), extras.getInt(MainActivity.RIPPLE_DIAMETER)));
+                mMaterialTabs.setRippleFadeDuration(extras.getInt(MainActivity.RIPPLE_FADE_DURATION));
+                mMaterialTabs.setRippleHighlightColor(extras.getInt(MainActivity.RIPPLE_HIGHLIGHT_COLOR));
+                mMaterialTabs.setRippleHover(extras.getBoolean(MainActivity.RIPPLE_HOVER));
+                mMaterialTabs.setRippleInAdapter(false);
+                mMaterialTabs.setRippleOverlay(extras.getBoolean(MainActivity.RIPPLE_OVERLAY));
+                mMaterialTabs.setRipplePersistent(extras.getBoolean(MainActivity.RIPPLE_PERSISTENT));
+                mMaterialTabs.setRippleRoundedCorners(extras.getFloat(MainActivity.RIPPLE_ROUNDED_CORNERS_RADIUS));
             }
         }
 

@@ -43,6 +43,20 @@ public class MainActivity extends ActionBarActivity {
     private static final int TAB_PADDING_MINIMUM_DP = 0;
     private static final int SCROLL_OFFSET_MINIMUM_DP = 0;
 
+    public static final String RIPPLE_DURATION = "RIPPLE_DURATION";
+    public static final String RIPPLE_ALPHA_FLOAT = "RIPPLE_ALPHA_FLOAT";
+    public static final String RIPPLE_COLOR = "RIPPLE_COLOR";
+    public static final String RIPPLE_DELAY_CLICK = "RIPPLE_DELAY_CLICK";
+    public static final String RIPPLE_DIAMETER = "RIPPLE_DIAMETER";
+    public static final String RIPPLE_FADE_DURATION = "RIPPLE_FADE_DURATION";
+    public static final String RIPPLE_HIGHLIGHT_COLOR = "RIPPLE_HIGHLIGHT_COLOR";
+    public static final String RIPPLE_HOVER = "RIPPLE_HOVER";
+    public static final String RIPPLE_OVERLAY = "RIPPLE_OVERLAY";
+    public static final String RIPPLE_PERSISTENT = "RIPPLE_PERSISTENT";
+    public static final String RIPPLE_ROUNDED_CORNERS_RADIUS = "RIPPLE_ROUNDED_CORNERS_RADIUS";
+
+    private static final int RIPPLE_DURATION_MULTIPLIER = 100;
+
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
 
@@ -124,10 +138,70 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.unselectedTextStyleButtonBold)
     RadioButton unselectedTextStyleButtonBold;
 
+    // Ripple Duration
+    @InjectView(R.id.rippleDurationSeekBar)
+    SeekBar rippleDurationSeekBar;
+    @InjectView(R.id.rippleDurationTextView)
+    TextView rippleDurationTextView;
+
+    // Ripple Alpha Float
+    @InjectView(R.id.rippleAlphaFloatSeekBar)
+    SeekBar rippleAlphaFloatSeekBar;
+    @InjectView(R.id.rippleAlphaFloatTextView)
+    TextView rippleAlphaFloatTextView;
+
+    // Ripple Color
+    @InjectView(R.id.rippleColorRadioGroup)
+    RadioGroup rippleColorRadioGroup;
+    @InjectView(R.id.rippleColorButtonWhite)
+    RadioButton rippleColorButtonWhite;
+
+    // Ripple Delay Click
+    @InjectView(R.id.rippleDelayClickCheckBox)
+    CheckBox rippleDelayClickCheckBox;
+
+    // Ripple Diameter
+    @InjectView(R.id.rippleDiameterSeekBar)
+    CheckBox rippleDiameterSeekBar;
+
+    // Ripple Fade Duration
+    @InjectView(R.id.rippleFadeDurationSeekBar)
+    SeekBar rippleFadeDurationSeekBar;
+    @InjectView(R.id.rippleFadeDurationTextView)
+    TextView rippleFadeDurationTextView;
+
+    // Ripple Highlight Color
+    @InjectView(R.id.rippleHighlightColorRadioGroup)
+    RadioGroup rippleHighlightColorRadioGroup;
+    @InjectView(R.id.rippleHighlightColorButtonWhite)
+    RadioButton rippleHighlightColorButtonWhite;
+
+    // Ripple Diameter
+    @InjectView(R.id.rippleHoverCheckBox)
+    CheckBox rippleHoverCheckBox;
+
+    // Ripple Overlay
+    @InjectView(R.id.rippleOverlayCheckBox)
+    CheckBox rippleOverlayCheckBox;
+
+    // Ripple Persistent
+    @InjectView(R.id.ripplePersistentCheckBox)
+    CheckBox ripplePersistentCheckBox;
+
+    // Ripple Rounded Corners Radius
+    @InjectView(R.id.rippleRoundedCornersRadiusSeekBar)
+    SeekBar rippleRoundedCornersRadiusSeekBar;
+    @InjectView(R.id.rippleRoundedCornersRadiusTextView)
+    TextView rippleRoundedCornersRadiusTextView;
+
     private int underlineHeightDp;
     private int indicatorHeightDp;
     private int tabPaddingDp;
     private int scrollOffsetDp;
+    private int rippleDurationMs;
+    private float rippleAlphaFloat;
+    private int rippleFadeDurationMs;
+    private int rippleRoundedCornersRadiusDp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -208,12 +282,79 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        rippleDurationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                rippleDurationMs = progress * RIPPLE_DURATION_MULTIPLIER;
+                rippleDurationTextView.setText(getString(R.string.ripple_duration) + ": " + rippleDurationMs + "ms");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        rippleAlphaFloatSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                rippleAlphaFloat = (float) progress / rippleAlphaFloatSeekBar.getMax();
+                rippleAlphaFloatTextView.setText(getString(R.string.ripple_alpha_float) + ": " + rippleAlphaFloat);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        rippleFadeDurationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                rippleFadeDurationMs = progress * RIPPLE_DURATION_MULTIPLIER;
+                rippleFadeDurationTextView.setText(getString(R.string.ripple_fade_duration) + ": " + rippleFadeDurationMs + "ms");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        rippleRoundedCornersRadiusSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                rippleRoundedCornersRadiusDp = progress;
+                rippleRoundedCornersRadiusTextView.setText(
+                        getString(R.string.ripple_rounded_corners_radius) + ": " + rippleRoundedCornersRadiusDp + "dp");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
         tabTextColorButtonWhite.setChecked(true);
         tabTextSelectedColorButtonWhite.setChecked(true);
         tabBackgroundColorButtonMantis.setChecked(true);
 
         selectedTextStyleButtonBold.setChecked(true);
         unselectedTextStyleButtonBold.setChecked(true);
+        rippleColorButtonWhite.setChecked(true);
+        rippleHighlightColorButtonWhite.setChecked(true);
     }
 
     @Override
@@ -417,29 +558,73 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
-//        <attr name="pstsTextStyle">
-//        <flag name="normal" value="0x0" />
-//        <flag name="bold" value="0x1" />
-//        <flag name="italic" value="0x2" />
-//        </attr>
-//        <attr name="pstsTextSelectedStyle">
-//        <flag name="normal" value="0x0" />
-//        <flag name="bold" value="0x1" />
-//        <flag name="italic" value="0x2" />
-//        </attr>
-//        <attr name="pstsMrlRippleColor" format="color" localization="suggested" />
-//        <attr name="pstsMrlRippleHighlightColor" format="color" localization="suggested" />
-//        <attr name="pstsMrlRippleDimension" format="dimension" localization="suggested" />
-//        <attr name="pstsMrlRippleOverlay" format="boolean" localization="suggested" />
-//        <attr name="pstsMrlRippleAlpha" format="float" localization="suggested" />
-//        <attr name="pstsMrlRippleDuration" format="integer" localization="suggested" />
-//        <attr name="pstsMrlRippleFadeDuration" format="integer" localization="suggested" />
-//        <attr name="pstsMrlRippleHover" format="boolean" localization="suggested" />
-//        <attr name="pstsMrlRippleBackground" format="color" localization="suggested" />
-//        <attr name="pstsMrlRippleDelayClick" format="boolean" localization="suggested" />
-//        <attr name="pstsMrlRipplePersistent" format="boolean" localization="suggested" />
-//        <attr name="pstsMrlRippleInAdapter" format="boolean" localization="suggested" />
-//        <attr name="pstsMrlRippleRoundedCorners" format="dimension" localization="suggested" />
+        intent.putExtra(RIPPLE_DURATION, rippleDurationMs);
+        intent.putExtra(RIPPLE_ALPHA_FLOAT, rippleAlphaFloat);
+
+        // Ripple Color
+        key = RIPPLE_COLOR;
+        switch (rippleColorRadioGroup.getCheckedRadioButtonId()) {
+            case R.id.rippleColorButtonFireEngineRed:
+                intent.putExtra(key, R.color.fire_engine_red);
+                break;
+            case R.id.rippleColorButtonGorse:
+                intent.putExtra(key, R.color.gorse);
+                break;
+            case R.id.rippleColorButtonIrisBlue:
+                intent.putExtra(key, R.color.iris_blue);
+                break;
+            case R.id.rippleColorButtonSafetyOrange:
+                intent.putExtra(key, R.color.safety_orange);
+                break;
+            case R.id.rippleColorButtonWhite:
+                intent.putExtra(key, R.color.white);
+                break;
+            case R.id.rippleColorButtonBlack:
+                intent.putExtra(key, R.color.black);
+                break;
+            case R.id.rippleColorButtonMantis:
+            default:
+                intent.putExtra(key, R.color.mantis);
+                break;
+        }
+
+        intent.putExtra(RIPPLE_DELAY_CLICK, rippleDelayClickCheckBox.isChecked());
+        intent.putExtra(RIPPLE_DIAMETER, rippleDiameterSeekBar.isChecked());
+
+        intent.putExtra(RIPPLE_FADE_DURATION, rippleFadeDurationMs);
+
+        // Ripple Highlight Color
+        key = RIPPLE_HIGHLIGHT_COLOR;
+        switch (rippleHighlightColorRadioGroup.getCheckedRadioButtonId()) {
+            case R.id.rippleHighlightColorButtonFireEngineRed:
+                intent.putExtra(key, R.color.fire_engine_red);
+                break;
+            case R.id.rippleHighlightColorButtonGorse:
+                intent.putExtra(key, R.color.gorse);
+                break;
+            case R.id.rippleHighlightColorButtonIrisBlue:
+                intent.putExtra(key, R.color.iris_blue);
+                break;
+            case R.id.rippleHighlightColorButtonSafetyOrange:
+                intent.putExtra(key, R.color.safety_orange);
+                break;
+            case R.id.rippleHighlightColorButtonWhite:
+                intent.putExtra(key, R.color.white);
+                break;
+            case R.id.rippleHighlightColorButtonBlack:
+                intent.putExtra(key, R.color.black);
+                break;
+            case R.id.rippleHighlightColorButtonMantis:
+            default:
+                intent.putExtra(key, R.color.mantis);
+                break;
+        }
+
+        intent.putExtra(RIPPLE_HOVER, rippleHoverCheckBox.isChecked());
+        intent.putExtra(RIPPLE_OVERLAY, rippleOverlayCheckBox.isChecked());
+        intent.putExtra(RIPPLE_PERSISTENT, ripplePersistentCheckBox.isChecked());
+
+        intent.putExtra(RIPPLE_ROUNDED_CORNERS_RADIUS, rippleRoundedCornersRadiusDp);
 
         startActivity(intent);
     }
