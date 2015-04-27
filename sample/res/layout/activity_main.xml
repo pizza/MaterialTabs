@@ -428,5 +428,252 @@
                 android:id="@+id/paddingMiddleCheckBox" />
         </LinearLayout>
         <!--~ Padding Middle  -->
+
+        <!-- Tab Text Color -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/tab_text_color" />
+
+            <RadioGroup android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tabTextColorRadioGroup"
+                android:orientation="horizontal">
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextColorButtonFireEngineRed"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/fire_engine_red" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextColorButtonMantis"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/mantis" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextColorButtonGorse"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/gorse" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextColorButtonIrisBlue"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/iris_blue" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextColorButtonSafetyOrange"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/safety_orange" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextColorButtonWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    style="@style/RadioButtonBlackCheck"
+                    android:background="@color/white" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextColorButtonBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/black" />
+            </RadioGroup>
+        </LinearLayout>
+        <!--~ Tab Text Color -->
+
+
+        <!-- Tab Text Selected Color -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/tab_text_selected_color" />
+
+            <RadioGroup android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tabTextSelectedColorRadioGroup"
+                android:orientation="horizontal">
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextSelectedColorButtonFireEngineRed"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/fire_engine_red" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextSelectedColorButtonMantis"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/mantis" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextSelectedColorButtonGorse"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/gorse" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextSelectedColorButtonIrisBlue"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/iris_blue" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextSelectedColorButtonSafetyOrange"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/safety_orange" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextSelectedColorButtonWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    style="@style/RadioButtonBlackCheck"
+                    android:background="@color/white" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabTextSelectedColorButtonBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/black" />
+            </RadioGroup>
+        </LinearLayout>
+        <!--~ Tab Text Color -->
+
+        <!-- Tab Background Color -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/tab_background_color" />
+
+            <RadioGroup android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tabBackgroundColorRadioGroup"
+                android:orientation="horizontal">
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonFireEngineRed"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/fire_engine_red" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonMantis"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/mantis" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonGorse"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/gorse" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonIrisBlue"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/iris_blue" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonSafetyOrange"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/safety_orange" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    style="@style/RadioButtonBlackCheck"
+                    android:background="@color/white" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    android:background="@color/black" />
+            </RadioGroup>
+        </LinearLayout>
+        <!--~ Tab Background Color -->
     </LinearLayout>
 </ScrollView>

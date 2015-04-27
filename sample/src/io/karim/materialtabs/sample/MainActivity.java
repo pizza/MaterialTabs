@@ -33,6 +33,9 @@ public class MainActivity extends ActionBarActivity {
     public static final String PADDING_MIDDLE = "PADDING_MIDDLE";
     public static final String SHOULD_EXPAND = "SHOULD_EXPAND";
     public static final String TEXT_ALL_CAPS = "TEXT_ALL_CAPS";
+    public static final String TAB_BACKGROUND = "TAB_BACKGROUND";
+    public static final String TEXT_COLOR = "TEXT_COLOR";
+    public static final String TEXT_COLOR_SELECTED = "TEXT_COLOR_SELECTED";
 
     private static final int DIVIDER_WIDTH_MINIMUM_DP = 20;
     private static final int UNDERLINE_HEIGHT_MINIMUM_DP = 20;
@@ -109,6 +112,24 @@ public class MainActivity extends ActionBarActivity {
     // Text All Caps
     @InjectView(R.id.textAllCapsCheckBox)
     CheckBox textAllCapsCheckBox;
+
+    // Tab Text Color
+    @InjectView(R.id.tabTextColorRadioGroup)
+    RadioGroup tabTextColorRadioGroup;
+    @InjectView(R.id.tabTextColorButtonWhite)
+    RadioButtonCenter tabTextColorButtonWhite;
+
+    // Tab Text Selected Color
+    @InjectView(R.id.tabTextSelectedColorRadioGroup)
+    RadioGroup tabTextSelectedColorRadioGroup;
+    @InjectView(R.id.tabTextSelectedColorButtonWhite)
+    RadioButtonCenter tabTextSelectedColorButtonWhite;
+
+    // Tab Background Color
+    @InjectView(R.id.tabBackgroundColorRadioGroup)
+    RadioGroup tabBackgroundColorRadioGroup;
+    @InjectView(R.id.tabBackgroundColorButtonMantis)
+    RadioButtonCenter tabBackgroundColorButtonMantis;
 
     private int underlineHeightDp;
     private int dividerWidthDp;
@@ -231,6 +252,10 @@ public class MainActivity extends ActionBarActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
+
+        tabTextColorButtonWhite.setChecked(true);
+        tabTextSelectedColorButtonWhite.setChecked(true);
+        tabBackgroundColorButtonMantis.setChecked(true);
     }
 
     @Override
@@ -348,11 +373,115 @@ public class MainActivity extends ActionBarActivity {
         intent.putExtra(DIVIDER_PADDING, dividerPaddingDp);
         intent.putExtra(SCROLL_OFFSET, scrollOffsetDp);
 
-        // TODO:         <attr name="pstsTabBackground" format="reference" />
-
         intent.putExtra(SHOULD_EXPAND, shouldExpandCheckBox.isChecked());
         intent.putExtra(TEXT_ALL_CAPS, textAllCapsCheckBox.isChecked());
         intent.putExtra(PADDING_MIDDLE, paddingMiddleCheckBox.isChecked());
+
+        // Tab Background Color
+        key = TAB_BACKGROUND;
+        switch (tabBackgroundColorRadioGroup.getCheckedRadioButtonId()) {
+            case R.id.tabBackgroundColorButtonFireEngineRed:
+                intent.putExtra(key, R.color.fire_engine_red);
+                break;
+            case R.id.tabBackgroundColorButtonGorse:
+                intent.putExtra(key, R.color.gorse);
+                break;
+            case R.id.tabBackgroundColorButtonIrisBlue:
+                intent.putExtra(key, R.color.iris_blue);
+                break;
+            case R.id.tabBackgroundColorButtonSafetyOrange:
+                intent.putExtra(key, R.color.safety_orange);
+                break;
+            case R.id.tabBackgroundColorButtonWhite:
+                intent.putExtra(key, R.color.white);
+                break;
+            case R.id.tabBackgroundColorButtonBlack:
+                intent.putExtra(key, R.color.black);
+                break;
+            case R.id.tabBackgroundColorButtonMantis:
+            default:
+                intent.putExtra(key, R.color.mantis);
+                break;
+        }
+
+        // Text Color
+        key = TEXT_COLOR;
+        switch (tabTextColorRadioGroup.getCheckedRadioButtonId()) {
+            case R.id.tabTextColorButtonFireEngineRed:
+                intent.putExtra(key, R.color.fire_engine_red);
+                break;
+            case R.id.tabTextColorButtonGorse:
+                intent.putExtra(key, R.color.gorse);
+                break;
+            case R.id.tabTextColorButtonIrisBlue:
+                intent.putExtra(key, R.color.iris_blue);
+                break;
+            case R.id.tabTextColorButtonSafetyOrange:
+                intent.putExtra(key, R.color.safety_orange);
+                break;
+            case R.id.tabTextColorButtonWhite:
+                intent.putExtra(key, R.color.white);
+                break;
+            case R.id.tabTextColorButtonBlack:
+                intent.putExtra(key, R.color.black);
+                break;
+            case R.id.tabTextColorButtonMantis:
+            default:
+                intent.putExtra(key, R.color.mantis);
+                break;
+        }
+
+        // Text Color Selected
+        key = TEXT_COLOR_SELECTED;
+        switch (tabTextSelectedColorRadioGroup.getCheckedRadioButtonId()) {
+            case R.id.tabTextSelectedColorButtonFireEngineRed:
+                intent.putExtra(key, R.color.fire_engine_red);
+                break;
+            case R.id.tabTextSelectedColorButtonGorse:
+                intent.putExtra(key, R.color.gorse);
+                break;
+            case R.id.tabTextSelectedColorButtonIrisBlue:
+                intent.putExtra(key, R.color.iris_blue);
+                break;
+            case R.id.tabTextSelectedColorButtonSafetyOrange:
+                intent.putExtra(key, R.color.safety_orange);
+                break;
+            case R.id.tabTextSelectedColorButtonWhite:
+                intent.putExtra(key, R.color.white);
+                break;
+            case R.id.tabTextSelectedColorButtonBlack:
+                intent.putExtra(key, R.color.black);
+                break;
+            case R.id.tabTextSelectedColorButtonMantis:
+            default:
+                intent.putExtra(key, R.color.mantis);
+                break;
+        }
+
+//        <attr name="pstsTextAlpha" format="integer" />
+//        <attr name="pstsTextStyle">
+//        <flag name="normal" value="0x0" />
+//        <flag name="bold" value="0x1" />
+//        <flag name="italic" value="0x2" />
+//        </attr>
+//        <attr name="pstsTextSelectedStyle">
+//        <flag name="normal" value="0x0" />
+//        <flag name="bold" value="0x1" />
+//        <flag name="italic" value="0x2" />
+//        </attr>
+//        <attr name="pstsMrlRippleColor" format="color" localization="suggested" />
+//        <attr name="pstsMrlRippleHighlightColor" format="color" localization="suggested" />
+//        <attr name="pstsMrlRippleDimension" format="dimension" localization="suggested" />
+//        <attr name="pstsMrlRippleOverlay" format="boolean" localization="suggested" />
+//        <attr name="pstsMrlRippleAlpha" format="float" localization="suggested" />
+//        <attr name="pstsMrlRippleDuration" format="integer" localization="suggested" />
+//        <attr name="pstsMrlRippleFadeDuration" format="integer" localization="suggested" />
+//        <attr name="pstsMrlRippleHover" format="boolean" localization="suggested" />
+//        <attr name="pstsMrlRippleBackground" format="color" localization="suggested" />
+//        <attr name="pstsMrlRippleDelayClick" format="boolean" localization="suggested" />
+//        <attr name="pstsMrlRipplePersistent" format="boolean" localization="suggested" />
+//        <attr name="pstsMrlRippleInAdapter" format="boolean" localization="suggested" />
+//        <attr name="pstsMrlRippleRoundedCorners" format="dimension" localization="suggested" />
 
         startActivity(intent);
     }

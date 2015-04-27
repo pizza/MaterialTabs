@@ -17,4 +17,7 @@
     <string name="indicator_color">Indicator Color</string>
     <string name="textAllCaps">Text All Caps</string>
     <string name="paddingMiddle">Padding Middle</string>
+    <string name="tab_text_color">Tab Text Color</string>
+    <string name="tab_text_selected_color">Tab Text Selected</string>
+    <string name="tab_background_color">Tab Background Color</string>
 </resources>

@@ -31,8 +31,6 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
@@ -62,7 +60,6 @@ public class MaterialRippleLayout extends FrameLayout {
     public static final float DEFAULT_DIAMETER_DP = 20;
     public static final float DEFAULT_ALPHA = 0.2f;
     public static final int DEFAULT_COLOR = Color.WHITE;
-    public static final int DEFAULT_BACKGROUND = Color.TRANSPARENT;
     public static final boolean DEFAULT_HOVER = true;
     public static final boolean DEFAULT_DELAY_CLICK = false;
     public static final boolean DEFAULT_PERSISTENT = false;
@@ -85,7 +82,6 @@ public class MaterialRippleLayout extends FrameLayout {
     private boolean rippleDelayClick;
     private int rippleFadeDuration;
     private boolean ripplePersistent;
-    private Drawable rippleBackground;
     private boolean rippleInAdapter;
     private float rippleRoundedCorners;
 
@@ -158,7 +154,6 @@ public class MaterialRippleLayout extends FrameLayout {
         rippleAlphaInt = (int) (255 * a.getFloat(R.styleable.MaterialRippleLayout_mrlRippleAlpha, DEFAULT_ALPHA));
         rippleDelayClick = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleDelayClick, DEFAULT_DELAY_CLICK);
         rippleFadeDuration = a.getInteger(R.styleable.MaterialRippleLayout_mrlRippleFadeDuration, DEFAULT_FADE_DURATION);
-        rippleBackground = new ColorDrawable(a.getColor(R.styleable.MaterialRippleLayout_mrlRippleBackground, DEFAULT_BACKGROUND));
         ripplePersistent = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRipplePersistent, DEFAULT_PERSISTENT);
         rippleInAdapter = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleInAdapter, DEFAULT_SEARCH_ADAPTER);
         rippleRoundedCorners = a.getDimensionPixelSize(R.styleable.MaterialRippleLayout_mrlRippleRoundedCorners, DEFAULT_ROUNDED_CORNERS);
@@ -461,7 +456,6 @@ public class MaterialRippleLayout extends FrameLayout {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         bounds.set(0, 0, w, h);
-        rippleBackground.setBounds(bounds);
     }
 
     @Override
@@ -476,9 +470,6 @@ public class MaterialRippleLayout extends FrameLayout {
     public void draw(@NonNull Canvas canvas) {
         final boolean positionChanged = adapterPositionChanged();
         if (rippleOverlay) {
-            if (!positionChanged) {
-                rippleBackground.draw(canvas);
-            }
             super.draw(canvas);
             if (!positionChanged) {
                 if (rippleRoundedCorners != 0) {
@@ -491,7 +482,6 @@ public class MaterialRippleLayout extends FrameLayout {
             }
         } else {
             if (!positionChanged) {
-                rippleBackground.draw(canvas);
                 canvas.drawCircle(currentCoordinates.x, currentCoordinates.y, radius, paint);
             }
             super.draw(canvas);
@@ -572,12 +562,6 @@ public class MaterialRippleLayout extends FrameLayout {
 
     public void setRippleDuration(int rippleDuration) {
         this.rippleDuration = rippleDuration;
-    }
-
-    public void setRippleBackground(int color) {
-        rippleBackground = new ColorDrawable(color);
-        rippleBackground.setBounds(bounds);
-        invalidate();
     }
 
     public void setRippleHover(boolean rippleHover) {
@@ -709,7 +693,6 @@ public class MaterialRippleLayout extends FrameLayout {
         private boolean rippleDelayClick = DEFAULT_DELAY_CLICK;
         private int rippleFadeDuration = DEFAULT_FADE_DURATION;
         private boolean ripplePersistent = DEFAULT_PERSISTENT;
-        private int rippleBackground = DEFAULT_BACKGROUND;
         private boolean rippleSearchAdapter = DEFAULT_SEARCH_ADAPTER;
         private float rippleRoundedCorner = DEFAULT_ROUNDED_CORNERS;
 
@@ -776,11 +759,6 @@ public class MaterialRippleLayout extends FrameLayout {
             return this;
         }
 
-        public RippleBuilder rippleBackground(int color) {
-            this.rippleBackground = color;
-            return this;
-        }
-
         public RippleBuilder rippleInAdapter(boolean inAdapter) {
             this.rippleSearchAdapter = inAdapter;
             return this;
@@ -803,7 +781,6 @@ public class MaterialRippleLayout extends FrameLayout {
             layout.setRippleHover(rippleHover);
             layout.setRipplePersistent(ripplePersistent);
             layout.setRippleOverlay(rippleOverlay);
-            layout.setRippleBackground(rippleBackground);
             layout.setRippleInAdapter(rippleSearchAdapter);
             layout.setRippleRoundedCorners(Utils.dpToPx(context.getResources(), rippleRoundedCorner));
 

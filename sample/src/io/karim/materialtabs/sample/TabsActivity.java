@@ -103,6 +103,10 @@ public class TabsActivity extends ActionBarActivity {
                 mMaterialTabs.setPaddingMiddle(extras.getBoolean(MainActivity.PADDING_MIDDLE));
                 mMaterialTabs.setShouldExpand(extras.getBoolean(MainActivity.SHOULD_EXPAND));
                 mMaterialTabs.setAllCaps(extras.getBoolean(MainActivity.TEXT_ALL_CAPS));
+
+                mMaterialTabs.setTabBackgroundColorRes(extras.getInt(MainActivity.TAB_BACKGROUND));
+                mMaterialTabs.setTextColorSelected(getResources().getColor(extras.getInt(MainActivity.TEXT_COLOR_SELECTED)));
+                mMaterialTabs.setTextColor(getResources().getColor(extras.getInt(MainActivity.TEXT_COLOR)));
             }
         }
 

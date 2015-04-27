@@ -35,7 +35,6 @@
         <attr name="pstsMrlRippleDuration" format="integer" localization="suggested" />
         <attr name="pstsMrlRippleFadeDuration" format="integer" localization="suggested" />
         <attr name="pstsMrlRippleHover" format="boolean" localization="suggested" />
-        <attr name="pstsMrlRippleBackground" format="color" localization="suggested" />
         <attr name="pstsMrlRippleDelayClick" format="boolean" localization="suggested" />
         <attr name="pstsMrlRipplePersistent" format="boolean" localization="suggested" />
         <attr name="pstsMrlRippleInAdapter" format="boolean" localization="suggested" />
@@ -51,7 +50,6 @@
         <attr name="mrlRippleDuration" format="integer" localization="suggested" />
         <attr name="mrlRippleFadeDuration" format="integer" localization="suggested" />
         <attr name="mrlRippleHover" format="boolean" localization="suggested" />
-        <attr name="mrlRippleBackground" format="color" localization="suggested" />
         <attr name="mrlRippleDelayClick" format="boolean" localization="suggested" />
         <attr name="mrlRipplePersistent" format="boolean" localization="suggested" />
         <attr name="mrlRippleInAdapter" format="boolean" localization="suggested" />
