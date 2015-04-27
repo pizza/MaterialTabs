@@ -27,7 +27,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
-import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -65,22 +64,6 @@ public class TabsActivity extends ActionBarActivity {
 
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics());
         mViewPager.setPageMargin(pageMargin);
-        mViewPager.setCurrentItem(0);
-
-        mMaterialTabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                Toast.makeText(TabsActivity.this, "Selected tab #" + position, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
     }
 
     private void applyParametersFromIntentExtras() {

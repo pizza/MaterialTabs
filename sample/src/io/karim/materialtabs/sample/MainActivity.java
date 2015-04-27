@@ -17,7 +17,6 @@ import android.view.MenuItem;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
 import io.karim.MaterialTabs;
 
 
@@ -34,12 +33,11 @@ public class MainActivity extends ActionBarActivity {
 
     private BasicSettingsFragment basicSettingsFragment = new BasicSettingsFragment();
     private RippleSettingsFragment rippleSettingsFragment = new RippleSettingsFragment();
-    private AdvancedSettingsFragment advancedSettingsFragment = new AdvancedSettingsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_tabs);
         ButterKnife.inject(this);
         setSupportActionBar(mToolbar);
 
@@ -69,17 +67,17 @@ public class MainActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_me:
+                return true;
+            case R.id.action_go:
+                goToTabsActivityButtonClicked();
+                return true;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick(R.id.goToTabsActivityButton)
     public void goToTabsActivityButtonClicked() {
         Intent intent = new Intent(this, TabsActivity.class);
 
@@ -332,7 +330,7 @@ public class MainActivity extends ActionBarActivity {
 
     public class MainActivityPagerAdapter extends FragmentPagerAdapter {
 
-        private final String[] TITLES = {"Basic", "Ripple", "Advanced"};
+        private final String[] TITLES = {"Tabs", "Ripple"};
 
         public MainActivityPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -356,8 +354,6 @@ public class MainActivity extends ActionBarActivity {
                     return basicSettingsFragment;
                 case 1:
                     return rippleSettingsFragment;
-                case 2:
-                    return advancedSettingsFragment;
             }
         }
     }

@@ -30,4 +30,6 @@
     <string name="ripple_overlay">Ripple Overlay</string>
     <string name="ripple_persistent">Ripple Persistent</string>
     <string name="ripple_rounded_corners_radius">Ripple Rounded Corners Radius</string>
+    <string name="me">Me</string>
+    <string name="go">Go</string>
 </resources>

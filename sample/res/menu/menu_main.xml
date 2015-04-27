@@ -2,8 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="io.karim.materialtabs.sample.MainActivity">
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+    <item android:id="@+id/action_me"
+        android:title="@string/me"
+        android:icon="@drawable/ic_action_social_mood"
+        android:orderInCategory="1"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_go"
+        android:title="@string/go"
+        android:icon="@drawable/ic_action_navigation_arrow_forward"
+        android:orderInCategory="2"
+        app:showAsAction="ifRoom" />
 </menu>
