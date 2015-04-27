@@ -5,203 +5,36 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.CheckBox;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.SeekBar;
-import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import io.karim.materialtabs.sample.sampleui.RadioButtonCenter;
+import io.karim.MaterialTabs;
 
 
 public class MainActivity extends ActionBarActivity {
 
-    public static final String INDICATOR_COLOR = "INDICATOR_COLOR";
-    public static final String UNDERLINE_COLOR = "UNDERLINE_COLOR";
-    public static final String INDICATOR_HEIGHT = "INDICATOR_HEIGHT";
-    public static final String UNDERLINE_HEIGHT = "UNDERLINE_HEIGHT";
-    public static final String TAB_PADDING = "TAB_PADDING";
-    public static final String SCROLL_OFFSET = "SCROLL_OFFSET";
-    public static final String PADDING_MIDDLE = "PADDING_MIDDLE";
-    public static final String SHOULD_EXPAND = "SHOULD_EXPAND";
-    public static final String TEXT_ALL_CAPS = "TEXT_ALL_CAPS";
-    public static final String TAB_BACKGROUND = "TAB_BACKGROUND";
-    public static final String TEXT_COLOR_UNSELECTED = "TEXT_COLOR_UNSELECTED";
-    public static final String TEXT_COLOR_SELECTED = "TEXT_COLOR_SELECTED";
-    public static final String TEXT_STYLE_SELECTED = "TEXT_STYLE_SELECTED";
-    public static final String TEXT_STYLE_UNSELECTED = "TEXT_STYLE_UNSELECTED";
-
-    private static final int UNDERLINE_HEIGHT_MINIMUM_DP = 0;
-    private static final int INDICATOR_HEIGHT_MINIMUM_DP = 0;
-    private static final int TAB_PADDING_MINIMUM_DP = 0;
-    private static final int SCROLL_OFFSET_MINIMUM_DP = 0;
-
-    public static final String RIPPLE_DURATION = "RIPPLE_DURATION";
-    public static final String RIPPLE_ALPHA_FLOAT = "RIPPLE_ALPHA_FLOAT";
-    public static final String RIPPLE_COLOR = "RIPPLE_COLOR";
-    public static final String RIPPLE_DELAY_CLICK = "RIPPLE_DELAY_CLICK";
-    public static final String RIPPLE_DIAMETER = "RIPPLE_DIAMETER";
-    public static final String RIPPLE_FADE_DURATION = "RIPPLE_FADE_DURATION";
-    public static final String RIPPLE_HIGHLIGHT_COLOR = "RIPPLE_HIGHLIGHT_COLOR";
-    public static final String RIPPLE_HOVER = "RIPPLE_HOVER";
-    public static final String RIPPLE_OVERLAY = "RIPPLE_OVERLAY";
-    public static final String RIPPLE_PERSISTENT = "RIPPLE_PERSISTENT";
-    public static final String RIPPLE_ROUNDED_CORNERS_RADIUS = "RIPPLE_ROUNDED_CORNERS_RADIUS";
-
-    private static final int RIPPLE_DURATION_MULTIPLIER = 100;
-
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
 
-    // Indicator Color
-    @InjectView(R.id.indicatorColorRadioGroup)
-    RadioGroup indicatorColorRadioGroup;
-    @InjectView(R.id.indicatorColorButtonMantis)
-    RadioButtonCenter indicatorColorButtonMantis;
+    @InjectView(R.id.material_tabs)
+    MaterialTabs mMaterialTabs;
 
-    // Indicator Color
-    @InjectView(R.id.underlineColorRadioGroup)
-    RadioGroup underlineColorRadioGroup;
-    @InjectView(R.id.underlineColorButtonMantis)
-    RadioButtonCenter underlineColorButtonMantis;
+    @InjectView(R.id.view_pager)
+    ViewPager mViewPager;
 
-    // Indicator Height
-    @InjectView(R.id.indicatorHeightSeekBar)
-    SeekBar indicatorHeightSeekBar;
-    @InjectView(R.id.indicatorHeightTextView)
-    TextView indicatorHeightTextView;
-
-    // Underline Height
-    @InjectView(R.id.underlineHeightSeekBar)
-    SeekBar underlineHeightSeekBar;
-    @InjectView(R.id.underlineHeightTextView)
-    TextView underlineHeightTextView;
-
-    // Tab Padding Left Right
-    @InjectView(R.id.tabPaddingSeekBar)
-    SeekBar tabPaddingSeekBar;
-    @InjectView(R.id.tabPaddingTextView)
-    TextView tabPaddingTextView;
-
-    // Scroll Offset
-    @InjectView(R.id.scrollOffsetSeekBar)
-    SeekBar scrollOffsetSeekBar;
-    @InjectView(R.id.scrollOffsetTextView)
-    TextView scrollOffsetTextView;
-
-    // Padding Middle
-    @InjectView(R.id.paddingMiddleCheckBox)
-    CheckBox paddingMiddleCheckBox;
-
-    // Should Expand
-    @InjectView(R.id.shouldExpandCheckBox)
-    CheckBox shouldExpandCheckBox;
-
-    // Text All Caps
-    @InjectView(R.id.textAllCapsCheckBox)
-    CheckBox textAllCapsCheckBox;
-
-    // Tab Text Color
-    @InjectView(R.id.tabTextColorRadioGroup)
-    RadioGroup tabTextColorRadioGroup;
-    @InjectView(R.id.tabTextColorButtonWhite)
-    RadioButtonCenter tabTextColorButtonWhite;
-
-    // Tab Text Selected Color
-    @InjectView(R.id.tabTextSelectedColorRadioGroup)
-    RadioGroup tabTextSelectedColorRadioGroup;
-    @InjectView(R.id.tabTextSelectedColorButtonWhite)
-    RadioButtonCenter tabTextSelectedColorButtonWhite;
-
-    // Tab Background Color
-    @InjectView(R.id.tabBackgroundColorRadioGroup)
-    RadioGroup tabBackgroundColorRadioGroup;
-    @InjectView(R.id.tabBackgroundColorButtonMantis)
-    RadioButtonCenter tabBackgroundColorButtonMantis;
-
-    // Selected Text Style
-    @InjectView(R.id.selectedTextStyleRadioGroup)
-    RadioGroup selectedTextStyleRadioGroup;
-    @InjectView(R.id.selectedTextStyleButtonBold)
-    RadioButton selectedTextStyleButtonBold;
-
-    // Unselected Text Style
-    @InjectView(R.id.unselectedTextStyleRadioGroup)
-    RadioGroup unselectedTextStyleRadioGroup;
-    @InjectView(R.id.unselectedTextStyleButtonBold)
-    RadioButton unselectedTextStyleButtonBold;
-
-    // Ripple Duration
-    @InjectView(R.id.rippleDurationSeekBar)
-    SeekBar rippleDurationSeekBar;
-    @InjectView(R.id.rippleDurationTextView)
-    TextView rippleDurationTextView;
-
-    // Ripple Alpha Float
-    @InjectView(R.id.rippleAlphaFloatSeekBar)
-    SeekBar rippleAlphaFloatSeekBar;
-    @InjectView(R.id.rippleAlphaFloatTextView)
-    TextView rippleAlphaFloatTextView;
-
-    // Ripple Color
-    @InjectView(R.id.rippleColorRadioGroup)
-    RadioGroup rippleColorRadioGroup;
-    @InjectView(R.id.rippleColorButtonWhite)
-    RadioButton rippleColorButtonWhite;
-
-    // Ripple Delay Click
-    @InjectView(R.id.rippleDelayClickCheckBox)
-    CheckBox rippleDelayClickCheckBox;
-
-    // Ripple Diameter
-    @InjectView(R.id.rippleDiameterSeekBar)
-    CheckBox rippleDiameterSeekBar;
-
-    // Ripple Fade Duration
-    @InjectView(R.id.rippleFadeDurationSeekBar)
-    SeekBar rippleFadeDurationSeekBar;
-    @InjectView(R.id.rippleFadeDurationTextView)
-    TextView rippleFadeDurationTextView;
-
-    // Ripple Highlight Color
-    @InjectView(R.id.rippleHighlightColorRadioGroup)
-    RadioGroup rippleHighlightColorRadioGroup;
-    @InjectView(R.id.rippleHighlightColorButtonWhite)
-    RadioButton rippleHighlightColorButtonWhite;
-
-    // Ripple Diameter
-    @InjectView(R.id.rippleHoverCheckBox)
-    CheckBox rippleHoverCheckBox;
-
-    // Ripple Overlay
-    @InjectView(R.id.rippleOverlayCheckBox)
-    CheckBox rippleOverlayCheckBox;
-
-    // Ripple Persistent
-    @InjectView(R.id.ripplePersistentCheckBox)
-    CheckBox ripplePersistentCheckBox;
-
-    // Ripple Rounded Corners Radius
-    @InjectView(R.id.rippleRoundedCornersRadiusSeekBar)
-    SeekBar rippleRoundedCornersRadiusSeekBar;
-    @InjectView(R.id.rippleRoundedCornersRadiusTextView)
-    TextView rippleRoundedCornersRadiusTextView;
-
-    private int underlineHeightDp;
-    private int indicatorHeightDp;
-    private int tabPaddingDp;
-    private int scrollOffsetDp;
-    private int rippleDurationMs;
-    private float rippleAlphaFloat;
-    private int rippleFadeDurationMs;
-    private int rippleRoundedCornersRadiusDp;
+    private BasicSettingsFragment basicSettingsFragment = new BasicSettingsFragment();
+    private RippleSettingsFragment rippleSettingsFragment = new RippleSettingsFragment();
+    private AdvancedSettingsFragment advancedSettingsFragment = new AdvancedSettingsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,147 +47,14 @@ public class MainActivity extends ActionBarActivity {
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
         tintManager.setStatusBarTintEnabled(true);
 
-        indicatorColorButtonMantis.setChecked(true);
-        underlineColorButtonMantis.setChecked(true);
+        MainActivityPagerAdapter adapter = new MainActivityPagerAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(adapter);
 
-        underlineHeightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                underlineHeightDp = progress + UNDERLINE_HEIGHT_MINIMUM_DP;
-                underlineHeightTextView.setText(getString(R.string.underline_height) + ": " + underlineHeightDp + "dp");
-            }
+        mMaterialTabs.setViewPager(mViewPager);
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        indicatorHeightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                indicatorHeightDp = progress + INDICATOR_HEIGHT_MINIMUM_DP;
-                indicatorHeightTextView.setText(getString(R.string.indicator_height) + ": " + indicatorHeightDp + "dp");
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        tabPaddingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tabPaddingDp = progress + TAB_PADDING_MINIMUM_DP;
-                tabPaddingTextView.setText(getString(R.string.tab_padding) + ": " + tabPaddingDp + "dp");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        scrollOffsetSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                scrollOffsetDp = progress + SCROLL_OFFSET_MINIMUM_DP;
-                scrollOffsetTextView.setText(getString(R.string.scroll_offset) + ": " + scrollOffsetDp + "dp");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        rippleDurationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                rippleDurationMs = progress * RIPPLE_DURATION_MULTIPLIER;
-                rippleDurationTextView.setText(getString(R.string.ripple_duration) + ": " + rippleDurationMs + "ms");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        rippleAlphaFloatSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                rippleAlphaFloat = (float) progress / rippleAlphaFloatSeekBar.getMax();
-                rippleAlphaFloatTextView.setText(getString(R.string.ripple_alpha_float) + ": " + rippleAlphaFloat);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        rippleFadeDurationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                rippleFadeDurationMs = progress * RIPPLE_DURATION_MULTIPLIER;
-                rippleFadeDurationTextView.setText(getString(R.string.ripple_fade_duration) + ": " + rippleFadeDurationMs + "ms");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        rippleRoundedCornersRadiusSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                rippleRoundedCornersRadiusDp = progress;
-                rippleRoundedCornersRadiusTextView.setText(
-                        getString(R.string.ripple_rounded_corners_radius) + ": " + rippleRoundedCornersRadiusDp + "dp");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        tabTextColorButtonWhite.setChecked(true);
-        tabTextSelectedColorButtonWhite.setChecked(true);
-        tabBackgroundColorButtonMantis.setChecked(true);
-
-        selectedTextStyleButtonBold.setChecked(true);
-        unselectedTextStyleButtonBold.setChecked(true);
-        rippleColorButtonWhite.setChecked(true);
-        rippleHighlightColorButtonWhite.setChecked(true);
+        final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics());
+        mViewPager.setPageMargin(pageMargin);
+        mViewPager.setCurrentItem(0);
     }
 
     @Override
@@ -383,9 +83,9 @@ public class MainActivity extends ActionBarActivity {
     public void goToTabsActivityButtonClicked() {
         Intent intent = new Intent(this, TabsActivity.class);
 
-        // Indicator Color
-        String key = INDICATOR_COLOR;
-        switch (indicatorColorRadioGroup.getCheckedRadioButtonId()) {
+        // Indicator Color`
+        String key = BasicSettingsFragment.INDICATOR_COLOR;
+        switch (basicSettingsFragment.indicatorColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.indicatorColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -411,8 +111,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Underline Color
-        key = UNDERLINE_COLOR;
-        switch (underlineColorRadioGroup.getCheckedRadioButtonId()) {
+        key = BasicSettingsFragment.UNDERLINE_COLOR;
+        switch (basicSettingsFragment.underlineColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.underlineColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -437,19 +137,19 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
-        intent.putExtra(INDICATOR_HEIGHT, indicatorHeightDp);
-        intent.putExtra(UNDERLINE_HEIGHT, underlineHeightDp);
+        intent.putExtra(BasicSettingsFragment.INDICATOR_HEIGHT, basicSettingsFragment.indicatorHeightDp);
+        intent.putExtra(BasicSettingsFragment.UNDERLINE_HEIGHT, basicSettingsFragment.underlineHeightDp);
 
-        intent.putExtra(TAB_PADDING, tabPaddingDp);
-        intent.putExtra(SCROLL_OFFSET, scrollOffsetDp);
+        intent.putExtra(BasicSettingsFragment.TAB_PADDING, basicSettingsFragment.tabPaddingDp);
+        intent.putExtra(BasicSettingsFragment.SCROLL_OFFSET, basicSettingsFragment.scrollOffsetDp);
 
-        intent.putExtra(SHOULD_EXPAND, shouldExpandCheckBox.isChecked());
-        intent.putExtra(TEXT_ALL_CAPS, textAllCapsCheckBox.isChecked());
-        intent.putExtra(PADDING_MIDDLE, paddingMiddleCheckBox.isChecked());
+        intent.putExtra(BasicSettingsFragment.SHOULD_EXPAND, basicSettingsFragment.shouldExpandCheckBox.isChecked());
+        intent.putExtra(BasicSettingsFragment.TEXT_ALL_CAPS, basicSettingsFragment.textAllCapsCheckBox.isChecked());
+        intent.putExtra(BasicSettingsFragment.PADDING_MIDDLE, basicSettingsFragment.paddingMiddleCheckBox.isChecked());
 
         // Tab Background Color
-        key = TAB_BACKGROUND;
-        switch (tabBackgroundColorRadioGroup.getCheckedRadioButtonId()) {
+        key = BasicSettingsFragment.TAB_BACKGROUND;
+        switch (basicSettingsFragment.tabBackgroundColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.tabBackgroundColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -475,8 +175,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Text Color
-        key = TEXT_COLOR_UNSELECTED;
-        switch (tabTextColorRadioGroup.getCheckedRadioButtonId()) {
+        key = BasicSettingsFragment.TEXT_COLOR_UNSELECTED;
+        switch (basicSettingsFragment.tabTextColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.tabTextColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -502,8 +202,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Text Color Selected
-        key = TEXT_COLOR_SELECTED;
-        switch (tabTextSelectedColorRadioGroup.getCheckedRadioButtonId()) {
+        key = BasicSettingsFragment.TEXT_COLOR_SELECTED;
+        switch (basicSettingsFragment.tabTextSelectedColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.tabTextSelectedColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -529,8 +229,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Text Style Selected
-        key = TEXT_STYLE_SELECTED;
-        switch (selectedTextStyleRadioGroup.getCheckedRadioButtonId()) {
+        key = BasicSettingsFragment.TEXT_STYLE_SELECTED;
+        switch (basicSettingsFragment.selectedTextStyleRadioGroup.getCheckedRadioButtonId()) {
             case R.id.selectedTextStyleButtonNormal:
                 intent.putExtra(key, Typeface.NORMAL);
                 break;
@@ -544,8 +244,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Text Style Unselected
-        key = TEXT_STYLE_UNSELECTED;
-        switch (unselectedTextStyleRadioGroup.getCheckedRadioButtonId()) {
+        key = BasicSettingsFragment.TEXT_STYLE_UNSELECTED;
+        switch (basicSettingsFragment.unselectedTextStyleRadioGroup.getCheckedRadioButtonId()) {
             case R.id.unselectedTextStyleButtonNormal:
                 intent.putExtra(key, Typeface.NORMAL);
                 break;
@@ -558,12 +258,12 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
-        intent.putExtra(RIPPLE_DURATION, rippleDurationMs);
-        intent.putExtra(RIPPLE_ALPHA_FLOAT, rippleAlphaFloat);
+        intent.putExtra(RippleSettingsFragment.RIPPLE_DURATION, rippleSettingsFragment.rippleDurationMs);
+        intent.putExtra(RippleSettingsFragment.RIPPLE_ALPHA_FLOAT, rippleSettingsFragment.rippleAlphaFloat);
 
         // Ripple Color
-        key = RIPPLE_COLOR;
-        switch (rippleColorRadioGroup.getCheckedRadioButtonId()) {
+        key = RippleSettingsFragment.RIPPLE_COLOR;
+        switch (rippleSettingsFragment.rippleColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.rippleColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -588,14 +288,14 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
-        intent.putExtra(RIPPLE_DELAY_CLICK, rippleDelayClickCheckBox.isChecked());
-        intent.putExtra(RIPPLE_DIAMETER, rippleDiameterSeekBar.isChecked());
+        intent.putExtra(RippleSettingsFragment.RIPPLE_DELAY_CLICK, rippleSettingsFragment.rippleDelayClickCheckBox.isChecked());
+        intent.putExtra(RippleSettingsFragment.RIPPLE_DIAMETER, rippleSettingsFragment.rippleDiameterDp);
 
-        intent.putExtra(RIPPLE_FADE_DURATION, rippleFadeDurationMs);
+        intent.putExtra(RippleSettingsFragment.RIPPLE_FADE_DURATION, rippleSettingsFragment.rippleFadeDurationMs);
 
         // Ripple Highlight Color
-        key = RIPPLE_HIGHLIGHT_COLOR;
-        switch (rippleHighlightColorRadioGroup.getCheckedRadioButtonId()) {
+        key = RippleSettingsFragment.RIPPLE_HIGHLIGHT_COLOR;
+        switch (rippleSettingsFragment.rippleHighlightColorRadioGroup.getCheckedRadioButtonId()) {
             case R.id.rippleHighlightColorButtonFireEngineRed:
                 intent.putExtra(key, R.color.fire_engine_red);
                 break;
@@ -620,12 +320,45 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
-        intent.putExtra(RIPPLE_HOVER, rippleHoverCheckBox.isChecked());
-        intent.putExtra(RIPPLE_OVERLAY, rippleOverlayCheckBox.isChecked());
-        intent.putExtra(RIPPLE_PERSISTENT, ripplePersistentCheckBox.isChecked());
+        intent.putExtra(RippleSettingsFragment.RIPPLE_HOVER, rippleSettingsFragment.rippleHoverCheckBox.isChecked());
+        intent.putExtra(RippleSettingsFragment.RIPPLE_OVERLAY, rippleSettingsFragment.rippleOverlayCheckBox.isChecked());
+        intent.putExtra(RippleSettingsFragment.RIPPLE_PERSISTENT, rippleSettingsFragment.ripplePersistentCheckBox.isChecked());
 
-        intent.putExtra(RIPPLE_ROUNDED_CORNERS_RADIUS, rippleRoundedCornersRadiusDp);
+        intent.putExtra(RippleSettingsFragment.RIPPLE_ROUNDED_CORNERS_RADIUS, rippleSettingsFragment.rippleRoundedCornersRadiusDp);
 
         startActivity(intent);
+    }
+
+
+    public class MainActivityPagerAdapter extends FragmentPagerAdapter {
+
+        private final String[] TITLES = {"Basic", "Ripple", "Advanced"};
+
+        public MainActivityPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return TITLES[position];
+        }
+
+        @Override
+        public int getCount() {
+            return TITLES.length;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                default:
+                    return basicSettingsFragment;
+                case 1:
+                    return rippleSettingsFragment;
+                case 2:
+                    return advancedSettingsFragment;
+            }
+        }
     }
 }

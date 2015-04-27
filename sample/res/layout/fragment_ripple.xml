@@ -1,0 +1,355 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true">
+
+        <!-- Ripple Duration -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/rippleDurationTextView"
+                android:text="@string/ripple_duration" />
+
+            <SeekBar android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rippleDurationSeekBar"
+                android:max="20" />
+        </LinearLayout>
+        <!--~ Ripple Duration -->
+
+        <!-- Ripple Alpha Float -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/rippleAlphaFloatTextView"
+                android:text="@string/ripple_alpha_float" />
+
+            <SeekBar android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rippleAlphaFloatSeekBar"
+                android:max="20" />
+        </LinearLayout>
+        <!--~ Ripple Alpha Float  -->
+
+        <!-- Ripple Color -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/ripple_color" />
+
+            <RadioGroup android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rippleColorRadioGroup"
+                android:orientation="horizontal">
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleColorButtonFireEngineRed"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/fire_engine_red" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleColorButtonMantis"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/mantis" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleColorButtonGorse"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/gorse" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleColorButtonIrisBlue"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/iris_blue" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleColorButtonSafetyOrange"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/safety_orange" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleColorButtonWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    style="@style/RadioButtonBlackCheck"
+                    android:background="@color/white" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleColorButtonBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/black" />
+            </RadioGroup>
+        </LinearLayout>
+        <!--~ Ripple Color -->
+
+        <!-- Ripple Delay Click -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/rippleDelayClickTextView"
+                android:text="@string/ripple_delay" />
+
+            <CheckBox android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rippleDelayClickCheckBox" />
+        </LinearLayout>
+        <!--~ Ripple Delay Click -->
+
+        <!-- Ripple Diameter -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/rippleDiameterTextView"
+                android:text="@string/ripple_diameter" />
+
+            <SeekBar android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rippleDiameterSeekBar"
+                android:max="20" />
+        </LinearLayout>
+        <!--~ Ripple Diameter -->
+
+        <!-- Ripple Fade Duration -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/rippleFadeDurationTextView"
+                android:text="@string/ripple_fade_duration" />
+
+            <SeekBar android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rippleFadeDurationSeekBar"
+                android:max="20" />
+        </LinearLayout>
+        <!--~ Ripple Fade Duration -->
+
+        <!-- Ripple Highlight Color -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/ripple_highlight_color" />
+
+            <RadioGroup android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rippleHighlightColorRadioGroup"
+                android:orientation="horizontal">
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleHighlightColorButtonFireEngineRed"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/fire_engine_red" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleHighlightColorButtonMantis"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/mantis" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleHighlightColorButtonGorse"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/gorse" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleHighlightColorButtonIrisBlue"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/iris_blue" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleHighlightColorButtonSafetyOrange"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/safety_orange" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleHighlightColorButtonWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    style="@style/RadioButtonBlackCheck"
+                    android:background="@color/white" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/rippleHighlightColorButtonBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/black" />
+            </RadioGroup>
+        </LinearLayout>
+        <!--~ Ripple Highlight Color -->
+
+        <!-- Ripple Hover -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/rippleHoverTextView"
+                android:text="@string/ripple_hover" />
+
+            <CheckBox android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rippleHoverCheckBox" />
+        </LinearLayout>
+        <!--~ Ripple Hover-->
+
+        <!-- Ripple Overlay -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/rippleOverlayTextView"
+                android:text="@string/ripple_overlay" />
+
+            <CheckBox android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rippleOverlayCheckBox" />
+        </LinearLayout>
+        <!--~ Ripple Overlay-->
+
+
+        <!-- Ripple Persistent -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/ripplePersistentTextView"
+                android:text="@string/ripple_persistent" />
+
+            <CheckBox android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ripplePersistentCheckBox" />
+        </LinearLayout>
+        <!--~ Ripple Persistent-->
+
+        <!-- Ripple Rounded Corners Radius -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/rippleRoundedCornersRadiusTextView"
+                android:text="@string/ripple_rounded_corners_radius" />
+
+            <SeekBar android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rippleRoundedCornersRadiusSeekBar"
+                android:max="20" />
+        </LinearLayout>
+        <!--~ Ripple Rounded Corners Radius -->
+    </LinearLayout>
+</ScrollView>

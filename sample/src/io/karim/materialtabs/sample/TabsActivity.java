@@ -88,38 +88,38 @@ public class TabsActivity extends ActionBarActivity {
         if (intent != null) {
             Bundle extras = intent.getExtras();
             if (extras != null) {
-                mMaterialTabs.setIndicatorColor(getResources().getColor(extras.getInt(MainActivity.INDICATOR_COLOR)));
-                mMaterialTabs.setUnderlineColor(getResources().getColor(extras.getInt(MainActivity.UNDERLINE_COLOR)));
+                mMaterialTabs.setIndicatorColor(getResources().getColor(extras.getInt(BasicSettingsFragment.INDICATOR_COLOR)));
+                mMaterialTabs.setUnderlineColor(getResources().getColor(extras.getInt(BasicSettingsFragment.UNDERLINE_COLOR)));
 
-                mMaterialTabs.setIndicatorHeight(Utils.dpToPx(getResources(), extras.getInt(MainActivity.INDICATOR_HEIGHT)));
-                mMaterialTabs.setUnderlineHeight(Utils.dpToPx(getResources(), extras.getInt(MainActivity.UNDERLINE_HEIGHT)));
+                mMaterialTabs.setIndicatorHeight(Utils.dpToPx(getResources(), extras.getInt(BasicSettingsFragment.INDICATOR_HEIGHT)));
+                mMaterialTabs.setUnderlineHeight(Utils.dpToPx(getResources(), extras.getInt(BasicSettingsFragment.UNDERLINE_HEIGHT)));
 
-                mMaterialTabs.setTabPaddingLeftRight(Utils.dpToPx(getResources(), extras.getInt(MainActivity.TAB_PADDING)));
-                mMaterialTabs.setScrollOffset(Utils.dpToPx(getResources(), extras.getInt(MainActivity.SCROLL_OFFSET)));
+                mMaterialTabs.setTabPaddingLeftRight(Utils.dpToPx(getResources(), extras.getInt(BasicSettingsFragment.TAB_PADDING)));
+                mMaterialTabs.setScrollOffset(Utils.dpToPx(getResources(), extras.getInt(BasicSettingsFragment.SCROLL_OFFSET)));
 
-                mMaterialTabs.setPaddingMiddle(extras.getBoolean(MainActivity.PADDING_MIDDLE));
-                mMaterialTabs.setShouldExpand(extras.getBoolean(MainActivity.SHOULD_EXPAND));
-                mMaterialTabs.setAllCaps(extras.getBoolean(MainActivity.TEXT_ALL_CAPS));
+                mMaterialTabs.setPaddingMiddle(extras.getBoolean(BasicSettingsFragment.PADDING_MIDDLE));
+                mMaterialTabs.setShouldExpand(extras.getBoolean(BasicSettingsFragment.SHOULD_EXPAND));
+                mMaterialTabs.setAllCaps(extras.getBoolean(BasicSettingsFragment.TEXT_ALL_CAPS));
 
-                mMaterialTabs.setBackgroundColor(getResources().getColor(extras.getInt(MainActivity.TAB_BACKGROUND)));
-                mMaterialTabs.setTextColorSelected(getResources().getColor(extras.getInt(MainActivity.TEXT_COLOR_SELECTED)));
-                mMaterialTabs.setTextColorUnselected(getResources().getColor(extras.getInt(MainActivity.TEXT_COLOR_UNSELECTED)));
+                mMaterialTabs.setBackgroundColor(getResources().getColor(extras.getInt(BasicSettingsFragment.TAB_BACKGROUND)));
+                mMaterialTabs.setTextColorSelected(getResources().getColor(extras.getInt(BasicSettingsFragment.TEXT_COLOR_SELECTED)));
+                mMaterialTabs.setTextColorUnselected(getResources().getColor(extras.getInt(BasicSettingsFragment.TEXT_COLOR_UNSELECTED)));
 
-                mMaterialTabs.setTabTypefaceSelectedStyle(extras.getInt(MainActivity.TEXT_STYLE_SELECTED));
-                mMaterialTabs.setTabTypefaceUnselectedStyle(extras.getInt(MainActivity.TEXT_STYLE_UNSELECTED));
+                mMaterialTabs.setTabTypefaceSelectedStyle(extras.getInt(BasicSettingsFragment.TEXT_STYLE_SELECTED));
+                mMaterialTabs.setTabTypefaceUnselectedStyle(extras.getInt(BasicSettingsFragment.TEXT_STYLE_UNSELECTED));
 
-                mMaterialTabs.setRippleDuration(extras.getInt(MainActivity.RIPPLE_DURATION));
-                mMaterialTabs.setRippleAlphaFloat(extras.getFloat(MainActivity.RIPPLE_ALPHA_FLOAT));
-                mMaterialTabs.setRippleColor(extras.getInt(MainActivity.RIPPLE_COLOR));
-                mMaterialTabs.setRippleDelayClick(extras.getBoolean(MainActivity.RIPPLE_DELAY_CLICK));
-                mMaterialTabs.setRippleDiameter(Utils.dpToPx(getResources(), extras.getInt(MainActivity.RIPPLE_DIAMETER)));
-                mMaterialTabs.setRippleFadeDuration(extras.getInt(MainActivity.RIPPLE_FADE_DURATION));
-                mMaterialTabs.setRippleHighlightColor(extras.getInt(MainActivity.RIPPLE_HIGHLIGHT_COLOR));
-                mMaterialTabs.setRippleHover(extras.getBoolean(MainActivity.RIPPLE_HOVER));
+                mMaterialTabs.setRippleDuration(extras.getInt(RippleSettingsFragment.RIPPLE_DURATION));
+                mMaterialTabs.setRippleAlphaFloat(extras.getFloat(RippleSettingsFragment.RIPPLE_ALPHA_FLOAT));
+                mMaterialTabs.setRippleColor(extras.getInt(RippleSettingsFragment.RIPPLE_COLOR));
+                mMaterialTabs.setRippleDelayClick(extras.getBoolean(RippleSettingsFragment.RIPPLE_DELAY_CLICK));
+                mMaterialTabs.setRippleDiameter(Utils.dpToPx(getResources(), extras.getInt(RippleSettingsFragment.RIPPLE_DIAMETER)));
+                mMaterialTabs.setRippleFadeDuration(extras.getInt(RippleSettingsFragment.RIPPLE_FADE_DURATION));
+                mMaterialTabs.setRippleHighlightColor(extras.getInt(RippleSettingsFragment.RIPPLE_HIGHLIGHT_COLOR));
+                mMaterialTabs.setRippleHover(extras.getBoolean(RippleSettingsFragment.RIPPLE_HOVER));
                 mMaterialTabs.setRippleInAdapter(false);
-                mMaterialTabs.setRippleOverlay(extras.getBoolean(MainActivity.RIPPLE_OVERLAY));
-                mMaterialTabs.setRipplePersistent(extras.getBoolean(MainActivity.RIPPLE_PERSISTENT));
-                mMaterialTabs.setRippleRoundedCorners(extras.getFloat(MainActivity.RIPPLE_ROUNDED_CORNERS_RADIUS));
+                mMaterialTabs.setRippleOverlay(extras.getBoolean(RippleSettingsFragment.RIPPLE_OVERLAY));
+                mMaterialTabs.setRipplePersistent(extras.getBoolean(RippleSettingsFragment.RIPPLE_PERSISTENT));
+                mMaterialTabs.setRippleRoundedCorners(extras.getFloat(RippleSettingsFragment.RIPPLE_ROUNDED_CORNERS_RADIUS));
             }
         }
 
