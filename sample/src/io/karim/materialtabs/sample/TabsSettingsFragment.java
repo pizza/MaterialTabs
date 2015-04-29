@@ -2,6 +2,7 @@ package io.karim.materialtabs.sample;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 import io.karim.materialtabs.sample.sampleui.RadioButtonCenter;
 
 public class TabsSettingsFragment extends Fragment {
@@ -228,5 +230,81 @@ public class TabsSettingsFragment extends Fragment {
         shouldExpandCheckBox.setChecked(true);
         paddingMiddleCheckBox.setChecked(false);
         textAllCapsCheckBox.setChecked(true);
+    }
+
+    @OnClick(R.id.tabPaddingInfoButton)
+    public void tabPaddingInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.tab_padding).setMessage(R.string.tab_padding_details).create().show();
+    }
+
+    @OnClick(R.id.tabBackgroundColorInfoButton)
+    public void tabBackgroundColorInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.tab_background_color).setMessage(R.string.tab_background_color_details).create().show();
+    }
+
+    @OnClick(R.id.tabTextColorInfoButton)
+    public void tabTextColorInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.tab_text_color).setMessage(R.string.tab_text_color_details).create().show();
+    }
+
+    @OnClick(R.id.tabTextSelectedColorInfoButton)
+    public void tabTextSelectedColorInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.tab_text_selected_color).setMessage(R.string.tab_text_selected_color_details).create().show();
+    }
+
+    @OnClick(R.id.toolbarColorInfoButton)
+    public void toolbarColorInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.toolbar_color).setMessage(R.string.toolbar_color_details).create().show();
+    }
+
+    @OnClick(R.id.textSelectedStyleInfoButton)
+    public void textSelectedStyleInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.text_selected_style).setMessage(R.string.text_selected_style_details).create().show();
+    }
+
+    @OnClick(R.id.textUnselectedStyleInfoButton)
+    public void textUnselectedStyleInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.text_unselected_style).setMessage(R.string.text_unselected_style_details).create().show();
+    }
+
+    @OnClick(R.id.textAllCapsInfoButton)
+    public void textAllCapsInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.text_all_caps).setMessage(R.string.text_all_caps_details).create().show();
+    }
+
+    @OnClick(R.id.underlineColorInfoButton)
+    public void underlineColorInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.underline_color).setMessage(R.string.underline_color_details).create().show();
+    }
+
+    @OnClick(R.id.underlineHeightInfoButton)
+    public void underlineHeightInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.underline_height).setMessage(R.string.underline_height_details).create().show();
+    }
+
+    @OnClick(R.id.indicatorColorInfoButton)
+    public void indicatorColorInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.indicator_color).setMessage(R.string.indicator_color_details).create().show();
+    }
+
+    @OnClick(R.id.indicatorHeightInfoButton)
+    public void indicatorHeightInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.indicator_height).setMessage(R.string.indicator_height_details).create().show();
+    }
+
+
+    @OnClick(R.id.paddingMiddleInfoButton)
+    public void paddingMiddleInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.padding_middle).setMessage(R.string.padding_middle_details).create().show();
+    }
+
+    @OnClick(R.id.scrollOffsetInfoButton)
+    public void scrollOffsetInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.scroll_offset).setMessage(R.string.scroll_offset_details).create().show();
+    }
+
+    @OnClick(R.id.shouldExpandInfoButton)
+    public void shouldExpandInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.should_expand).setMessage(R.string.should_expand_details).create().show();
     }
 }

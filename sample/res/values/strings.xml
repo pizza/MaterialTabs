@@ -7,11 +7,11 @@
     <string name="indicator_height">Indicator Height</string>
     <string name="tab_padding">Tab Padding Left Right</string>
     <string name="scroll_offset">Scroll Offset</string>
-    <string name="shouldExpand">Should Expand</string>
+    <string name="should_expand">Should Expand</string>
     <string name="underline_color">Underline Color</string>
     <string name="indicator_color">Indicator Color</string>
-    <string name="textAllCaps">Text All Caps</string>
-    <string name="paddingMiddle">Padding Middle</string>
+    <string name="text_all_caps">Text All Caps</string>
+    <string name="padding_middle">Padding Middle</string>
     <string name="tab_text_color">Tab Text Color</string>
     <string name="tab_text_selected_color">Tab Text Selected</string>
     <string name="tab_background_color">Tab Background Color</string>
@@ -47,4 +47,19 @@
     <string name="ripple_persistent_details">blablablasad</string>
     <string name="ripple_highlight_color_details" >asdad</string>
     <string name="ripple_rounded_corners_radius_details">blablabla</string>
+    <string name="should_expand_details">ssd</string>
+    <string name="scroll_offset_details">asdsad</string>
+    <string name="padding_middle_details">asdasd</string>
+    <string name="indicator_height_details">asdasdsad</string>
+    <string name="indicator_color_details">assad</string>
+    <string name="underline_height_details">asda</string>
+    <string name="underline_color_details">asd</string>
+    <string name="text_all_caps_details">asdsafd</string>
+    <string name="text_unselected_style_details">asdfsadf</string>
+    <string name="text_selected_style_details">asads</string>
+    <string name="tab_padding_details">adsad</string>
+    <string name="tab_background_color_details">dad</string>
+    <string name="tab_text_color_details">adasd</string>
+    <string name="tab_text_selected_color_details">ASDSADF</string>
+    <string name="toolbar_color_details">dsa</string>
 </resources>

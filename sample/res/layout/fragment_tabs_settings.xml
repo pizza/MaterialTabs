@@ -11,14 +11,32 @@
         <!-- Toolbar (Action Bar) Color -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:text="@string/toolbar_color" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/toolbarColorInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:text="@string/toolbar_color" />
+            </RelativeLayout>
 
             <RadioGroup android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,17 +115,39 @@
         </LinearLayout>
         <!--~ Toolbar (Action Bar) Color -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Indicator Color -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:text="@string/indicator_color" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/indicatorColorInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:text="@string/indicator_color" />
+            </RelativeLayout>
 
             <RadioGroup android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -186,17 +226,39 @@
         </LinearLayout>
         <!--~ Indicator Color -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Underline Color -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:text="@string/underline_color" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/underlineColorInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:text="@string/underline_color" />
+            </RelativeLayout>
 
             <RadioGroup android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -275,18 +337,40 @@
         </LinearLayout>
         <!--~ Underline Color -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Indicator Height -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/indicatorHeightTextView"
-                android:text="@string/indicator_height" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/indicatorHeightInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/indicatorHeightTextView"
+                    android:text="@string/indicator_height" />
+            </RelativeLayout>
 
             <SeekBar android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -295,18 +379,40 @@
         </LinearLayout>
         <!--~ Indicator Height -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Underline Height -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/underlineHeightTextView"
-                android:text="@string/underline_height" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/underlineHeightInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/underlineHeightTextView"
+                    android:text="@string/underline_height" />
+            </RelativeLayout>
 
             <SeekBar android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -315,18 +421,39 @@
         </LinearLayout>
         <!--~ Underline Height -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Tab Padding Left Right -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
-
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/tabPaddingTextView"
-                android:text="@string/tab_padding" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/tabPaddingInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/tabPaddingTextView"
+                    android:text="@string/tab_padding" />
+            </RelativeLayout>
 
             <SeekBar android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -335,18 +462,40 @@
         </LinearLayout>
         <!--~ Tab Padding Left Right -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Scroll Offset -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/scrollOffsetTextView"
-                android:text="@string/scroll_offset" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/scrollOffsetInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/scrollOffsetTextView"
+                    android:text="@string/scroll_offset" />
+            </RelativeLayout>
 
             <SeekBar android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -355,74 +504,160 @@
         </LinearLayout>
         <!--~ Scroll Offset -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Should Expand -->
-        <LinearLayout android:layout_width="match_parent"
+        <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <TextView android:layout_width="wrap_content"
+            <ImageView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/shouldExpandTextView"
-                android:text="@string/shouldExpand" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:clickable="true"
+                android:src="@drawable/ic_action_info_outline"
+                android:id="@+id/shouldExpandInfoButton" />
 
-            <CheckBox android:layout_width="match_parent"
+            <LinearLayout android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/shouldExpandCheckBox" />
-        </LinearLayout>
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/shouldExpandTextView"
+                    android:text="@string/should_expand" />
+
+                <CheckBox android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/shouldExpandCheckBox" />
+            </LinearLayout>
+        </RelativeLayout>
         <!--~ Should Expand -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Text All Caps -->
-        <LinearLayout android:layout_width="match_parent"
+        <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <TextView android:layout_width="wrap_content"
+            <ImageView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/textAllCapsTextView"
-                android:text="@string/textAllCaps" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:clickable="true"
+                android:src="@drawable/ic_action_info_outline"
+                android:id="@+id/textAllCapsInfoButton" />
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
 
-            <CheckBox android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textAllCapsCheckBox" />
-        </LinearLayout>
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/textAllCapsTextView"
+                    android:text="@string/text_all_caps" />
+
+                <CheckBox android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textAllCapsCheckBox" />
+            </LinearLayout>
+        </RelativeLayout>
         <!--~ Text All Caps -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Padding Middle -->
-        <LinearLayout android:layout_width="match_parent"
+        <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <TextView android:layout_width="wrap_content"
+            <ImageView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/paddingMiddleTextView"
-                android:text="@string/paddingMiddle" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:clickable="true"
+                android:src="@drawable/ic_action_info_outline"
+                android:id="@+id/paddingMiddleInfoButton" />
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
 
-            <CheckBox android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/paddingMiddleCheckBox" />
-        </LinearLayout>
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/paddingMiddleTextView"
+                    android:text="@string/padding_middle" />
+
+                <CheckBox android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/paddingMiddleCheckBox" />
+            </LinearLayout>
+        </RelativeLayout>
         <!--~ Padding Middle  -->
+
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
 
         <!-- Tab Text Color -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:text="@string/tab_text_color" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/tabTextColorInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:text="@string/tab_text_color" />
+            </RelativeLayout>
 
             <RadioGroup android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -501,18 +736,40 @@
         </LinearLayout>
         <!--~ Tab Text Color -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
 
         <!-- Tab Text Selected Color -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:text="@string/tab_text_selected_color" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/tabTextSelectedColorInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:text="@string/tab_text_selected_color" />
+
+            </RelativeLayout>
 
             <RadioGroup android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -591,17 +848,39 @@
         </LinearLayout>
         <!--~ Tab Text Color -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Tab Background Color -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:text="@string/tab_background_color" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/tabBackgroundColorInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:text="@string/tab_background_color" />
+            </RelativeLayout>
 
             <RadioGroup android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -680,17 +959,39 @@
         </LinearLayout>
         <!--~ Tab Background Color -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Text Selected Style Color -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:text="@string/text_selected_style" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/textSelectedStyleInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:text="@string/text_selected_style" />
+            </RelativeLayout>
 
             <RadioGroup android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -727,17 +1028,39 @@
         </LinearLayout>
         <!--~ Text Selected Style Color -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Text Unselected Style Color -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:text="@string/text_unselected_style" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/textUnselectedStyleInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:text="@string/text_unselected_style" />
+            </RelativeLayout>
 
             <RadioGroup android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -769,7 +1092,6 @@
                     android:layout_margin="5dp"
                     android:minHeight="30dp"
                     android:text="@string/italic" />
-
             </RadioGroup>
         </LinearLayout>
         <!--~ Text Unselected Style Color -->
