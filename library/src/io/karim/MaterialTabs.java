@@ -172,35 +172,35 @@ public class MaterialTabs extends HorizontalScrollView {
         a = context.obtainStyledAttributes(attrs, R.styleable.MaterialTabs);
 
         // Get custom attrs of MaterialTabs.
-        indicatorColor = a.getColor(R.styleable.MaterialTabs_pstsIndicatorColor, indicatorColor);
-        underlineColor = a.getColor(R.styleable.MaterialTabs_pstsUnderlineColor, underlineColor);
-        indicatorHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsIndicatorHeight, indicatorHeight);
-        underlineHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsUnderlineHeight, underlineHeight);
-        tabPadding = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsTabPaddingLeftRight, tabPadding);
-        shouldExpand = a.getBoolean(R.styleable.MaterialTabs_pstsShouldExpand, shouldExpand);
-        scrollOffset = a.getDimensionPixelSize(R.styleable.MaterialTabs_pstsScrollOffset, scrollOffset);
-        textAllCaps = a.getBoolean(R.styleable.MaterialTabs_pstsTextAllCaps, textAllCaps);
-        isPaddingMiddle = a.getBoolean(R.styleable.MaterialTabs_pstsPaddingMiddle, isPaddingMiddle);
-        tabTypefaceUnselectedStyle = a.getInt(R.styleable.MaterialTabs_pstsTextUnselectedStyle, Typeface.BOLD);
-        tabTypefaceSelectedStyle = a.getInt(R.styleable.MaterialTabs_pstsTextSelectedStyle, Typeface.BOLD);
-        tabTextColorSelected = a.getColor(R.styleable.MaterialTabs_pstsTextColorSelected, textPrimaryColor);
+        indicatorColor = a.getColor(R.styleable.MaterialTabs_mtIndicatorColor, indicatorColor);
+        underlineColor = a.getColor(R.styleable.MaterialTabs_mtUnderlineColor, underlineColor);
+        indicatorHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_mtIndicatorHeight, indicatorHeight);
+        underlineHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_mtUnderlineHeight, underlineHeight);
+        tabPadding = a.getDimensionPixelSize(R.styleable.MaterialTabs_mtTabPaddingLeftRight, tabPadding);
+        shouldExpand = a.getBoolean(R.styleable.MaterialTabs_mtShouldExpand, shouldExpand);
+        scrollOffset = a.getDimensionPixelSize(R.styleable.MaterialTabs_mtScrollOffset, scrollOffset);
+        textAllCaps = a.getBoolean(R.styleable.MaterialTabs_mtTextAllCaps, textAllCaps);
+        isPaddingMiddle = a.getBoolean(R.styleable.MaterialTabs_mtPaddingMiddle, isPaddingMiddle);
+        tabTypefaceUnselectedStyle = a.getInt(R.styleable.MaterialTabs_mtTextUnselectedStyle, Typeface.BOLD);
+        tabTypefaceSelectedStyle = a.getInt(R.styleable.MaterialTabs_mtTextSelectedStyle, Typeface.BOLD);
+        tabTextColorSelected = a.getColor(R.styleable.MaterialTabs_mtTextColorSelected, textPrimaryColor);
 
         // Get custom attrs of MaterialRippleLayout.
-        rippleColor = a.getColor(R.styleable.MaterialTabs_pstsMrlRippleColor, MaterialRippleLayout.DEFAULT_COLOR);
+        rippleColor = a.getColor(R.styleable.MaterialTabs_mtMrlRippleColor, MaterialRippleLayout.DEFAULT_COLOR);
         // Making default ripple highlight color the same as rippleColor but with 1/4 the alpha.
         rippleHighlightColor = Color.argb((int) (Color.alpha(rippleColor) * 0.25), Color.red(rippleColor), Color.green(rippleColor),
                 Color.blue(rippleColor));
-        rippleHighlightColor = a.getColor(R.styleable.MaterialTabs_pstsMrlRippleHighlightColor, rippleHighlightColor);
-        rippleDiameterDp = a.getDimension(R.styleable.MaterialTabs_pstsMrlRippleDimension, MaterialRippleLayout.DEFAULT_DIAMETER_DP);
-        rippleOverlay = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleOverlay, MaterialRippleLayout.DEFAULT_RIPPLE_OVERLAY);
-        rippleHover = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleHover, MaterialRippleLayout.DEFAULT_HOVER);
-        rippleDuration = a.getInt(R.styleable.MaterialTabs_pstsMrlRippleDuration, MaterialRippleLayout.DEFAULT_DURATION);
-        rippleAlphaFloat = a.getFloat(R.styleable.MaterialTabs_pstsMrlRippleAlpha, MaterialRippleLayout.DEFAULT_ALPHA);
-        rippleDelayClick = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleDelayClick, MaterialRippleLayout.DEFAULT_DELAY_CLICK);
-        rippleFadeDuration = a.getInteger(R.styleable.MaterialTabs_pstsMrlRippleFadeDuration, MaterialRippleLayout.DEFAULT_FADE_DURATION);
-        ripplePersistent = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRipplePersistent, MaterialRippleLayout.DEFAULT_PERSISTENT);
-        rippleInAdapter = a.getBoolean(R.styleable.MaterialTabs_pstsMrlRippleInAdapter, MaterialRippleLayout.DEFAULT_SEARCH_ADAPTER);
-        rippleRoundedCornersDp = a.getDimension(R.styleable.MaterialTabs_pstsMrlRippleRoundedCorners,
+        rippleHighlightColor = a.getColor(R.styleable.MaterialTabs_mtMrlRippleHighlightColor, rippleHighlightColor);
+        rippleDiameterDp = a.getDimension(R.styleable.MaterialTabs_mtMrlRippleDimension, MaterialRippleLayout.DEFAULT_DIAMETER_DP);
+        rippleOverlay = a.getBoolean(R.styleable.MaterialTabs_mtMrlRippleOverlay, MaterialRippleLayout.DEFAULT_RIPPLE_OVERLAY);
+        rippleHover = a.getBoolean(R.styleable.MaterialTabs_mtMrlRippleHover, MaterialRippleLayout.DEFAULT_HOVER);
+        rippleDuration = a.getInt(R.styleable.MaterialTabs_mtMrlRippleDuration, MaterialRippleLayout.DEFAULT_DURATION);
+        rippleAlphaFloat = a.getFloat(R.styleable.MaterialTabs_mtMrlRippleAlpha, MaterialRippleLayout.DEFAULT_ALPHA);
+        rippleDelayClick = a.getBoolean(R.styleable.MaterialTabs_mtMrlRippleDelayClick, MaterialRippleLayout.DEFAULT_DELAY_CLICK);
+        rippleFadeDuration = a.getInteger(R.styleable.MaterialTabs_mtMrlRippleFadeDuration, MaterialRippleLayout.DEFAULT_FADE_DURATION);
+        ripplePersistent = a.getBoolean(R.styleable.MaterialTabs_mtMrlRipplePersistent, MaterialRippleLayout.DEFAULT_PERSISTENT);
+        rippleInAdapter = a.getBoolean(R.styleable.MaterialTabs_mtMrlRippleInAdapter, MaterialRippleLayout.DEFAULT_SEARCH_ADAPTER);
+        rippleRoundedCornersDp = a.getDimension(R.styleable.MaterialTabs_mtMrlRippleRoundedCorners,
                 MaterialRippleLayout.DEFAULT_ROUNDED_CORNERS_DP);
 
         a.recycle();
@@ -246,7 +246,7 @@ public class MaterialTabs extends HorizontalScrollView {
             if (pager.getAdapter() instanceof CustomTabProvider) {
                 tabView = ((CustomTabProvider) pager.getAdapter()).getCustomTabView(this, i);
             } else {
-                tabView = LayoutInflater.from(getContext()).inflate(R.layout.psts_tab, this, false);
+                tabView = LayoutInflater.from(getContext()).inflate(R.layout.mt_tab, this, false);
             }
 
             MaterialRippleLayout materialRippleLayout = MaterialRippleLayout.on(tabView)
@@ -287,7 +287,7 @@ public class MaterialTabs extends HorizontalScrollView {
     }
 
     private void addTab(final int position, CharSequence title, View tabView) {
-        TextView textView = (TextView) tabView.findViewById(R.id.psts_tab_title);
+        TextView textView = (TextView) tabView.findViewById(R.id.mt_tab_title);
         if (textView != null) {
             if (title != null) {
                 textView.setText(title);
@@ -315,7 +315,7 @@ public class MaterialTabs extends HorizontalScrollView {
         for (int i = 0; i < tabCount; i++) {
             View v = tabsContainer.getChildAt(i);
             v.setPadding(tabPadding, v.getPaddingTop(), tabPadding, v.getPaddingBottom());
-            TextView tab_title = (TextView) v.findViewById(R.id.psts_tab_title);
+            TextView tab_title = (TextView) v.findViewById(R.id.mt_tab_title);
 
             if (tab_title != null) {
                 tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, tabTextSize);
@@ -506,7 +506,7 @@ public class MaterialTabs extends HorizontalScrollView {
 
     private void notSelected(View tab) {
         if (tab != null) {
-            TextView title = (TextView) tab.findViewById(R.id.psts_tab_title);
+            TextView title = (TextView) tab.findViewById(R.id.mt_tab_title);
             if (title != null) {
                 title.setTypeface(tabTypeface, tabTypefaceUnselectedStyle);
                 title.setTextColor(tabTextColorUnselected);
@@ -516,7 +516,7 @@ public class MaterialTabs extends HorizontalScrollView {
 
     private void selected(View tab) {
         if (tab != null) {
-            TextView title = (TextView) tab.findViewById(R.id.psts_tab_title);
+            TextView title = (TextView) tab.findViewById(R.id.mt_tab_title);
             if (title != null) {
                 title.setTypeface(tabTypeface, tabTypefaceSelectedStyle);
                 title.setTextColor(tabTextColorSelected);

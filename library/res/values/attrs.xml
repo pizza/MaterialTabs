@@ -2,38 +2,38 @@
 <resources>
 
     <declare-styleable name="MaterialTabs">
-        <attr name="pstsIndicatorColor" format="color" />
-        <attr name="pstsUnderlineColor" format="color" />
-        <attr name="pstsIndicatorHeight" format="dimension" />
-        <attr name="pstsUnderlineHeight" format="dimension" />
-        <attr name="pstsTabPaddingLeftRight" format="dimension" />
-        <attr name="pstsScrollOffset" format="dimension" />
-        <attr name="pstsShouldExpand" format="boolean" />
-        <attr name="pstsTextAllCaps" format="boolean" />
-        <attr name="pstsPaddingMiddle" format="boolean" />
-        <attr name="pstsTextColorSelected" format="color" />
-        <attr name="pstsTextUnselectedStyle">
+        <attr name="mtIndicatorColor" format="color" />
+        <attr name="mtUnderlineColor" format="color" />
+        <attr name="mtIndicatorHeight" format="dimension" />
+        <attr name="mtUnderlineHeight" format="dimension" />
+        <attr name="mtTabPaddingLeftRight" format="dimension" />
+        <attr name="mtScrollOffset" format="dimension" />
+        <attr name="mtShouldExpand" format="boolean" />
+        <attr name="mtTextAllCaps" format="boolean" />
+        <attr name="mtPaddingMiddle" format="boolean" />
+        <attr name="mtTextColorSelected" format="color" />
+        <attr name="mtTextUnselectedStyle">
             <flag name="normal" value="0x0" />
             <flag name="bold" value="0x1" />
             <flag name="italic" value="0x2" />
         </attr>
-        <attr name="pstsTextSelectedStyle">
+        <attr name="mtTextSelectedStyle">
             <flag name="normal" value="0x0" />
             <flag name="bold" value="0x1" />
             <flag name="italic" value="0x2" />
         </attr>
-        <attr name="pstsMrlRippleColor" format="color" localization="suggested" />
-        <attr name="pstsMrlRippleHighlightColor" format="color" localization="suggested" />
-        <attr name="pstsMrlRippleDimension" format="dimension" localization="suggested" />
-        <attr name="pstsMrlRippleOverlay" format="boolean" localization="suggested" />
-        <attr name="pstsMrlRippleAlpha" format="float" localization="suggested" />
-        <attr name="pstsMrlRippleDuration" format="integer" localization="suggested" />
-        <attr name="pstsMrlRippleFadeDuration" format="integer" localization="suggested" />
-        <attr name="pstsMrlRippleHover" format="boolean" localization="suggested" />
-        <attr name="pstsMrlRippleDelayClick" format="boolean" localization="suggested" />
-        <attr name="pstsMrlRipplePersistent" format="boolean" localization="suggested" />
-        <attr name="pstsMrlRippleInAdapter" format="boolean" localization="suggested" />
-        <attr name="pstsMrlRippleRoundedCorners" format="dimension" localization="suggested" />
+        <attr name="mtMrlRippleColor" format="color" localization="suggested" />
+        <attr name="mtMrlRippleHighlightColor" format="color" localization="suggested" />
+        <attr name="mtMrlRippleDimension" format="dimension" localization="suggested" />
+        <attr name="mtMrlRippleOverlay" format="boolean" localization="suggested" />
+        <attr name="mtMrlRippleAlpha" format="float" localization="suggested" />
+        <attr name="mtMrlRippleDuration" format="integer" localization="suggested" />
+        <attr name="mtMrlRippleFadeDuration" format="integer" localization="suggested" />
+        <attr name="mtMrlRippleHover" format="boolean" localization="suggested" />
+        <attr name="mtMrlRippleDelayClick" format="boolean" localization="suggested" />
+        <attr name="mtMrlRipplePersistent" format="boolean" localization="suggested" />
+        <attr name="mtMrlRippleInAdapter" format="boolean" localization="suggested" />
+        <attr name="mtMrlRippleRoundedCorners" format="dimension" localization="suggested" />
     </declare-styleable>
 
     <declare-styleable name="MaterialRippleLayout">
