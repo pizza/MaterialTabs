@@ -11,15 +11,34 @@
         <!-- Ripple Duration -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/rippleDurationTextView"
-                android:text="@string/ripple_duration" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/rippleDurationInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/rippleDurationTextView"
+                    android:text="@string/ripple_duration" />
+
+            </RelativeLayout>
 
             <SeekBar android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,18 +47,40 @@
         </LinearLayout>
         <!--~ Ripple Duration -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Ripple Alpha Float -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/rippleAlphaFloatTextView"
-                android:text="@string/ripple_alpha_float" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/rippleAlphaFloatInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"
+                    android:id="@+id/rippleAlphaFloatTextView"
+                    android:text="@string/ripple_alpha_float" />
+            </RelativeLayout>
 
             <SeekBar android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,18 +89,39 @@
         </LinearLayout>
         <!--~ Ripple Alpha Float  -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Ripple Color -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:text="@string/ripple_color" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/rippleColorInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:text="@string/ripple_color" />
+            </RelativeLayout>
             <RadioGroup android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rippleColorRadioGroup"
@@ -137,37 +199,83 @@
         </LinearLayout>
         <!--~ Ripple Color -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Ripple Delay Click -->
-        <LinearLayout android:layout_width="match_parent"
+
+        <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <TextView android:layout_width="wrap_content"
+            <ImageView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/rippleDelayClickTextView"
-                android:text="@string/ripple_delay" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:clickable="true"
+                android:src="@drawable/ic_action_info_outline"
+                android:id="@+id/rippleDelayClickInfoButton" />
 
-            <CheckBox android:layout_width="match_parent"
+            <LinearLayout android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rippleDelayClickCheckBox" />
-        </LinearLayout>
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/rippleDelayClickTextView"
+                    android:text="@string/ripple_delay" />
+
+                <CheckBox android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rippleDelayClickCheckBox" />
+            </LinearLayout>
+        </RelativeLayout>
+
         <!--~ Ripple Delay Click -->
+
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
 
         <!-- Ripple Diameter -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/rippleDiameterTextView"
-                android:text="@string/ripple_diameter" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/rippleDiameterInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/rippleDiameterTextView"
+                    android:text="@string/ripple_diameter" />
+            </RelativeLayout>
 
             <SeekBar android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,18 +284,40 @@
         </LinearLayout>
         <!--~ Ripple Diameter -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Ripple Fade Duration -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/rippleFadeDurationTextView"
-                android:text="@string/ripple_fade_duration" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/rippleFadeDurationInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/rippleFadeDurationTextView"
+                    android:text="@string/ripple_fade_duration" />
+            </RelativeLayout>
 
             <SeekBar android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -196,17 +326,39 @@
         </LinearLayout>
         <!--~ Ripple Fade Duration -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Ripple Highlight Color -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:text="@string/ripple_highlight_color" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/rippleHighlightColorInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:text="@string/ripple_highlight_color" />
+            </RelativeLayout>
 
             <RadioGroup android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -285,77 +437,168 @@
         </LinearLayout>
         <!--~ Ripple Highlight Color -->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Ripple Hover -->
-        <LinearLayout android:layout_width="match_parent"
+
+        <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <TextView android:layout_width="wrap_content"
+            <ImageView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/rippleHoverTextView"
-                android:text="@string/ripple_hover" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:clickable="true"
+                android:src="@drawable/ic_action_info_outline"
+                android:id="@+id/rippleHoverInfoButton" />
 
-            <CheckBox android:layout_width="match_parent"
+            <LinearLayout android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rippleHoverCheckBox" />
-        </LinearLayout>
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/rippleHoverTextView"
+                    android:text="@string/ripple_hover" />
+
+                <CheckBox android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rippleHoverCheckBox" />
+            </LinearLayout>
+        </RelativeLayout>
+
         <!--~ Ripple Hover-->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Ripple Overlay -->
-        <LinearLayout android:layout_width="match_parent"
+
+        <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <TextView android:layout_width="wrap_content"
+            <ImageView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/rippleOverlayTextView"
-                android:text="@string/ripple_overlay" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:clickable="true"
+                android:src="@drawable/ic_action_info_outline"
+                android:id="@+id/rippleOverlayInfoButton" />
 
-            <CheckBox android:layout_width="match_parent"
+            <LinearLayout android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rippleOverlayCheckBox" />
-        </LinearLayout>
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/rippleOverlayTextView"
+                    android:text="@string/ripple_overlay" />
+                <CheckBox android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rippleOverlayCheckBox" />
+            </LinearLayout>
+        </RelativeLayout>
+
         <!--~ Ripple Overlay-->
 
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
 
         <!-- Ripple Persistent -->
-        <LinearLayout android:layout_width="match_parent"
+
+        <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:gravity="center_vertical">
 
-            <TextView android:layout_width="wrap_content"
+            <ImageView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/ripplePersistentTextView"
-                android:text="@string/ripple_persistent" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:clickable="true"
+                android:src="@drawable/ic_action_info_outline"
+                android:id="@+id/ripplePersistentInfoButton" />
 
-            <CheckBox android:layout_width="match_parent"
+            <LinearLayout android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/ripplePersistentCheckBox" />
-        </LinearLayout>
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/ripplePersistentTextView"
+                    android:text="@string/ripple_persistent" />
+
+                <CheckBox android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ripplePersistentCheckBox" />
+            </LinearLayout>
+        </RelativeLayout>
+
         <!--~ Ripple Persistent-->
+
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
 
         <!-- Ripple Rounded Corners Radius -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
+            <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:id="@+id/rippleRoundedCornersRadiusTextView"
-                android:text="@string/ripple_rounded_corners_radius" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/rippleRoundedCornersRadiusInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/rippleRoundedCornersRadiusTextView"
+                    android:text="@string/ripple_rounded_corners_radius" />
+            </RelativeLayout>
             <SeekBar android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rippleRoundedCornersRadiusSeekBar"

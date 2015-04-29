@@ -2,6 +2,7 @@ package io.karim.materialtabs.sample;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 import io.karim.MaterialRippleLayout;
 
 public class RippleSettingsFragment extends Fragment {
@@ -208,5 +210,69 @@ public class RippleSettingsFragment extends Fragment {
         rippleHoverCheckBox.setChecked(MaterialRippleLayout.DEFAULT_HOVER);
         ripplePersistentCheckBox.setChecked(MaterialRippleLayout.DEFAULT_PERSISTENT);
         rippleOverlayCheckBox.setChecked(MaterialRippleLayout.DEFAULT_RIPPLE_OVERLAY);
+    }
+
+    @OnClick(R.id.rippleAlphaFloatInfoButton)
+    public void rippleAlphaFloatInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_alpha_float).setMessage(R.string.ripple_alpha_float_details).create().show();
+    }
+
+    @OnClick(R.id.rippleColorInfoButton)
+    public void rippleColorInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_color).setMessage(R.string.ripple_color_details).create().show();
+    }
+
+    @OnClick(R.id.rippleDiameterInfoButton)
+    public void rippleDiameterInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_diameter).setMessage(R.string.ripple_diameter_details).create().show();
+    }
+
+    @OnClick(R.id.rippleDurationInfoButton)
+    public void rippleDurationInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_duration).setMessage(R.string.ripple_duration_details).create().show();
+    }
+
+    @OnClick(R.id.rippleDelayClickInfoButton)
+    public void rippleDelayClickInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_delay).setMessage(R.string.ripple_delay_details).create().show();
+    }
+
+    @OnClick(R.id.rippleFadeDurationInfoButton)
+    public void rippleFadeDurationInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_fade_duration)
+                                              .setMessage(R.string.ripple_fade_duration_details)
+                                              .create()
+                                              .show();
+    }
+
+    @OnClick(R.id.rippleHoverInfoButton)
+    public void rippleHoverInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_hover).setMessage(R.string.ripple_hover_details).create().show();
+    }
+
+    @OnClick(R.id.rippleOverlayInfoButton)
+    public void rippleOverlayInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_overlay).setMessage(R.string.ripple_overlay_details).create().show();
+    }
+
+    @OnClick(R.id.ripplePersistentInfoButton)
+    public void ripplePersistentInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_persistent).setMessage(R.string.ripple_persistent_details).create().show();
+    }
+
+    @OnClick(R.id.rippleHighlightColorInfoButton)
+    public void rippleHighlightColorInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_highlight_color)
+                                              .setMessage(R.string.ripple_highlight_color_details)
+                                              .create()
+                                              .show();
+    }
+
+    @OnClick(R.id.rippleRoundedCornersRadiusInfoButton)
+    public void rippleRoundedCornersRadiusInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_rounded_corners_radius)
+                                              .setMessage(R.string.ripple_rounded_corners_radius_details)
+                                              .create()
+                                              .show();
     }
 }

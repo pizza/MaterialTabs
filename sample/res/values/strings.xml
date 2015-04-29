@@ -36,4 +36,15 @@
     <string name="share">Share</string>
     <string name="reset">Reset</string>
     <string name="toolbar_color">Toolbar (ActionBar) Color</string>
+    <string name="ripple_alpha_float_details">The Striiing</string>
+    <string name="ripple_color_details">blablabla</string>
+    <string name="ripple_diameter_details">blablabla</string>
+    <string name="ripple_duration_details">blablabla</string>
+    <string name="ripple_delay_details">blablabla</string>
+    <string name="ripple_fade_duration_details">blablabla123</string>
+    <string name="ripple_hover_details">blablablaqwe</string>
+    <string name="ripple_overlay_details">blablablaasd</string>
+    <string name="ripple_persistent_details">blablablasad</string>
+    <string name="ripple_highlight_color_details" >asdad</string>
+    <string name="ripple_rounded_corners_radius_details">blablabla</string>
 </resources>

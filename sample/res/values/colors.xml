@@ -5,6 +5,8 @@
     <color name="white_75">#40FFFFFF</color>
     <color name="black_75">#40000000</color>
 
+    <color name="light_gray_half_transparent">#80888888</color>
+
     <color name="background_window">#FFE5E5E5</color>
     <color name="greenDark">#3E5F22</color>
 
