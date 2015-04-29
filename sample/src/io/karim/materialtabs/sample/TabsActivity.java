@@ -145,7 +145,7 @@ public class TabsActivity extends AppCompatActivity {
                 mMaterialTabs.setRippleInAdapter(false);
                 mMaterialTabs.setRippleOverlay(extras.getBoolean(RippleSettingsFragment.RIPPLE_OVERLAY));
                 mMaterialTabs.setRipplePersistent(extras.getBoolean(RippleSettingsFragment.RIPPLE_PERSISTENT));
-                mMaterialTabs.setRippleRoundedCornersDp(extras.getFloat(RippleSettingsFragment.RIPPLE_ROUNDED_CORNERS_RADIUS));
+                mMaterialTabs.setRippleRoundedCornersDp(extras.getInt(RippleSettingsFragment.RIPPLE_ROUNDED_CORNERS_RADIUS));
             }
         }
     }
