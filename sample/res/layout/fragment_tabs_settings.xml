@@ -119,6 +119,117 @@
             android:layout_height="2px"
             android:background="@color/light_gray_half_transparent" />
 
+        <!-- Tab Background Color -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="vertical">
+
+            <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/tabBackgroundColorInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:text="@string/tab_background_color" />
+            </RelativeLayout>
+
+            <RadioGroup android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tabBackgroundColorRadioGroup"
+                android:orientation="horizontal">
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonFireEngineRed"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/fire_engine_red" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonMantis"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/mantis" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonGorse"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/gorse" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonIrisBlue"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/iris_blue" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonSafetyOrange"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/safety_orange" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minHeight="30dp"
+                    style="@style/RadioButtonBlackCheck"
+                    android:background="@color/white" />
+
+                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                    android:id="@+id/tabBackgroundColorButtonBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    style="@style/RadioButtonWhiteCheck"
+                    android:minHeight="30dp"
+                    android:background="@color/black" />
+            </RadioGroup>
+        </LinearLayout>
+        <!--~ Tab Background Color -->
+
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Indicator Color -->
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -578,7 +689,7 @@
                     android:id="@+id/textAllCapsTextView"
                     android:text="@string/text_all_caps" />
 
-                <CheckBox android:layout_width="match_parent"
+                <CheckBox android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textAllCapsCheckBox" />
             </LinearLayout>
@@ -618,7 +729,7 @@
                     android:id="@+id/paddingMiddleTextView"
                     android:text="@string/padding_middle" />
 
-                <CheckBox android:layout_width="match_parent"
+                <CheckBox android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/paddingMiddleCheckBox" />
             </LinearLayout>
@@ -847,117 +958,6 @@
             </RadioGroup>
         </LinearLayout>
         <!--~ Tab Text Color -->
-
-        <View android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/light_gray_half_transparent" />
-
-        <!-- Tab Background Color -->
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:orientation="vertical">
-
-            <RelativeLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <ImageView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:clickable="true"
-                    android:src="@drawable/ic_action_info_outline"
-                    android:id="@+id/tabBackgroundColorInfoButton" />
-
-                <TextView android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/black"
-                    android:text="@string/tab_background_color" />
-            </RelativeLayout>
-
-            <RadioGroup android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tabBackgroundColorRadioGroup"
-                android:orientation="horizontal">
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/tabBackgroundColorButtonFireEngineRed"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    style="@style/RadioButtonWhiteCheck"
-                    android:minHeight="30dp"
-                    android:background="@color/fire_engine_red" />
-
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/tabBackgroundColorButtonMantis"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    style="@style/RadioButtonWhiteCheck"
-                    android:minHeight="30dp"
-                    android:background="@color/mantis" />
-
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/tabBackgroundColorButtonGorse"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    style="@style/RadioButtonWhiteCheck"
-                    android:minHeight="30dp"
-                    android:background="@color/gorse" />
-
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/tabBackgroundColorButtonIrisBlue"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    style="@style/RadioButtonWhiteCheck"
-                    android:minHeight="30dp"
-                    android:background="@color/iris_blue" />
-
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/tabBackgroundColorButtonSafetyOrange"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    style="@style/RadioButtonWhiteCheck"
-                    android:minHeight="30dp"
-                    android:background="@color/safety_orange" />
-
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/tabBackgroundColorButtonWhite"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:minHeight="30dp"
-                    style="@style/RadioButtonBlackCheck"
-                    android:background="@color/white" />
-
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
-                    android:id="@+id/tabBackgroundColorButtonBlack"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    style="@style/RadioButtonWhiteCheck"
-                    android:minHeight="30dp"
-                    android:background="@color/black" />
-            </RadioGroup>
-        </LinearLayout>
-        <!--~ Tab Background Color -->
 
         <View android:layout_width="match_parent"
             android:layout_height="2px"
