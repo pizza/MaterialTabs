@@ -141,7 +141,6 @@ public class TabsActivity extends AppCompatActivity {
                 mMaterialTabs.setRippleDiameterDp(extras.getFloat(RippleSettingsFragment.RIPPLE_DIAMETER));
                 mMaterialTabs.setRippleFadeDuration(extras.getInt(RippleSettingsFragment.RIPPLE_FADE_DURATION));
                 mMaterialTabs.setRippleHighlightColor(getResources().getColor(extras.getInt(RippleSettingsFragment.RIPPLE_HIGHLIGHT_COLOR)));
-                mMaterialTabs.setRippleHover(extras.getBoolean(RippleSettingsFragment.RIPPLE_HOVER));
                 mMaterialTabs.setRippleInAdapter(false);
                 mMaterialTabs.setRippleOverlay(extras.getBoolean(RippleSettingsFragment.RIPPLE_OVERLAY));
                 mMaterialTabs.setRipplePersistent(extras.getBoolean(RippleSettingsFragment.RIPPLE_PERSISTENT));

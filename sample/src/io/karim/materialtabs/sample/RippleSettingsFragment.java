@@ -26,7 +26,6 @@ public class RippleSettingsFragment extends Fragment {
     public static final String RIPPLE_DIAMETER = "RIPPLE_DIAMETER";
     public static final String RIPPLE_FADE_DURATION = "RIPPLE_FADE_DURATION";
     public static final String RIPPLE_HIGHLIGHT_COLOR = "RIPPLE_HIGHLIGHT_COLOR";
-    public static final String RIPPLE_HOVER = "RIPPLE_HOVER";
     public static final String RIPPLE_OVERLAY = "RIPPLE_OVERLAY";
     public static final String RIPPLE_PERSISTENT = "RIPPLE_PERSISTENT";
     public static final String RIPPLE_ROUNDED_CORNERS_RADIUS = "RIPPLE_ROUNDED_CORNERS_RADIUS";
@@ -78,10 +77,6 @@ public class RippleSettingsFragment extends Fragment {
     RadioGroup rippleHighlightColorRadioGroup;
     @InjectView(R.id.rippleHighlightColorButtonWhite)
     RadioButton rippleHighlightColorButtonWhite;
-
-    // Ripple Diameter
-    @InjectView(R.id.rippleHoverCheckBox)
-    CheckBox rippleHoverCheckBox;
 
     // Ripple Overlay
     @InjectView(R.id.rippleOverlayCheckBox)
@@ -207,7 +202,6 @@ public class RippleSettingsFragment extends Fragment {
         rippleHighlightColorButtonWhite.setChecked(true);
 
         rippleDelayClickCheckBox.setChecked(MaterialRippleLayout.DEFAULT_DELAY_CLICK);
-        rippleHoverCheckBox.setChecked(MaterialRippleLayout.DEFAULT_HOVER);
         ripplePersistentCheckBox.setChecked(MaterialRippleLayout.DEFAULT_PERSISTENT);
         rippleOverlayCheckBox.setChecked(MaterialRippleLayout.DEFAULT_RIPPLE_OVERLAY);
     }
@@ -243,11 +237,6 @@ public class RippleSettingsFragment extends Fragment {
                                               .setMessage(R.string.ripple_fade_duration_details)
                                               .create()
                                               .show();
-    }
-
-    @OnClick(R.id.rippleHoverInfoButton)
-    public void rippleHoverInfoButtonClicked() {
-        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_hover).setMessage(R.string.ripple_hover_details).create().show();
     }
 
     @OnClick(R.id.rippleOverlayInfoButton)

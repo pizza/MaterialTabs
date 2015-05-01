@@ -60,7 +60,6 @@ public class MaterialRippleLayout extends FrameLayout {
     public static final float DEFAULT_DIAMETER_DP = 20;
     public static final float DEFAULT_ALPHA = 0.2f;
     public static final int DEFAULT_COLOR = Color.WHITE;
-    public static final boolean DEFAULT_HOVER = true;
     public static final boolean DEFAULT_DELAY_CLICK = false;
     public static final boolean DEFAULT_PERSISTENT = false;
     public static final boolean DEFAULT_SEARCH_ADAPTER = false;
@@ -75,7 +74,6 @@ public class MaterialRippleLayout extends FrameLayout {
     private int rippleColor;
     private int rippleHighlightColor;
     private boolean rippleOverlay;
-    private boolean rippleHover;
     private int rippleDiameterPx;
     private int rippleDuration;
     private int rippleAlphaInt;
@@ -192,8 +190,6 @@ public class MaterialRippleLayout extends FrameLayout {
                         if (!rippleDelayClick) {
                             pendingClickEvent.run();
                         }
-                    } else if (!rippleHover) {
-                        setRadius(0);
                     }
 
                     cancelPressedEvent();
@@ -219,22 +215,16 @@ public class MaterialRippleLayout extends FrameLayout {
                         previousCoordinates = new Point();
                     }
                     childView.onTouchEvent(event);
-                    if (rippleHover) {
-                        startRipple(null);
-                    } else {
-                        childView.setPressed(false);
-                    }
+                    startRipple(null);
                     cancelPressedEvent();
                     break;
                 case MotionEvent.ACTION_MOVE:
                     setBackgroundColor(rippleHighlightColor);
 
-                    if (rippleHover) {
-                        if (isEventInBounds && !eventCancelled) {
-                            invalidate();
-                        } else if (!isEventInBounds) {
-                            startRipple(null);
-                        }
+                    if (isEventInBounds && !eventCancelled) {
+                        invalidate();
+                    } else if (!isEventInBounds) {
+                        startRipple(null);
                     }
 
                     if (!isEventInBounds) {
@@ -462,9 +452,7 @@ public class MaterialRippleLayout extends FrameLayout {
             public void onLongPress(MotionEvent e) {
                 mHasPerformedLongPress = childView.performLongClick();
                 if (mHasPerformedLongPress) {
-                    if (rippleHover) {
-                        startRipple(null);
-                    }
+                    startRipple(null);
                     cancelPressedEvent();
                 }
             }
@@ -486,7 +474,6 @@ public class MaterialRippleLayout extends FrameLayout {
         rippleDiameterPx = a.getDimensionPixelSize(R.styleable.MaterialRippleLayout_mrlRippleDimension,
                 Utils.dpToPx(getResources(), DEFAULT_DIAMETER_DP));
         rippleOverlay = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleOverlay, DEFAULT_RIPPLE_OVERLAY);
-        rippleHover = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleHover, DEFAULT_HOVER);
         rippleDuration = a.getInt(R.styleable.MaterialRippleLayout_mrlRippleDuration, DEFAULT_DURATION);
         rippleAlphaInt = (int) (255 * a.getFloat(R.styleable.MaterialRippleLayout_mrlRippleAlpha, DEFAULT_ALPHA));
         rippleDelayClick = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleDelayClick, DEFAULT_DELAY_CLICK);
@@ -563,10 +550,6 @@ public class MaterialRippleLayout extends FrameLayout {
 
     public void setRippleDuration(int rippleDuration) {
         this.rippleDuration = rippleDuration;
-    }
-
-    public void setRippleHover(boolean rippleHover) {
-        this.rippleHover = rippleHover;
     }
 
     public void setRippleDelayClick(boolean rippleDelayClick) {
@@ -670,9 +653,7 @@ public class MaterialRippleLayout extends FrameLayout {
             childView.setLongClickable(false);
             childView.onTouchEvent(event);
             childView.setPressed(true);
-            if (rippleHover) {
-                startHover();
-            }
+            startHover();
         }
     }
 
@@ -687,7 +668,6 @@ public class MaterialRippleLayout extends FrameLayout {
         private int rippleColor = DEFAULT_COLOR;
         private int rippleHighlightColor;
         private boolean rippleOverlay = DEFAULT_RIPPLE_OVERLAY;
-        private boolean rippleHover = DEFAULT_HOVER;
         private float rippleDiameterDp = DEFAULT_DIAMETER_DP;
         private int rippleDuration = DEFAULT_DURATION;
         private float rippleAlphaFloat = DEFAULT_ALPHA;
@@ -719,11 +699,6 @@ public class MaterialRippleLayout extends FrameLayout {
 
         public RippleBuilder rippleOverlay(boolean overlay) {
             this.rippleOverlay = overlay;
-            return this;
-        }
-
-        public RippleBuilder rippleHover(boolean hover) {
-            this.rippleHover = hover;
             return this;
         }
 
@@ -779,7 +754,6 @@ public class MaterialRippleLayout extends FrameLayout {
             layout.setRippleDuration(rippleDuration);
             layout.setRippleFadeDuration(rippleFadeDuration);
             layout.setRippleHighlightColor(rippleHighlightColor);
-            layout.setRippleHover(rippleHover);
             layout.setRipplePersistent(ripplePersistent);
             layout.setRippleOverlay(rippleOverlay);
             layout.setRippleInAdapter(rippleSearchAdapter);

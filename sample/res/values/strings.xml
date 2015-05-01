@@ -24,7 +24,6 @@
     <string name="ripple_diameter">Ripple Diameter</string>
     <string name="ripple_fade_duration">Ripple Fade Duration</string>
     <string name="ripple_highlight_color">Ripple Highlight Color</string>
-    <string name="ripple_hover">Ripple Hover</string>
     <string name="ripple_overlay">Ripple Overlay</string>
     <string name="ripple_persistent">Ripple Persistent</string>
     <string name="ripple_rounded_corners_radius">Ripple Rounded Corners Radius</string>
@@ -42,7 +41,6 @@
     <string name="ripple_duration_details">blablabla</string>
     <string name="ripple_delay_details">blablabla</string>
     <string name="ripple_fade_duration_details">blablabla123</string>
-    <string name="ripple_hover_details">blablablaqwe</string>
     <string name="ripple_overlay_details">blablablaasd</string>
     <string name="ripple_persistent_details">blablablasad</string>
     <string name="ripple_highlight_color_details" >asdad</string>

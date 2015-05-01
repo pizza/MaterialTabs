@@ -369,7 +369,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        intent.putExtra(RippleSettingsFragment.RIPPLE_HOVER, mRippleSettingsFragment.rippleHoverCheckBox.isChecked());
         intent.putExtra(RippleSettingsFragment.RIPPLE_OVERLAY, mRippleSettingsFragment.rippleOverlayCheckBox.isChecked());
         intent.putExtra(RippleSettingsFragment.RIPPLE_PERSISTENT, mRippleSettingsFragment.ripplePersistentCheckBox.isChecked());
 

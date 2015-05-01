@@ -29,7 +29,6 @@
         <attr name="mtMrlRippleAlpha" format="float" localization="suggested" />
         <attr name="mtMrlRippleDuration" format="integer" localization="suggested" />
         <attr name="mtMrlRippleFadeDuration" format="integer" localization="suggested" />
-        <attr name="mtMrlRippleHover" format="boolean" localization="suggested" />
         <attr name="mtMrlRippleDelayClick" format="boolean" localization="suggested" />
         <attr name="mtMrlRipplePersistent" format="boolean" localization="suggested" />
         <attr name="mtMrlRippleInAdapter" format="boolean" localization="suggested" />
@@ -44,7 +43,6 @@
         <attr name="mrlRippleAlpha" format="float" localization="suggested" />
         <attr name="mrlRippleDuration" format="integer" localization="suggested" />
         <attr name="mrlRippleFadeDuration" format="integer" localization="suggested" />
-        <attr name="mrlRippleHover" format="boolean" localization="suggested" />
         <attr name="mrlRippleDelayClick" format="boolean" localization="suggested" />
         <attr name="mrlRipplePersistent" format="boolean" localization="suggested" />
         <attr name="mrlRippleInAdapter" format="boolean" localization="suggested" />

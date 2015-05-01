@@ -119,7 +119,6 @@ public class MaterialTabs extends HorizontalScrollView {
     private int rippleColor;
     private int rippleHighlightColor;
     private boolean rippleOverlay;
-    private boolean rippleHover;
     private float rippleDiameterDp;
     private int rippleDuration;
     private float rippleAlphaFloat;
@@ -193,7 +192,6 @@ public class MaterialTabs extends HorizontalScrollView {
         rippleHighlightColor = a.getColor(R.styleable.MaterialTabs_mtMrlRippleHighlightColor, rippleHighlightColor);
         rippleDiameterDp = a.getDimension(R.styleable.MaterialTabs_mtMrlRippleDimension, MaterialRippleLayout.DEFAULT_DIAMETER_DP);
         rippleOverlay = a.getBoolean(R.styleable.MaterialTabs_mtMrlRippleOverlay, MaterialRippleLayout.DEFAULT_RIPPLE_OVERLAY);
-        rippleHover = a.getBoolean(R.styleable.MaterialTabs_mtMrlRippleHover, MaterialRippleLayout.DEFAULT_HOVER);
         rippleDuration = a.getInt(R.styleable.MaterialTabs_mtMrlRippleDuration, MaterialRippleLayout.DEFAULT_DURATION);
         rippleAlphaFloat = a.getFloat(R.styleable.MaterialTabs_mtMrlRippleAlpha, MaterialRippleLayout.DEFAULT_ALPHA);
         rippleDelayClick = a.getBoolean(R.styleable.MaterialTabs_mtMrlRippleDelayClick, MaterialRippleLayout.DEFAULT_DELAY_CLICK);
@@ -256,7 +254,6 @@ public class MaterialTabs extends HorizontalScrollView {
                                                                             .rippleDiameterDp(rippleDiameterDp)
                                                                             .rippleDuration(rippleDuration)
                                                                             .rippleFadeDuration(rippleFadeDuration)
-                                                                            .rippleHover(rippleHover)
                                                                             .rippleHighlightColor(rippleHighlightColor)
                                                                             .rippleInAdapter(rippleInAdapter)
                                                                             .rippleOverlay(rippleOverlay)
@@ -769,11 +766,6 @@ public class MaterialTabs extends HorizontalScrollView {
 
     public void setRippleOverlay(boolean rippleOverlay) {
         this.rippleOverlay = rippleOverlay;
-        notifyDataSetChanged();
-    }
-
-    public void setRippleHover(boolean rippleHover) {
-        this.rippleHover = rippleHover;
         notifyDataSetChanged();
     }
 

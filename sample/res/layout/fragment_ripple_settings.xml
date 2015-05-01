@@ -436,47 +436,6 @@
         </LinearLayout>
         <!--~ Ripple Highlight Color -->
 
-        <View android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/light_gray_half_transparent" />
-
-        <!-- Ripple Hover -->
-
-        <RelativeLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <ImageView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:clickable="true"
-                android:src="@drawable/ic_action_info_outline"
-                android:id="@+id/rippleHoverInfoButton" />
-
-            <LinearLayout android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:orientation="horizontal">
-
-                <TextView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/black"
-                    android:id="@+id/rippleHoverTextView"
-                    android:text="@string/ripple_hover" />
-
-                <CheckBox android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/rippleHoverCheckBox" />
-            </LinearLayout>
-        </RelativeLayout>
-
         <!--~ Ripple Hover-->
 
         <View android:layout_width="match_parent"
