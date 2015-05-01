@@ -112,7 +112,6 @@ public class MaterialTabs extends HorizontalScrollView {
     private int tabTypefaceUnselectedStyle = Typeface.BOLD;
     private int tabTypefaceSelectedStyle = Typeface.BOLD;
 
-    private int scrollOffset;
     private int lastScrollX = 0;
 
     // Fields from MaterialRippleLayout
@@ -149,7 +148,6 @@ public class MaterialTabs extends HorizontalScrollView {
         addView(tabsContainer);
 
         DisplayMetrics dm = getResources().getDisplayMetrics();
-        scrollOffset = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, scrollOffset, dm);
         indicatorHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, indicatorHeight, dm);
         underlineHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, underlineHeight, dm);
         tabPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tabPadding, dm);
@@ -177,7 +175,6 @@ public class MaterialTabs extends HorizontalScrollView {
         underlineHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_mtUnderlineHeight, underlineHeight);
         tabPadding = a.getDimensionPixelSize(R.styleable.MaterialTabs_mtTabPaddingLeftRight, tabPadding);
         shouldExpand = a.getBoolean(R.styleable.MaterialTabs_mtShouldExpand, shouldExpand);
-        scrollOffset = a.getDimensionPixelSize(R.styleable.MaterialTabs_mtScrollOffset, scrollOffset);
         textAllCaps = a.getBoolean(R.styleable.MaterialTabs_mtTextAllCaps, textAllCaps);
         isPaddingMiddle = a.getBoolean(R.styleable.MaterialTabs_mtPaddingMiddle, isPaddingMiddle);
         tabTypefaceUnselectedStyle = a.getInt(R.styleable.MaterialTabs_mtTextUnselectedStyle, Typeface.BOLD);
@@ -338,7 +335,6 @@ public class MaterialTabs extends HorizontalScrollView {
         if (position > 0 || offset > 0) {
             // Half screen offset. Either tabs start at the middle of the view scrolling straight away or tabs start at the beginning (no padding)
             // scrolling when indicator gets to the middle of the view width.
-            newScrollX -= scrollOffset;
             Pair<Float, Float> lines = getIndicatorCoordinates();
             newScrollX += ((lines.second - lines.first) / 2);
         }
@@ -401,9 +397,6 @@ public class MaterialTabs extends HorizontalScrollView {
                 paddingLeft = paddingRight = getWidth() / 2 - mHalfWidthFirstTab;
             }
             setPadding(paddingLeft, getPaddingTop(), paddingRight, getPaddingBottom());
-            if (scrollOffset == 0) {
-                scrollOffset = getWidth() / 2 - paddingLeft;
-            }
 
             currentPosition = pager.getCurrentItem();
             currentPositionOffset = 0f;
@@ -630,10 +623,6 @@ public class MaterialTabs extends HorizontalScrollView {
         return underlineHeight;
     }
 
-    public int getScrollOffset() {
-        return scrollOffset;
-    }
-
     public boolean getShouldExpand() {
         return shouldExpand;
     }
@@ -683,11 +672,6 @@ public class MaterialTabs extends HorizontalScrollView {
 
     public void setUnderlineHeight(int underlineHeightPx) {
         this.underlineHeight = underlineHeightPx;
-        invalidate();
-    }
-
-    public void setScrollOffset(int scrollOffsetPx) {
-        this.scrollOffset = scrollOffsetPx;
         invalidate();
     }
 

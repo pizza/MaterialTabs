@@ -110,7 +110,6 @@ public class TabsActivity extends AppCompatActivity {
                 mMaterialTabs.setUnderlineHeight(Utils.dpToPx(getResources(), extras.getInt(TabsSettingsFragment.UNDERLINE_HEIGHT)));
 
                 mMaterialTabs.setTabPaddingLeftRight(Utils.dpToPx(getResources(), extras.getInt(TabsSettingsFragment.TAB_PADDING)));
-                mMaterialTabs.setScrollOffset(Utils.dpToPx(getResources(), extras.getInt(TabsSettingsFragment.SCROLL_OFFSET)));
 
                 mMaterialTabs.setPaddingMiddle(extras.getBoolean(TabsSettingsFragment.PADDING_MIDDLE));
                 mMaterialTabs.setShouldExpand(extras.getBoolean(TabsSettingsFragment.SHOULD_EXPAND));

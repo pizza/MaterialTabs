@@ -24,7 +24,6 @@ public class TabsSettingsFragment extends Fragment {
     public static final String INDICATOR_HEIGHT = "INDICATOR_HEIGHT";
     public static final String UNDERLINE_HEIGHT = "UNDERLINE_HEIGHT";
     public static final String TAB_PADDING = "TAB_PADDING";
-    public static final String SCROLL_OFFSET = "SCROLL_OFFSET";
     public static final String PADDING_MIDDLE = "PADDING_MIDDLE";
     public static final String SHOULD_EXPAND = "SHOULD_EXPAND";
     public static final String TEXT_ALL_CAPS = "TEXT_ALL_CAPS";
@@ -38,7 +37,6 @@ public class TabsSettingsFragment extends Fragment {
     private static final int UNDERLINE_HEIGHT_DEFAULT_DP = 0;
     private static final int INDICATOR_HEIGHT_DEFAULT_DP = 2;
     private static final int TAB_PADDING_DEFAULT_DP = 12;
-    private static final int SCROLL_OFFSET_DEFAULT_DP = 0;
 
     // Indicator Color
     @InjectView(R.id.indicatorColorRadioGroup)
@@ -69,12 +67,6 @@ public class TabsSettingsFragment extends Fragment {
     SeekBar tabPaddingSeekBar;
     @InjectView(R.id.tabPaddingTextView)
     TextView tabPaddingTextView;
-
-    // Scroll Offset
-    @InjectView(R.id.scrollOffsetSeekBar)
-    SeekBar scrollOffsetSeekBar;
-    @InjectView(R.id.scrollOffsetTextView)
-    TextView scrollOffsetTextView;
 
     // Padding Middle
     @InjectView(R.id.paddingMiddleCheckBox)
@@ -127,7 +119,6 @@ public class TabsSettingsFragment extends Fragment {
     int underlineHeightDp;
     int indicatorHeightDp;
     int tabPaddingDp;
-    int scrollOffsetDp;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -188,25 +179,6 @@ public class TabsSettingsFragment extends Fragment {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 tabPaddingDp = progress;
                 tabPaddingTextView.setText(getString(R.string.tab_padding) + ": " + tabPaddingDp + "dp");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        scrollOffsetDp = SCROLL_OFFSET_DEFAULT_DP;
-        scrollOffsetSeekBar.setProgress(scrollOffsetDp);
-        scrollOffsetTextView.setText(getString(R.string.scroll_offset) + ": " + scrollOffsetDp + "dp");
-        scrollOffsetSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                scrollOffsetDp = progress;
-                scrollOffsetTextView.setText(getString(R.string.scroll_offset) + ": " + scrollOffsetDp + "dp");
             }
 
             @Override
@@ -296,11 +268,6 @@ public class TabsSettingsFragment extends Fragment {
     @OnClick(R.id.paddingMiddleInfoButton)
     public void paddingMiddleInfoButtonClicked() {
         new AlertDialog.Builder(getActivity()).setTitle(R.string.padding_middle).setMessage(R.string.padding_middle_details).create().show();
-    }
-
-    @OnClick(R.id.scrollOffsetInfoButton)
-    public void scrollOffsetInfoButtonClicked() {
-        new AlertDialog.Builder(getActivity()).setTitle(R.string.scroll_offset).setMessage(R.string.scroll_offset_details).create().show();
     }
 
     @OnClick(R.id.shouldExpandInfoButton)

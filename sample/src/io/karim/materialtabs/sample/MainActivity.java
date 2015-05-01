@@ -163,7 +163,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(TabsSettingsFragment.UNDERLINE_HEIGHT, mTabsSettingsFragment.underlineHeightDp);
 
         intent.putExtra(TabsSettingsFragment.TAB_PADDING, mTabsSettingsFragment.tabPaddingDp);
-        intent.putExtra(TabsSettingsFragment.SCROLL_OFFSET, mTabsSettingsFragment.scrollOffsetDp);
 
         intent.putExtra(TabsSettingsFragment.SHOULD_EXPAND, mTabsSettingsFragment.shouldExpandCheckBox.isChecked());
         intent.putExtra(TabsSettingsFragment.TEXT_ALL_CAPS, mTabsSettingsFragment.textAllCapsCheckBox.isChecked());

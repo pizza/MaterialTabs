@@ -6,7 +6,6 @@
     <string name="underline_height">Underline Height</string>
     <string name="indicator_height">Indicator Height</string>
     <string name="tab_padding">Tab Padding Left Right</string>
-    <string name="scroll_offset">Scroll Offset</string>
     <string name="should_expand">Should Expand</string>
     <string name="underline_color">Underline Color</string>
     <string name="indicator_color">Indicator Color</string>
@@ -46,7 +45,6 @@
     <string name="ripple_highlight_color_details" >asdad</string>
     <string name="ripple_rounded_corners_radius_details">blablabla</string>
     <string name="should_expand_details">ssd</string>
-    <string name="scroll_offset_details">asdsad</string>
     <string name="padding_middle_details">asdasd</string>
     <string name="indicator_height_details">asdasdsad</string>
     <string name="indicator_color_details">assad</string>
