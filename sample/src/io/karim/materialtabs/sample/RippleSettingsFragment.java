@@ -228,7 +228,7 @@ public class RippleSettingsFragment extends Fragment {
 
     @OnClick(R.id.rippleDelayClickInfoButton)
     public void rippleDelayClickInfoButtonClicked() {
-        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_delay).setMessage(R.string.ripple_delay_details).create().show();
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.ripple_delay_click).setMessage(R.string.ripple_delay_click_details).create().show();
     }
 
     @OnClick(R.id.rippleFadeDurationInfoButton)

@@ -231,7 +231,7 @@
                     android:layout_marginLeft="5dp"
                     android:textColor="@color/black"
                     android:id="@+id/rippleDelayClickTextView"
-                    android:text="@string/ripple_delay" />
+                    android:text="@string/ripple_delay_click" />
 
                 <CheckBox android:layout_width="match_parent"
                     android:layout_height="wrap_content"
