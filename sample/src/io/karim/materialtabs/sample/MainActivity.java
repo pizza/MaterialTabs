@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
         intent.putExtra(TabsSettingsFragment.TAB_PADDING, mTabsSettingsFragment.tabPaddingDp);
 
-        intent.putExtra(TabsSettingsFragment.SHOULD_EXPAND, mTabsSettingsFragment.shouldExpandCheckBox.isChecked());
+        intent.putExtra(TabsSettingsFragment.SAME_WEIGHT_TABS, mTabsSettingsFragment.sameWeightTabsCheckBox.isChecked());
         intent.putExtra(TabsSettingsFragment.TEXT_ALL_CAPS, mTabsSettingsFragment.textAllCapsCheckBox.isChecked());
         intent.putExtra(TabsSettingsFragment.PADDING_MIDDLE, mTabsSettingsFragment.paddingMiddleCheckBox.isChecked());
 

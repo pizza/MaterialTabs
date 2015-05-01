@@ -577,7 +577,7 @@
             android:layout_height="2px"
             android:background="@color/light_gray_half_transparent" />
 
-        <!-- Should Expand -->
+        <!-- Same Weight Tabs -->
         <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -590,7 +590,7 @@
                 android:layout_alignParentEnd="true"
                 android:clickable="true"
                 android:src="@drawable/ic_action_info_outline"
-                android:id="@+id/shouldExpandInfoButton" />
+                android:id="@+id/sameWeighTabsInfoButton" />
 
             <LinearLayout android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -604,15 +604,15 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:textColor="@color/black"
-                    android:id="@+id/shouldExpandTextView"
-                    android:text="@string/should_expand" />
+                    android:id="@+id/sameWeightTabsTextView"
+                    android:text="@string/same_weight_tabs" />
 
                 <CheckBox android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/shouldExpandCheckBox" />
+                    android:id="@+id/sameWeightTabsCheckBox" />
             </LinearLayout>
         </RelativeLayout>
-        <!--~ Should Expand -->
+        <!--~ Same Weight Tabs -->
 
         <View android:layout_width="match_parent"
             android:layout_height="2px"

@@ -6,7 +6,7 @@
     <string name="underline_height">Underline Height</string>
     <string name="indicator_height">Indicator Height</string>
     <string name="tab_padding">Tab Padding Left Right</string>
-    <string name="should_expand">Should Expand</string>
+    <string name="same_weight_tabs">Same Weight Tabs</string>
     <string name="underline_color">Underline Color</string>
     <string name="indicator_color">Indicator Color</string>
     <string name="text_all_caps">Text All Caps</string>
@@ -45,6 +45,7 @@
     <string name="ripple_rounded_corners_radius_details">blablabla</string>
     <string name="ripple_delay_click_details">If true, delays calls to OnClickListeners until ripple effect ends. In that case, the indicator line\'s move to the clicked tab will also be delayed</string>
     <string name="should_expand_details">ssd</string>
+    <string name="same_weight_tabs_details">If set to true, each tab is given the same weight, default false</string>
     <string name="padding_middle_details">asdasd</string>
     <string name="indicator_height_details">asdasdsad</string>
     <string name="indicator_color_details">assad</string>

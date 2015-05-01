@@ -25,7 +25,7 @@ public class TabsSettingsFragment extends Fragment {
     public static final String UNDERLINE_HEIGHT = "UNDERLINE_HEIGHT";
     public static final String TAB_PADDING = "TAB_PADDING";
     public static final String PADDING_MIDDLE = "PADDING_MIDDLE";
-    public static final String SHOULD_EXPAND = "SHOULD_EXPAND";
+    public static final String SAME_WEIGHT_TABS = "SAME_WEIGHT_TABS";
     public static final String TEXT_ALL_CAPS = "TEXT_ALL_CAPS";
     public static final String TAB_BACKGROUND = "TAB_BACKGROUND";
     public static final String TOOLBAR_BACKGROUND = "TOOLBAR_BACKGROUND";
@@ -73,8 +73,8 @@ public class TabsSettingsFragment extends Fragment {
     CheckBox paddingMiddleCheckBox;
 
     // Should Expand
-    @InjectView(R.id.shouldExpandCheckBox)
-    CheckBox shouldExpandCheckBox;
+    @InjectView(R.id.sameWeightTabsCheckBox)
+    CheckBox sameWeightTabsCheckBox;
 
     // Text All Caps
     @InjectView(R.id.textAllCapsCheckBox)
@@ -199,7 +199,7 @@ public class TabsSettingsFragment extends Fragment {
         selectedTextStyleButtonBold.setChecked(true);
         unselectedTextStyleButtonBold.setChecked(true);
 
-        shouldExpandCheckBox.setChecked(true);
+        sameWeightTabsCheckBox.setChecked(true);
         paddingMiddleCheckBox.setChecked(false);
         textAllCapsCheckBox.setChecked(true);
     }
@@ -270,8 +270,8 @@ public class TabsSettingsFragment extends Fragment {
         new AlertDialog.Builder(getActivity()).setTitle(R.string.padding_middle).setMessage(R.string.padding_middle_details).create().show();
     }
 
-    @OnClick(R.id.shouldExpandInfoButton)
-    public void shouldExpandInfoButtonClicked() {
-        new AlertDialog.Builder(getActivity()).setTitle(R.string.should_expand).setMessage(R.string.should_expand_details).create().show();
+    @OnClick(R.id.sameWeighTabsInfoButton)
+    public void sameWeighTabsInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.same_weight_tabs).setMessage(R.string.same_weight_tabs_details).create().show();
     }
 }

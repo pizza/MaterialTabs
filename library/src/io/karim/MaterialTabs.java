@@ -104,7 +104,7 @@ public class MaterialTabs extends HorizontalScrollView {
     private int paddingLeft = 0;
     private int paddingRight = 0;
 
-    private boolean shouldExpand = false;
+    private boolean sameWeightTabs = false;
     private boolean textAllCaps = true;
     private boolean isPaddingMiddle = false;
 
@@ -174,7 +174,7 @@ public class MaterialTabs extends HorizontalScrollView {
         indicatorHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_mtIndicatorHeight, indicatorHeight);
         underlineHeight = a.getDimensionPixelSize(R.styleable.MaterialTabs_mtUnderlineHeight, underlineHeight);
         tabPadding = a.getDimensionPixelSize(R.styleable.MaterialTabs_mtTabPaddingLeftRight, tabPadding);
-        shouldExpand = a.getBoolean(R.styleable.MaterialTabs_mtShouldExpand, shouldExpand);
+        sameWeightTabs = a.getBoolean(R.styleable.MaterialTabs_mtSameWeightTabs, sameWeightTabs);
         textAllCaps = a.getBoolean(R.styleable.MaterialTabs_mtTextAllCaps, textAllCaps);
         isPaddingMiddle = a.getBoolean(R.styleable.MaterialTabs_mtPaddingMiddle, isPaddingMiddle);
         tabTypefaceUnselectedStyle = a.getInt(R.styleable.MaterialTabs_mtTextUnselectedStyle, Typeface.BOLD);
@@ -195,8 +195,7 @@ public class MaterialTabs extends HorizontalScrollView {
         rippleFadeDuration = a.getInteger(R.styleable.MaterialTabs_mtMrlRippleFadeDuration, MaterialRippleLayout.DEFAULT_FADE_DURATION);
         ripplePersistent = a.getBoolean(R.styleable.MaterialTabs_mtMrlRipplePersistent, MaterialRippleLayout.DEFAULT_PERSISTENT);
         rippleInAdapter = a.getBoolean(R.styleable.MaterialTabs_mtMrlRippleInAdapter, MaterialRippleLayout.DEFAULT_SEARCH_ADAPTER);
-        rippleRoundedCornersDp = a.getDimension(R.styleable.MaterialTabs_mtMrlRippleRoundedCorners,
-                MaterialRippleLayout.DEFAULT_ROUNDED_CORNERS_DP);
+        rippleRoundedCornersDp = a.getDimension(R.styleable.MaterialTabs_mtMrlRippleRoundedCorners, MaterialRippleLayout.DEFAULT_ROUNDED_CORNERS_DP);
 
         a.recycle();
 
@@ -302,7 +301,7 @@ public class MaterialTabs extends HorizontalScrollView {
             }
         });
 
-        tabsContainer.addView(tabView, position, shouldExpand ? expandedTabLayoutParams : defaultTabLayoutParams);
+        tabsContainer.addView(tabView, position, sameWeightTabs ? expandedTabLayoutParams : defaultTabLayoutParams);
     }
 
     private void updateTabStyles() {
@@ -623,8 +622,8 @@ public class MaterialTabs extends HorizontalScrollView {
         return underlineHeight;
     }
 
-    public boolean getShouldExpand() {
-        return shouldExpand;
+    public boolean getSameWeightTabs() {
+        return sameWeightTabs;
     }
 
     public int getTextSize() {
@@ -675,8 +674,8 @@ public class MaterialTabs extends HorizontalScrollView {
         invalidate();
     }
 
-    public void setShouldExpand(boolean shouldExpand) {
-        this.shouldExpand = shouldExpand;
+    public void setSameWeightTabs(boolean sameWeightTabs) {
+        this.sameWeightTabs = sameWeightTabs;
         if (pager != null) {
             requestLayout();
         }

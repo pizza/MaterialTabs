@@ -112,7 +112,7 @@ public class TabsActivity extends AppCompatActivity {
                 mMaterialTabs.setTabPaddingLeftRight(Utils.dpToPx(getResources(), extras.getInt(TabsSettingsFragment.TAB_PADDING)));
 
                 mMaterialTabs.setPaddingMiddle(extras.getBoolean(TabsSettingsFragment.PADDING_MIDDLE));
-                mMaterialTabs.setShouldExpand(extras.getBoolean(TabsSettingsFragment.SHOULD_EXPAND));
+                mMaterialTabs.setSameWeightTabs(extras.getBoolean(TabsSettingsFragment.SAME_WEIGHT_TABS));
                 mMaterialTabs.setAllCaps(extras.getBoolean(TabsSettingsFragment.TEXT_ALL_CAPS));
 
                 int toolbarColor = getResources().getColor(extras.getInt(TabsSettingsFragment.TOOLBAR_BACKGROUND));

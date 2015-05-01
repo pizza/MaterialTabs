@@ -7,7 +7,7 @@
         <attr name="mtIndicatorHeight" format="dimension" />
         <attr name="mtUnderlineHeight" format="dimension" />
         <attr name="mtTabPaddingLeftRight" format="dimension" />
-        <attr name="mtShouldExpand" format="boolean" />
+        <attr name="mtSameWeightTabs" format="boolean" />
         <attr name="mtTextAllCaps" format="boolean" />
         <attr name="mtPaddingMiddle" format="boolean" />
         <attr name="mtTextColorSelected" format="color" />
