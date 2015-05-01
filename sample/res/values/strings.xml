@@ -11,9 +11,9 @@
     <string name="indicator_color">Indicator Color</string>
     <string name="text_all_caps">Text All Caps</string>
     <string name="padding_middle">Padding Middle</string>
-    <string name="tab_text_color">Tab Text Color</string>
-    <string name="tab_text_selected_color">Tab Text Selected</string>
-    <string name="tab_background_color">Tab Background Color</string>
+    <string name="tab_text_color">Tab Text Unselected Color</string>
+    <string name="tab_text_selected_color">Tab Text Selected Color</string>
+    <string name="tab_background_color">Tab Bar Background Color</string>
     <string name="text_selected_style">Selected Text Style</string>
     <string name="text_unselected_style">Unselected Text Style</string>
     <string name="ripple_duration">Ripple Duration</string>
@@ -34,29 +34,34 @@
     <string name="share">Share</string>
     <string name="reset">Reset</string>
     <string name="toolbar_color">Toolbar (ActionBar) Color</string>
-    <string name="ripple_alpha_float_details">The Striiing</string>
-    <string name="ripple_color_details">blablabla</string>
-    <string name="ripple_diameter_details">blablabla</string>
-    <string name="ripple_duration_details">blablabla</string>
-    <string name="ripple_fade_duration_details">blablabla123</string>
-    <string name="ripple_overlay_details">blablablaasd</string>
-    <string name="ripple_persistent_details">blablablasad</string>
-    <string name="ripple_highlight_color_details" >asdad</string>
-    <string name="ripple_rounded_corners_radius_details">blablabla</string>
-    <string name="ripple_delay_click_details">If true, delays calls to OnClickListeners until ripple effect ends. In that case, the indicator line\'s move to the clicked tab will also be delayed</string>
-    <string name="should_expand_details">ssd</string>
-    <string name="same_weight_tabs_details">If set to true, each tab is given the same weight, default false</string>
-    <string name="padding_middle_details">asdasd</string>
-    <string name="indicator_height_details">asdasdsad</string>
-    <string name="indicator_color_details">assad</string>
-    <string name="underline_height_details">asda</string>
-    <string name="underline_color_details">asd</string>
-    <string name="text_all_caps_details">asdsafd</string>
-    <string name="text_unselected_style_details">asdfsadf</string>
-    <string name="text_selected_style_details">asads</string>
-    <string name="tab_padding_details">adsad</string>
-    <string name="tab_background_color_details">dad</string>
-    <string name="tab_text_color_details">adasd</string>
-    <string name="tab_text_selected_color_details">ASDSADF</string>
-    <string name="toolbar_color_details">dsa</string>
+
+    <string name="ripple_alpha_float_details">Level of transparency (alpha) of the ripple</string>
+    <string name="ripple_color_details">Color of the ripple</string>
+    <string name="ripple_diameter_details">Radius of starting ripple</string>
+    <string name="ripple_duration_details">Duration of the ripple animation</string>
+    <string name="ripple_delay_click_details">If true, delays calls to OnClickListeners until ripple effect ends. In that case, the indicator line\'s
+        move to the clicked tab will also be delayed
+    </string>
+    <string name="ripple_fade_duration_details">Duration of fade out effect on ripple</string>
+    <string name="ripple_overlay_details">If true, ripple is drawn in foreground of view. Otherwise, it will drawn in the background</string>
+    <string name="ripple_persistent_details">If true, the ripple background color persists after animation, until setRadius(0) is called</string>
+    <string name="ripple_highlight_color_details">Color of the background while the ripple is undergoing an animation</string>
+    <string name="ripple_rounded_corners_radius_details">Radius of corners of the ripple. Note: it uses software rendering pipeline for API 17 and
+        below
+    </string>
+
+    <string name="same_weight_tabs_details">If set to true, each tab is given the same weight</string>
+    <string name="padding_middle_details">If true, the tabs start at the middle of the view</string>
+    <string name="indicator_height_details">Height of the sliding indicator</string>
+    <string name="indicator_color_details">Color of the sliding indicator</string>
+    <string name="underline_height_details">Height of the full-width line on the bottom of the view</string>
+    <string name="underline_color_details">Color of the full-width line on the bottom of the view</string>
+    <string name="text_all_caps_details">If true, all tab titles will be upper case</string>
+    <string name="text_unselected_style_details">Style of text in unselected tab</string>
+    <string name="text_selected_style_details">Style of text in selected tab</string>
+    <string name="tab_padding_details">Left and right padding of each tab</string>
+    <string name="tab_text_selected_color_details">Color of text in selected tab</string>
+    <string name="tab_text_color_details">Color of text in non-selected tabs</string>
+    <string name="toolbar_color_details">Color of toolbar in the next Activity</string>
+    <string name="tab_background_color_details">Background color of tab bar</string>
 </resources>
