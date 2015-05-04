@@ -56,7 +56,7 @@ public class SampleFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_card, container, false);
         ButterKnife.inject(this, rootView);
         ViewCompat.setElevation(rootView, 50);
-        mTextView.setText("CARD " + position);
+        mTextView.setText("Fragment #" + position);
         return rootView;
     }
 }

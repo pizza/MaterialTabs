@@ -69,4 +69,6 @@
     <string name="karim_frenn">Karim Frenn</string>
     <string name="github_link">http://github.com/pizza</string>
     <string name="twitter_link">http://twitter.com/karimfrenn</string>
+    <string name="show_toolbar">Show Toolbar</string>
+    <string name="show_toolbar_details">Show/hide toolbar in next Activity</string>
 </resources>

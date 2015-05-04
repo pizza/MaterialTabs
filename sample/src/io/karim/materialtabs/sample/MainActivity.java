@@ -181,6 +181,8 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(TabsSettingsFragment.TEXT_ALL_CAPS, mTabsSettingsFragment.textAllCapsCheckBox.isChecked());
         intent.putExtra(TabsSettingsFragment.PADDING_MIDDLE, mTabsSettingsFragment.paddingMiddleCheckBox.isChecked());
 
+        intent.putExtra(TabsSettingsFragment.SHOW_TOOLBAR, mTabsSettingsFragment.showToolbarCheckBox.isChecked());
+
         // Tab Background Color
         key = TabsSettingsFragment.TAB_BACKGROUND;
         switch (mTabsSettingsFragment.tabBackgroundColorRadioGroup.getCheckedRadioButtonId()) {

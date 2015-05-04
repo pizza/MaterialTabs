@@ -29,6 +29,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -75,6 +76,8 @@ public class TabsActivity extends AppCompatActivity {
         if (intent != null) {
             Bundle extras = intent.getExtras();
             if (extras != null) {
+                mToolbar.setVisibility(extras.getBoolean(TabsSettingsFragment.SHOW_TOOLBAR) ? View.VISIBLE : View.GONE);
+
                 mMaterialTabs.setIndicatorColor(getResources().getColor(extras.getInt(TabsSettingsFragment.INDICATOR_COLOR)));
                 mMaterialTabs.setUnderlineColor(getResources().getColor(extras.getInt(TabsSettingsFragment.UNDERLINE_COLOR)));
 

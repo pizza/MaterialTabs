@@ -33,6 +33,7 @@ public class TabsSettingsFragment extends Fragment {
     public static final String TEXT_COLOR_SELECTED = "TEXT_COLOR_SELECTED";
     public static final String TEXT_STYLE_SELECTED = "TEXT_STYLE_SELECTED";
     public static final String TEXT_STYLE_UNSELECTED = "TEXT_STYLE_UNSELECTED";
+    public static final String SHOW_TOOLBAR = "SHOW_TOOLBAR";
 
     private static final int UNDERLINE_HEIGHT_DEFAULT_DP = 0;
     private static final int INDICATOR_HEIGHT_DEFAULT_DP = 2;
@@ -79,6 +80,10 @@ public class TabsSettingsFragment extends Fragment {
     // Text All Caps
     @InjectView(R.id.textAllCapsCheckBox)
     CheckBox textAllCapsCheckBox;
+
+    // Show Toolbar
+    @InjectView(R.id.showToolbarCheckBox)
+    CheckBox showToolbarCheckBox;
 
     // Tab Text Color
     @InjectView(R.id.tabTextColorRadioGroup)
@@ -202,6 +207,8 @@ public class TabsSettingsFragment extends Fragment {
         sameWeightTabsCheckBox.setChecked(true);
         paddingMiddleCheckBox.setChecked(false);
         textAllCapsCheckBox.setChecked(true);
+
+        showToolbarCheckBox.setChecked(true);
     }
 
     @OnClick(R.id.tabPaddingInfoButton)
@@ -273,5 +280,10 @@ public class TabsSettingsFragment extends Fragment {
     @OnClick(R.id.sameWeighTabsInfoButton)
     public void sameWeighTabsInfoButtonClicked() {
         new AlertDialog.Builder(getActivity()).setTitle(R.string.same_weight_tabs).setMessage(R.string.same_weight_tabs_details).create().show();
+    }
+
+    @OnClick(R.id.showToolbarInfoButton)
+    public void showToolbarInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.show_toolbar).setMessage(R.string.show_toolbar_details).create().show();
     }
 }
