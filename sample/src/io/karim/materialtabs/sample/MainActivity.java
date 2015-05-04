@@ -7,15 +7,26 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.URLSpan;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -70,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.action_me:
+                DialogFragment newFragment = new MeDialogFragment();
+                newFragment.show(getSupportFragmentManager(), "dialog");
                 return true;
             case R.id.action_reset:
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -404,6 +417,31 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     return mRippleSettingsFragment;
             }
+        }
+    }
+
+
+    public static class MeDialogFragment extends DialogFragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.dialog_me, container, false);
+            TextView githubTextView = (TextView) view.findViewById(R.id.github_text_view);
+            TextView twitterTextView = (TextView) view.findViewById(R.id.twitter_text_view);
+
+            String link = getString(R.string.github);
+            Spannable spannable = new SpannableString(link);
+            spannable.setSpan(new URLSpan(getString(R.string.github_link)), 0, link.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            githubTextView.setText(spannable, TextView.BufferType.SPANNABLE);
+            githubTextView.setMovementMethod(LinkMovementMethod.getInstance());
+
+            link = getString(R.string.twitter);
+            spannable = new SpannableString(link);
+            spannable.setSpan(new URLSpan(getString(R.string.twitter_link)), 0, link.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            twitterTextView.setText(spannable, TextView.BufferType.SPANNABLE);
+            twitterTextView.setMovementMethod(LinkMovementMethod.getInstance());
+
+            getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+            return view;
         }
     }
 }

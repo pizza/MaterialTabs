@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ImageView android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/me_image_view"
+        android:src="@drawable/me" />
+
+    <LinearLayout android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/karim_frenn" />
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_action_github"
+            android:id="@+id/github_text_view"
+            android:gravity="center_vertical"/>
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_action_twitter"
+            android:id="@+id/twitter_text_view"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+</LinearLayout>

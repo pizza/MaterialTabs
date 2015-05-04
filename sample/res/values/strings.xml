@@ -64,4 +64,9 @@
     <string name="tab_text_color_details">Color of text in non-selected tabs</string>
     <string name="toolbar_color_details">Color of toolbar in the next Activity</string>
     <string name="tab_background_color_details">Background color of tab bar</string>
+    <string name="github">pizza</string>
+    <string name="twitter">\@KarimFrenn</string>
+    <string name="karim_frenn">Karim Frenn</string>
+    <string name="github_link">http://github.com/pizza</string>
+    <string name="twitter_link">http://twitter.com/karimfrenn</string>
 </resources>
