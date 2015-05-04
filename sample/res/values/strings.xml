@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MaterialTabs</string>
-    <string name="title_activity_main">Cook your Tabs</string>
+    <string name="title_activity_main">Cook Your Tabs</string>
 
     <string name="underline_height">Underline Height</string>
     <string name="indicator_height">Indicator Height</string>

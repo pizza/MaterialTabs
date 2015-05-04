@@ -125,8 +125,7 @@ public class TabsActivity extends AppCompatActivity {
 
     public class SamplePagerAdapter extends FragmentPagerAdapter {
 
-        private final String[] TITLES = {"Categories", "Home", "Top Paid"};
-        //, "Top Free", "Top Grossing", "Top New Paid", "Top New Free", "Trending"};
+        private final String[] TITLES = {"ITEM ONE", "ITEM TWO", "ITEM THREE"};
 
         public SamplePagerAdapter(FragmentManager fm) {
             super(fm);

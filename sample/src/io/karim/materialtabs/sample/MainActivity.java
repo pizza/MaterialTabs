@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tabs);
         ButterKnife.inject(this);
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle(getString(R.string.title_activity_main));
 
         // Apply background tinting to the Android system UI when using KitKat translucent modes.
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
