@@ -10,7 +10,7 @@ This library is based on the PagerSlidingTabStrip (https://github.com/jpardogo/P
 
 You can find a sample app showing what this library can do on the Google Play Store.
 
-<a href="https://play.google.com/store/apps/details?id=io.karim.materialtabs.samplen">
+<a href="https://play.google.com/store/apps/details?id=io.karim.materialtabs.sample">
   <img alt="Material Tabs Demo on Google Play"
          src="http://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
 </a>
