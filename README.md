@@ -19,42 +19,19 @@ You can find a sample app showing what this library can do on the Google Play St
 
 #### Gradle
 
-Step 1. Add the JitPack repository to your build file
+Step 1. Add `mavenCentral()` to the `repositories` section of your `build.gradle` file
 
 ```
 	repositories {
-	    maven {
-	        url "https://jitpack.io"
-	    }
+	    mavenCentral()
 	}
 ```
 
-Step 2. Add the MaterialTabs dependency
+Step 2. Add the MaterialTabs dependency as well
 
 ```
 	dependencies {
-	        compile 'com.github.pizza:MaterialTabs:2.0.0'
-	}
+	    // Material Tabs for tab bar.
+	    compile 'io.karim:materialtabs:2.0.0'
+        }
 ```
-
-#### Maven
-
-Step 1. Add the JitPack repository to your build file
-
-```
-  <repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
-```
-
-Step 2. Add the MaterialTabs dependency
-
-```
-	<dependency>
-	    <groupId>com.github.pizza</groupId>
-	    <artifactId>MaterialTabs</artifactId>
-	    <version>2.0.0</version>
-	</dependency>
-```
-
