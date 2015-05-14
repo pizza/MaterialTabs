@@ -19,11 +19,9 @@ Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/kari
 
 ```groovy
 	dependencies {
-	    compile 'io.karim:materialtabs:2.0.1
+	    compile 'io.karim:materialtabs:2.+
 	}
 ```
-
-*Note: if you're having issues finding version 2.0.1, replace it with 2.0.0*
 
 ## Usage
 
