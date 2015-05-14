@@ -1,5 +1,9 @@
 # MaterialTabs
 
+An easy-to-integrate tab bar for Android that completely respects the [Material Design guidelines] (http://www.google.com/design/spec/components/tabs.html).
+
+If you think that this library does not fully respect the Material Design guidelines, file an issue, send a pull request or reach out to me! The goal of this library is to be 100% MaterialDesign-compliant.
+
 ## Sample
 
 You can find a sample app showing what this library can do on the Google Play Store.
@@ -86,6 +90,9 @@ Here is a table of these attributes, their descriptions and their default value:
 | app:mtMrlRippleRoundedCorners | Radius of corners of the ripple. Note: it uses software rendering pipeline for API 17 and  below  | 
 
 Don't forget to add `xmlns:app="http://schemas.android.com/apk/res-auto"` to the root item in your layout.
+
+## Contribution
+If you would like to contribute code you can do so through GitHub by forking the repository and sending a pull request.
 
 ## Credits
 This library is based on the great [PagerSlidingTabStrip](https://github.com/jpardogo/PagerSlidingTabStrip) library by [jpardogo](https://github.com/jpardogo) and [astuetz](https://github.com/astuetz) and on the great [material-ripple](https://github.com/balysv/material-ripple) library by [balysv](https://github.com/balysv).
