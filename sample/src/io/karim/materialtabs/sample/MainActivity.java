@@ -26,6 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
@@ -393,9 +394,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public class MainActivityPagerAdapter extends FragmentPagerAdapter {
+    public class MainActivityPagerAdapter extends FragmentPagerAdapter implements MaterialTabs.CustomTabProvider {
 
         private final String[] TITLES = {"Tabs", "Ripple"};
+
+        private final int[] ICONS = {R.drawable.ic_action_twitter, R.drawable.ic_action_social_mood};
 
         public MainActivityPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -420,6 +423,13 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     return mRippleSettingsFragment;
             }
+        }
+
+        @Override
+        public View getCustomTabView(ViewGroup parent, int position) {
+            ImageView imageView = new ImageView(MainActivity.this);
+            imageView.setImageDrawable(getDrawable(ICONS[position]));
+            return imageView;
         }
     }
 
