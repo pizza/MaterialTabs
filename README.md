@@ -23,6 +23,8 @@ Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/kari
 	}
 ```
 
+*Note: if you're having issues finding version 2.0.1, replace it with 2.0.0*
+
 ## Usage
 
 1. Add the MaterialTabs widget (io.karim.MaterialTabs) in your `layout.xml` file:
