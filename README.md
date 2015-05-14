@@ -32,6 +32,6 @@ Step 2. Add the MaterialTabs dependency as well
 ```
 	dependencies {
 	    // Material Tabs for tab bar.
-	    compile 'io.karim:materialtabs:2.0.0'
-        }
+	    compile 'io.karim:materialtabs:2.0.0
+	}
 ```
