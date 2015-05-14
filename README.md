@@ -1,8 +1,6 @@
 # MaterialTabs
 
-##Getting started
-
-### Sample
+## Sample
 
 You can find a sample app showing what this library can do on the Google Play Store.
 
@@ -11,7 +9,7 @@ You can find a sample app showing what this library can do on the Google Play St
          src="http://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
 </a>
 
-### Download
+## Download
 
 Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/karim/materialtabs/2.0.0/materialtabs-2.0.0.aar) or add the following dependency in your **build.gradle** file:
 
@@ -21,7 +19,7 @@ Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/kari
 	}
 ```
 
-### Usage
+## Usage
 
 1. Add the MaterialTabs widget (io.karim.MaterialTabs) in your `layout.xml` file:
 
@@ -49,7 +47,45 @@ Take a look at [this file] (https://github.com/pizza/MaterialTabs/blob/master/sa
  tabs.setViewPager(pager);
 ```
 
-3. Create a new class extending FragmentPagerAdapter (I called it `SamplePagerAdapter`). Take a look at [this file] (https://github.com/pizza/MaterialTabs/blob/master/sample/src/io/karim/materialtabs/sample/TabsActivity.java#L126) for a better example.
+3. Create a new class extending FragmentPagerAdapter.
+
+	If you're looking for tabs with text, take a look at [this file] (https://github.com/pizza/MaterialTabs/blob/master/sample/src/io/karim/materialtabs/sample/TabsActivity.java#L126) for a better example.
+
+	If you're looking for tabs with icons instead of text, take a look at [this example](https://github.com/pizza/MaterialTabs/blob/master/sample/src/io/karim/materialtabs/sample/MainActivity.java#L397) instead. Specifically, make sure that your class implements `MaterialTabs.CustomtabProvider` and override `getCustomtabView(...)`.
+
+	If you're looking for tabs with more than just icons or just text, create your own custom views in `getCustomtabView(...)`.
+
+## Customization
+There are many attributes that you can override in the XML layout.
+Here is a table of these attributes, their descriptions and their default value:
+
+| Attribute  | Description |
+| ------------- | ------------- | 
+| android:textColor | Color of text in non-selected tabs | 
+| app:mtIndicatorColor  | Color of the sliding indicator  | 
+| app:mtUnderlineColor | Color of the full-width line on the bottom of the view  | 
+| app:mtIndicatorHeight | Height of the sliding indicator  | 
+| app:mtUnderlineHeight | Height of the full-width line on the bottom of the view  | 
+| app:mtTabPaddingLeftRight | Left and right padding of each tab  | 
+| app:mtSameWeightTabs | If set to true, each tab is given the same weight  | 
+| app:mtTextAllCaps | If true, all tab titles will be upper case  | 
+| app:mtPaddingMiddle | If true, the tabs start at the middle of the view  | 
+| app:mtTextColorSelected | Color of text in selected tab  | 
+| app:mtTextUnselectedStyle | Style of text in unselected tab  | 
+| app:mtTextSelectedStyle | Style of text in selected tab  | 
+| app:mtMrlRippleColor | Color of the ripple  | 
+| app:mtMrlRippleHighlightColor | Color of the background while the ripple is undergoing an animation  | 
+| app:mtMrlRippleDiameter | Radius of starting ripple  | 
+| app:mtMrlRippleOverlay | If true, ripple is drawn in foreground of view. Otherwise, it will drawn in the background  | 
+| app:mtMrlRippleAlpha | Level of transparency (alpha) of the ripple  | 
+| app:mtMrlRippleDuration | Duration of the ripple animation  | 
+| app:mtMrlRippleFadeDuration | Duration of fade out effect on ripple  | 
+| app:mtMrlRippleDelayClick | If true, delays calls to OnClickListeners until ripple effect ends. In that case, the indicator line's  move to the clicked tab will also be delayed  | 
+| app:mtMrlRipplePersistent | If true, the ripple background color persists after animation, until setRadius(0) is called  | 
+| app:mtMrlRippleInAdapter | if true, MaterialRippleLayout will be optimized for use in AdapterViews  | 
+| app:mtMrlRippleRoundedCorners | Radius of corners of the ripple. Note: it uses software rendering pipeline for API 17 and  below  | 
+
+Don't forget to add `xmlns:app="http://schemas.android.com/apk/res-auto"` to the root item in your layout.
 
 ## Credits
 This library is based on the great [PagerSlidingTabStrip](https://github.com/jpardogo/PagerSlidingTabStrip) library by [jpardogo](https://github.com/jpardogo) and [astuetz](https://github.com/astuetz) and on the great [material-ripple](https://github.com/balysv/material-ripple) library by [balysv](https://github.com/balysv).

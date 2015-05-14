@@ -23,7 +23,7 @@
         </attr>
         <attr name="mtMrlRippleColor" format="color" localization="suggested" />
         <attr name="mtMrlRippleHighlightColor" format="color" localization="suggested" />
-        <attr name="mtMrlRippleDimension" format="dimension" localization="suggested" />
+        <attr name="mtMrlRippleDiameter" format="dimension" localization="suggested" />
         <attr name="mtMrlRippleOverlay" format="boolean" localization="suggested" />
         <attr name="mtMrlRippleAlpha" format="float" localization="suggested" />
         <attr name="mtMrlRippleDuration" format="integer" localization="suggested" />
@@ -37,7 +37,7 @@
     <declare-styleable name="MaterialRippleLayout">
         <attr name="mrlRippleColor" format="color" localization="suggested" />
         <attr name="mrlRippleHighlightColor" format="color" localization="suggested" />
-        <attr name="mrlRippleDimension" format="dimension" localization="suggested" />
+        <attr name="mrlRippleDiameter" format="dimension" localization="suggested" />
         <attr name="mrlRippleOverlay" format="boolean" localization="suggested" />
         <attr name="mrlRippleAlpha" format="float" localization="suggested" />
         <attr name="mrlRippleDuration" format="integer" localization="suggested" />

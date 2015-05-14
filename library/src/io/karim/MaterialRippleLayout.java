@@ -471,7 +471,7 @@ public class MaterialRippleLayout extends FrameLayout {
         rippleHighlightColor = Color.argb((int) (Color.alpha(rippleColor) * 0.25), Color.red(rippleColor), Color.green(rippleColor),
                 Color.blue(rippleColor));
         rippleHighlightColor = a.getColor(R.styleable.MaterialRippleLayout_mrlRippleHighlightColor, rippleHighlightColor);
-        rippleDiameterPx = a.getDimensionPixelSize(R.styleable.MaterialRippleLayout_mrlRippleDimension,
+        rippleDiameterPx = a.getDimensionPixelSize(R.styleable.MaterialRippleLayout_mrlRippleDiameter,
                 Utils.dpToPx(getResources(), DEFAULT_DIAMETER_DP));
         rippleOverlay = a.getBoolean(R.styleable.MaterialRippleLayout_mrlRippleOverlay, DEFAULT_RIPPLE_OVERLAY);
         rippleDuration = a.getInt(R.styleable.MaterialRippleLayout_mrlRippleDuration, DEFAULT_DURATION);

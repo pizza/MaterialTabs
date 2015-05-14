@@ -187,7 +187,7 @@ public class MaterialTabs extends HorizontalScrollView {
         rippleHighlightColor = Color.argb((int) (Color.alpha(rippleColor) * 0.25), Color.red(rippleColor), Color.green(rippleColor),
                 Color.blue(rippleColor));
         rippleHighlightColor = a.getColor(R.styleable.MaterialTabs_mtMrlRippleHighlightColor, rippleHighlightColor);
-        rippleDiameterDp = a.getDimension(R.styleable.MaterialTabs_mtMrlRippleDimension, MaterialRippleLayout.DEFAULT_DIAMETER_DP);
+        rippleDiameterDp = a.getDimension(R.styleable.MaterialTabs_mtMrlRippleDiameter, MaterialRippleLayout.DEFAULT_DIAMETER_DP);
         rippleOverlay = a.getBoolean(R.styleable.MaterialTabs_mtMrlRippleOverlay, MaterialRippleLayout.DEFAULT_RIPPLE_OVERLAY);
         rippleDuration = a.getInt(R.styleable.MaterialTabs_mtMrlRippleDuration, MaterialRippleLayout.DEFAULT_DURATION);
         rippleAlphaFloat = a.getFloat(R.styleable.MaterialTabs_mtMrlRippleAlpha, MaterialRippleLayout.DEFAULT_ALPHA);
