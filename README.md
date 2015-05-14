@@ -1,6 +1,6 @@
 # MaterialTabs
 
-An easy-to-integrate tab bar for Android that completely respects the [Material Design guidelines] (http://www.google.com/design/spec/components/tabs.html).
+An easy-to-integrate tab bar for Android that completely respects the [Material Design guidelines] (http://www.google.com/design/spec/components/tabs.html) and **supports all versions of Android since API 9**!
 
 If you think that this library does not fully respect the Material Design guidelines, file an issue, send a pull request or reach out to me! The goal of this library is to be 100% MaterialDesign-compliant.
 
@@ -15,11 +15,11 @@ You can find a sample app showing what this library can do on the Google Play St
 
 ## Download
 
-Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/karim/materialtabs/2.0.0/materialtabs-2.0.0.aar) or add the following dependency in your **build.gradle** file:
+Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/karim/materialtabs/2.0.1/materialtabs-2.0.1.aar) or add the following dependency in your **build.gradle** file:
 
 ```groovy
 	dependencies {
-	    compile 'io.karim:materialtabs:2.0.0
+	    compile 'io.karim:materialtabs:2.0.1
 	}
 ```
 
