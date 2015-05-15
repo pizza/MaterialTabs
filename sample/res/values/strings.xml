@@ -71,4 +71,5 @@
     <string name="twitter_link">http://twitter.com/karimfrenn</string>
     <string name="show_toolbar">Show Toolbar</string>
     <string name="show_toolbar_details">Show/hide toolbar in next Activity</string>
+    <string name="send_to">Send to</string>
 </resources>

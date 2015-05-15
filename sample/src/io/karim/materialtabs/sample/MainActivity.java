@@ -398,7 +398,7 @@ public class MainActivity extends AppCompatActivity {
 
         private final String[] TITLES = {"Tabs", "Ripple"};
 
-        private final int[] ICONS = {R.drawable.ic_action_twitter, R.drawable.ic_action_social_mood};
+        private final int[] ICONS = {R.drawable.ic_tabs, R.drawable.ic_ripple};
 
         public MainActivityPagerAdapter(FragmentManager fm) {
             super(fm);
