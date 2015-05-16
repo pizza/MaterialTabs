@@ -7,6 +7,7 @@ If you think that this library does not fully respect the Material Design guidel
 ## Sample
 
 You can find a sample app showing what this library can do on the Google Play Store.
+**This sample can also generate the XML code you need instantly and export it!** You can then copy paste it in your corresponding layout XML file. Done!
 
 <a href="https://play.google.com/store/apps/details?id=io.karim.materialtabs.sample">
   <img alt="Material Tabs Demo on Google Play"
@@ -19,7 +20,7 @@ Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/kari
 
 ```groovy
 	dependencies {
-	    compile 'io.karim:materialtabs:2.+
+	    compile 'io.karim:materialtabs:2.0.1'
 	}
 ```
 
@@ -27,7 +28,7 @@ Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/kari
 
 1. Add the MaterialTabs widget (io.karim.MaterialTabs) in your `layout.xml` file:
 
-	```
+	```xml
 	<io.karim.MaterialTabs
     	   android:id="@+id/material_tabs"
     	   android:layout_width="match_parent"
@@ -41,7 +42,7 @@ Take a look at [this file] (https://github.com/pizza/MaterialTabs/blob/master/sa
 
 2.  In your onCreate method (or onCreateView for a fragment), bind the widget to the ViewPager:
 
-	```
+	```java
  // Initialize the ViewPager and set an adapter
  ViewPager pager = (ViewPager) findViewById(R.id.pager);
  pager.setAdapter(new SamplePagerAdapter(getSupportFragmentManager()));
