@@ -34,10 +34,18 @@ public class TabsSettingsFragment extends Fragment {
     public static final String TEXT_STYLE_SELECTED = "TEXT_STYLE_SELECTED";
     public static final String TEXT_STYLE_UNSELECTED = "TEXT_STYLE_UNSELECTED";
     public static final String SHOW_TOOLBAR = "SHOW_TOOLBAR";
+    public static final String NUMBER_OF_TABS = "NUMBER_OF_TABS";
 
     private static final int UNDERLINE_HEIGHT_DEFAULT_DP = 0;
     private static final int INDICATOR_HEIGHT_DEFAULT_DP = 2;
     private static final int TAB_PADDING_DEFAULT_DP = 12;
+    private static final int NUMBER_OF_TABS_DEFAULT = 3;
+
+    // Indicator Height
+    @InjectView(R.id.numberOfTabsSeekBar)
+    SeekBar numberOfTabsSeekBar;
+    @InjectView(R.id.numberOfTabsTextView)
+    TextView numberOfTabsTextView;
 
     // Indicator Color
     @InjectView(R.id.indicatorColorRadioGroup)
@@ -124,6 +132,7 @@ public class TabsSettingsFragment extends Fragment {
     int underlineHeightDp;
     int indicatorHeightDp;
     int tabPaddingDp;
+    int numberOfTabs;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -146,6 +155,25 @@ public class TabsSettingsFragment extends Fragment {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 underlineHeightDp = progress;
                 underlineHeightTextView.setText(getString(R.string.underline_height) + ": " + underlineHeightDp + "dp");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        numberOfTabs = NUMBER_OF_TABS_DEFAULT;
+        numberOfTabsSeekBar.setProgress(numberOfTabs);
+        numberOfTabsTextView.setText(getString(R.string.number_of_tabs) + ": " + numberOfTabs);
+        numberOfTabsSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                numberOfTabs = progress + 1;
+                numberOfTabsTextView.setText(getString(R.string.number_of_tabs) + ": " + numberOfTabs);
             }
 
             @Override
@@ -285,5 +313,10 @@ public class TabsSettingsFragment extends Fragment {
     @OnClick(R.id.showToolbarInfoButton)
     public void showToolbarInfoButtonClicked() {
         new AlertDialog.Builder(getActivity()).setTitle(R.string.show_toolbar).setMessage(R.string.show_toolbar_details).create().show();
+    }
+
+    @OnClick(R.id.numberOfTabsInfoButton)
+    public void numberOfTabsInfoButtonClicked() {
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.number_of_tabs).setMessage(R.string.number_of_tabs_details).create().show();
     }
 }

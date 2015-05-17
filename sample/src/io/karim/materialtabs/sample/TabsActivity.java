@@ -37,6 +37,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.util.ArrayList;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import io.karim.MaterialTabs;
@@ -66,7 +68,12 @@ public class TabsActivity extends AppCompatActivity {
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
         tintManager.setStatusBarTintEnabled(true);
 
-        SamplePagerAdapter adapter = new SamplePagerAdapter(getSupportFragmentManager());
+        int numberOfTabs = 3;
+        if (getIntent() != null && getIntent().getExtras() != null) {
+            numberOfTabs = getIntent().getExtras().getInt(TabsSettingsFragment.NUMBER_OF_TABS);
+        }
+
+        SamplePagerAdapter adapter = new SamplePagerAdapter(getSupportFragmentManager(), numberOfTabs);
         mViewPager.setAdapter(adapter);
 
         mMaterialTabs.setViewPager(mViewPager);
@@ -290,20 +297,27 @@ public class TabsActivity extends AppCompatActivity {
 
     public class SamplePagerAdapter extends FragmentPagerAdapter {
 
-        private final String[] TITLES = {"ITEM ONE", "ITEM TWO", "ITEM THREE"};
+        private final String[] TITLES = {"ITEM ONE", "ITEM TWO", "ITEM THREE", "ITEM FOUR", "ITEM FIVE", "ITEM SIX", "ITEM SEVEN", "ITEM EIGHT",
+                "ITEM NINE", "ITEM TEN", "ITEM ELEVEN"};
 
-        public SamplePagerAdapter(FragmentManager fm) {
+        private final ArrayList<String> mTitles;
+
+        public SamplePagerAdapter(FragmentManager fm, int numberOfTabs) {
             super(fm);
+            mTitles = new ArrayList<>();
+            for (int i = 0; i < numberOfTabs; i++) {
+                mTitles.add(TITLES[i]);
+            }
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return TITLES[position];
+            return mTitles.get(position);
         }
 
         @Override
         public int getCount() {
-            return TITLES.length;
+            return mTitles.size();
         }
 
         @Override

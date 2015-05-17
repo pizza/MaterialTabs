@@ -174,6 +174,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
+        intent.putExtra(TabsSettingsFragment.NUMBER_OF_TABS, mTabsSettingsFragment.numberOfTabs);
+
         intent.putExtra(TabsSettingsFragment.INDICATOR_HEIGHT, mTabsSettingsFragment.indicatorHeightDp);
         intent.putExtra(TabsSettingsFragment.UNDERLINE_HEIGHT, mTabsSettingsFragment.underlineHeightDp);
 

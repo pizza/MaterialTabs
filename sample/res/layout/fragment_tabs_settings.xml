@@ -8,6 +8,48 @@
         android:orientation="vertical"
         android:fitsSystemWindows="true">
 
+        <!-- Number of tabs -->
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="vertical">
+
+            <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_info_outline"
+                    android:id="@+id/numberOfTabsInfoButton" />
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/numberOfTabsTextView"
+                    android:text="@string/number_of_tabs" />
+            </RelativeLayout>
+
+            <SeekBar android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/numberOfTabsSeekBar"
+                android:max="7" />
+        </LinearLayout>
+        <!--~ Number of tabs -->
+
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/light_gray_half_transparent" />
+
         <!-- Show Toolbar -->
         <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"

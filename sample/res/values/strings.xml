@@ -71,5 +71,7 @@
     <string name="twitter_link">http://twitter.com/karimfrenn</string>
     <string name="show_toolbar">Show Toolbar</string>
     <string name="show_toolbar_details">Show/hide toolbar in next Activity</string>
+    <string name="number_of_tabs">Number of Tabs</string>
     <string name="send_to">Send to</string>
+    <string name="number_of_tabs_details">The number of tabs to be shown in next Activity</string>
 </resources>
