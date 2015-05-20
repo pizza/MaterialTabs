@@ -2,10 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.karim.materialtabs.sample">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".MyApplication"
         android:theme="@style/AppTheme">
         <activity
             android:name="io.karim.materialtabs.sample.MainActivity"
@@ -20,6 +23,9 @@
             android:name="io.karim.materialtabs.sample.TabsActivity"
             android:label="@string/app_name">
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="a03db896e5d07df2ceb3df0a257d7c7f9ddae6ee" />
     </application>
 
 </manifest>
