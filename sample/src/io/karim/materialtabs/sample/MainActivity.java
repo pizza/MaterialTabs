@@ -430,7 +430,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getCustomTabView(ViewGroup parent, int position) {
             ImageView imageView = new ImageView(MainActivity.this);
-            imageView.setImageDrawable(getDrawable(ICONS[position]));
+            imageView.setImageDrawable(MainActivity.this.getResources().getDrawable(ICONS[position]));
             return imageView;
         }
     }
