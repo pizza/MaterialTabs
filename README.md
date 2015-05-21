@@ -18,11 +18,11 @@ You can find a sample app showing what this library can do on the Google Play St
 
 ## Download
 
-Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/karim/materialtabs/2.0.1/materialtabs-2.0.1.aar) or add the following dependency in your **build.gradle** file:
+Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/karim/materialtabs/2.0.2/materialtabs-2.0.2.aar) or add the following dependency in your **build.gradle** file:
 
 ```groovy
 	dependencies {
-	    compile 'io.karim:materialtabs:2.0.1'
+	    compile 'io.karim:materialtabs:2.0.2'
 	}
 ```
 
