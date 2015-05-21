@@ -112,6 +112,7 @@ public class MaterialTabs extends HorizontalScrollView {
     private int tabTypefaceUnselectedStyle = Typeface.BOLD;
     private int tabTypefaceSelectedStyle = Typeface.BOLD;
 
+    private int scrollOffset;
     private int lastScrollX = 0;
 
     // Fields from MaterialRippleLayout
@@ -334,6 +335,7 @@ public class MaterialTabs extends HorizontalScrollView {
         if (position > 0 || offset > 0) {
             // Half screen offset. Either tabs start at the middle of the view scrolling straight away or tabs start at the beginning (no padding)
             // scrolling when indicator gets to the middle of the view width.
+            newScrollX -= scrollOffset;
             Pair<Float, Float> lines = getIndicatorCoordinates();
             newScrollX += ((lines.second - lines.first) / 2);
         }
@@ -396,6 +398,9 @@ public class MaterialTabs extends HorizontalScrollView {
                 paddingLeft = paddingRight = getWidth() / 2 - mHalfWidthFirstTab;
             }
             setPadding(paddingLeft, getPaddingTop(), paddingRight, getPaddingBottom());
+            if (scrollOffset == 0) {
+                scrollOffset = getWidth() / 2 - paddingLeft;
+            }
 
             currentPosition = pager.getCurrentItem();
             currentPositionOffset = 0f;
