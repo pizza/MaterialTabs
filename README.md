@@ -4,7 +4,7 @@ An easy-to-integrate tab bar for Android that completely respects the [Material 
 
 If you think that this library does not fully respect the Material Design guidelines, file an issue, send a pull request or reach out to me! The goal of this library is to be 100% MaterialDesign-compliant.
 
-<img alt="Animated screenshot" src="http://imgur.com/fN8eetm.gif" />
+<img alt="Animated screenshot" src="http://imgur.com/1CnH2U1.gif" />
 
 ## Sample
 
