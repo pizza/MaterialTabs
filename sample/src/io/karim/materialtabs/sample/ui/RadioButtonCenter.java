@@ -1,4 +1,4 @@
-package io.karim.materialtabs.sample.sampleui;
+package io.karim.materialtabs.sample.ui;
 
 
 import android.content.Context;
