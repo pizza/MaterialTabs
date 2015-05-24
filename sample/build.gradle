@@ -1,8 +1,21 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.19.0'
+    }
+}
+
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 
 repositories {
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     mavenCentral()
+
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url 'https://maven.fabric.io/public' }
 }
 
 
@@ -13,6 +26,9 @@ dependencies {
     compile 'com.jakewharton:butterknife:6.0.0'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile 'com.nineoldandroids:library:2.4.0'
+    compile('com.crashlytics.sdk.android:crashlytics:2.2.4@aar') {
+        transitive = true;
+    }
 }
 
 android {
@@ -23,8 +39,8 @@ android {
         minSdkVersion 9
         targetSdkVersion 22
 
-        versionName "1.0.4"
-        versionCode 7
+        versionName "1.0.5"
+        versionCode 8
     }
 
     signingConfigs { release }

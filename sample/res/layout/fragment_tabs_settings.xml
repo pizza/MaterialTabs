@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/toolbarColorRadioGroup"
                 android:orientation="horizontal">
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/toolbarColorButtonFireEngineRed"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -135,7 +135,7 @@
                     android:minHeight="30dp"
                     android:background="@color/fire_engine_red" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/toolbarColorButtonMantis"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -145,7 +145,7 @@
                     android:minHeight="30dp"
                     android:background="@color/mantis" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/toolbarColorButtonGorse"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -155,7 +155,7 @@
                     android:minHeight="30dp"
                     android:background="@color/gorse" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/toolbarColorButtonIrisBlue"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -165,7 +165,7 @@
                     android:minHeight="30dp"
                     android:background="@color/iris_blue" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/toolbarColorButtonSafetyOrange"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -175,7 +175,7 @@
                     android:minHeight="30dp"
                     android:background="@color/safety_orange" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/toolbarColorButtonWhite"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -185,7 +185,7 @@
                     style="@style/RadioButtonBlackCheck"
                     android:background="@color/white" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/toolbarColorButtonBlack"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -236,7 +236,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tabBackgroundColorRadioGroup"
                 android:orientation="horizontal">
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabBackgroundColorButtonFireEngineRed"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -246,7 +246,7 @@
                     android:minHeight="30dp"
                     android:background="@color/fire_engine_red" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabBackgroundColorButtonMantis"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -256,7 +256,7 @@
                     android:minHeight="30dp"
                     android:background="@color/mantis" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabBackgroundColorButtonGorse"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -266,7 +266,7 @@
                     android:minHeight="30dp"
                     android:background="@color/gorse" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabBackgroundColorButtonIrisBlue"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -276,7 +276,7 @@
                     android:minHeight="30dp"
                     android:background="@color/iris_blue" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabBackgroundColorButtonSafetyOrange"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -286,7 +286,7 @@
                     android:minHeight="30dp"
                     android:background="@color/safety_orange" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabBackgroundColorButtonWhite"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -296,7 +296,7 @@
                     style="@style/RadioButtonBlackCheck"
                     android:background="@color/white" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabBackgroundColorButtonBlack"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -347,7 +347,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/indicatorColorRadioGroup"
                 android:orientation="horizontal">
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/indicatorColorButtonFireEngineRed"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -357,7 +357,7 @@
                     android:minHeight="30dp"
                     android:background="@color/fire_engine_red" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/indicatorColorButtonMantis"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -367,7 +367,7 @@
                     android:minHeight="30dp"
                     android:background="@color/mantis" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/indicatorColorButtonGorse"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -377,7 +377,7 @@
                     android:minHeight="30dp"
                     android:background="@color/gorse" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/indicatorColorButtonIrisBlue"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -387,7 +387,7 @@
                     android:minHeight="30dp"
                     android:background="@color/iris_blue" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/indicatorColorButtonSafetyOrange"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -397,7 +397,7 @@
                     android:minHeight="30dp"
                     android:background="@color/safety_orange" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/indicatorColorButtonWhite"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -407,7 +407,7 @@
                     style="@style/RadioButtonBlackCheck"
                     android:background="@color/white" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/indicatorColorButtonBlack"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -458,7 +458,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/underlineColorRadioGroup"
                 android:orientation="horizontal">
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/underlineColorButtonFireEngineRed"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -468,7 +468,7 @@
                     android:minHeight="30dp"
                     android:background="@color/fire_engine_red" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/underlineColorButtonMantis"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -478,7 +478,7 @@
                     android:minHeight="30dp"
                     android:background="@color/mantis" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/underlineColorButtonGorse"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -488,7 +488,7 @@
                     android:minHeight="30dp"
                     android:background="@color/gorse" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/underlineColorButtonIrisBlue"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -498,7 +498,7 @@
                     android:minHeight="30dp"
                     android:background="@color/iris_blue" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/underlineColorButtonSafetyOrange"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -508,7 +508,7 @@
                     android:minHeight="30dp"
                     android:background="@color/safety_orange" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/underlineColorButtonWhite"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -518,7 +518,7 @@
                     style="@style/RadioButtonBlackCheck"
                     android:background="@color/white" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/underlineColorButtonBlack"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -815,7 +815,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tabTextColorRadioGroup"
                 android:orientation="horizontal">
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextColorButtonFireEngineRed"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -825,7 +825,7 @@
                     android:minHeight="30dp"
                     android:background="@color/fire_engine_red" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextColorButtonMantis"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -835,7 +835,7 @@
                     android:minHeight="30dp"
                     android:background="@color/mantis" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextColorButtonGorse"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -845,7 +845,7 @@
                     android:minHeight="30dp"
                     android:background="@color/gorse" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextColorButtonIrisBlue"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -855,7 +855,7 @@
                     android:minHeight="30dp"
                     android:background="@color/iris_blue" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextColorButtonSafetyOrange"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -865,7 +865,7 @@
                     android:minHeight="30dp"
                     android:background="@color/safety_orange" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextColorButtonWhite"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -875,7 +875,7 @@
                     style="@style/RadioButtonBlackCheck"
                     android:background="@color/white" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextColorButtonBlack"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -927,7 +927,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tabTextSelectedColorRadioGroup"
                 android:orientation="horizontal">
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextSelectedColorButtonFireEngineRed"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -937,7 +937,7 @@
                     android:minHeight="30dp"
                     android:background="@color/fire_engine_red" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextSelectedColorButtonMantis"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -947,7 +947,7 @@
                     android:minHeight="30dp"
                     android:background="@color/mantis" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextSelectedColorButtonGorse"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -957,7 +957,7 @@
                     android:minHeight="30dp"
                     android:background="@color/gorse" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextSelectedColorButtonIrisBlue"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -967,7 +967,7 @@
                     android:minHeight="30dp"
                     android:background="@color/iris_blue" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextSelectedColorButtonSafetyOrange"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -977,7 +977,7 @@
                     android:minHeight="30dp"
                     android:background="@color/safety_orange" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextSelectedColorButtonWhite"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -987,7 +987,7 @@
                     style="@style/RadioButtonBlackCheck"
                     android:background="@color/white" />
 
-                <io.karim.materialtabs.sample.sampleui.RadioButtonCenter
+                <io.karim.materialtabs.sample.ui.RadioButtonCenter
                     android:id="@+id/tabTextSelectedColorButtonBlack"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
