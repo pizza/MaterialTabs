@@ -6,6 +6,8 @@ If you think that this library does not fully respect the Material Design guidel
 
 <img alt="Animated screenshot" src="http://imgur.com/1CnH2U1.gif" />
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-pizza%2FMaterialTabs-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1874)
+
 ## Sample
 
 You can find a sample app showing what this library can do on the Google Play Store.
