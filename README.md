@@ -96,6 +96,24 @@ Here is a table of these attributes, their descriptions and their default value:
 
 Don't forget to add `xmlns:app="http://schemas.android.com/apk/res-auto"` to the root item in your layout.
 
+If you would like to use a custom font in the tabs' title text, you can do so in your Java code by adding the last two lines just after binding the tabs to the ViewPager:
+
+```java
+ // Initialize the ViewPager and set an adapter
+ ViewPager pager = (ViewPager) findViewById(R.id.pager);
+ pager.setAdapter(new SamplePagerAdapter(getSupportFragmentManager()));
+
+ // Bind the tabs to the ViewPager
+ MaterialTabs tabs = (MaterialTabs) findViewById(R.id.tabs);
+ tabs.setViewPager(pager);
+ 
+ // Set custom font/typeface to text in tabs' title
+ Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf");
+ tabs.setTypeface(typeface, Typeface.BOLD);
+```
+
+For this to work, make sure to add your font file (in this case, `Roboto-Thin.ttf`) in the `fonts` folder under `assets`.
+
 ## Contribution
 If you would like to contribute code you can do so through GitHub by forking the repository and sending a pull request.
 
