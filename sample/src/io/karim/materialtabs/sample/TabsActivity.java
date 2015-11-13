@@ -30,6 +30,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,6 +46,8 @@ import io.karim.MaterialTabs;
 import io.karim.Utils;
 
 public class TabsActivity extends AppCompatActivity {
+
+    private static final String TAG = TabsActivity.class.getSimpleName();
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
@@ -77,6 +80,20 @@ public class TabsActivity extends AppCompatActivity {
         mViewPager.setAdapter(adapter);
 
         mMaterialTabs.setViewPager(mViewPager);
+
+        mMaterialTabs.setOnTabSelectedListener(new MaterialTabs.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(int position) {
+                Log.i(TAG, "onTabSelected called with position " + position);
+            }
+        });
+
+        mMaterialTabs.setOnTabReselectedListener(new MaterialTabs.OnTabReselectedListener() {
+            @Override
+            public void onTabReselected(int position) {
+                Log.i(TAG, "onTabReselected called with position " + position);
+            }
+        });
 
         applyParametersFromIntentExtras();
 

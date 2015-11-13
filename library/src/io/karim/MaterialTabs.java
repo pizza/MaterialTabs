@@ -59,6 +59,10 @@ public class MaterialTabs extends HorizontalScrollView {
         void onTabReselected(int position);
     }
 
+    public interface OnTabSelectedListener {
+        void onTabSelected(int position);
+    }
+
     private static final int[] ATTRS = new int[]{android.R.attr.textColorPrimary, android.R.attr.textSize, android.R.attr.textColor,
             android.R.attr.padding, android.R.attr.paddingLeft, android.R.attr.paddingRight};
 
@@ -76,6 +80,7 @@ public class MaterialTabs extends HorizontalScrollView {
     private final LinearLayout.LayoutParams expandedTabLayoutParams;
 
     private final PageListener pageListener = new PageListener();
+    private OnTabSelectedListener tabSelectedListener = null;
     private OnTabReselectedListener tabReselectedListener = null;
     public OnPageChangeListener delegatePageListener;
 
@@ -292,6 +297,10 @@ public class MaterialTabs extends HorizontalScrollView {
         tabView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (tabSelectedListener != null) {
+                    tabSelectedListener.onTabSelected(position);
+                }
+
                 if (pager.getCurrentItem() != position) {
                     View tab = tabsContainer.getChildAt(pager.getCurrentItem());
                     notSelected(tab);
@@ -428,6 +437,10 @@ public class MaterialTabs extends HorizontalScrollView {
 
     public void setOnTabReselectedListener(OnTabReselectedListener tabReselectedListener) {
         this.tabReselectedListener = tabReselectedListener;
+    }
+
+    public void setOnTabSelectedListener(OnTabSelectedListener tabSelectedListener) {
+        this.tabSelectedListener = tabSelectedListener;
     }
 
     public void setOnPageChangeListener(OnPageChangeListener listener) {
