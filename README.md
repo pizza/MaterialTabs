@@ -1,5 +1,7 @@
 # MaterialTabs
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-pizza%2FMaterialTabs-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1874)
+
 An easy-to-integrate tab bar for Android that completely respects the [Material Design guidelines] (http://www.google.com/design/spec/components/tabs.html) and **supports all versions of Android since API 9**!
 
 If you think that this library does not fully respect the Material Design guidelines, file an issue, send a pull request or reach out to me! The goal of this library is to be 100% MaterialDesign-compliant.
@@ -93,6 +95,24 @@ Here is a table of these attributes, their descriptions and their default value:
 | app:mtMrlRippleRoundedCorners | Radius of corners of the ripple. Note: it uses software rendering pipeline for API 17 and  below  | 
 
 Don't forget to add `xmlns:app="http://schemas.android.com/apk/res-auto"` to the root item in your layout.
+
+If you would like to use a custom font in the tabs' title text, you can do so in your Java code by adding the last two lines just after binding the tabs to the ViewPager:
+
+```java
+ // Initialize the ViewPager and set an adapter
+ ViewPager pager = (ViewPager) findViewById(R.id.pager);
+ pager.setAdapter(new SamplePagerAdapter(getSupportFragmentManager()));
+
+ // Bind the tabs to the ViewPager
+ MaterialTabs tabs = (MaterialTabs) findViewById(R.id.tabs);
+ tabs.setViewPager(pager);
+ 
+ // Set custom font/typeface to text in tabs' title
+ Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf");
+ tabs.setTypeface(typeface, Typeface.BOLD);
+```
+
+For this to work, make sure to add your font file (in this case, `Roboto-Thin.ttf`) in the `fonts` folder under `assets`.
 
 ## Contribution
 If you would like to contribute code you can do so through GitHub by forking the repository and sending a pull request.
