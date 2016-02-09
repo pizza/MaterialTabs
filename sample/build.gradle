@@ -21,8 +21,8 @@ repositories {
 
 dependencies {
     compile project(':library')
-    compile 'com.android.support:appcompat-v7:22.1.1'
-    compile 'com.android.support:cardview-v7:22.0.0'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:cardview-v7:23.1.1'
     compile 'com.jakewharton:butterknife:6.0.0'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile 'com.nineoldandroids:library:2.4.0'
@@ -32,15 +32,15 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 22
+        targetSdkVersion 23
 
-        versionName "1.0.5"
-        versionCode 8
+        versionName "1.0.6"
+        versionCode 9
     }
 
     signingConfigs { release }
