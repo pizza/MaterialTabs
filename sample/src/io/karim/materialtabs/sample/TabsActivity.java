@@ -314,8 +314,8 @@ public class TabsActivity extends AppCompatActivity {
 
     public class SamplePagerAdapter extends FragmentPagerAdapter {
 
-        private final String[] TITLES = {"ITEM ONE", "ITEM TWO", "ITEM THREE", "ITEM FOUR", "ITEM FIVE", "ITEM SIX", "ITEM SEVEN", "ITEM EIGHT",
-                "ITEM NINE", "ITEM TEN", "ITEM ELEVEN"};
+        private final String[] TITLES = {"Item One", "Item Two", "Item Three", "Item Four", "Item Five", "Item Six", "Item Seven", "Item Eight",
+                "Item Nine", "Item Ten", "Item Eleven"};
 
         private final ArrayList<String> mTitles;
 
