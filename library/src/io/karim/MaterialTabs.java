@@ -54,9 +54,9 @@ public class MaterialTabs extends HorizontalScrollView {
     public interface CustomTabProvider {
         View getCustomTabView(ViewGroup parent, int position);
 
-        void onCustomTabViewSelected(View view, int position);
+        void onCustomTabViewSelected(View view, int position, boolean alreadySelected);
 
-        void onCustomTabViewUnselected(View view, int position);
+        void onCustomTabViewUnselected(View view, int position, boolean alreadyUnselected);
     }
 
     public interface OnTabReselectedListener {
@@ -225,7 +225,7 @@ public class MaterialTabs extends HorizontalScrollView {
     }
 
     private void setMarginBottomTabContainer() {
-        ViewGroup.MarginLayoutParams mlp = (MarginLayoutParams) tabsContainer.getLayoutParams();
+        MarginLayoutParams mlp = (MarginLayoutParams) tabsContainer.getLayoutParams();
         int bottomMargin = indicatorHeight >= underlineHeight ? indicatorHeight : underlineHeight;
         mlp.setMargins(mlp.leftMargin, mlp.topMargin, mlp.rightMargin, bottomMargin);
         tabsContainer.setLayoutParams(mlp);
@@ -307,7 +307,6 @@ public class MaterialTabs extends HorizontalScrollView {
                 }
 
                 if (pager.getCurrentItem() != position) {
-                    View tab = tabsContainer.getChildAt(pager.getCurrentItem());
                     markNotSelected(position);
                     pager.setCurrentItem(position);
                 } else if (tabReselectedListener != null) {
@@ -506,7 +505,7 @@ public class MaterialTabs extends HorizontalScrollView {
 
     private void markNotSelected(int position) {
         View tab = tabsContainer.getChildAt(position);
-        if (tab != null && isTabSelected(position)) {
+        if (tab != null) {
             TextView title = (TextView) tab.findViewById(R.id.mt_tab_title);
             if (title != null) {
                 if (tabTypeface != null) {
@@ -518,9 +517,9 @@ public class MaterialTabs extends HorizontalScrollView {
             } else if (pager.getAdapter() instanceof CustomTabProvider) {
                 if (tab instanceof MaterialRippleLayout) {
                     final View child = ((MaterialRippleLayout) tab).getChildAt(0);
-                    ((CustomTabProvider) pager.getAdapter()).onCustomTabViewUnselected(child, position);
+                    ((CustomTabProvider) pager.getAdapter()).onCustomTabViewUnselected(child, position, !isTabSelected(position));
                 } else {
-                    ((CustomTabProvider) pager.getAdapter()).onCustomTabViewUnselected(tab, position);
+                    ((CustomTabProvider) pager.getAdapter()).onCustomTabViewUnselected(tab, position, !isTabSelected(position));
                 }
             }
         }
@@ -528,7 +527,7 @@ public class MaterialTabs extends HorizontalScrollView {
 
     private void markSelected(int position) {
         View tab = tabsContainer.getChildAt(position);
-        if (tab != null && !isTabSelected(position)) {
+        if (tab != null) {
             TextView title = (TextView) tab.findViewById(R.id.mt_tab_title);
             if (title != null) {
                 if (tabTypeface != null) {
@@ -540,9 +539,9 @@ public class MaterialTabs extends HorizontalScrollView {
             } else if (pager.getAdapter() instanceof CustomTabProvider) {
                 if (tab instanceof MaterialRippleLayout) {
                     final View child = ((MaterialRippleLayout) tab).getChildAt(0);
-                    ((CustomTabProvider) pager.getAdapter()).onCustomTabViewSelected(child, position);
+                    ((CustomTabProvider) pager.getAdapter()).onCustomTabViewSelected(child, position, isTabSelected(position));
                 } else {
-                    ((CustomTabProvider) pager.getAdapter()).onCustomTabViewSelected(tab, position);
+                    ((CustomTabProvider) pager.getAdapter()).onCustomTabViewSelected(tab, position, isTabSelected(position));
                 }
             }
         }
@@ -630,7 +629,7 @@ public class MaterialTabs extends HorizontalScrollView {
             dest.writeInt(currentPosition);
         }
 
-        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
+        public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
             @Override
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);

@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onCustomTabViewSelected(View view, int position) {
+        public void onCustomTabViewSelected(View view, int position, boolean alreadySelected) {
             Log.i(TAG, "custom tab view selected with position = " + position);
             if (view instanceof ImageView) {
                 ((ImageView) view).setImageResource(SELECTED_ICONS[position]);
@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onCustomTabViewUnselected(View view, int position) {
+        public void onCustomTabViewUnselected(View view, int position, boolean alreadyUnselected) {
             Log.i(TAG, "custom tab view unselected with position = " + position);
             if (view instanceof ImageView) {
                 ((ImageView) view).setImageResource(UNSELECTED_ICONS[position]);
