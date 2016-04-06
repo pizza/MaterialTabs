@@ -15,16 +15,16 @@ You can find a sample app showing what this library can do on the Google Play St
 
 <a href="https://play.google.com/store/apps/details?id=io.karim.materialtabs.sample">
   <img alt="Material Tabs Demo on Google Play"
-         src="http://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
+         src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" />
 </a>
 
 ## Download
 
-Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/karim/materialtabs/2.0.3/materialtabs-2.0.3.aar) or add the following dependency in your **build.gradle** file:
+Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/karim/materialtabs/2.0.5/materialtabs-2.0.5.aar) or add the following dependency in your **build.gradle** file:
 
 ```groovy
 	dependencies {
-	    compile 'io.karim:materialtabs:2.0.3'
+	    compile 'io.karim:materialtabs:2.0.5'
 	}
 ```
 
