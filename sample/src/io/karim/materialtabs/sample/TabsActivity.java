@@ -18,12 +18,16 @@ package io.karim.materialtabs.sample;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
+import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -66,6 +70,17 @@ public class TabsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tabs);
         ButterKnife.inject(this);
         setSupportActionBar(mToolbar);
+
+        // Setting navigation icon
+        mToolbar.setNavigationIcon(getDrawable(this, R.drawable.ic_navigation_arrow_back_white));
+
+        // Setting this navigation icon's onClickListener
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         // Apply background tinting to the Android system UI when using KitKat translucent modes.
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
@@ -300,7 +315,7 @@ public class TabsActivity extends AppCompatActivity {
         return stringBuilder.toString();
     }
 
-    private String getStyleFromStyleInt(int styleInt) {
+    private static String getStyleFromStyleInt(int styleInt) {
         switch (styleInt) {
             case Typeface.BOLD:
             default:
@@ -309,6 +324,18 @@ public class TabsActivity extends AppCompatActivity {
                 return "italic";
             case Typeface.NORMAL:
                 return "normal";
+        }
+    }
+
+    /**
+     * Convenience to use the new getDrawable(...) on Lollipop and the deprecated one on preLollipop.
+     */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private static Drawable getDrawable(Context context, @DrawableRes int drawableResId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return context.getDrawable(drawableResId);
+        } else {
+            return context.getResources().getDrawable(drawableResId);
         }
     }
 
