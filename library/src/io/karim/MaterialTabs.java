@@ -119,7 +119,7 @@ public class MaterialTabs extends HorizontalScrollView {
     private boolean isPaddingMiddle = false;
 
     private Typeface tabTypeface = null;
-    private int tabTypefaceUnselectedStyle = Typeface.BOLD;
+    private int tabTypefaceUnselectedStyle = Typeface.NORMAL;
     private int tabTypefaceSelectedStyle = Typeface.BOLD;
 
     private int scrollOffset;
@@ -188,7 +188,7 @@ public class MaterialTabs extends HorizontalScrollView {
         sameWeightTabs = a.getBoolean(R.styleable.MaterialTabs_mtSameWeightTabs, sameWeightTabs);
         textAllCaps = a.getBoolean(R.styleable.MaterialTabs_mtTextAllCaps, textAllCaps);
         isPaddingMiddle = a.getBoolean(R.styleable.MaterialTabs_mtPaddingMiddle, isPaddingMiddle);
-        tabTypefaceUnselectedStyle = a.getInt(R.styleable.MaterialTabs_mtTextUnselectedStyle, Typeface.BOLD);
+        tabTypefaceUnselectedStyle = a.getInt(R.styleable.MaterialTabs_mtTextUnselectedStyle, Typeface.NORMAL);
         tabTypefaceSelectedStyle = a.getInt(R.styleable.MaterialTabs_mtTextSelectedStyle, Typeface.BOLD);
         tabTextColorSelected = a.getColor(R.styleable.MaterialTabs_mtTextColorSelected, textPrimaryColor);
 
@@ -509,7 +509,11 @@ public class MaterialTabs extends HorizontalScrollView {
         if (tab != null && isTabSelected(position)) {
             TextView title = (TextView) tab.findViewById(R.id.mt_tab_title);
             if (title != null) {
-                title.setTypeface(tabTypeface, tabTypefaceUnselectedStyle);
+                if (tabTypeface != null) {
+                    title.setTypeface(tabTypeface, tabTypefaceUnselectedStyle);
+                } else {
+                    title.setTypeface(Typeface.DEFAULT);
+                }
                 title.setTextColor(tabTextColorUnselected);
             } else if (pager.getAdapter() instanceof CustomTabProvider) {
                 if (tab instanceof MaterialRippleLayout) {
@@ -527,7 +531,11 @@ public class MaterialTabs extends HorizontalScrollView {
         if (tab != null && !isTabSelected(position)) {
             TextView title = (TextView) tab.findViewById(R.id.mt_tab_title);
             if (title != null) {
-                title.setTypeface(tabTypeface, tabTypefaceSelectedStyle);
+                if (tabTypeface != null) {
+                    title.setTypeface(tabTypeface, tabTypefaceSelectedStyle);
+                } else {
+                    title.setTypeface(Typeface.DEFAULT_BOLD);
+                }
                 title.setTextColor(tabTextColorSelected);
             } else if (pager.getAdapter() instanceof CustomTabProvider) {
                 if (tab instanceof MaterialRippleLayout) {

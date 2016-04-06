@@ -225,7 +225,7 @@ public class TabsActivity extends AppCompatActivity {
         }
     }
 
-    private String createExportableText(int showToolbar, int indicatorColor, int underlineColor, int indicatorHeightDp, int underlineHeightDp,
+    private static String createExportableText(int showToolbar, int indicatorColor, int underlineColor, int indicatorHeightDp, int underlineHeightDp,
             int tabPaddingDp, boolean paddingMiddle, boolean sameWeightTabs, boolean textAllCaps, int toolbarColor, int tabBackgroundColor,
             int textColorSelected, int textColorUnselected, int tabStyleSelected, int tabStyleUnselected, int rippleDuration, float rippleAlphaFloat,
             int rippleColor, boolean rippleDelayClick, float rippleDiameterDp, int rippleFadeDuration, int rippleHighlightColor,
