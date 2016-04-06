@@ -1,7 +1,6 @@
 package io.karim.materialtabs.sample;
 
 import android.app.Activity;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -34,8 +32,6 @@ public class TabsSettingsFragment extends Fragment implements ResettableFragment
     public static final String TOOLBAR_BACKGROUND = "TOOLBAR_BACKGROUND";
     public static final String TEXT_COLOR_UNSELECTED = "TEXT_COLOR_UNSELECTED";
     public static final String TEXT_COLOR_SELECTED = "TEXT_COLOR_SELECTED";
-    public static final String TEXT_STYLE_SELECTED = "TEXT_STYLE_SELECTED";
-    public static final String TEXT_STYLE_UNSELECTED = "TEXT_STYLE_UNSELECTED";
     public static final String SHOW_TOOLBAR = "SHOW_TOOLBAR";
     public static final String NUMBER_OF_TABS = "NUMBER_OF_TABS";
 
@@ -121,18 +117,6 @@ public class TabsSettingsFragment extends Fragment implements ResettableFragment
     RadioGroup toolbarColorRadioGroup;
     @InjectView(R.id.toolbarColorButtonFireEngineRed)
     RadioButtonCenter toolbarColorButtonFireEngineRed;
-
-    // Selected Text Style
-    @InjectView(R.id.selectedTextStyleRadioGroup)
-    RadioGroup selectedTextStyleRadioGroup;
-    @InjectView(R.id.selectedTextStyleButtonBold)
-    RadioButton selectedTextStyleButtonBold;
-
-    // Unselected Text Style
-    @InjectView(R.id.unselectedTextStyleRadioGroup)
-    RadioGroup unselectedTextStyleRadioGroup;
-    @InjectView(R.id.unselectedTextStyleButtonBold)
-    RadioButton unselectedTextStyleButtonBold;
 
     int underlineHeightDp;
     int indicatorHeightDp;
@@ -440,46 +424,6 @@ public class TabsSettingsFragment extends Fragment implements ResettableFragment
             }
         });
 
-        // Text Style Selected
-        selectedTextStyleRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                String key = TEXT_STYLE_SELECTED;
-                switch (checkedId) {
-                    case R.id.selectedTextStyleButtonNormal:
-                        mainActivity.startTabsActivityIntent.putExtra(key, Typeface.NORMAL);
-                        break;
-                    case R.id.selectedTextStyleButtonItallic:
-                        mainActivity.startTabsActivityIntent.putExtra(key, Typeface.ITALIC);
-                        break;
-                    case R.id.selectedTextStyleButtonBold:
-                    default:
-                        mainActivity.startTabsActivityIntent.putExtra(key, Typeface.BOLD);
-                        break;
-                }
-            }
-        });
-
-        // Text Style Unselected
-        unselectedTextStyleRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                String key = TEXT_STYLE_UNSELECTED;
-                switch (checkedId) {
-                    case R.id.unselectedTextStyleButtonNormal:
-                        mainActivity.startTabsActivityIntent.putExtra(key, Typeface.NORMAL);
-                        break;
-                    case R.id.unselectedTextStyleButtonItallic:
-                        mainActivity.startTabsActivityIntent.putExtra(key, Typeface.ITALIC);
-                        break;
-                    case R.id.unselectedTextStyleButtonBold:
-                    default:
-                        mainActivity.startTabsActivityIntent.putExtra(key, Typeface.BOLD);
-                        break;
-                }
-            }
-        });
-
         indicatorColorButtonWhite.setChecked(true);
         underlineColorButtonMantis.setChecked(true);
 
@@ -488,9 +432,6 @@ public class TabsSettingsFragment extends Fragment implements ResettableFragment
 
         tabBackgroundColorButtonFireEngineRed.setChecked(true);
         toolbarColorButtonFireEngineRed.setChecked(true);
-
-        selectedTextStyleButtonBold.setChecked(true);
-        unselectedTextStyleButtonBold.setChecked(true);
 
         /** CheckBoxes **/
 
@@ -561,22 +502,6 @@ public class TabsSettingsFragment extends Fragment implements ResettableFragment
     @OnClick(R.id.toolbarColorInfoButton)
     public void toolbarColorInfoButtonClicked() {
         new AlertDialog.Builder(getActivity()).setTitle(R.string.toolbar_color).setMessage(R.string.toolbar_color_details).create().show();
-    }
-
-    @OnClick(R.id.textSelectedStyleInfoButton)
-    public void textSelectedStyleInfoButtonClicked() {
-        new AlertDialog.Builder(getActivity()).setTitle(R.string.text_selected_style)
-                                              .setMessage(R.string.text_selected_style_details)
-                                              .create()
-                                              .show();
-    }
-
-    @OnClick(R.id.textUnselectedStyleInfoButton)
-    public void textUnselectedStyleInfoButtonClicked() {
-        new AlertDialog.Builder(getActivity()).setTitle(R.string.text_unselected_style)
-                                              .setMessage(R.string.text_unselected_style_details)
-                                              .create()
-                                              .show();
     }
 
     @OnClick(R.id.textAllCapsInfoButton)

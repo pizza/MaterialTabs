@@ -11,16 +11,6 @@
         <attr name="mtTextAllCaps" format="boolean" />
         <attr name="mtPaddingMiddle" format="boolean" />
         <attr name="mtTextColorSelected" format="color" />
-        <attr name="mtTextUnselectedStyle">
-            <flag name="normal" value="0x0" />
-            <flag name="bold" value="0x1" />
-            <flag name="italic" value="0x2" />
-        </attr>
-        <attr name="mtTextSelectedStyle">
-            <flag name="normal" value="0x0" />
-            <flag name="bold" value="0x1" />
-            <flag name="italic" value="0x2" />
-        </attr>
         <attr name="mtMrlRippleColor" format="color" localization="suggested" />
         <attr name="mtMrlRippleHighlightColor" format="color" localization="suggested" />
         <attr name="mtMrlRippleDiameter" format="dimension" localization="suggested" />

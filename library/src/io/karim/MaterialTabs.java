@@ -118,9 +118,8 @@ public class MaterialTabs extends HorizontalScrollView {
     private boolean textAllCaps = true;
     private boolean isPaddingMiddle = false;
 
-    private Typeface tabTypeface = null;
-    private int tabTypefaceUnselectedStyle = Typeface.NORMAL;
-    private int tabTypefaceSelectedStyle = Typeface.BOLD;
+    private Typeface tabTypefaceUnselected = null;
+    private Typeface tabTypefaceSelected = null;
 
     private int scrollOffset;
     private int lastScrollX = 0;
@@ -188,8 +187,6 @@ public class MaterialTabs extends HorizontalScrollView {
         sameWeightTabs = a.getBoolean(R.styleable.MaterialTabs_mtSameWeightTabs, sameWeightTabs);
         textAllCaps = a.getBoolean(R.styleable.MaterialTabs_mtTextAllCaps, textAllCaps);
         isPaddingMiddle = a.getBoolean(R.styleable.MaterialTabs_mtPaddingMiddle, isPaddingMiddle);
-        tabTypefaceUnselectedStyle = a.getInt(R.styleable.MaterialTabs_mtTextUnselectedStyle, Typeface.NORMAL);
-        tabTypefaceSelectedStyle = a.getInt(R.styleable.MaterialTabs_mtTextSelectedStyle, Typeface.BOLD);
         tabTextColorSelected = a.getColor(R.styleable.MaterialTabs_mtTextColorSelected, textPrimaryColor);
 
         // Get custom attrs of MaterialRippleLayout.
@@ -327,6 +324,7 @@ public class MaterialTabs extends HorizontalScrollView {
             if (tab_title != null) {
                 tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, tabTextSize);
                 tab_title.setTextColor(tabTextColorUnselected);
+                tab_title.setTypeface(tabTypefaceUnselected);
                 // setAllCaps() is only available from API 14, so the upper case is made manually if we are on a pre-ICS-build.
                 if (textAllCaps) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
@@ -508,8 +506,8 @@ public class MaterialTabs extends HorizontalScrollView {
         if (tab != null) {
             TextView title = (TextView) tab.findViewById(R.id.mt_tab_title);
             if (title != null) {
-                if (tabTypeface != null) {
-                    title.setTypeface(tabTypeface, tabTypefaceUnselectedStyle);
+                if (tabTypefaceUnselected != null) {
+                    title.setTypeface(tabTypefaceUnselected);
                 } else {
                     title.setTypeface(Typeface.DEFAULT);
                 }
@@ -530,8 +528,8 @@ public class MaterialTabs extends HorizontalScrollView {
         if (tab != null) {
             TextView title = (TextView) tab.findViewById(R.id.mt_tab_title);
             if (title != null) {
-                if (tabTypeface != null) {
-                    title.setTypeface(tabTypeface, tabTypefaceSelectedStyle);
+                if (tabTypefaceSelected != null) {
+                    title.setTypeface(tabTypefaceSelected);
                 } else {
                     title.setTypeface(Typeface.DEFAULT_BOLD);
                 }
@@ -753,27 +751,20 @@ public class MaterialTabs extends HorizontalScrollView {
         setTextColorSelected(getResources().getColor(resId));
     }
 
-    public void setTypeface(Typeface typeface, int style) {
-        this.tabTypeface = typeface;
-        this.tabTypefaceSelectedStyle = style;
+    public void setTypefaceSelected(Typeface typeface) {
+        this.tabTypefaceSelected = typeface;
         updateTabStyles();
     }
 
-    public void setTabTypefaceUnselectedStyle(int tabTypefaceUnselectedStyle) {
-        this.tabTypefaceUnselectedStyle = tabTypefaceUnselectedStyle;
-        invalidate();
-    }
-
-    public void setTabTypefaceSelectedStyle(int tabTypefaceSelectedStyle) {
-        this.tabTypefaceSelectedStyle = tabTypefaceSelectedStyle;
-        invalidate();
+    public void setTypefaceUnselected(Typeface typeface) {
+        this.tabTypefaceUnselected = typeface;
+        updateTabStyles();
     }
 
     public void setTabPaddingLeftRight(int paddingPx) {
         this.tabPadding = paddingPx;
         updateTabStyles();
     }
-
 
     public void setRippleColor(int rippleColor) {
         this.rippleColor = rippleColor;

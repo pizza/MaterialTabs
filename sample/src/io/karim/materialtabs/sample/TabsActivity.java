@@ -185,14 +185,9 @@ public class TabsActivity extends AppCompatActivity {
 
                 int textColorSelected = resources.getColor(extras.getInt(TabsSettingsFragment.TEXT_COLOR_SELECTED));
                 int textColorUnselected = resources.getColor(extras.getInt(TabsSettingsFragment.TEXT_COLOR_UNSELECTED));
-                int tabStyleSelected = extras.getInt(TabsSettingsFragment.TEXT_STYLE_SELECTED);
-                int tabStyleUnselected = extras.getInt(TabsSettingsFragment.TEXT_STYLE_UNSELECTED);
 
                 mMaterialTabs.setTextColorSelected(textColorSelected);
                 mMaterialTabs.setTextColorUnselected(textColorUnselected);
-
-                mMaterialTabs.setTabTypefaceSelectedStyle(tabStyleSelected);
-                mMaterialTabs.setTabTypefaceUnselectedStyle(tabStyleUnselected);
 
                 int rippleDuration = extras.getInt(RippleSettingsFragment.RIPPLE_DURATION);
                 float rippleAlphaFloat = extras.getFloat(RippleSettingsFragment.RIPPLE_ALPHA_FLOAT);
@@ -219,7 +214,7 @@ public class TabsActivity extends AppCompatActivity {
 
                 mExportableString = createExportableText(showToolbar, indicatorColor, underlineColor, indicatorHeightDp, underlineHeightDp,
                         tabPaddingDp, paddingMiddle, sameWeightTabs, textAllCaps, toolbarColor, tabBackgroundColor, textColorSelected,
-                        textColorUnselected, tabStyleSelected, tabStyleUnselected, rippleDuration, rippleAlphaFloat, rippleColor, rippleDelayClick,
+                        textColorUnselected, rippleDuration, rippleAlphaFloat, rippleColor, rippleDelayClick,
                         rippleDiameterDp, rippleFadeDuration, rippleHighlightColor, rippleOverlay, ripplePersistent, rippleRoundedCornusRadiusDp);
             }
         }
@@ -227,7 +222,7 @@ public class TabsActivity extends AppCompatActivity {
 
     private static String createExportableText(int showToolbar, int indicatorColor, int underlineColor, int indicatorHeightDp, int underlineHeightDp,
             int tabPaddingDp, boolean paddingMiddle, boolean sameWeightTabs, boolean textAllCaps, int toolbarColor, int tabBackgroundColor,
-            int textColorSelected, int textColorUnselected, int tabStyleSelected, int tabStyleUnselected, int rippleDuration, float rippleAlphaFloat,
+            int textColorSelected, int textColorUnselected, int rippleDuration, float rippleAlphaFloat,
             int rippleColor, boolean rippleDelayClick, float rippleDiameterDp, int rippleFadeDuration, int rippleHighlightColor,
             boolean rippleOverlay, boolean ripplePersistent, int rippleRoundedCornusRadiusDp) {
 
@@ -270,12 +265,6 @@ public class TabsActivity extends AppCompatActivity {
                      .append("        android:textColor=\"")
                      .append("#")
                      .append(Integer.toHexString(textColorUnselected))
-                     .append("\"\n")
-                     .append("        app:mtTextUnselectedStyle=\"")
-                     .append(getStyleFromStyleInt(tabStyleUnselected))
-                     .append("\"\n")
-                     .append("        app:mtTextSelectedStyle=\"")
-                     .append(getStyleFromStyleInt(tabStyleSelected))
                      .append("\"\n")
                      .append("        app:mtMrlRippleColor=\"")
                      .append("#")
