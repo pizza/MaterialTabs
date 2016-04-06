@@ -55,15 +55,56 @@ Take a look at [this file] (https://github.com/pizza/MaterialTabs/blob/master/sa
  tabs.setViewPager(pager);
 ```
 
-3. Create a new class extending FragmentPagerAdapter.
-
-	If you're looking for tabs with text, take a look at [this file] (https://github.com/pizza/MaterialTabs/blob/master/sample/src/io/karim/materialtabs/sample/TabsActivity.java#L126) for a better example.
-
-	If you're looking for tabs with icons instead of text, take a look at [this example](https://github.com/pizza/MaterialTabs/blob/master/sample/src/io/karim/materialtabs/sample/MainActivity.java#L397) instead. Specifically, make sure that your class implements `MaterialTabs.CustomtabProvider` and override `getCustomtabView(...)`.
-
-	If you're looking for tabs with more than just icons or just text, create your own custom views in `getCustomtabView(...)`.
+3. Create a new class extending FragmentPagerAdapter, and take a look at the "Custom view" section for more info.
 
 ## Customization
+
+### Custom view
+
+#### Just a TextView (titles)
+If you're looking for tabs with text, take a look at the `SamplePagerAdapter` in [this file] (https://github.com/pizza/MaterialTabs/blob/master/sample/src/io/karim/materialtabs/sample/TabsActivity.java#L331) for a better example.
+
+#### Everything else (icons and more complex views)
+
+Whether you're looking for tabs with icons instead of text or for more complex custom views, take a look at the `MainActivityPagerAdapter` in [this example](https://github.com/pizza/MaterialTabs/blob/master/sample/src/io/karim/materialtabs/sample/MainActivity.java#L152) instead.
+
+Specifically, make sure that your class implements `MaterialTabs.CustomTabProvider` and overrides the following methods:
+
+```
+View getCustomTabView(ViewGroup parent, int position);
+void onCustomTabViewSelected(View view, int position, boolean alreadySelected);
+void onCustomTabViewUnselected(View view, int position, boolean alreadyUnselected);
+```
+
+In the first one, create your View from scratch.
+In the second and third methods, write code that you want to run when a tab is selected and unselected. A common use case is to replace an icon with another icon when selected. This is exactly the use case demonstrated in the example linked above.
+
+*Note: these last two methods might be called several times even though the user just clicked on a tab once (for example). To deal with this case, the `alreadySelected` and `alreadyUnselected` boolean parameters specify if the corresponding tab was already selected or unselected respectively so that code that should only be executed once isn't executed more than once.*
+
+### Custom font/typeface
+
+If you're using the default TextView (i.e. not using custom views) and would like to use a custom font in the tabs' title text, you can do so in your Java code by adding the last two lines just after binding the tabs to the ViewPager:
+
+```java
+ // Initialize the ViewPager and set an adapter
+ ViewPager pager = (ViewPager) findViewById(R.id.pager);
+ pager.setAdapter(new SamplePagerAdapter(getSupportFragmentManager()));
+
+ // Bind the tabs to the ViewPager
+ MaterialTabs tabs = (MaterialTabs) findViewById(R.id.tabs);
+ tabs.setViewPager(pager);
+ 
+ // Set custom font/typeface to text in tabs' title
+ Typeface selectedTypeface = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Bold.ttf");
+ Typeface unselectedTypeface = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Regular.ttf");
+ tabs.setTypefaceSelected(selectedTypeface);
+ tabs.setTypefaceUnselected(unselectedTypeface);
+```
+
+For this to work, make sure to add your font file (in this case, `Roboto-Bold.ttf` and `Robot-Regular.ttf`) in the `fonts` folder under `assets`.
+
+### Other customizations
+
 There are many attributes that you can override in the XML layout.
 Here is a table of these attributes, their descriptions and their default value:
 
@@ -79,8 +120,6 @@ Here is a table of these attributes, their descriptions and their default value:
 | app:mtTextAllCaps | If true, all tab titles will be upper case  | 
 | app:mtPaddingMiddle | If true, the tabs start at the middle of the view  | 
 | app:mtTextColorSelected | Color of text in selected tab  | 
-| app:mtTextUnselectedStyle | Style of text in unselected tab  | 
-| app:mtTextSelectedStyle | Style of text in selected tab  | 
 | app:mtMrlRippleColor | Color of the ripple  | 
 | app:mtMrlRippleHighlightColor | Color of the background while the ripple is undergoing an animation  | 
 | app:mtMrlRippleDiameter | Radius of starting ripple  | 
@@ -94,24 +133,6 @@ Here is a table of these attributes, their descriptions and their default value:
 | app:mtMrlRippleRoundedCorners | Radius of corners of the ripple. Note: it uses software rendering pipeline for API 17 and  below  | 
 
 Don't forget to add `xmlns:app="http://schemas.android.com/apk/res-auto"` to the root item in your layout.
-
-If you would like to use a custom font in the tabs' title text, you can do so in your Java code by adding the last two lines just after binding the tabs to the ViewPager:
-
-```java
- // Initialize the ViewPager and set an adapter
- ViewPager pager = (ViewPager) findViewById(R.id.pager);
- pager.setAdapter(new SamplePagerAdapter(getSupportFragmentManager()));
-
- // Bind the tabs to the ViewPager
- MaterialTabs tabs = (MaterialTabs) findViewById(R.id.tabs);
- tabs.setViewPager(pager);
- 
- // Set custom font/typeface to text in tabs' title
- Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf");
- tabs.setTypeface(typeface, Typeface.BOLD);
-```
-
-For this to work, make sure to add your font file (in this case, `Roboto-Thin.ttf`) in the `fonts` folder under `assets`.
 
 ## Contribution
 If you would like to contribute code you can do so through GitHub by forking the repository and sending a pull request.
