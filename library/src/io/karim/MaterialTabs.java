@@ -53,6 +53,10 @@ public class MaterialTabs extends HorizontalScrollView {
 
     public interface CustomTabProvider {
         View getCustomTabView(ViewGroup parent, int position);
+
+        void onCustomTabViewSelected(View view, int position);
+
+        void onCustomTabViewUnselected(View view, int position);
     }
 
     public interface OnTabReselectedListener {
@@ -89,6 +93,7 @@ public class MaterialTabs extends HorizontalScrollView {
 
     private int tabCount;
 
+    private int mSelectedTabPosition = -1;
     private int currentPosition = 0;
     private float currentPositionOffset = 0f;
 
@@ -303,7 +308,7 @@ public class MaterialTabs extends HorizontalScrollView {
 
                 if (pager.getCurrentItem() != position) {
                     View tab = tabsContainer.getChildAt(pager.getCurrentItem());
-                    notSelected(tab);
+                    markNotSelected(position);
                     pager.setCurrentItem(position);
                 } else if (tabReselectedListener != null) {
                     tabReselectedListener.onTabReselected(position);
@@ -414,7 +419,7 @@ public class MaterialTabs extends HorizontalScrollView {
             currentPosition = pager.getCurrentItem();
             currentPositionOffset = 0f;
             scrollToChild(currentPosition, 0);
-            updateSelection(currentPosition);
+            selectTab(currentPosition);
         }
     };
 
@@ -468,20 +473,7 @@ public class MaterialTabs extends HorizontalScrollView {
             }
 
             // No transparency for current item.
-            View currentTab = tabsContainer.getChildAt(pager.getCurrentItem());
-            selected(currentTab);
-
-            // Half transparent for prev item.
-            if (pager.getCurrentItem() - 1 >= 0) {
-                View prevTab = tabsContainer.getChildAt(pager.getCurrentItem() - 1);
-                notSelected(prevTab);
-            }
-
-            // Half transparent for next item.
-            if (pager.getCurrentItem() + 1 <= pager.getAdapter().getCount() - 1) {
-                View nextTab = tabsContainer.getChildAt(pager.getCurrentItem() + 1);
-                notSelected(nextTab);
-            }
+            selectTab(pager.getCurrentItem());
 
             if (delegatePageListener != null) {
                 delegatePageListener.onPageScrollStateChanged(state);
@@ -498,37 +490,58 @@ public class MaterialTabs extends HorizontalScrollView {
 
     }
 
-    private void updateSelection(int position) {
-        for (int i = 0; i < tabCount; ++i) {
-            View tv = tabsContainer.getChildAt(i);
-            final boolean selected = i == position;
-            tv.setSelected(selected);
-            if (selected) {
-                selected(tv);
-            } else {
-                notSelected(tv);
+    private void selectTab(int currentItem) {
+        markSelected(currentItem);
+        for (int i = 0; i < tabCount; i++) {
+            if (i != currentItem) {
+                markNotSelected(i);
             }
         }
+        mSelectedTabPosition = currentItem;
     }
 
-    private void notSelected(View tab) {
-        if (tab != null) {
+    private void updateSelection(int position) {
+        selectTab(position);
+    }
+
+    private void markNotSelected(int position) {
+        View tab = tabsContainer.getChildAt(position);
+        if (tab != null && isTabSelected(position)) {
             TextView title = (TextView) tab.findViewById(R.id.mt_tab_title);
             if (title != null) {
                 title.setTypeface(tabTypeface, tabTypefaceUnselectedStyle);
                 title.setTextColor(tabTextColorUnselected);
+            } else if (pager.getAdapter() instanceof CustomTabProvider) {
+                if (tab instanceof MaterialRippleLayout) {
+                    final View child = ((MaterialRippleLayout) tab).getChildAt(0);
+                    ((CustomTabProvider) pager.getAdapter()).onCustomTabViewUnselected(child, position);
+                } else {
+                    ((CustomTabProvider) pager.getAdapter()).onCustomTabViewUnselected(tab, position);
+                }
             }
         }
     }
 
-    private void selected(View tab) {
-        if (tab != null) {
+    private void markSelected(int position) {
+        View tab = tabsContainer.getChildAt(position);
+        if (tab != null && !isTabSelected(position)) {
             TextView title = (TextView) tab.findViewById(R.id.mt_tab_title);
             if (title != null) {
                 title.setTypeface(tabTypeface, tabTypefaceSelectedStyle);
                 title.setTextColor(tabTextColorSelected);
+            } else if (pager.getAdapter() instanceof CustomTabProvider) {
+                if (tab instanceof MaterialRippleLayout) {
+                    final View child = ((MaterialRippleLayout) tab).getChildAt(0);
+                    ((CustomTabProvider) pager.getAdapter()).onCustomTabViewSelected(child, position);
+                } else {
+                    ((CustomTabProvider) pager.getAdapter()).onCustomTabViewSelected(tab, position);
+                }
             }
         }
+    }
+
+    private boolean isTabSelected(int position) {
+        return position == mSelectedTabPosition;
     }
 
     private class PagerAdapterObserver extends DataSetObserver {
@@ -577,8 +590,8 @@ public class MaterialTabs extends HorizontalScrollView {
         super.onRestoreInstanceState(savedState.getSuperState());
         currentPosition = savedState.currentPosition;
         if (currentPosition != 0 && tabsContainer.getChildCount() > 0) {
-            notSelected(tabsContainer.getChildAt(0));
-            selected(tabsContainer.getChildAt(currentPosition));
+            markNotSelected(0);
+            markSelected(currentPosition);
         }
         requestLayout();
     }

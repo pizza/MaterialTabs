@@ -18,6 +18,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.URLSpan;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,6 +37,8 @@ import io.karim.MaterialTabs;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
@@ -150,7 +153,8 @@ public class MainActivity extends AppCompatActivity {
 
         private final String[] TITLES = {"Tabs", "Ripple"};
 
-        private final int[] ICONS = {R.drawable.ic_tabs, R.drawable.ic_ripple};
+        private final int[] UNSELECTED_ICONS = {R.drawable.ic_tabs_unselected, R.drawable.ic_ripple_unselected};
+        private final int[] SELECTED_ICONS = {R.drawable.ic_tabs_selected, R.drawable.ic_ripple_selected};
 
         public MainActivityPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -180,8 +184,24 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getCustomTabView(ViewGroup parent, int position) {
             ImageView imageView = new ImageView(MainActivity.this);
-            imageView.setImageDrawable(MainActivity.this.getResources().getDrawable(ICONS[position]));
+            imageView.setImageResource(UNSELECTED_ICONS[position]);
             return imageView;
+        }
+
+        @Override
+        public void onCustomTabViewSelected(View view, int position) {
+            Log.i(TAG, "custom tab view selected with position = " + position);
+            if (view instanceof ImageView) {
+                ((ImageView) view).setImageResource(SELECTED_ICONS[position]);
+            }
+        }
+
+        @Override
+        public void onCustomTabViewUnselected(View view, int position) {
+            Log.i(TAG, "custom tab view unselected with position = " + position);
+            if (view instanceof ImageView) {
+                ((ImageView) view).setImageResource(UNSELECTED_ICONS[position]);
+            }
         }
     }
 
