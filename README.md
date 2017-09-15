@@ -31,7 +31,7 @@ Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/kari
 
 1. Add the MaterialTabs widget (io.karim.MaterialTabs) in your `layout.xml` file:
 
-	```xml
+```xml
 	<io.karim.MaterialTabs
     	   android:id="@+id/material_tabs"
     	   android:layout_width="match_parent"
@@ -39,13 +39,13 @@ Download the [latest AAR](http://search.maven.org/remotecontent?filepath=io/kari
     	   android:background="?attr/colorPrimary"
     	   app:mtSameWeightTabs="true"
     	   app:mtPaddingMiddle="false" />
-	```
+```
 Normally, this should go below a Toolbar (android.support.v7.widget.Toolbar) and above a ViewPager (android.support.v4.view.ViewPager).
 Take a look at [this file] (https://github.com/pizza/MaterialTabs/blob/master/sample/res/layout/activity_tabs.xml) for a better understanding.
 
 2.  In your onCreate method (or onCreateView for a fragment), bind the widget to the ViewPager:
 
-	```java
+```java
  // Initialize the ViewPager and set an adapter
  ViewPager pager = (ViewPager) findViewById(R.id.pager);
  pager.setAdapter(new SamplePagerAdapter(getSupportFragmentManager()));
